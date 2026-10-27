@@ -47,7 +47,6 @@ Vitest runs node tests (storage, API, importers, study engine, vault, starter pa
 launches the built Electron app for the end-to-end flows, including an axe accessibility audit of every page in both
 themes.
 
-
 ## Diagram
 
 ```mermaid

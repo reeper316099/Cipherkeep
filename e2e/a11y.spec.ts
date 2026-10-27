@@ -6,10 +6,11 @@ import {
   type Page,
 } from '@playwright/test';
 import axe from 'axe-core';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { removeDir } from './cleanup';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MOD = process.platform === 'darwin' ? 'Meta' : 'Control';
@@ -96,6 +97,7 @@ test('starter pack first run, then every page passes axe in dark and light', asy
       }
     }
   } finally {
-    rmSync(dataDir, { recursive: true, force: true });
+    await app?.close().catch(() => undefined);
+    removeDir(dataDir);
   }
 });

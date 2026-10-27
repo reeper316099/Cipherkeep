@@ -6,10 +6,11 @@ import {
   type Page,
 } from '@playwright/test';
 import AdmZip from 'adm-zip';
-import { mkdtempSync, writeFileSync, existsSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, writeFileSync, existsSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { removeDir } from './cleanup';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FIXTURE = path.join(ROOT, 'fixtures/synthetic/notion-export');
@@ -51,8 +52,8 @@ test.describe('first run → import → study → persistence', () => {
     XDG_CONFIG_HOME: path.join(home, '.config'),
   };
   test.afterAll(() => {
-    rmSync(dataDir, { recursive: true, force: true });
-    rmSync(home, { recursive: true, force: true });
+    removeDir(dataDir);
+    removeDir(home);
   });
 
   test('a whole session survives a restart', async () => {
@@ -192,6 +193,9 @@ test('uses the standard per-OS app data folder when not overridden', async () =>
     XDG_CONFIG_HOME: path.join(home, '.config'),
     CIPHERKEEP_DATA_DIR: '',
   };
+  // Windows resolves userData from %APPDATA%, which must exist.
+  mkdirSync(env.APPDATA!, { recursive: true });
+  mkdirSync(env.XDG_CONFIG_HOME!, { recursive: true });
   const { app, page } = await launch(env);
   const dir = await page.evaluate(
     () => (window as unknown as { cipherkeep: { dataDir: string } }).cipherkeep.dataDir,
@@ -204,5 +208,5 @@ test('uses the standard per-OS app data folder when not overridden', async () =>
   expect(path.resolve(dir)).toBe(path.resolve(expected));
   expect(existsSync(path.join(dir, 'meta.json'))).toBe(true);
   await app.close();
-  rmSync(home, { recursive: true, force: true });
+  removeDir(home);
 });

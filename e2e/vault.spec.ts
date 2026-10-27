@@ -1,8 +1,9 @@
 import { _electron as electron, expect, test, type ElectronApplication } from '@playwright/test';
-import { mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, readdirSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { removeDir } from './cleanup';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PASS = 'correct horse battery';
@@ -63,6 +64,7 @@ test('an encrypted library starts locked, rejects a wrong passphrase, and unlock
     await page.evaluate(() => (window.location.hash = '#/notes'));
     await expect(page.getByText('Zebra e2e note').first()).toBeVisible();
   } finally {
-    rmSync(dir, { recursive: true, force: true });
+    await app?.close().catch(() => undefined);
+    removeDir(dir);
   }
 });
