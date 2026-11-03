@@ -1,0 +1,15 @@
+# Both findings gitleaks reports on this repo are fake values inside tests:
+#  - a made-up recovery key shown by a mocked API response in the vault UI test
+#  - a fake private key block built at runtime to prove the repo guard flags real ones
+# Neither is a credential. Real secrets are still scanned everywhere else.
+title = "Cipherkeep gitleaks config"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Fake credentials used as test data"
+paths = [
+  '''apps/web/test/vault\.test\.tsx''',
+  '''scripts/check-public-repo\.test\.ts''',
+]
