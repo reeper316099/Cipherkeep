@@ -23,6 +23,28 @@ jobs:
       - run: npm run typecheck
       - run: npm test
 
+  # The Go port (see docs/go-migration). Race detector on, all three systems: path separators and file watching differ.
+  go:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: go
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
+      - run: go vet ./...
+      - name: gofmt
+        if: runner.os != 'Windows'
+        run: test -z "$(gofmt -l .)"
+      - run: go test -race -count=1 ./...
+
   # Drives the real Electron app (built, not packaged): first run, import, study, restart, security checks.
   e2e:
     needs: verify

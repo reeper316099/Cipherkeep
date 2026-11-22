@@ -190,6 +190,16 @@ describe('BackupManager', () => {
     expect(await readdir(path.join(dir, 'backups')).catch(() => [])).not.toContain('race');
   });
 
+  it('keeps the newest backups even when several are made in the same second', async () => {
+    const b = mk(2);
+    await writeFile(path.join(dir, 'x.json'), '1');
+    const made: string[] = [];
+    for (let i = 0; i < 4; i++) made.push((await b.create('same')).name);
+    const kept = (await b.list()).map((x) => x.name);
+    expect(kept).toHaveLength(2);
+    expect(kept).toEqual([made[3], made[2]]); // the two most recently created, newest first
+  });
+
   it('keeps only the newest N and skips fresh launch backups', async () => {
     const b = mk(3);
     await writeFile(path.join(dir, 'x.json'), '1');

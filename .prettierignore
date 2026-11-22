@@ -7,3 +7,4 @@ apps/desktop/web
 release
 playwright-report
 test-results
+fixtures/compat

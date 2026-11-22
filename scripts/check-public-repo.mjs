@@ -4,7 +4,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync, statSync } from 'node:fs';
 
-const ALLOWED_PREFIXES = ['fixtures/synthetic/', 'starter-pack/'];
+const ALLOWED_PREFIXES = ['fixtures/synthetic/', 'fixtures/compat/', 'starter-pack/'];
 const NOTION_ID = /[0-9a-f]{32}(_all)?\.(md|csv)$/i;
 
 /** Returns a list of human-readable violations for the given repo-relative paths. */

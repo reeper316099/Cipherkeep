@@ -1,0 +1,30 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "c1",
+        "n": 1,
+        "name": "ünïcode <tag> & \"quotes\"   end",
+        "tags": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "id": "c2",
+        "n": 2.5,
+        "name": "second",
+        "tags": []
+      },
+      {
+        "id": "c3",
+        "n": 3,
+        "name": "😀 emoji and \\ backslash\nnewline",
+        "tags": [
+          "z"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

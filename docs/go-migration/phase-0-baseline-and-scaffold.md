@@ -83,5 +83,5 @@ Nothing to compare yet: this phase only creates the empty module. Not measured y
 
 - [x] Baseline numbers recorded with their method.
 - [x] `go/` module exists.
-- [ ] A `go test ./...` job and a benchmark harness for the same 10k-note data set exist (finished in phase 1,
-      because they need the storage engine).
+- [x] A `go test ./...` job and a benchmark harness for the same data set exist (finished in
+      [phase 1](phase-1-storage-engine.md), because they need the storage engine).

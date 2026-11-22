@@ -36,6 +36,7 @@ const DEFAULT_EXCLUDE = [
 export class BackupManager {
   readonly keep: number;
   private readonly exclude: Set<string>;
+  private readonly mtimes = new Map<string, number>();
 
   constructor(private readonly opts: BackupOptions) {
     this.keep = opts.keep ?? 20;
@@ -89,7 +90,18 @@ export class BackupManager {
       return [];
     }
     const infos = await Promise.all(names.map((n) => this.info(n)));
-    return infos.sort((a, b) => (a.name < b.name ? 1 : -1)); // newest first
+    // Newest first. Names alone are not enough: two backups in the same second get a "-1" suffix, which sorts
+    // as older, so ties on the timestamp are broken by the file's modification time.
+    return infos.sort(
+      (a, b) =>
+        (a.name.slice(0, 15) < b.name.slice(0, 15)
+          ? 1
+          : a.name.slice(0, 15) > b.name.slice(0, 15)
+            ? -1
+            : 0) ||
+        (this.mtimes.get(b.name) ?? 0) - (this.mtimes.get(a.name) ?? 0) ||
+        (a.name < b.name ? 1 : -1),
+    );
   }
 
   /** Raw bytes of `rel` from the newest backup that contains it, or null. */
@@ -126,6 +138,7 @@ export class BackupManager {
     const createdAt = m
       ? `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}.000Z`
       : st.mtime.toISOString();
+    this.mtimes.set(name, st.mtimeMs);
     return { name, file, createdAt, reason: m?.[7] ?? '', size: st.size };
   }
 
