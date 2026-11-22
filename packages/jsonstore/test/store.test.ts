@@ -173,6 +173,23 @@ describe('JsonStore', () => {
 });
 
 describe('BackupManager', () => {
+  it('fails cleanly, not with an uncaught exception, when a file vanishes during a backup', async () => {
+    const m = mk();
+    await writeFile(path.join(dir, 'a.json'), '{}');
+    const big = path.join(dir, 'gone.json');
+    await writeFile(big, '{}');
+    const orig = m['collect' as keyof BackupManager] as unknown as (
+      ...a: unknown[]
+    ) => Promise<unknown>;
+    // Make the file list include a path that no longer exists, as if it was deleted after listing.
+    (m as unknown as { collect: (...a: unknown[]) => Promise<unknown> }).collect = async (...a) => [
+      ...((await orig.apply(m, a)) as { abs: string; entry: string }[]),
+      { abs: path.join(dir, 'missing.json'), entry: 'missing.json' },
+    ];
+    await expect(m.create('race')).rejects.toThrow(/ENOENT/);
+    expect(await readdir(path.join(dir, 'backups')).catch(() => [])).not.toContain('race');
+  });
+
   it('keeps only the newest N and skips fresh launch backups', async () => {
     const b = mk(3);
     await writeFile(path.join(dir, 'x.json'), '1');

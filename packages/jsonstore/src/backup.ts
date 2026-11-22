@@ -61,7 +61,10 @@ export class BackupManager {
     for (const f of files) zip.addFile(f.abs, f.entry);
     zip.end();
     try {
-      await pipeline(zip.outputStream, createWriteStream(tmp));
+      // A file that disappears mid-backup (moved or deleted) raises 'error' on the zip, not on the pipeline;
+      // without a listener that is an uncaught exception. Turn it into an ordinary failed backup.
+      const zipFailed = new Promise<never>((_, reject) => zip.on('error', reject));
+      await Promise.race([pipeline(zip.outputStream, createWriteStream(tmp)), zipFailed]);
       await fs.rename(tmp, file);
     } catch (err) {
       await fs.rm(tmp, { force: true });
