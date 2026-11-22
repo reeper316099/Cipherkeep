@@ -1,0 +1,872 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "name or IP address to test",
+            "name": "host"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.519Z",
+        "examples": [
+          {
+            "command": "ping -c 4 example.com",
+            "description": "four probes then summary"
+          },
+          {
+            "command": "ping -c 1 192.0.2.10",
+            "description": "a quick single check"
+          },
+          {
+            "command": "ping -i 0.5 -c 10 example.com",
+            "description": "ten probes, two per second"
+          }
+        ],
+        "explanation": "check if a host answers",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C66Q6TH07SPAAVHEW",
+        "importRef": "starter:commands:ping",
+        "links": [],
+        "mastery": 0,
+        "name": "ping",
+        "notes": "On Windows the count flag is -n. A firewall that drops ICMP makes a healthy host look dead.",
+        "options": [
+          {
+            "flag": "-c",
+            "meaning": "stop after N packets (otherwise it runs until Ctrl+C)"
+          },
+          {
+            "flag": "-i",
+            "meaning": "seconds to wait between packets"
+          },
+          {
+            "flag": "-s",
+            "meaning": "size of the packet payload in bytes"
+          },
+          {
+            "flag": "-q",
+            "meaning": "quiet: print only the summary"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ping",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ping [flags] host",
+        "tags": [
+          "starter"
+        ],
+        "title": "ping",
+        "updatedAt": "2026-11-22T05:03:11.519Z",
+        "whatItDoes": "Sends ICMP echo requests and reports whether and how fast replies come back."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the address to request",
+            "name": "url"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.524Z",
+        "examples": [
+          {
+            "command": "curl -I https://example.com",
+            "description": "just the response headers"
+          },
+          {
+            "command": "curl -sL https://example.com/robots.txt",
+            "description": "fetch quietly, following redirects"
+          },
+          {
+            "command": "curl -X POST -H 'Content-Type: application/json' -d '{\"a\":1}' https://example.test/api",
+            "description": "send JSON to an API"
+          },
+          {
+            "command": "curl -v https://example.com 2>&1 | head -20",
+            "description": "inspect the TLS and header exchange"
+          }
+        ],
+        "explanation": "transfer data from or to a URL",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+        "importRef": "starter:commands:curl",
+        "links": [],
+        "mastery": 0,
+        "name": "curl",
+        "notes": "-k disables the protection TLS gives you; use it only against your own lab hosts.",
+        "options": [
+          {
+            "flag": "-I",
+            "meaning": "fetch headers only (HEAD request)"
+          },
+          {
+            "flag": "-s",
+            "meaning": "silent: hide the progress meter"
+          },
+          {
+            "flag": "-L",
+            "meaning": "follow redirects"
+          },
+          {
+            "flag": "-o",
+            "meaning": "save output to a file name you choose"
+          },
+          {
+            "flag": "-O",
+            "meaning": "save using the remote file name"
+          },
+          {
+            "flag": "-X",
+            "meaning": "choose the HTTP method, for example -X POST"
+          },
+          {
+            "flag": "-H",
+            "meaning": "add a request header"
+          },
+          {
+            "flag": "-d",
+            "meaning": "send data in the request body"
+          },
+          {
+            "flag": "-v",
+            "meaning": "verbose: show the request and response headers"
+          },
+          {
+            "flag": "-k",
+            "meaning": "skip TLS certificate checks (insecure)"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "curl",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "curl [flags] url",
+        "tags": [
+          "starter"
+        ],
+        "title": "curl",
+        "updatedAt": "2026-11-22T05:03:11.524Z",
+        "whatItDoes": "Makes HTTP(S) and other requests from the command line. The standard tool for poking at web APIs."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the domain to look up",
+            "name": "name"
+          },
+          {
+            "meaning": "record type such as A, AAAA, MX, TXT, NS (default A)",
+            "name": "type"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.528Z",
+        "examples": [
+          {
+            "command": "dig example.com",
+            "description": "full answer for the A record"
+          },
+          {
+            "command": "dig +short example.com MX",
+            "description": "just the mail servers"
+          },
+          {
+            "command": "dig @1.1.1.1 example.com TXT",
+            "description": "TXT records from a chosen resolver"
+          },
+          {
+            "command": "dig -x 192.0.2.10",
+            "description": "which name does this IP have?"
+          }
+        ],
+        "explanation": "query DNS records",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CJKPACGJ94XF6101W",
+        "importRef": "starter:commands:dig",
+        "links": [],
+        "mastery": 0,
+        "name": "dig",
+        "notes": "",
+        "options": [
+          {
+            "flag": "+short",
+            "meaning": "print only the answer data"
+          },
+          {
+            "flag": "@server",
+            "meaning": "ask a specific DNS server, for example @1.1.1.1"
+          },
+          {
+            "flag": "-x",
+            "meaning": "reverse lookup of an IP address"
+          },
+          {
+            "flag": "+trace",
+            "meaning": "follow delegation from the root servers down"
+          }
+        ],
+        "placeholders": [
+          "type",
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "dig",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "dig [@server] name [type] [flags]",
+        "tags": [
+          "starter"
+        ],
+        "title": "dig",
+        "updatedAt": "2026-11-22T05:03:11.528Z",
+        "whatItDoes": "Asks a DNS server for records and shows the full answer, including TTLs and flags."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "account and machine to connect to",
+            "name": "user@host"
+          },
+          {
+            "meaning": "optional command to run instead of a shell",
+            "name": "command"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.533Z",
+        "examples": [
+          {
+            "command": "ssh student@192.0.2.10",
+            "description": "log in as student"
+          },
+          {
+            "command": "ssh -i ~/.ssh/lab_key -p 2222 student@192.0.2.10",
+            "description": "custom key and port"
+          },
+          {
+            "command": "ssh -L 8080:localhost:80 student@192.0.2.10",
+            "description": "reach the remote web server at http://localhost:8080"
+          },
+          {
+            "command": "ssh -J jump@198.51.100.5 student@10.0.0.7",
+            "description": "reach an internal host through a jump box"
+          }
+        ],
+        "explanation": "log in to a remote machine securely",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C2X0AEBRM76S2MW3K",
+        "importRef": "starter:commands:ssh",
+        "links": [],
+        "mastery": 0,
+        "name": "ssh",
+        "notes": "Verify the host key fingerprint on first connect, and keep private keys at chmod 600.",
+        "options": [
+          {
+            "flag": "-p",
+            "meaning": "connect to this port"
+          },
+          {
+            "flag": "-i",
+            "meaning": "use this private key file"
+          },
+          {
+            "flag": "-L",
+            "meaning": "local port forward: -L 8080:localhost:80"
+          },
+          {
+            "flag": "-D",
+            "meaning": "dynamic SOCKS proxy on a local port"
+          },
+          {
+            "flag": "-J",
+            "meaning": "jump through another host"
+          },
+          {
+            "flag": "-N",
+            "meaning": "do not run a command (for tunnels only)"
+          },
+          {
+            "flag": "-v",
+            "meaning": "verbose: debug connection problems"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "command"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "ssh",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ssh [flags] [user@]host [command]",
+        "tags": [
+          "starter"
+        ],
+        "title": "ssh",
+        "updatedAt": "2026-11-22T05:03:11.533Z",
+        "whatItDoes": "Opens an encrypted shell (or runs one command) on another machine, and can tunnel network traffic."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "local path or user@host:path",
+            "name": "source"
+          },
+          {
+            "meaning": "local path or user@host:path",
+            "name": "destination"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.536Z",
+        "examples": [
+          {
+            "command": "scp report.pdf student@192.0.2.10:~/",
+            "description": "upload a file"
+          },
+          {
+            "command": "scp student@192.0.2.10:/var/log/app.log .",
+            "description": "download a file here"
+          },
+          {
+            "command": "scp -r -P 2222 site/ student@192.0.2.10:/tmp/",
+            "description": "upload a folder over a custom port"
+          }
+        ],
+        "explanation": "copy files over ssh",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C5SPFKCR6S4ZH802Y",
+        "importRef": "starter:commands:scp",
+        "links": [],
+        "mastery": 0,
+        "name": "scp",
+        "notes": "Like cp, scp overwrites existing destination files without asking.",
+        "options": [
+          {
+            "flag": "-P",
+            "meaning": "remote port (capital P, unlike ssh)"
+          },
+          {
+            "flag": "-r",
+            "meaning": "copy directories recursively"
+          },
+          {
+            "flag": "-i",
+            "meaning": "private key file"
+          },
+          {
+            "flag": "-C",
+            "meaning": "compress during transfer"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "scp",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "scp [flags] source... destination",
+        "tags": [
+          "starter"
+        ],
+        "title": "scp",
+        "updatedAt": "2026-11-22T05:03:11.536Z",
+        "whatItDoes": "Copies files between machines using ssh for transport and authentication."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "host name, IP address or network range (for example 192.0.2.0/24)",
+            "name": "target"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.540Z",
+        "examples": [
+          {
+            "command": "nmap -sV -p 22,80,443 <target>",
+            "description": "service versions on three common ports"
+          },
+          {
+            "command": "nmap -sn 192.0.2.0/24",
+            "description": "which hosts are up on this network?"
+          },
+          {
+            "command": "sudo nmap -sS -p- -T4 <target>",
+            "description": "every TCP port, quickly"
+          },
+          {
+            "command": "nmap -A scanme.nmap.org",
+            "description": "scan the project's own permitted test host"
+          }
+        ],
+        "explanation": "scan hosts and ports",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CC9BF0194ZJ7JP7XN",
+        "importRef": "starter:commands:nmap",
+        "links": [],
+        "mastery": 0,
+        "name": "nmap",
+        "notes": "Scanning machines you do not have permission for can be illegal. scanme.nmap.org is provided for light testing; your own lab VMs are better.",
+        "options": [
+          {
+            "flag": "-sn",
+            "meaning": "ping scan: find live hosts without scanning ports"
+          },
+          {
+            "flag": "-sS",
+            "meaning": "TCP SYN scan (needs root)"
+          },
+          {
+            "flag": "-sV",
+            "meaning": "detect service versions"
+          },
+          {
+            "flag": "-p",
+            "meaning": "ports to scan, such as -p 22,80 or -p-"
+          },
+          {
+            "flag": "-Pn",
+            "meaning": "skip host discovery and assume the host is up"
+          },
+          {
+            "flag": "-A",
+            "meaning": "aggressive: version, OS, scripts and traceroute"
+          },
+          {
+            "flag": "-T4",
+            "meaning": "faster timing template"
+          },
+          {
+            "flag": "-oN",
+            "meaning": "save normal output to a file"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "target"
+        ],
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "nmap",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "nmap [flags] <target>",
+        "tags": [
+          "starter"
+        ],
+        "title": "nmap",
+        "updatedAt": "2026-11-22T05:03:11.540Z",
+        "whatItDoes": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permission to test."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.545Z",
+        "examples": [
+          {
+            "command": "ss -tulpn",
+            "description": "every listening TCP/UDP port and its process"
+          },
+          {
+            "command": "ss -tn state established",
+            "description": "current TCP connections"
+          },
+          {
+            "command": "ss -s",
+            "description": "quick totals"
+          }
+        ],
+        "explanation": "show network sockets",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CPQQDK9HEEK3KHBYK",
+        "importRef": "starter:commands:ss",
+        "links": [],
+        "mastery": 0,
+        "name": "ss",
+        "notes": "On macOS use netstat -an or lsof -i instead.",
+        "options": [
+          {
+            "flag": "-t",
+            "meaning": "TCP sockets"
+          },
+          {
+            "flag": "-u",
+            "meaning": "UDP sockets"
+          },
+          {
+            "flag": "-l",
+            "meaning": "only listening sockets"
+          },
+          {
+            "flag": "-n",
+            "meaning": "show numbers instead of resolving names"
+          },
+          {
+            "flag": "-p",
+            "meaning": "show the owning process (needs root for other users)"
+          },
+          {
+            "flag": "-a",
+            "meaning": "all sockets, listening and not"
+          },
+          {
+            "flag": "-s",
+            "meaning": "print a summary"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "filter"
+        ],
+        "platforms": [
+          "linux"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ss",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ss [flags] [filter]",
+        "tags": [
+          "starter"
+        ],
+        "title": "ss",
+        "updatedAt": "2026-11-22T05:03:11.545Z",
+        "whatItDoes": "Lists open sockets and listening ports. The modern replacement for netstat on Linux."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "a capture filter such as port 53 or host 192.0.2.10",
+            "name": "filter"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.550Z",
+        "examples": [
+          {
+            "command": "sudo tcpdump -i any -nn port 53",
+            "description": "watch DNS traffic"
+          },
+          {
+            "command": "sudo tcpdump -i eth0 -c 20 host 192.0.2.10",
+            "description": "twenty packets to or from one host"
+          },
+          {
+            "command": "sudo tcpdump -w capture.pcap -i eth0",
+            "description": "save a capture for later analysis"
+          },
+          {
+            "command": "tcpdump -nn -r capture.pcap",
+            "description": "read it back"
+          }
+        ],
+        "explanation": "capture and display network packets",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CTYTVM1ESJ7D24N8B",
+        "importRef": "starter:commands:tcpdump",
+        "links": [],
+        "mastery": 0,
+        "name": "tcpdump",
+        "notes": "Capture only on networks you are authorised to monitor; captures can contain passwords and personal data.",
+        "options": [
+          {
+            "flag": "-i",
+            "meaning": "interface to listen on (any listens on all)"
+          },
+          {
+            "flag": "-n",
+            "meaning": "do not resolve names; -nn also skips port names"
+          },
+          {
+            "flag": "-c",
+            "meaning": "stop after N packets"
+          },
+          {
+            "flag": "-w",
+            "meaning": "write raw packets to a file"
+          },
+          {
+            "flag": "-r",
+            "meaning": "read packets from a file"
+          },
+          {
+            "flag": "-A",
+            "meaning": "print packet payloads as ASCII"
+          },
+          {
+            "flag": "-v",
+            "meaning": "more detail; repeat for even more"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "filter"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "tcpdump",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "tcpdump [flags] [filter]",
+        "tags": [
+          "starter"
+        ],
+        "title": "tcpdump",
+        "updatedAt": "2026-11-22T05:03:11.550Z",
+        "whatItDoes": "Prints packets crossing a network interface, optionally filtered, or saves them for Wireshark. Needs root."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "where to connect",
+            "name": "host"
+          },
+          {
+            "meaning": "port number or range",
+            "name": "port"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.554Z",
+        "examples": [
+          {
+            "command": "nc -zv 192.0.2.10 20-25",
+            "description": "which of ports 20 to 25 are open?"
+          },
+          {
+            "command": "nc -l 4444",
+            "description": "wait for one connection on port 4444 (OpenBSD/macOS nc)"
+          },
+          {
+            "command": "echo hello | nc 192.0.2.10 4444",
+            "description": "send one line to a listener"
+          }
+        ],
+        "explanation": "read and write network connections",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CYJP215Q2QRT695T7",
+        "importRef": "starter:commands:nc",
+        "links": [],
+        "mastery": 0,
+        "name": "nc",
+        "notes": "Netcat versions differ: traditional (GNU) nc needs -p to set a listen port (nc -l -p 4444).",
+        "options": [
+          {
+            "flag": "-l",
+            "meaning": "listen for an incoming connection"
+          },
+          {
+            "flag": "-v",
+            "meaning": "verbose"
+          },
+          {
+            "flag": "-z",
+            "meaning": "scan: connect and close without sending data"
+          },
+          {
+            "flag": "-u",
+            "meaning": "use UDP instead of TCP"
+          },
+          {
+            "flag": "-w",
+            "meaning": "timeout in seconds"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "nc",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "nc [flags] host port",
+        "tags": [
+          "starter"
+        ],
+        "title": "nc",
+        "updatedAt": "2026-11-22T05:03:11.554Z",
+        "whatItDoes": "Netcat opens TCP/UDP connections or listens on a port, which makes it handy for testing services and moving small amounts of data."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "addr, link, route or neigh",
+            "name": "object"
+          }
+        ],
+        "category": "Networking",
+        "createdAt": "2026-11-22T05:03:11.559Z",
+        "examples": [
+          {
+            "command": "ip -br addr",
+            "description": "interfaces and their addresses at a glance"
+          },
+          {
+            "command": "ip route",
+            "description": "show the routing table and default gateway"
+          },
+          {
+            "command": "ip neigh",
+            "description": "show the ARP/neighbour cache"
+          }
+        ],
+        "explanation": "show and manage network interfaces and routes",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CXWYRXZKNDNVM0PE4",
+        "importRef": "starter:commands:ip",
+        "links": [],
+        "mastery": 0,
+        "name": "ip",
+        "notes": "On macOS use ifconfig and netstat -rn.",
+        "options": [
+          {
+            "flag": "-br",
+            "meaning": "brief one-line-per-interface output"
+          },
+          {
+            "flag": "-4",
+            "meaning": "only IPv4"
+          },
+          {
+            "flag": "-6",
+            "meaning": "only IPv6"
+          },
+          {
+            "flag": "-c",
+            "meaning": "colourised output"
+          }
+        ],
+        "placeholders": [
+          "options"
+        ],
+        "platforms": [
+          "linux"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ip",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ip [options] object command",
+        "tags": [
+          "starter"
+        ],
+        "title": "ip",
+        "updatedAt": "2026-11-22T05:03:11.559Z",
+        "whatItDoes": "The modern Linux tool for addresses, links and routing (replaces ifconfig and route)."
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

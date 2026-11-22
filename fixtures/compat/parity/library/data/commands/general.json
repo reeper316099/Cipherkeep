@@ -1,0 +1,261 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the command or topic",
+            "name": "page"
+          },
+          {
+            "meaning": "optional section number, such as 5 for file formats",
+            "name": "section"
+          }
+        ],
+        "category": "General",
+        "createdAt": "2026-11-22T05:03:11.563Z",
+        "examples": [
+          {
+            "command": "man ls",
+            "description": "read about ls"
+          },
+          {
+            "command": "man 5 passwd",
+            "description": "the format of /etc/passwd, not the passwd command"
+          },
+          {
+            "command": "man -k compress",
+            "description": "which commands deal with compression?"
+          }
+        ],
+        "explanation": "read the manual page for a command",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+        "importRef": "starter:commands:man",
+        "links": [],
+        "mastery": 0,
+        "name": "man",
+        "notes": "Inside man: space = next page, / = search, n = next match, q = quit. Built-ins like cd are documented in help.",
+        "options": [
+          {
+            "flag": "-k",
+            "meaning": "search page names and descriptions for a keyword (apropos)"
+          },
+          {
+            "flag": "-f",
+            "meaning": "show a one-line description of a page (whatis)"
+          },
+          {
+            "flag": "-a",
+            "meaning": "show all matching pages"
+          }
+        ],
+        "placeholders": [
+          "section"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "man",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "man [section] page",
+        "tags": [
+          "starter"
+        ],
+        "title": "man",
+        "updatedAt": "2026-11-22T05:03:11.563Z",
+        "whatItDoes": "Opens the reference manual for a command, file format or library function."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:03:11.571Z",
+        "examples": [
+          {
+            "command": "ps aux",
+            "description": "everything that is running"
+          },
+          {
+            "command": "ps -ef | grep ssh",
+            "description": "is an ssh process running?"
+          },
+          {
+            "command": "ps -o pid,ppid,etime,args -p 1",
+            "description": "details of PID 1"
+          }
+        ],
+        "explanation": "list running processes",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DGDJZRRV7G9XMH7MG",
+        "importRef": "starter:commands:ps",
+        "links": [],
+        "mastery": 0,
+        "name": "ps",
+        "notes": "ps aux | grep name also matches the grep itself; use pgrep name for a cleaner search.",
+        "options": [
+          {
+            "flag": "aux",
+            "meaning": "BSD style: every process with its user, CPU and memory"
+          },
+          {
+            "flag": "-ef",
+            "meaning": "UNIX style: every process with parent PIDs"
+          },
+          {
+            "flag": "-u",
+            "meaning": "processes of one user: -u alice"
+          },
+          {
+            "flag": "-p",
+            "meaning": "show specific process IDs"
+          },
+          {
+            "flag": "-o",
+            "meaning": "choose columns, for example -o pid,ppid,args"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ps",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ps [flags]",
+        "tags": [
+          "starter"
+        ],
+        "title": "ps",
+        "updatedAt": "2026-11-22T05:03:11.571Z",
+        "whatItDoes": "Takes a snapshot of the processes running on the machine."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "process ID(s) from ps or pgrep",
+            "name": "pid"
+          }
+        ],
+        "category": "General",
+        "createdAt": "2026-11-22T05:03:11.574Z",
+        "examples": [
+          {
+            "command": "kill 4321",
+            "description": "ask process 4321 to exit"
+          },
+          {
+            "command": "kill -9 4321",
+            "description": "force it to stop if it ignores the polite request"
+          },
+          {
+            "command": "kill -HUP $(cat /run/nginx.pid)",
+            "description": "tell a daemon to reload its configuration"
+          }
+        ],
+        "explanation": "send a signal to a process",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DCPBHAM35TYAF6V1E",
+        "importRef": "starter:commands:kill",
+        "links": [],
+        "mastery": 0,
+        "name": "kill",
+        "notes": "Try plain kill first; -9 skips cleanup and can leave locks or half-written files. Use pkill name or killall name to match by name.",
+        "options": [
+          {
+            "flag": "-l",
+            "meaning": "list signal names"
+          },
+          {
+            "flag": "-9",
+            "meaning": "SIGKILL: stop immediately; the process cannot clean up"
+          },
+          {
+            "flag": "-15",
+            "meaning": "SIGTERM: ask politely (the default)"
+          },
+          {
+            "flag": "-HUP",
+            "meaning": "hang up: many daemons reload their config"
+          }
+        ],
+        "placeholders": [],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "kill",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "kill [-signal] pid...",
+        "tags": [
+          "starter"
+        ],
+        "title": "kill",
+        "updatedAt": "2026-11-22T05:03:11.574Z",
+        "whatItDoes": "Asks a process to stop (SIGTERM by default) or sends it another signal. Despite the name it does not always kill."
+      },
+      {
+        "archived": true,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:03:11.807Z",
+        "examples": [],
+        "explanation": "should be hidden",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62DZP3NM4DV1R7JTH2RH",
+        "links": [],
+        "mastery": 0,
+        "name": "archivedcmd",
+        "notes": "",
+        "options": [],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "archivedcmd",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "",
+        "tags": [],
+        "title": "archivedcmd",
+        "updatedAt": "2026-11-22T05:03:11.807Z",
+        "whatItDoes": ""
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

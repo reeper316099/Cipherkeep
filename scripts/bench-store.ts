@@ -164,7 +164,7 @@ if (
 )
   await generate();
 for (const kind of ['plain', 'encrypted'] as const) {
-  const runs = [];
+  const runs: Record<string, number>[] = [];
   for (let i = 0; i < 3; i++) runs.push(await run(kind));
   const keys = Object.keys(runs[0]!);
   console.log(

@@ -210,6 +210,9 @@ func Open[T any](s *Store, rel string, opts Options[T]) (*JsonFile[T], error) {
 
 func (f *JsonFile[T]) relPath() string { return f.rel }
 
+// Reload re-reads the file from disk as if the watcher had noticed an edit (used after a backup is restored).
+func (f *JsonFile[T]) Reload() { f.reloadExternal() }
+
 // Rel is the path relative to the data directory, with forward slashes.
 func (f *JsonFile[T]) Rel() string { return f.rel }
 

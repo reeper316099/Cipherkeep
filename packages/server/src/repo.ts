@@ -145,7 +145,8 @@ export class JsonRepo extends EventEmitter<RepoEvents> implements Repo {
   async init(): Promise<void> {
     const dir = this.store.abs(`data/${this.name}`);
     await fs.mkdir(dir, { recursive: true });
-    for (const f of await fs.readdir(dir)) {
+    // Sorted, so the order of entities does not depend on the operating system's directory order.
+    for (const f of (await fs.readdir(dir)).sort()) {
       if (f.endsWith('.json')) await this.shard(`data/${this.name}/${f}`);
     }
   }

@@ -1,0 +1,6735 @@
+{
+ "now": "2026-11-30T12:00:00.000Z",
+ "search": {
+  "ls": [
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 111.86041,
+    "highlight": "…d directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist directory contents\nls [flags] [p"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "title": "Parity hub",
+    "score": 12.675114,
+    "highlight": "…ldcards and Globbing]], [[cmd:ls]], [[Nope]] and `[[ignored]]`.\n\n```bash\nls -la --color=auto\n```\n\nls -la --color=auto"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+    "title": "man",
+    "score": 10.899195,
+    "highlight": "…all matching pages\nread about ls\nthe format of /etc/passwd, not the passwd command\nwhich commands deal with compression?"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8F51ZV9H31B0ASH2",
+    "title": "file",
+    "score": 7.035121,
+    "highlight": "…e-type photo.jpg\nfile -b /bin/ls"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXVDR38G0XQ4H08RN",
+    "title": "head",
+    "score": 6.807075,
+    "highlight": "…ess.log\nhead -n 3 /etc/passwd\nls -l | head -n 5"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0FGRSBG40NQANYBQ",
+    "title": "wc",
+    "score": 6.807075,
+    "highlight": "…-l\n-w\n-c\n-m\nwc -l access.log\nls | wc -l\nwc -w essay.txt"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "title": "xargs",
+    "score": 5.358556,
+    "highlight": "…ts.txt | xargs -n 1 ping -c 1\nls *.png | xargs -I {} cp {} /tmp/"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T620DPVB04Q1D2R7WFFMY",
+    "title": "Example: find the hidden file",
+    "score": 3.327537,
+    "highlight": "…nd me\" > .secret.txt`\n3. Run `ls` (nothing shown) and then `ls -a`.\n4. Search from the parent folder: `find ~/practice -"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 2.800829,
+    "highlight": "…I? | `pwd` |\n| List with details, including hidden | `ls -la` |\n| Go home / back / up | `cd ~` · `cd -` · `cd ..` |\n| Fi"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DQ85V7YNJGAJKE1NF",
+    "title": "Wildcards and Globbing",
+    "score": 2.475619,
+    "highlight": "…s (Step-by-step)\n1. You type `ls *.txt`.\n2. The shell (not `ls`) replaces `*.txt` with every matching name.\n3. The comma"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 2.374604,
+    "highlight": "…ner, the group, and everyone else.\n⚙️ How it works (Step-by-step)\n1. `ls -l` shows a string like `-rwxr-x---`.\n2. The fi"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 2.363936,
+    "highlight": "…| device files (disks, terminals) |\n| `/proc` | a live view of the kernel and processes |\n| `/boot` | kernel and bootloa"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "title": "ss",
+    "score": 1.837669,
+    "highlight": "…]\nOn macOS use netstat -an or lsof -i instead.\nTCP sockets\nUDP sockets\nonly listening sockets\nshow numbers instead of re"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T620DJGZ3APQHA7XQNDJC",
+    "title": "Example: scan my own machine",
+    "score": 1.542206,
+    "highlight": "…kets: `ss -tulpn` (Linux) or `lsof -iTCP -sTCP:LISTEN -n -P` (macOS).\n2. Scan yourself: `nmap -sV -p- 127.0.0.1`.\n3. Sta"
+   }
+  ],
+  "-la": [
+   {
+    "type": "notes",
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "title": "Parity hub",
+    "score": 74.922525,
+    "highlight": "…d `[[ignored]]`.\n\n```bash\nls -la --color=auto\n```\n\nls -la --color=auto"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 40.141948,
+    "highlight": "…files and directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist directory contents\nls ["
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 19.456157,
+    "highlight": "…ails, including hidden | `ls -la` |\n| Go home / back / up | `cd ~` · `cd -` · `cd ..` |\n| Find files by name | `find . -"
+   }
+  ],
+  "la": [
+   {
+    "type": "notes",
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "title": "Parity hub",
+    "score": 18.730631,
+    "highlight": "…d `[[ignored]]`.\n\n```bash\nls -la --color=auto\n```\n\nls -la --color=auto"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T62AZ43JKYBYBZH2MBN31",
+    "title": "Old lab",
+    "score": 12.148326,
+    "highlight": ""
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 11.457555,
+    "highlight": "…files and directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist directory contents\nls ["
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "title": "SSH Quick Guide",
+    "score": 9.772648,
+    "highlight": "…ash\nssh-keygen -t ed25519 -C \"lab laptop\"\n```\n\nAccept the default location and set a passphrase. This creates `~/.ssh/id"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 5.44619,
+    "highlight": "…ails, including hidden | `ls -la` |\n| Go home / back / up | `cd ~` · `cd -` · `cd ..` |\n| Find files by name | `find . -"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 4.307638,
+    "highlight": "…o; -mtime -1 means within the last day\nsize test such as +10M (larger than 10 MiB)\nmatch permissions, for example -perm"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620D80VNR00V95HPQ3WH",
+    "title": "Local DNS and the hosts file",
+    "score": 3.974638,
+    "highlight": "…nsulted before DNS. Handy for lab setups (`web.lab.test` pointing at a VM) and for testing.\n\n## Where it lives\n\n| System"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "title": "ssh",
+    "score": 2.419533,
+    "highlight": "…remote machine securely\nssh [flags] [user@]host [command]\nVerify the host key fingerprint on first connect, and keep pri"
+   },
+   {
+    "type": "snippets",
+    "id": "01M80T62DGXQT2ZP5W9ZG03FC0",
+    "title": "Find big files",
+    "score": 2.34867,
+    "highlight": "Large files\nfind / -size +100M 2>/dev/null"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 1.600308,
+    "highlight": "…. Needs root.\ncapture and display network packets\ntcpdump [flags] [filter]\nCapture only on networks you are authorised t"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "title": "sort",
+    "score": 1.549045,
+    "highlight": "…s alphabetically by default; flags change the order and the key.\nsort lines of text\nsort [flags] [file...]\n\nfile files t"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTN9H30HZN5PE80AQ",
+    "title": "tail",
+    "score": 1.545403,
+    "highlight": "Prints the last lines (10 by default); with -f it keeps watching the file for new lines.\nshow the end of a file\ntail [fl"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5MNW5RGJV4ZAPB1X",
+    "title": "du",
+    "score": 1.48958,
+    "highlight": "…of files and directories\ndu [flags] [path...]\nTo limit depth use --max-depth=N on GNU/Linux or -d N on macOS.\npath files"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "title": "curl",
+    "score": 1.431495,
+    "highlight": "…data from or to a URL\ncurl [flags] url\n-k disables the protection TLS gives you; use it only against your own lab hosts"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1.352413,
+    "highlight": "….\nscan hosts and ports\nnmap [flags] <target>\nScanning machines you do not have permission for can be illegal. scanme.nma"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 1.304192,
+    "highlight": "…80 HTTP, 443 HTTPS)\n- **TCP flags** SYN, ACK, FIN, RST, PSH\n- **Socket** an IP + port + protocol endpoint\n- **NAT / fir"
+   }
+  ],
+  "--color=auto": [
+   {
+    "type": "notes",
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "title": "Parity hub",
+    "score": 688.076803,
+    "highlight": "…ignored]]`.\n\n```bash\nls -la --color=auto\n```\n\nls -la --color=auto"
+   }
+  ],
+  "color": [
+   {
+    "type": "notes",
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "title": "Parity hub",
+    "score": 28.424628,
+    "highlight": "…ignored]]`.\n\n```bash\nls -la --color=auto\n```\n\nls -la --color=auto"
+   }
+  ],
+  "grep": [
+   {
+    "type": "commands",
+    "id": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "title": "grep",
+    "score": 113.246125,
+    "highlight": "…ut.\nsearch text for a pattern\ngrep [flags] pattern [file...]\n\npattern text or regular expression to look for\nfile files"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620DGDJZRRV7G9XMH7MG",
+    "title": "ps",
+    "score": 12.963503,
+    "highlight": "…processes\nps [flags]\nps aux | grep name also matches the grep itself; use pgrep name for a cleaner search.\nBSD style: ev"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "title": "xargs",
+    "score": 7.032695,
+    "highlight": "…me \"*.txt\" -print0 | xargs -0 grep -l secret\ncat hosts.txt | xargs -n 1 ping -c 1\nls *.png | xargs -I {} cp {} /tmp/"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T620DNCK7X3GVN0MAAJVD",
+    "title": "Example: who failed to log in?",
+    "score": 3.615575,
+    "highlight": "…sses.\n2. Keep only failures: `grep \"Failed\" auth.log`.\n3. Extract the address: `awk '{print $NF}'` (or `cut` if your lin"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 3.125493,
+    "highlight": "…| Lines containing a word | `grep -rn \"word\" dir/` |\n| Count lines | `wc -l file` |\n| Most frequent values | `sort file"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DJ3REMY39K95XYBSD",
+    "title": "Pipes and Redirection",
+    "score": 2.791306,
+    "highlight": "…ls / Commands Related\n- cat\n- grep\n- sort\n- uniq\n- wc\n- xargs\n🔗 Related Concepts\n- Wildcards and Globbing\n- Processes a"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 2.786441,
+    "highlight": "…Walkthrough\nInput: `ps aux | grep sshd` shows PID 812.\nProcess: `kill 812` sends SIGTERM, sshd cleans up and exits.\nOut"
+   }
+  ],
+  "permissions": [
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 37.89557,
+    "highlight": "…rw-r-----`.\n💡 Why it matters\nPermissions are the first line of defence on a multi-user system: they decide who can read"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 5.099096,
+    "highlight": "…ile or directory.\nchange file permissions\nchmod [flags] mode file...\nNumeric modes: r=4, w=2, x=1, summed per owner / gr"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 4.382542,
+    "highlight": "…0M (larger than 10 MiB)\nmatch permissions, for example -perm -4000 for setuid\ndo not descend more than N levels (put it"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 3.211959,
+    "highlight": "…it also shows sizes, owners, permissions and timestamps.\nlist directory contents\nls [flags] [path...]\n\npath files or di"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "title": "SSH Quick Guide",
+    "score": 2.779719,
+    "highlight": "…id student@192.0.2.10\n```\n\n## Permissions SSH insists on\n\n```bash\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/id_ed25519\n```\n\n## A"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 2.66622,
+    "highlight": "…`cut -d, -f2 data.csv` |\n\n## Permissions and users\n\n| Task | Command |\n| --- | --- |\n| Who am I? | `id` |\n| Make a scri"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 2.37699,
+    "highlight": "…2. The process runs with the permissions of the user who started it.\n3. `kill` sends a signal; the process can handle m"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 2.356639,
+    "highlight": "…instead of full root\n- **File permissions** that follow need-to-know\n- **Network rules** that expose only required ports"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 2.250324,
+    "highlight": "…df\n🔗 Related Concepts\n- File Permissions\n⚠️ Common Mistakes / Misconceptions\n- Thinking `/root` and `/` are the same th"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BH9T1D9K21YKS4CWR",
+    "title": "mkdir",
+    "score": 2.017656,
+    "highlight": "Creates one or more empty directories.\nmake directories\nmkdir [flags] directory...\n\ndirectory name of the directory to c"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1.622895,
+    "highlight": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permiss"
+   }
+  ],
+  "chmod permissions": [
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 239.855367,
+    "highlight": "…ile or directory.\nchange file permissions\nchmod [flags] mode file...\nNumeric modes: r=4, w=2, x=1, summed per owner / gr"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 81.090862,
+    "highlight": "…Example / Walkthrough\nInput: `chmod 640 notes.txt`.\nProcess: 6 = rw for the owner, 4 = r for the group, 0 = nothing for"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "title": "SSH Quick Guide",
+    "score": 28.555673,
+    "highlight": "…id student@192.0.2.10\n```\n\n## Permissions SSH insists on\n\n```bash\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/id_ed25519\n```\n\n## A"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 11.583425,
+    "highlight": "…`cut -d, -f2 data.csv` |\n\n## Permissions and users\n\n| Task | Command |\n| --- | --- |\n| Who am I? | `id` |\n| Make a scri"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 10.238446,
+    "highlight": "…instead of full root\n- **File permissions** that follow need-to-know\n- **Network rules** that expose only required ports"
+   }
+  ],
+  "cmd:ls": [
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 111.86041,
+    "highlight": "…d directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist directory contents\nls [flags] [p"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+    "title": "man",
+    "score": 10.899195,
+    "highlight": "…all matching pages\nread about ls\nthe format of /etc/passwd, not the passwd command\nwhich commands deal with compression?"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8F51ZV9H31B0ASH2",
+    "title": "file",
+    "score": 7.035121,
+    "highlight": "…e-type photo.jpg\nfile -b /bin/ls"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXVDR38G0XQ4H08RN",
+    "title": "head",
+    "score": 6.807075,
+    "highlight": "…ess.log\nhead -n 3 /etc/passwd\nls -l | head -n 5"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0FGRSBG40NQANYBQ",
+    "title": "wc",
+    "score": 6.807075,
+    "highlight": "…-l\n-w\n-c\n-m\nwc -l access.log\nls | wc -l\nwc -w essay.txt"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "title": "xargs",
+    "score": 5.358556,
+    "highlight": "…ts.txt | xargs -n 1 ping -c 1\nls *.png | xargs -I {} cp {} /tmp/"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "title": "ss",
+    "score": 1.837669,
+    "highlight": "…]\nOn macOS use netstat -an or lsof -i instead.\nTCP sockets\nUDP sockets\nonly listening sockets\nshow numbers instead of re"
+   }
+  ],
+  "cmd:": [
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 1,
+    "highlight": "Prints the names of files and directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist dire"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd",
+    "score": 1,
+    "highlight": "A shell built-in that moves your shell into another directory. Without an argument it goes to your home directory.\nchang"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd",
+    "score": 1,
+    "highlight": "Shows the full path of the directory your shell is in.\nprint the current directory\npwd [-L|-P]\n\nshow the logical path, k"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp",
+    "score": 1,
+    "highlight": "Copies one or more files to a destination. Existing destination files are overwritten without asking unless you use -i."
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv",
+    "score": 1,
+    "highlight": "Moves files to another place or renames them. Within one filesystem it is instant and keeps the data in place.\nmove or r"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BA2HZEMYQVCPBZNZF",
+    "title": "rm",
+    "score": 1,
+    "highlight": "Deletes files permanently. There is no trash can and no undo, so check the path before you press Enter.\nremove files and"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BZ2FRJPP0TZ6E3VCD",
+    "title": "ln",
+    "score": 1,
+    "highlight": "Makes a second name for a file. A hard link shares the same data; a symbolic link (-s) is a small file that points to a"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BH9T1D9K21YKS4CWR",
+    "title": "mkdir",
+    "score": 1,
+    "highlight": "Creates one or more empty directories.\nmake directories\nmkdir [flags] directory...\n\ndirectory name of the directory to c"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CNSQRZKNWYHG5WAXJ",
+    "title": "touch",
+    "score": 1,
+    "highlight": "Creates the file if it does not exist, otherwise just updates its access and modification times.\ncreate an empty file or"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CDX7SS73NJR1P941S",
+    "title": "cat",
+    "score": 1,
+    "highlight": "Writes the contents of files to the terminal, in order. With no file it copies standard input.\nprint and join files\ncat"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYV4GTJVRTAHZ8C29",
+    "title": "less",
+    "score": 1,
+    "highlight": "Shows a file one screen at a time without loading it all, with searching and scrolling.\npage through a file\nless [flags]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXVDR38G0XQ4H08RN",
+    "title": "head",
+    "score": 1,
+    "highlight": "Prints the first lines (10 by default) of each file.\nshow the start of a file\nhead [flags] [file...]\n\nfile files to read"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTN9H30HZN5PE80AQ",
+    "title": "tail",
+    "score": 1,
+    "highlight": "Prints the last lines (10 by default); with -f it keeps watching the file for new lines.\nshow the end of a file\ntail [fl"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8F51ZV9H31B0ASH2",
+    "title": "file",
+    "score": 1,
+    "highlight": "Looks at the bytes of a file, not its name, and says what it appears to be.\nidentify a file by its content\nfile [flags]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 1,
+    "highlight": "Walks a directory tree and prints the files that match your conditions. It can also run a command on each match.\nsearch"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5MNW5RGJV4ZAPB1X",
+    "title": "du",
+    "score": 1,
+    "highlight": "Reports how much space files and directory trees use.\nshow disk usage of files and directories\ndu [flags] [path...]\nTo l"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CZSZ473ET970R52EH",
+    "title": "df",
+    "score": 1,
+    "highlight": "Reports total, used and free space for each mounted filesystem.\nshow free space on filesystems\ndf [flags] [path...]\nA di"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7145SPENQS808D5M",
+    "title": "tar",
+    "score": 1,
+    "highlight": "Bundles many files into one archive and unpacks them again, optionally compressing with gzip, bzip2 or xz.\ncreate and ex"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+    "title": "man",
+    "score": 1,
+    "highlight": "Opens the reference manual for a command, file format or library function.\nread the manual page for a command\nman [secti"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620DGDJZRRV7G9XMH7MG",
+    "title": "ps",
+    "score": 1,
+    "highlight": "Takes a snapshot of the processes running on the machine.\nlist running processes\nps [flags]\nps aux | grep name also matc"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620DCPBHAM35TYAF6V1E",
+    "title": "kill",
+    "score": 1,
+    "highlight": "Asks a process to stop (SIGTERM by default) or sends it another signal. Despite the name it does not always kill.\nsend a"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T62DZP3NM4DV1R7JTH2RH",
+    "title": "archivedcmd",
+    "score": 1,
+    "highlight": "should be hidden"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C66Q6TH07SPAAVHEW",
+    "title": "ping",
+    "score": 1,
+    "highlight": "Sends ICMP echo requests and reports whether and how fast replies come back.\ncheck if a host answers\nping [flags] host\nO"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "title": "curl",
+    "score": 1,
+    "highlight": "Makes HTTP(S) and other requests from the command line. The standard tool for poking at web APIs.\ntransfer data from or"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CJKPACGJ94XF6101W",
+    "title": "dig",
+    "score": 1,
+    "highlight": "Asks a DNS server for records and shows the full answer, including TTLs and flags.\nquery DNS records\ndig [@server] name"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "title": "ssh",
+    "score": 1,
+    "highlight": "Opens an encrypted shell (or runs one command) on another machine, and can tunnel network traffic.\nlog in to a remote ma"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5SPFKCR6S4ZH802Y",
+    "title": "scp",
+    "score": 1,
+    "highlight": "Copies files between machines using ssh for transport and authentication.\ncopy files over ssh\nscp [flags] source... dest"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1,
+    "highlight": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permiss"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "title": "ss",
+    "score": 1,
+    "highlight": "Lists open sockets and listening ports. The modern replacement for netstat on Linux.\nshow network sockets\nss [flags] [fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 1,
+    "highlight": "Prints packets crossing a network interface, optionally filtered, or saves them for Wireshark. Needs root.\ncapture and d"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYJP215Q2QRT695T7",
+    "title": "nc",
+    "score": 1,
+    "highlight": "Netcat opens TCP/UDP connections or listens on a port, which makes it handy for testing services and moving small amount"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXWYRXZKNDNVM0PE4",
+    "title": "ip",
+    "score": 1,
+    "highlight": "The modern Linux tool for addresses, links and routing (replaces ifconfig and route).\nshow and manage network interfaces"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 1,
+    "highlight": "Sets who may read, write or execute a file or directory.\nchange file permissions\nchmod [flags] mode file...\nNumeric mode"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C58C7Z9CJYXDN5W7V",
+    "title": "chown",
+    "score": 1,
+    "highlight": "Changes who owns a file. Usually needs root.\nchange file owner and group\nchown [flags] owner[:group] file...\nchown -R on"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CZSXVGAA7P8VMPPR9",
+    "title": "sudo",
+    "score": 1,
+    "highlight": "Runs one command as root (or another user) after checking /etc/sudoers.\nrun a command with another user's privileges\nsud"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CCGV7S680P79JFAXX",
+    "title": "id",
+    "score": 1,
+    "highlight": "Prints the numeric and named user ID, primary group and all groups of a user.\nshow user and group IDs\nid [flags] [user]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "title": "grep",
+    "score": 1,
+    "highlight": "Prints lines that match a pattern, from files or from standard input.\nsearch text for a pattern\ngrep [flags] pattern [fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8940C8QF1W8CJA4S",
+    "title": "sed",
+    "score": 1,
+    "highlight": "Applies editing commands to each line, most often a substitution like s/old/new/.\nedit a stream of text\nsed [flags] 'scr"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C56NSWYP6SB320CNB",
+    "title": "awk",
+    "score": 1,
+    "highlight": "Splits each line into fields ($1, $2, …) and runs a small program on them. Great for columns and quick sums.\nprocess tex"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "title": "sort",
+    "score": 1,
+    "highlight": "Sorts lines alphabetically by default; flags change the order and the key.\nsort lines of text\nsort [flags] [file...]\n\nfi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CNZJHHB30Y86FB1S9",
+    "title": "uniq",
+    "score": 1,
+    "highlight": "Removes or counts adjacent duplicate lines, so the input normally needs to be sorted first.\ncollapse repeated lines\nuniq"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CY5Y6QXV38C1M77RM",
+    "title": "cut",
+    "score": 1,
+    "highlight": "Prints selected fields or characters from each line.\nextract columns from text\ncut [flags] [file...]\ncut cannot handle q"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0FGRSBG40NQANYBQ",
+    "title": "wc",
+    "score": 1,
+    "highlight": "Counts how much text a file or a stream contains.\ncount lines, words and bytes\nwc [flags] [file...]\n\nfile files to count"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CDAEH5DJE2V4H41G6",
+    "title": "tr",
+    "score": 1,
+    "highlight": "Reads standard input and swaps, squeezes or deletes characters. It does not take file names.\ntranslate or delete charact"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXE80QKY854J4HN8H",
+    "title": "diff",
+    "score": 1,
+    "highlight": "Shows what changed between two files or two directories.\ncompare files line by line\ndiff [flags] file1 file2\nLines start"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "title": "xargs",
+    "score": 1,
+    "highlight": "Turns lines or words from a pipe into arguments for another command.\nbuild commands from standard input\nxargs [flags] [c"
+   }
+  ],
+  "tag:starter": [
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 1,
+    "highlight": "Prints the names of files and directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist dire"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd",
+    "score": 1,
+    "highlight": "A shell built-in that moves your shell into another directory. Without an argument it goes to your home directory.\nchang"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd",
+    "score": 1,
+    "highlight": "Shows the full path of the directory your shell is in.\nprint the current directory\npwd [-L|-P]\n\nshow the logical path, k"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp",
+    "score": 1,
+    "highlight": "Copies one or more files to a destination. Existing destination files are overwritten without asking unless you use -i."
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv",
+    "score": 1,
+    "highlight": "Moves files to another place or renames them. Within one filesystem it is instant and keeps the data in place.\nmove or r"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BA2HZEMYQVCPBZNZF",
+    "title": "rm",
+    "score": 1,
+    "highlight": "Deletes files permanently. There is no trash can and no undo, so check the path before you press Enter.\nremove files and"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BZ2FRJPP0TZ6E3VCD",
+    "title": "ln",
+    "score": 1,
+    "highlight": "Makes a second name for a file. A hard link shares the same data; a symbolic link (-s) is a small file that points to a"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BH9T1D9K21YKS4CWR",
+    "title": "mkdir",
+    "score": 1,
+    "highlight": "Creates one or more empty directories.\nmake directories\nmkdir [flags] directory...\n\ndirectory name of the directory to c"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CNSQRZKNWYHG5WAXJ",
+    "title": "touch",
+    "score": 1,
+    "highlight": "Creates the file if it does not exist, otherwise just updates its access and modification times.\ncreate an empty file or"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CDX7SS73NJR1P941S",
+    "title": "cat",
+    "score": 1,
+    "highlight": "Writes the contents of files to the terminal, in order. With no file it copies standard input.\nprint and join files\ncat"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYV4GTJVRTAHZ8C29",
+    "title": "less",
+    "score": 1,
+    "highlight": "Shows a file one screen at a time without loading it all, with searching and scrolling.\npage through a file\nless [flags]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXVDR38G0XQ4H08RN",
+    "title": "head",
+    "score": 1,
+    "highlight": "Prints the first lines (10 by default) of each file.\nshow the start of a file\nhead [flags] [file...]\n\nfile files to read"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTN9H30HZN5PE80AQ",
+    "title": "tail",
+    "score": 1,
+    "highlight": "Prints the last lines (10 by default); with -f it keeps watching the file for new lines.\nshow the end of a file\ntail [fl"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8F51ZV9H31B0ASH2",
+    "title": "file",
+    "score": 1,
+    "highlight": "Looks at the bytes of a file, not its name, and says what it appears to be.\nidentify a file by its content\nfile [flags]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 1,
+    "highlight": "Walks a directory tree and prints the files that match your conditions. It can also run a command on each match.\nsearch"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5MNW5RGJV4ZAPB1X",
+    "title": "du",
+    "score": 1,
+    "highlight": "Reports how much space files and directory trees use.\nshow disk usage of files and directories\ndu [flags] [path...]\nTo l"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CZSZ473ET970R52EH",
+    "title": "df",
+    "score": 1,
+    "highlight": "Reports total, used and free space for each mounted filesystem.\nshow free space on filesystems\ndf [flags] [path...]\nA di"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7145SPENQS808D5M",
+    "title": "tar",
+    "score": 1,
+    "highlight": "Bundles many files into one archive and unpacks them again, optionally compressing with gzip, bzip2 or xz.\ncreate and ex"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+    "title": "man",
+    "score": 1,
+    "highlight": "Opens the reference manual for a command, file format or library function.\nread the manual page for a command\nman [secti"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620DGDJZRRV7G9XMH7MG",
+    "title": "ps",
+    "score": 1,
+    "highlight": "Takes a snapshot of the processes running on the machine.\nlist running processes\nps [flags]\nps aux | grep name also matc"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620DCPBHAM35TYAF6V1E",
+    "title": "kill",
+    "score": 1,
+    "highlight": "Asks a process to stop (SIGTERM by default) or sends it another signal. Despite the name it does not always kill.\nsend a"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C66Q6TH07SPAAVHEW",
+    "title": "ping",
+    "score": 1,
+    "highlight": "Sends ICMP echo requests and reports whether and how fast replies come back.\ncheck if a host answers\nping [flags] host\nO"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "title": "curl",
+    "score": 1,
+    "highlight": "Makes HTTP(S) and other requests from the command line. The standard tool for poking at web APIs.\ntransfer data from or"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CJKPACGJ94XF6101W",
+    "title": "dig",
+    "score": 1,
+    "highlight": "Asks a DNS server for records and shows the full answer, including TTLs and flags.\nquery DNS records\ndig [@server] name"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "title": "ssh",
+    "score": 1,
+    "highlight": "Opens an encrypted shell (or runs one command) on another machine, and can tunnel network traffic.\nlog in to a remote ma"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5SPFKCR6S4ZH802Y",
+    "title": "scp",
+    "score": 1,
+    "highlight": "Copies files between machines using ssh for transport and authentication.\ncopy files over ssh\nscp [flags] source... dest"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1,
+    "highlight": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permiss"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "title": "ss",
+    "score": 1,
+    "highlight": "Lists open sockets and listening ports. The modern replacement for netstat on Linux.\nshow network sockets\nss [flags] [fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 1,
+    "highlight": "Prints packets crossing a network interface, optionally filtered, or saves them for Wireshark. Needs root.\ncapture and d"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYJP215Q2QRT695T7",
+    "title": "nc",
+    "score": 1,
+    "highlight": "Netcat opens TCP/UDP connections or listens on a port, which makes it handy for testing services and moving small amount"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXWYRXZKNDNVM0PE4",
+    "title": "ip",
+    "score": 1,
+    "highlight": "The modern Linux tool for addresses, links and routing (replaces ifconfig and route).\nshow and manage network interfaces"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 1,
+    "highlight": "Sets who may read, write or execute a file or directory.\nchange file permissions\nchmod [flags] mode file...\nNumeric mode"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C58C7Z9CJYXDN5W7V",
+    "title": "chown",
+    "score": 1,
+    "highlight": "Changes who owns a file. Usually needs root.\nchange file owner and group\nchown [flags] owner[:group] file...\nchown -R on"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CZSXVGAA7P8VMPPR9",
+    "title": "sudo",
+    "score": 1,
+    "highlight": "Runs one command as root (or another user) after checking /etc/sudoers.\nrun a command with another user's privileges\nsud"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CCGV7S680P79JFAXX",
+    "title": "id",
+    "score": 1,
+    "highlight": "Prints the numeric and named user ID, primary group and all groups of a user.\nshow user and group IDs\nid [flags] [user]"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "title": "grep",
+    "score": 1,
+    "highlight": "Prints lines that match a pattern, from files or from standard input.\nsearch text for a pattern\ngrep [flags] pattern [fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C8940C8QF1W8CJA4S",
+    "title": "sed",
+    "score": 1,
+    "highlight": "Applies editing commands to each line, most often a substitution like s/old/new/.\nedit a stream of text\nsed [flags] 'scr"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C56NSWYP6SB320CNB",
+    "title": "awk",
+    "score": 1,
+    "highlight": "Splits each line into fields ($1, $2, …) and runs a small program on them. Great for columns and quick sums.\nprocess tex"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "title": "sort",
+    "score": 1,
+    "highlight": "Sorts lines alphabetically by default; flags change the order and the key.\nsort lines of text\nsort [flags] [file...]\n\nfi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CNZJHHB30Y86FB1S9",
+    "title": "uniq",
+    "score": 1,
+    "highlight": "Removes or counts adjacent duplicate lines, so the input normally needs to be sorted first.\ncollapse repeated lines\nuniq"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CY5Y6QXV38C1M77RM",
+    "title": "cut",
+    "score": 1,
+    "highlight": "Prints selected fields or characters from each line.\nextract columns from text\ncut [flags] [file...]\ncut cannot handle q"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C0FGRSBG40NQANYBQ",
+    "title": "wc",
+    "score": 1,
+    "highlight": "Counts how much text a file or a stream contains.\ncount lines, words and bytes\nwc [flags] [file...]\n\nfile files to count"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CDAEH5DJE2V4H41G6",
+    "title": "tr",
+    "score": 1,
+    "highlight": "Reads standard input and swaps, squeezes or deletes characters. It does not take file names.\ntranslate or delete charact"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXE80QKY854J4HN8H",
+    "title": "diff",
+    "score": 1,
+    "highlight": "Shows what changed between two files or two directories.\ncompare files line by line\ndiff [flags] file1 file2\nLines start"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "title": "xargs",
+    "score": 1,
+    "highlight": "Turns lines or words from a pipe into arguments for another command.\nbuild commands from standard input\nxargs [flags] [c"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DQ85V7YNJGAJKE1NF",
+    "title": "Wildcards and Globbing",
+    "score": 1,
+    "highlight": "🧠 What is it?\nSpecial characters the shell expands into matching file names before the command runs, so one pattern can"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DJ3REMY39K95XYBSD",
+    "title": "Pipes and Redirection",
+    "score": 1,
+    "highlight": "🧠 What is it?\nEvery program has input (stdin), output (stdout) and error output (stderr). Redirection sends them to fil"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "title": "Hashing vs Encryption",
+    "score": 1,
+    "highlight": "🧠 What is it?\nEncryption is reversible with a key; hashing is a one-way fingerprint of data. They solve different probl"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 1,
+    "highlight": "🧠 What is it?\nLinux organises everything under a single tree that starts at `/` (root). Hardware, programs, settings an"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 1,
+    "highlight": "🧠 What is it?\nEvery file has an owner, a group, and three sets of read / write / execute rights: for the owner, the gro"
+   }
+  ],
+  "cat:networking": [
+   {
+    "type": "commands",
+    "id": "01M80T620C66Q6TH07SPAAVHEW",
+    "title": "ping",
+    "score": 1,
+    "highlight": "Sends ICMP echo requests and reports whether and how fast replies come back.\ncheck if a host answers\nping [flags] host\nO"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "title": "curl",
+    "score": 1,
+    "highlight": "Makes HTTP(S) and other requests from the command line. The standard tool for poking at web APIs.\ntransfer data from or"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CJKPACGJ94XF6101W",
+    "title": "dig",
+    "score": 1,
+    "highlight": "Asks a DNS server for records and shows the full answer, including TTLs and flags.\nquery DNS records\ndig [@server] name"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "title": "ssh",
+    "score": 1,
+    "highlight": "Opens an encrypted shell (or runs one command) on another machine, and can tunnel network traffic.\nlog in to a remote ma"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5SPFKCR6S4ZH802Y",
+    "title": "scp",
+    "score": 1,
+    "highlight": "Copies files between machines using ssh for transport and authentication.\ncopy files over ssh\nscp [flags] source... dest"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1,
+    "highlight": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permiss"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "title": "ss",
+    "score": 1,
+    "highlight": "Lists open sockets and listening ports. The modern replacement for netstat on Linux.\nshow network sockets\nss [flags] [fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 1,
+    "highlight": "Prints packets crossing a network interface, optionally filtered, or saves them for Wireshark. Needs root.\ncapture and d"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CYJP215Q2QRT695T7",
+    "title": "nc",
+    "score": 1,
+    "highlight": "Netcat opens TCP/UDP connections or listens on a port, which makes it handy for testing services and moving small amount"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CXWYRXZKNDNVM0PE4",
+    "title": "ip",
+    "score": 1,
+    "highlight": "The modern Linux tool for addresses, links and routing (replaces ifconfig and route).\nshow and manage network interfaces"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DM9832W9T47SM4HF3",
+    "title": "DNS (Domain Name System)",
+    "score": 1,
+    "highlight": "🧠 What is it?\nDNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember n"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 1,
+    "highlight": "🧠 What is it?\nIP gets packets between machines by address; TCP and UDP add ports so many conversations can share one ad"
+   }
+  ],
+  "type:notes zebra": [
+   {
+    "type": "notes",
+    "id": "01M80T62DVDDNDTCH28N4VX7D0",
+    "title": "Ünïcode Zebra",
+    "score": 43.92532,
+    "highlight": "zebra ünïcode **bold** [[Parity hub]]"
+   }
+  ],
+  "ünïcode": [
+   {
+    "type": "notes",
+    "id": "01M80T62DVDDNDTCH28N4VX7D0",
+    "title": "Ünïcode Zebra",
+    "score": 43.92532,
+    "highlight": "zebra ünïcode **bold** [[Parity hub]]"
+   }
+  ],
+  "tcpdump": [
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 115.984593,
+    "highlight": "…e and display network packets\ntcpdump [flags] [filter]\nCapture only on networks you are authorised to monitor; captures"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DM9832W9T47SM4HF3",
+    "title": "DNS (Domain Name System)",
+    "score": 3.119218,
+    "highlight": "…Related\n- dig\n- ping\n- curl\n- tcpdump\n🔗 Related Concepts\n- TCP/IP and Ports\n- HTTP Basics\n⚠️ Common Mistakes / Misconce"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DATFHQBZKCP2AQT3M",
+    "title": "HTTP Basics",
+    "score": 3.109018,
+    "highlight": "…mmands Related\n- curl\n- dig\n- tcpdump\n🔗 Related Concepts\n- DNS (Domain Name System)\n- TCP/IP and Ports\n- Hashing vs Enc"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 3.041013,
+    "highlight": "…ommands Related\n- ss\n- nmap\n- tcpdump\n- nc\n- ping\n- ip\n🔗 Related Concepts\n- DNS (Domain Name System)\n- HTTP Basics\n⚠️ C"
+   }
+  ],
+  "dns": [
+   {
+    "type": "notes",
+    "id": "01M80T620D80VNR00V95HPQ3WH",
+    "title": "Local DNS and the hosts file",
+    "score": 50.001746,
+    "highlight": "# Local DNS and the hosts file\n\nThe hosts file maps names to addresses on one machine and is consulted before DNS. Handy"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DM9832W9T47SM4HF3",
+    "title": "DNS (Domain Name System)",
+    "score": 29.225909,
+    "highlight": "🧠 What is it?\nDNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember n"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CJKPACGJ94XF6101W",
+    "title": "dig",
+    "score": 3.776078,
+    "highlight": "Asks a DNS server for records and shows the full answer, including TTLs and flags.\nquery DNS records\ndig [@server] name"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 3.472005,
+    "highlight": "…l; repeat for even more\nwatch DNS traffic\ntwenty packets to or from one host\nsave a capture for later analysis\nread it b"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DVWHY41Z81WAT99SX",
+    "title": "Common Ports and Protocols",
+    "score": 3.102079,
+    "highlight": "…n servers) |\n| 53 | UDP/TCP | DNS |\n| 67, 68 | UDP | DHCP (server, client) |\n| 80 | TCP | HTTP |\n| 110 | TCP | POP3 |\n|"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DATFHQBZKCP2AQT3M",
+    "title": "HTTP Basics",
+    "score": 2.570706,
+    "highlight": "…tcpdump\n🔗 Related Concepts\n- DNS (Domain Name System)\n- TCP/IP and Ports\n- Hashing vs Encryption\n⚠️ Common Mistakes / M"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 2.514476,
+    "highlight": "…t** which service (22 SSH, 53 DNS, 80 HTTP, 443 HTTPS)\n- **TCP flags** SYN, ACK, FIN, RST, PSH\n- **Socket** an IP + port"
+   }
+  ],
+  "permisions": [
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 15.631923,
+    "highlight": "🧠 What is it?\nEvery file has an owner, a group, and three sets of read / write / execute rights: for the owner, the gro"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 3.013283,
+    "highlight": "Sets who may read, write or execute a file or directory.\nchange file permissions\nchmod [flags] mode file...\nNumeric mode"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 2.58984,
+    "highlight": "Walks a directory tree and prints the files that match your conditions. It can also run a command on each match.\nsearch"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BH9T1D9K21YKS4CWR",
+    "title": "mkdir",
+    "score": 1.849518,
+    "highlight": "Creates one or more empty directories.\nmake directories\nmkdir [flags] directory...\n\ndirectory name of the directory to c"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 1.487654,
+    "highlight": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permiss"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls",
+    "score": 1.324933,
+    "highlight": "Prints the names of files and directories. With flags it also shows sizes, owners, permissions and timestamps.\nlist dire"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "title": "SSH Quick Guide",
+    "score": 1.146634,
+    "highlight": "# SSH Quick Guide\n\n## Make a key pair\n\n```bash\nssh-keygen -t ed25519 -C \"lab laptop\"\n```\n\nAccept the default location an"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 1.099816,
+    "highlight": "# Linux Command Cheat Sheet\n\nA one-page reminder. Each command has a full entry in the Commands library.\n\n## Moving arou"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 0.980508,
+    "highlight": "🧠 What is it?\nA process is a running program with its own ID (PID), owner and memory. Signals are small messages the ke"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 0.972114,
+    "highlight": "🧠 What is it?\nGive every user, program and process only the access it needs to do its job, and nothing more.\n⚙️ How it"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 0.928259,
+    "highlight": "🧠 What is it?\nLinux organises everything under a single tree that starts at `/` (root). Hardware, programs, settings an"
+   }
+  ],
+  "dirr": [],
+  "nmap -sV": [
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 403.530882,
+    "highlight": "…to test.\nscan hosts and ports\nnmap [flags] <target>\nScanning machines you do not have permission for can be illegal. sca"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T620DJGZ3APQHA7XQNDJC",
+    "title": "Example: scan my own machine",
+    "score": 40.207744,
+    "highlight": "…` (macOS).\n2. Scan yourself: `nmap -sV -p- 127.0.0.1`.\n3. Start something to find: `python3 -m http.server 8000` in anot"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DVWHY41Z81WAT99SX",
+    "title": "Common Ports and Protocols",
+    "score": 38.249655,
+    "highlight": "…43`\n- What is running on it? `nmap -sV -p 443 host` (only against systems you may test)"
+   }
+  ],
+  "file system": [
+   {
+    "type": "notes",
+    "id": "01M80T620D80VNR00V95HPQ3WH",
+    "title": "Local DNS and the hosts file",
+    "score": 62.897332,
+    "highlight": "# Local DNS and the hosts file\n\nThe hosts file maps names to addresses on one machine and is consulted before DNS. Handy"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 60.970845,
+    "highlight": "🧠 What is it?\nEvery file has an owner, a group, and three sets of read / write / execute rights: for the owner, the gro"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 29.798672,
+    "highlight": "…, programs, settings and your files all appear as paths in that tree.\n⚙️ How it works (Step-by-step)\n1. Everything hangs"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C58C7Z9CJYXDN5W7V",
+    "title": "chown",
+    "score": 18.832311,
+    "highlight": "Changes who owns a file. Usually needs root.\nchange file owner and group\nchown [flags] owner[:group] file...\nchown -R on"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 7.246658,
+    "highlight": "…es** instead of full root\n- **File permissions** that follow need-to-know\n- **Network rules** that expose only required"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 5.381017,
+    "highlight": "…vices and versions. Only scan systems you own or have written permission to test.\nscan hosts and ports\nnmap [flags] <tar"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DVWHY41Z81WAT99SX",
+    "title": "Common Ports and Protocols",
+    "score": 5.088824,
+    "highlight": "…|\n| 445 | TCP | SMB (Windows file sharing) |\n| 587 | TCP | SMTP submission (mail clients) |\n| 993 | TCP | IMAPS |\n| 995"
+   }
+  ],
+  "status:completed": [
+   {
+    "type": "labs",
+    "id": "01M80T62AD276MRZETBQGY45HR",
+    "title": "Bandit 0",
+    "score": 1,
+    "highlight": "linux"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T62AQRBQBTRS08M4A1QVT",
+    "title": "Web 101",
+    "score": 1,
+    "highlight": "web security"
+   }
+  ],
+  "sudo": [
+   {
+    "type": "commands",
+    "id": "01M80T620CZSXVGAA7P8VMPPR9",
+    "title": "sudo",
+    "score": 117.358612,
+    "highlight": "…her user) after checking /etc/sudoers.\nrun a command with another user's privileges\nsudo [flags] command\nsudo -l is a fi"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C58C7Z9CJYXDN5W7V",
+    "title": "chown",
+    "score": 7.450847,
+    "highlight": "…wner[:group] file...\n-R\n-h\n-v\nsudo chown alice notes.txt\nsudo chown -R www-data:www-data /var/www\nsudo chown :developers"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "title": "nmap",
+    "score": 6.799825,
+    "highlight": "…target>\nnmap -sn 192.0.2.0/24\nsudo nmap -sS -p- -T4 <target>\nnmap -A scanme.nmap.org"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "title": "tcpdump",
+    "score": 6.731455,
+    "highlight": "…[filter]\n-i\n-n\n-c\n-w\n-r\n-A\n-v\nsudo tcpdump -i any -nn port 53\nsudo tcpdump -i eth0 -c 20 host 192.0.2.10\nsudo tcpdump -w"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620D80VNR00V95HPQ3WH",
+    "title": "Local DNS and the hosts file",
+    "score": 3.301428,
+    "highlight": "…needs administrator rights (`sudo` on Linux/macOS, an elevated editor on Windows).\n\n## Add an entry\n\n```text\n192.0.2.10"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "title": "Linux Command Cheat Sheet",
+    "score": 3.125493,
+    "highlight": "…| What can I run as root? | `sudo -l` |\n\n> [!WARNING]\n> `rm` has no undo. Preview with `ls` first, and prefer `rm -i` w"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 2.786441,
+    "highlight": "…ds Related\n- ps\n- kill\n- ss\n- sudo\n🔗 Related Concepts\n- Pipes and Redirection\n- File Permissions\n⚠️ Common Mistakes / M"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 2.762584,
+    "highlight": "…e and for services\n- **Narrow sudo rules** instead of full root\n- **File permissions** that follow need-to-know\n- **Netw"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 2.649861,
+    "highlight": "…d\n- ls\n- chmod\n- chown\n- id\n- sudo\n🔗 Related Concepts\n- Principle of Least Privilege\n- Linux Filesystem Hierarchy\n⚠️ Co"
+   }
+  ],
+  "ssh key": [
+   {
+    "type": "commands",
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "title": "ssh",
+    "score": 239.21433,
+    "highlight": "…to a remote machine securely\nssh [flags] [user@]host [command]\nVerify the host key fingerprint on first connect, and ke"
+   },
+   {
+    "type": "notes",
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "title": "SSH Quick Guide",
+    "score": 135.50111,
+    "highlight": "# SSH Quick Guide\n\n## Make a key pair\n\n```bash\nssh-keygen -t ed25519 -C \"lab laptop\"\n```\n\nAccept the default location an"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "title": "chmod",
+    "score": 18.023772,
+    "highlight": "…owner read and write\nprivate key readable only by you\nmake a script executable\nowner full, others read and enter\ndirect"
+   },
+   {
+    "type": "commands",
+    "id": "01M80T620C5SPFKCR6S4ZH802Y",
+    "title": "scp",
+    "score": 13.07826,
+    "highlight": "…files between machines using ssh for transport and authentication.\ncopy files over ssh\nscp [flags] source... destinatio"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 10.986102,
+    "highlight": "…relative ones (`../logs`).\n🧩 Key Components\n| Path | Holds |\n| --- | --- |\n| `/bin`, `/usr/bin` | programs available to"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 10.249229,
+    "highlight": "…first that applies to you.\n🧩 Key Components\n- **r** (4) read the contents; for a directory, list names\n- **w** (2) chan"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 8.17446,
+    "highlight": "…but no delivery guarantee.\n🧩 Key Components\n- **IP address** where (IPv4 `192.0.2.10`, IPv6 `2001:db8::1`)\n- **Port** w"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 6.225966,
+    "highlight": "…collects the exit status.\n🧩 Key Components\n- **PID / PPID** process and parent IDs\n- **SIGTERM (15)** polite request t"
+   }
+  ],
+  "type:concepts questions": [
+   {
+    "type": "concepts",
+    "id": "01M80T62E2X8KXFQKGF8WVFBCM",
+    "title": "Open questions demo",
+    "score": 35.794503,
+    "highlight": "Questions\n- Why?\n- [x] Done?\n- How?"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DJ3REMY39K95XYBSD",
+    "title": "Pipes and Redirection",
+    "score": 2.174641,
+    "highlight": "…ters\nPipelines let you answer questions about logs and output with a few small, reusable tools.\n⚔️ Security Relevance\n-"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "title": "Processes and Signals",
+    "score": 2.170851,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- How can I tell which process opened a particular network port?"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DQ85V7YNJGAJKE1NF",
+    "title": "Wildcards and Globbing",
+    "score": 2.152265,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- How do I preview exactly what a glob will expand to before using"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "title": "Principle of Least Privilege",
+    "score": 2.152265,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- Which services on my machine run as root, and could any of them r"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DM9832W9T47SM4HF3",
+    "title": "DNS (Domain Name System)",
+    "score": 2.127218,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- How can I see which resolver my machine is actually using right n"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "title": "Hashing vs Encryption",
+    "score": 2.123729,
+    "highlight": "…🔥 Difficulty Level\nMedium\n❓ Questions I still have\n- Why is a slow hash a feature for passwords but a drawback for fil"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DATFHQBZKCP2AQT3M",
+    "title": "HTTP Basics",
+    "score": 2.120262,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- Which response headers would tell me the most about how a site is"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "title": "TCP/IP and Ports",
+    "score": 2.073884,
+    "highlight": "…🔥 Difficulty Level\nMedium\n❓ Questions I still have\n- What does a SYN scan look like in tcpdump compared with a full co"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "title": "File Permissions",
+    "score": 2.064444,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- What does it take for a setuid program to become a vulnerability?"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 2.055169,
+    "highlight": "…s)\n🔥 Difficulty Level\nEasy\n❓ Questions I still have\n- Which files in /etc are readable by any user on this machine, and"
+   }
+  ],
+  "bandit": [
+   {
+    "type": "labs",
+    "id": "01M80T62AD276MRZETBQGY45HR",
+    "title": "Bandit 0",
+    "score": 31.139204,
+    "highlight": "linux"
+   },
+   {
+    "type": "labs",
+    "id": "01M80T62AKZFNFS93M0TBXXSC3",
+    "title": "Bandit 1",
+    "score": 31.139204,
+    "highlight": ""
+   }
+  ],
+  "learned thing": [
+   {
+    "type": "log",
+    "id": "01M80T62D6R2YQ4435VGMJXV6E",
+    "title": "Day 10",
+    "score": 12.560918,
+    "highlight": "Learned thing 10\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62DCTB1N1WH7NB9A5296",
+    "title": "Day 11",
+    "score": 12.560918,
+    "highlight": "Learned thing 11\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62BJJZT71RYKH2EZZB6A",
+    "title": "Day 0",
+    "score": 12.560918,
+    "highlight": "Learned thing 0\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62BTBMRKZCQ9GSS16KXE",
+    "title": "Day 1",
+    "score": 12.560918,
+    "highlight": "Learned thing 1\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62BZ968YNGQ3G6SN9P7D",
+    "title": "Day 2",
+    "score": 12.560918,
+    "highlight": "Learned thing 2\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62C7S8QWKC90RSQDP28R",
+    "title": "Day 3",
+    "score": 12.560918,
+    "highlight": "Learned thing 3\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62CBR5PD2YSGK61MYRR2",
+    "title": "Day 4",
+    "score": 12.560918,
+    "highlight": "Learned thing 4\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62CF97GSY7HVY8X9F3RX",
+    "title": "Day 5",
+    "score": 12.560918,
+    "highlight": "Learned thing 5\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62CKSN0465EZ7E9QGH4Z",
+    "title": "Day 6",
+    "score": 12.560918,
+    "highlight": "Learned thing 6\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62CQFY3MJWBH9E0B17AY",
+    "title": "Day 7",
+    "score": 12.560918,
+    "highlight": "Learned thing 7\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62CW2BZMCYESWNAR6CKM",
+    "title": "Day 8",
+    "score": 12.560918,
+    "highlight": "Learned thing 8\n\n\nlinux\nbash"
+   },
+   {
+    "type": "log",
+    "id": "01M80T62D1JCKVCKV8BP2ADJCE",
+    "title": "Day 9",
+    "score": 12.560918,
+    "highlight": "Learned thing 9\n\n\nlinux\nbash"
+   },
+   {
+    "type": "concepts",
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "title": "Linux Filesystem Hierarchy",
+    "score": 9.220387,
+    "highlight": "…t is it?\nLinux organises everything under a single tree that starts at `/` (root). Hardware, programs, settings and your"
+   }
+  ],
+  "find size": [
+   {
+    "type": "commands",
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "title": "find",
+    "score": 230.340445,
+    "highlight": "…arch for files by name, type, size or time\nfind [path...] [tests] [actions]\n-delete and -exec act on everything matched."
+   },
+   {
+    "type": "snippets",
+    "id": "01M80T62DGXQT2ZP5W9ZG03FC0",
+    "title": "Find big files",
+    "score": 94.686201,
+    "highlight": "Large files\nfind / -size +100M 2>/dev/null"
+   }
+  ],
+  "zzzzzz": []
+ },
+ "lists": {
+  "commands": [
+   "01M80T62DZP3NM4DV1R7JTH2RH",
+   "01M80T620C56NSWYP6SB320CNB",
+   "01M80T620CDX7SS73NJR1P941S",
+   "01M80T620B91MDQVMZZ4KG0QQP",
+   "01M80T620C7AWTY7F41QRCMCYJ",
+   "01M80T620C58C7Z9CJYXDN5W7V",
+   "01M80T620B31YJAK2CYRT5ZMPK",
+   "01M80T620CTEEFWQWDXE4T4ZA9",
+   "01M80T620CY5Y6QXV38C1M77RM",
+   "01M80T620CZSZ473ET970R52EH",
+   "01M80T620CXE80QKY854J4HN8H",
+   "01M80T620CJKPACGJ94XF6101W",
+   "01M80T620C5MNW5RGJV4ZAPB1X",
+   "01M80T620C8F51ZV9H31B0ASH2",
+   "01M80T620C451QED07D4K0RJ9R",
+   "01M80T620C0Q9YB5D2Q8NHTA3F",
+   "01M80T620CXVDR38G0XQ4H08RN",
+   "01M80T620CCGV7S680P79JFAXX",
+   "01M80T620CXWYRXZKNDNVM0PE4",
+   "01M80T620DCPBHAM35TYAF6V1E",
+   "01M80T620CYV4GTJVRTAHZ8C29",
+   "01M80T620BZ2FRJPP0TZ6E3VCD",
+   "01M80T620BJS9FYZ6YARGSPD06",
+   "01M80T620C2JHSJDJ3ZDFVEB33",
+   "01M80T620BH9T1D9K21YKS4CWR",
+   "01M80T620BJ2PHCNHG461R0RYM",
+   "01M80T620CYJP215Q2QRT695T7",
+   "01M80T620CC9BF0194ZJ7JP7XN",
+   "01M80T620C66Q6TH07SPAAVHEW",
+   "01M80T620DGDJZRRV7G9XMH7MG",
+   "01M80T620B5AQ1SCEWCECT7Q7X",
+   "01M80T620BA2HZEMYQVCPBZNZF",
+   "01M80T620C5SPFKCR6S4ZH802Y",
+   "01M80T620C8940C8QF1W8CJA4S",
+   "01M80T620CGNRGGJ763GMJZ5HQ",
+   "01M80T620CPQQDK9HEEK3KHBYK",
+   "01M80T620C2X0AEBRM76S2MW3K",
+   "01M80T620CZSXVGAA7P8VMPPR9",
+   "01M80T620CTN9H30HZN5PE80AQ",
+   "01M80T620C7145SPENQS808D5M",
+   "01M80T620CTYTVM1ESJ7D24N8B",
+   "01M80T620CNSQRZKNWYHG5WAXJ",
+   "01M80T620CDAEH5DJE2V4H41G6",
+   "01M80T620CNZJHHB30Y86FB1S9",
+   "01M80T620C0FGRSBG40NQANYBQ",
+   "01M80T620CYYX36Q8GRE9D5PRR"
+  ],
+  "concepts": [
+   "01M80T620DM9832W9T47SM4HF3",
+   "01M80T620DV5D7AAKGT4Z3677H",
+   "01M80T620DGYW3DE7F3KFVDRZ7",
+   "01M80T620DATFHQBZKCP2AQT3M",
+   "01M80T620DFST8X901HCJR00FQ",
+   "01M80T62E2X8KXFQKGF8WVFBCM",
+   "01M80T620DJ3REMY39K95XYBSD",
+   "01M80T620D90H5NMK39SND3R4V",
+   "01M80T620DRCPTBNWMW86RD9SF",
+   "01M80T620D5RSN4J5HMCFNQF1K",
+   "01M80T620DQ85V7YNJGAJKE1NF"
+  ],
+  "labs": [
+   "01M80T62AD276MRZETBQGY45HR",
+   "01M80T62AKZFNFS93M0TBXXSC3",
+   "01M80T620DPVB04Q1D2R7WFFMY",
+   "01M80T620DJGZ3APQHA7XQNDJC",
+   "01M80T620DNCK7X3GVN0MAAJVD",
+   "01M80T62AZ43JKYBYBZH2MBN31",
+   "01M80T62AQRBQBTRS08M4A1QVT"
+  ],
+  "projects": [
+   "01M80T62B622V1HGTW84YCJA5D",
+   "01M80T62BEVAVNFBNGRMSXPG9D"
+  ],
+  "log": [
+   "01M80T62BJJZT71RYKH2EZZB6A",
+   "01M80T62BTBMRKZCQ9GSS16KXE",
+   "01M80T62D6R2YQ4435VGMJXV6E",
+   "01M80T62DCTB1N1WH7NB9A5296",
+   "01M80T62BZ968YNGQ3G6SN9P7D",
+   "01M80T62C7S8QWKC90RSQDP28R",
+   "01M80T62CBR5PD2YSGK61MYRR2",
+   "01M80T62CF97GSY7HVY8X9F3RX",
+   "01M80T62CKSN0465EZ7E9QGH4Z",
+   "01M80T62CQFY3MJWBH9E0B17AY",
+   "01M80T62CW2BZMCYESWNAR6CKM",
+   "01M80T62D1JCKVCKV8BP2ADJCE"
+  ],
+  "notes": [
+   "01M80T620DVWHY41Z81WAT99SX",
+   "01M80T620DB2YQM00H5QP7Z414",
+   "01M80T620D80VNR00V95HPQ3WH",
+   "01M80T62DRT3QCP7QAC313NX4Y",
+   "01M80T620DXVFVEX0WSDDR2BYV",
+   "01M80T62DVDDNDTCH28N4VX7D0"
+  ],
+  "snippets": [
+   "01M80T62DGXQT2ZP5W9ZG03FC0"
+  ]
+ },
+ "defaultLists": {
+  "commands": [
+   "awk",
+   "cat",
+   "cd",
+   "chmod",
+   "chown",
+   "cp",
+   "curl",
+   "cut",
+   "df",
+   "diff",
+   "dig",
+   "du",
+   "file",
+   "find",
+   "grep",
+   "head",
+   "id",
+   "ip",
+   "kill",
+   "less",
+   "ln",
+   "ls",
+   "man",
+   "mkdir",
+   "mv",
+   "nc",
+   "nmap",
+   "ping",
+   "ps",
+   "pwd",
+   "rm",
+   "scp",
+   "sed",
+   "sort",
+   "ss",
+   "ssh",
+   "sudo",
+   "tail",
+   "tar",
+   "tcpdump",
+   "touch",
+   "tr",
+   "uniq",
+   "wc",
+   "xargs"
+  ],
+  "concepts": [
+   "DNS (Domain Name System)",
+   "File Permissions",
+   "Hashing vs Encryption",
+   "HTTP Basics",
+   "Linux Filesystem Hierarchy",
+   "Open questions demo",
+   "Pipes and Redirection",
+   "Principle of Least Privilege",
+   "Processes and Signals",
+   "TCP/IP and Ports",
+   "Wildcards and Globbing"
+  ],
+  "labs": [
+   "Bandit 0",
+   "Bandit 1",
+   "Example: find the hidden file",
+   "Example: scan my own machine",
+   "Example: who failed to log in?",
+   "Web 101"
+  ],
+  "projects": [
+   "Port scanner",
+   "Site"
+  ],
+  "log": [
+   "Day 0",
+   "Day 1",
+   "Day 10",
+   "Day 11",
+   "Day 2",
+   "Day 3",
+   "Day 4",
+   "Day 5",
+   "Day 6",
+   "Day 7",
+   "Day 8",
+   "Day 9"
+  ],
+  "notes": [
+   "Common Ports and Protocols",
+   "Linux Command Cheat Sheet",
+   "Local DNS and the hosts file",
+   "Parity hub",
+   "SSH Quick Guide",
+   "Ünïcode Zebra"
+  ],
+  "snippets": [
+   "Find big files"
+  ]
+ },
+ "graph": {
+  "nodes": [
+   {
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "type": "commands",
+    "title": "ls",
+    "category": "File System",
+    "degree": 18
+   },
+   {
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "type": "commands",
+    "title": "cd",
+    "category": "File System",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "type": "commands",
+    "title": "pwd",
+    "category": "File System",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "type": "commands",
+    "title": "cp",
+    "category": "File System",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "type": "commands",
+    "title": "mv",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620BA2HZEMYQVCPBZNZF",
+    "type": "commands",
+    "title": "rm",
+    "category": "File System",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620BZ2FRJPP0TZ6E3VCD",
+    "type": "commands",
+    "title": "ln",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620BH9T1D9K21YKS4CWR",
+    "type": "commands",
+    "title": "mkdir",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CNSQRZKNWYHG5WAXJ",
+    "type": "commands",
+    "title": "touch",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CDX7SS73NJR1P941S",
+    "type": "commands",
+    "title": "cat",
+    "category": "File System",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620CYV4GTJVRTAHZ8C29",
+    "type": "commands",
+    "title": "less",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CXVDR38G0XQ4H08RN",
+    "type": "commands",
+    "title": "head",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CTN9H30HZN5PE80AQ",
+    "type": "commands",
+    "title": "tail",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620C8F51ZV9H31B0ASH2",
+    "type": "commands",
+    "title": "file",
+    "category": "File System",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C451QED07D4K0RJ9R",
+    "type": "commands",
+    "title": "find",
+    "category": "File System",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620C5MNW5RGJV4ZAPB1X",
+    "type": "commands",
+    "title": "du",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CZSZ473ET970R52EH",
+    "type": "commands",
+    "title": "df",
+    "category": "File System",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C7145SPENQS808D5M",
+    "type": "commands",
+    "title": "tar",
+    "category": "File System",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620C2JHSJDJ3ZDFVEB33",
+    "type": "commands",
+    "title": "man",
+    "category": "General",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620DGDJZRRV7G9XMH7MG",
+    "type": "commands",
+    "title": "ps",
+    "category": "General",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620DCPBHAM35TYAF6V1E",
+    "type": "commands",
+    "title": "kill",
+    "category": "General",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C66Q6TH07SPAAVHEW",
+    "type": "commands",
+    "title": "ping",
+    "category": "Networking",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "type": "commands",
+    "title": "curl",
+    "category": "Networking",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CJKPACGJ94XF6101W",
+    "type": "commands",
+    "title": "dig",
+    "category": "Networking",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620C2X0AEBRM76S2MW3K",
+    "type": "commands",
+    "title": "ssh",
+    "category": "Networking",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C5SPFKCR6S4ZH802Y",
+    "type": "commands",
+    "title": "scp",
+    "category": "Networking",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620CC9BF0194ZJ7JP7XN",
+    "type": "commands",
+    "title": "nmap",
+    "category": "Networking",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CPQQDK9HEEK3KHBYK",
+    "type": "commands",
+    "title": "ss",
+    "category": "Networking",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620CTYTVM1ESJ7D24N8B",
+    "type": "commands",
+    "title": "tcpdump",
+    "category": "Networking",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620CYJP215Q2QRT695T7",
+    "type": "commands",
+    "title": "nc",
+    "category": "Networking",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CXWYRXZKNDNVM0PE4",
+    "type": "commands",
+    "title": "ip",
+    "category": "Networking",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C7AWTY7F41QRCMCYJ",
+    "type": "commands",
+    "title": "chmod",
+    "category": "Permissions",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620C58C7Z9CJYXDN5W7V",
+    "type": "commands",
+    "title": "chown",
+    "category": "Permissions",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CZSXVGAA7P8VMPPR9",
+    "type": "commands",
+    "title": "sudo",
+    "category": "Permissions",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620CCGV7S680P79JFAXX",
+    "type": "commands",
+    "title": "id",
+    "category": "Permissions",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "type": "commands",
+    "title": "grep",
+    "category": "Text Processing",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620C8940C8QF1W8CJA4S",
+    "type": "commands",
+    "title": "sed",
+    "category": "Text Processing",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620C56NSWYP6SB320CNB",
+    "type": "commands",
+    "title": "awk",
+    "category": "Text Processing",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "type": "commands",
+    "title": "sort",
+    "category": "Text Processing",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CNZJHHB30Y86FB1S9",
+    "type": "commands",
+    "title": "uniq",
+    "category": "Text Processing",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CY5Y6QXV38C1M77RM",
+    "type": "commands",
+    "title": "cut",
+    "category": "Text Processing",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620C0FGRSBG40NQANYBQ",
+    "type": "commands",
+    "title": "wc",
+    "category": "Text Processing",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620CDAEH5DJE2V4H41G6",
+    "type": "commands",
+    "title": "tr",
+    "category": "Text Processing",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CXE80QKY854J4HN8H",
+    "type": "commands",
+    "title": "diff",
+    "category": "Text Processing",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620CYYX36Q8GRE9D5PRR",
+    "type": "commands",
+    "title": "xargs",
+    "category": "Text Processing",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620DQ85V7YNJGAJKE1NF",
+    "type": "concepts",
+    "title": "Wildcards and Globbing",
+    "category": "Bash",
+    "degree": 8
+   },
+   {
+    "id": "01M80T620DJ3REMY39K95XYBSD",
+    "type": "concepts",
+    "title": "Pipes and Redirection",
+    "category": "Bash",
+    "degree": 12
+   },
+   {
+    "id": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "type": "concepts",
+    "title": "Hashing vs Encryption",
+    "category": "Cryptography",
+    "degree": 4
+   },
+   {
+    "id": "01M80T620DFST8X901HCJR00FQ",
+    "type": "concepts",
+    "title": "Linux Filesystem Hierarchy",
+    "category": "Linux",
+    "degree": 8
+   },
+   {
+    "id": "01M80T620DV5D7AAKGT4Z3677H",
+    "type": "concepts",
+    "title": "File Permissions",
+    "category": "Linux",
+    "degree": 11
+   },
+   {
+    "id": "01M80T620DRCPTBNWMW86RD9SF",
+    "type": "concepts",
+    "title": "Processes and Signals",
+    "category": "Linux",
+    "degree": 8
+   },
+   {
+    "id": "01M80T620D90H5NMK39SND3R4V",
+    "type": "concepts",
+    "title": "Principle of Least Privilege",
+    "category": "Linux",
+    "degree": 8
+   },
+   {
+    "id": "01M80T62E2X8KXFQKGF8WVFBCM",
+    "type": "concepts",
+    "title": "Open questions demo",
+    "category": "Linux",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620DM9832W9T47SM4HF3",
+    "type": "concepts",
+    "title": "DNS (Domain Name System)",
+    "category": "Networking",
+    "degree": 10
+   },
+   {
+    "id": "01M80T620D5RSN4J5HMCFNQF1K",
+    "type": "concepts",
+    "title": "TCP/IP and Ports",
+    "category": "Networking",
+    "degree": 11
+   },
+   {
+    "id": "01M80T620DATFHQBZKCP2AQT3M",
+    "type": "concepts",
+    "title": "HTTP Basics",
+    "category": "Web Security",
+    "degree": 9
+   },
+   {
+    "id": "01M80T62AD276MRZETBQGY45HR",
+    "type": "labs",
+    "title": "Bandit 0",
+    "category": "",
+    "degree": 2
+   },
+   {
+    "id": "01M80T62AKZFNFS93M0TBXXSC3",
+    "type": "labs",
+    "title": "Bandit 1",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T620DPVB04Q1D2R7WFFMY",
+    "type": "labs",
+    "title": "Example: find the hidden file",
+    "category": "Practice",
+    "degree": 5
+   },
+   {
+    "id": "01M80T620DNCK7X3GVN0MAAJVD",
+    "type": "labs",
+    "title": "Example: who failed to log in?",
+    "category": "Practice",
+    "degree": 6
+   },
+   {
+    "id": "01M80T620DJGZ3APQHA7XQNDJC",
+    "type": "labs",
+    "title": "Example: scan my own machine",
+    "category": "Practice",
+    "degree": 4
+   },
+   {
+    "id": "01M80T62AQRBQBTRS08M4A1QVT",
+    "type": "labs",
+    "title": "Web 101",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62B622V1HGTW84YCJA5D",
+    "type": "projects",
+    "title": "Port scanner",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62BEVAVNFBNGRMSXPG9D",
+    "type": "projects",
+    "title": "Site",
+    "category": "",
+    "degree": 0
+   },
+   {
+    "id": "01M80T62D6R2YQ4435VGMJXV6E",
+    "type": "log",
+    "title": "Day 10",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62DCTB1N1WH7NB9A5296",
+    "type": "log",
+    "title": "Day 11",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62BJJZT71RYKH2EZZB6A",
+    "type": "log",
+    "title": "Day 0",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62BTBMRKZCQ9GSS16KXE",
+    "type": "log",
+    "title": "Day 1",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62BZ968YNGQ3G6SN9P7D",
+    "type": "log",
+    "title": "Day 2",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62C7S8QWKC90RSQDP28R",
+    "type": "log",
+    "title": "Day 3",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62CBR5PD2YSGK61MYRR2",
+    "type": "log",
+    "title": "Day 4",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62CF97GSY7HVY8X9F3RX",
+    "type": "log",
+    "title": "Day 5",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62CKSN0465EZ7E9QGH4Z",
+    "type": "log",
+    "title": "Day 6",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62CQFY3MJWBH9E0B17AY",
+    "type": "log",
+    "title": "Day 7",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62CW2BZMCYESWNAR6CKM",
+    "type": "log",
+    "title": "Day 8",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62D1JCKVCKV8BP2ADJCE",
+    "type": "log",
+    "title": "Day 9",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62DVDDNDTCH28N4VX7D0",
+    "type": "notes",
+    "title": "Ünïcode Zebra",
+    "category": "",
+    "degree": 1
+   },
+   {
+    "id": "01M80T62DRT3QCP7QAC313NX4Y",
+    "type": "notes",
+    "title": "Parity hub",
+    "category": "",
+    "degree": 3
+   },
+   {
+    "id": "01M80T620DVWHY41Z81WAT99SX",
+    "type": "notes",
+    "title": "Common Ports and Protocols",
+    "category": "",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620DB2YQM00H5QP7Z414",
+    "type": "notes",
+    "title": "Linux Command Cheat Sheet",
+    "category": "",
+    "degree": 0
+   },
+   {
+    "id": "01M80T620D80VNR00V95HPQ3WH",
+    "type": "notes",
+    "title": "Local DNS and the hosts file",
+    "category": "",
+    "degree": 2
+   },
+   {
+    "id": "01M80T620DXVFVEX0WSDDR2BYV",
+    "type": "notes",
+    "title": "SSH Quick Guide",
+    "category": "",
+    "degree": 3
+   },
+   {
+    "id": "01M80T62DGXQT2ZP5W9ZG03FC0",
+    "type": "snippets",
+    "title": "Find big files",
+    "category": "",
+    "degree": 0
+   }
+  ],
+  "edges": [
+   {
+    "source": "01M80T620DQ85V7YNJGAJKE1NF",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DQ85V7YNJGAJKE1NF",
+    "target": "01M80T620B31YJAK2CYRT5ZMPK",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DQ85V7YNJGAJKE1NF",
+    "target": "01M80T620C451QED07D4K0RJ9R",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DQ85V7YNJGAJKE1NF",
+    "target": "01M80T620BA2HZEMYQVCPBZNZF",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DQ85V7YNJGAJKE1NF",
+    "target": "01M80T620DJ3REMY39K95XYBSD",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620CDX7SS73NJR1P941S",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620CNZJHHB30Y86FB1S9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620C0FGRSBG40NQANYBQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620CYYX36Q8GRE9D5PRR",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620DQ85V7YNJGAJKE1NF",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJ3REMY39K95XYBSD",
+    "target": "01M80T620DRCPTBNWMW86RD9SF",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "target": "01M80T620C8F51ZV9H31B0ASH2",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "target": "01M80T620DATFHQBZKCP2AQT3M",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "target": "01M80T620D90H5NMK39SND3R4V",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620B91MDQVMZZ4KG0QQP",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620C451QED07D4K0RJ9R",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620CZSZ473ET970R52EH",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DFST8X901HCJR00FQ",
+    "target": "01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620C7AWTY7F41QRCMCYJ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620C58C7Z9CJYXDN5W7V",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620CCGV7S680P79JFAXX",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620CZSXVGAA7P8VMPPR9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620D90H5NMK39SND3R4V",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DV5D7AAKGT4Z3677H",
+    "target": "01M80T620DFST8X901HCJR00FQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620DGDJZRRV7G9XMH7MG",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620DCPBHAM35TYAF6V1E",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620CPQQDK9HEEK3KHBYK",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620CZSXVGAA7P8VMPPR9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620DJ3REMY39K95XYBSD",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DRCPTBNWMW86RD9SF",
+    "target": "01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620CZSXVGAA7P8VMPPR9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620C7AWTY7F41QRCMCYJ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620C58C7Z9CJYXDN5W7V",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620CCGV7S680P79JFAXX",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D90H5NMK39SND3R4V",
+    "target": "01M80T620DRCPTBNWMW86RD9SF",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62E2X8KXFQKGF8WVFBCM",
+    "target": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620CJKPACGJ94XF6101W",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620C66Q6TH07SPAAVHEW",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620CTYTVM1ESJ7D24N8B",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620D5RSN4J5HMCFNQF1K",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DM9832W9T47SM4HF3",
+    "target": "01M80T620DATFHQBZKCP2AQT3M",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620CPQQDK9HEEK3KHBYK",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620CC9BF0194ZJ7JP7XN",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620CTYTVM1ESJ7D24N8B",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620CYJP215Q2QRT695T7",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620C66Q6TH07SPAAVHEW",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620CXWYRXZKNDNVM0PE4",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620DM9832W9T47SM4HF3",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620D5RSN4J5HMCFNQF1K",
+    "target": "01M80T620DATFHQBZKCP2AQT3M",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620CTEEFWQWDXE4T4ZA9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620CJKPACGJ94XF6101W",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620CTYTVM1ESJ7D24N8B",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620DM9832W9T47SM4HF3",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620D5RSN4J5HMCFNQF1K",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DATFHQBZKCP2AQT3M",
+    "target": "01M80T620DGYW3DE7F3KFVDRZ7",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62AD276MRZETBQGY45HR",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62AD276MRZETBQGY45HR",
+    "target": "01M80T620DQ85V7YNJGAJKE1NF",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62AKZFNFS93M0TBXXSC3",
+    "target": "01M80T620CDX7SS73NJR1P941S",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DPVB04Q1D2R7WFFMY",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DPVB04Q1D2R7WFFMY",
+    "target": "01M80T620B91MDQVMZZ4KG0QQP",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DPVB04Q1D2R7WFFMY",
+    "target": "01M80T620C451QED07D4K0RJ9R",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DPVB04Q1D2R7WFFMY",
+    "target": "01M80T620CDX7SS73NJR1P941S",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DPVB04Q1D2R7WFFMY",
+    "target": "01M80T620DFST8X901HCJR00FQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620C0Q9YB5D2Q8NHTA3F",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620CY5Y6QXV38C1M77RM",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620CGNRGGJ763GMJZ5HQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620CNZJHHB30Y86FB1S9",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620C0FGRSBG40NQANYBQ",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DNCK7X3GVN0MAAJVD",
+    "target": "01M80T620DJ3REMY39K95XYBSD",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJGZ3APQHA7XQNDJC",
+    "target": "01M80T620CC9BF0194ZJ7JP7XN",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJGZ3APQHA7XQNDJC",
+    "target": "01M80T620CPQQDK9HEEK3KHBYK",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJGZ3APQHA7XQNDJC",
+    "target": "01M80T620CYJP215Q2QRT695T7",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T620DJGZ3APQHA7XQNDJC",
+    "target": "01M80T620D5RSN4J5HMCFNQF1K",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62AQRBQBTRS08M4A1QVT",
+    "target": "01M80T620DM9832W9T47SM4HF3",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62B622V1HGTW84YCJA5D",
+    "target": "01M80T620DJ3REMY39K95XYBSD",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62D6R2YQ4435VGMJXV6E",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62DCTB1N1WH7NB9A5296",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62BJJZT71RYKH2EZZB6A",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62BTBMRKZCQ9GSS16KXE",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62BZ968YNGQ3G6SN9P7D",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62C7S8QWKC90RSQDP28R",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62CBR5PD2YSGK61MYRR2",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62CF97GSY7HVY8X9F3RX",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62CKSN0465EZ7E9QGH4Z",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62CQFY3MJWBH9E0B17AY",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62CW2BZMCYESWNAR6CKM",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62D1JCKVCKV8BP2ADJCE",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "relation"
+   },
+   {
+    "source": "01M80T62DVDDNDTCH28N4VX7D0",
+    "target": "01M80T62DRT3QCP7QAC313NX4Y",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T62DRT3QCP7QAC313NX4Y",
+    "target": "01M80T620DQ85V7YNJGAJKE1NF",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T62DRT3QCP7QAC313NX4Y",
+    "target": "01M80T620BJS9FYZ6YARGSPD06",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T620D80VNR00V95HPQ3WH",
+    "target": "01M80T620DM9832W9T47SM4HF3",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T620D80VNR00V95HPQ3WH",
+    "target": "01M80T620CJKPACGJ94XF6101W",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T620DXVFVEX0WSDDR2BYV",
+    "target": "01M80T620C2X0AEBRM76S2MW3K",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T620DXVFVEX0WSDDR2BYV",
+    "target": "01M80T620C5SPFKCR6S4ZH802Y",
+    "kind": "wikilink"
+   },
+   {
+    "source": "01M80T620DXVFVEX0WSDDR2BYV",
+    "target": "01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "wikilink"
+   }
+  ]
+ },
+ "links": {
+  "01M80T620BJS9FYZ6YARGSPD06": {
+   "back": [
+    {
+     "id": "01M80T620DQ85V7YNJGAJKE1NF",
+     "type": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DFST8X901HCJR00FQ",
+     "type": "concepts",
+     "title": "Linux Filesystem Hierarchy",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DV5D7AAKGT4Z3677H",
+     "type": "concepts",
+     "title": "File Permissions",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62AD276MRZETBQGY45HR",
+     "type": "labs",
+     "title": "Bandit 0",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DPVB04Q1D2R7WFFMY",
+     "type": "labs",
+     "title": "Example: find the hidden file",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62D6R2YQ4435VGMJXV6E",
+     "type": "log",
+     "title": "Day 10",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62DCTB1N1WH7NB9A5296",
+     "type": "log",
+     "title": "Day 11",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62BJJZT71RYKH2EZZB6A",
+     "type": "log",
+     "title": "Day 0",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62BTBMRKZCQ9GSS16KXE",
+     "type": "log",
+     "title": "Day 1",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62BZ968YNGQ3G6SN9P7D",
+     "type": "log",
+     "title": "Day 2",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62C7S8QWKC90RSQDP28R",
+     "type": "log",
+     "title": "Day 3",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62CBR5PD2YSGK61MYRR2",
+     "type": "log",
+     "title": "Day 4",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62CF97GSY7HVY8X9F3RX",
+     "type": "log",
+     "title": "Day 5",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62CKSN0465EZ7E9QGH4Z",
+     "type": "log",
+     "title": "Day 6",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62CQFY3MJWBH9E0B17AY",
+     "type": "log",
+     "title": "Day 7",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62CW2BZMCYESWNAR6CKM",
+     "type": "log",
+     "title": "Day 8",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62D1JCKVCKV8BP2ADJCE",
+     "type": "log",
+     "title": "Day 9",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62DRT3QCP7QAC313NX4Y",
+     "type": "notes",
+     "title": "Parity hub",
+     "kind": "wikilink"
+    }
+   ],
+   "out": []
+  },
+  "01M80T620DQ85V7YNJGAJKE1NF": {
+   "back": [
+    {
+     "id": "01M80T620DJ3REMY39K95XYBSD",
+     "type": "concepts",
+     "title": "Pipes and Redirection",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62AD276MRZETBQGY45HR",
+     "type": "labs",
+     "title": "Bandit 0",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62DRT3QCP7QAC313NX4Y",
+     "type": "notes",
+     "title": "Parity hub",
+     "kind": "wikilink"
+    }
+   ],
+   "out": [
+    {
+     "id": "01M80T620BJS9FYZ6YARGSPD06",
+     "type": "commands",
+     "title": "ls",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620B31YJAK2CYRT5ZMPK",
+     "type": "commands",
+     "title": "cp",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620C451QED07D4K0RJ9R",
+     "type": "commands",
+     "title": "find",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620BA2HZEMYQVCPBZNZF",
+     "type": "commands",
+     "title": "rm",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DJ3REMY39K95XYBSD",
+     "type": "concepts",
+     "title": "Pipes and Redirection",
+     "kind": "relation"
+    }
+   ]
+  },
+  "01M80T620DJ3REMY39K95XYBSD": {
+   "back": [
+    {
+     "id": "01M80T620DQ85V7YNJGAJKE1NF",
+     "type": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DRCPTBNWMW86RD9SF",
+     "type": "concepts",
+     "title": "Processes and Signals",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DNCK7X3GVN0MAAJVD",
+     "type": "labs",
+     "title": "Example: who failed to log in?",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T62B622V1HGTW84YCJA5D",
+     "type": "projects",
+     "title": "Port scanner",
+     "kind": "relation"
+    }
+   ],
+   "out": [
+    {
+     "id": "01M80T620CDX7SS73NJR1P941S",
+     "type": "commands",
+     "title": "cat",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620C0Q9YB5D2Q8NHTA3F",
+     "type": "commands",
+     "title": "grep",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620CGNRGGJ763GMJZ5HQ",
+     "type": "commands",
+     "title": "sort",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620CNZJHHB30Y86FB1S9",
+     "type": "commands",
+     "title": "uniq",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620C0FGRSBG40NQANYBQ",
+     "type": "commands",
+     "title": "wc",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620CYYX36Q8GRE9D5PRR",
+     "type": "commands",
+     "title": "xargs",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DQ85V7YNJGAJKE1NF",
+     "type": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "relation"
+    },
+    {
+     "id": "01M80T620DRCPTBNWMW86RD9SF",
+     "type": "concepts",
+     "title": "Processes and Signals",
+     "kind": "relation"
+    }
+   ]
+  },
+  "01M80T62DRT3QCP7QAC313NX4Y": {
+   "back": [
+    {
+     "id": "01M80T62DVDDNDTCH28N4VX7D0",
+     "type": "notes",
+     "title": "Ünïcode Zebra",
+     "kind": "wikilink"
+    }
+   ],
+   "out": [
+    {
+     "id": "01M80T620DQ85V7YNJGAJKE1NF",
+     "type": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "wikilink"
+    },
+    {
+     "id": "01M80T620BJS9FYZ6YARGSPD06",
+     "type": "commands",
+     "title": "ls",
+     "kind": "wikilink"
+    }
+   ]
+  }
+ },
+ "queue": {
+  "due": 31,
+  "newAvailable": 19,
+  "newToday": 0,
+  "items": [
+   {
+    "card": {
+     "entityId": "01M80T620BJS9FYZ6YARGSPD06",
+     "collection": "commands",
+     "title": "ls",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: log files with readable sizes",
+     "answer": "ls -lh /var/log",
+     "expected": [
+      "ls -lh /var/log"
+     ],
+     "hint": "starts with “ls”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-22T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-10-22T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-21T12:00:00.000Z",
+     "firstAt": "2026-10-21T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B31YJAK2CYRT5ZMPK",
+     "collection": "commands",
+     "title": "cp",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: copy, but confirm before replacing",
+     "answer": "cp -i report.txt ~/Documents/",
+     "expected": [
+      "cp -i report.txt ~/Documents/"
+     ],
+     "hint": "starts with “cp”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-24T09:10:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 0,
+     "dueAt": "2026-10-24T09:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-10-24T09:00:00.000Z",
+     "firstAt": "2026-10-24T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BZ2FRJPP0TZ6E3VCD",
+     "collection": "commands",
+     "title": "ln",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: make a hard link to a file",
+     "answer": "ln data.txt data-hardlink.txt",
+     "expected": [
+      "ln data.txt data-hardlink.txt"
+     ],
+     "hint": "starts with “ln”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-30T11:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-10-30T11:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-27T11:00:00.000Z",
+     "firstAt": "2026-10-27T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CDX7SS73NJR1P941S",
+     "collection": "commands",
+     "title": "cat",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: join two files into a third",
+     "answer": "cat a.txt b.txt > both.txt",
+     "expected": [
+      "cat a.txt b.txt > both.txt"
+     ],
+     "hint": "starts with “cat”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-31T08:00:00.000Z",
+    "srs": {
+     "ease": 2.36,
+     "intervalDays": 1,
+     "dueAt": "2026-10-31T08:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-30T08:00:00.000Z",
+     "firstAt": "2026-10-30T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B91MDQVMZZ4KG0QQP",
+     "collection": "commands",
+     "title": "cd",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `cd` do?",
+     "answer": "change the current directory"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-01T11:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 4,
+     "dueAt": "2026-11-01T11:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-10-28T11:00:00.000Z",
+     "firstAt": "2026-10-22T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CTN9H30HZN5PE80AQ",
+     "collection": "commands",
+     "title": "tail",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: the last 50 authentication log lines",
+     "answer": "tail -n 50 /var/log/auth.log",
+     "expected": [
+      "tail -n 50 /var/log/auth.log"
+     ],
+     "hint": "starts with “tail”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-03T10:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-03T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-02T10:00:00.000Z",
+     "firstAt": "2026-11-02T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B5AQ1SCEWCECT7Q7X",
+     "collection": "commands",
+     "title": "pwd",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `pwd`, what does `-P` do?",
+     "answer": "show the physical path with symbolic links resolved"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-05T10:00:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 1,
+     "dueAt": "2026-11-05T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-04T10:00:00.000Z",
+     "firstAt": "2026-10-23T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BJ2PHCNHG461R0RYM",
+     "collection": "commands",
+     "title": "mv",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: mv draft.txt ____",
+     "answer": "mv draft.txt final.txt",
+     "expected": [
+      "final.txt"
+     ],
+     "hint": "rename a file"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-06T08:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 6,
+     "dueAt": "2026-11-06T08:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-10-31T08:00:00.000Z",
+     "firstAt": "2026-10-25T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYV4GTJVRTAHZ8C29",
+     "collection": "commands",
+     "title": "less",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `less`, what does `-S` do?",
+     "answer": "do not wrap long lines"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-07T12:00:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 1,
+     "dueAt": "2026-11-07T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-06T12:00:00.000Z",
+     "firstAt": "2026-10-31T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C5MNW5RGJV4ZAPB1X",
+     "collection": "commands",
+     "title": "du",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: how big is my Downloads folder?",
+     "answer": "du -sh ~/Downloads",
+     "expected": [
+      "du -sh ~/Downloads"
+     ],
+     "hint": "starts with “du”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-08T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-08T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-05T12:00:00.000Z",
+     "firstAt": "2026-11-05T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C0Q9YB5D2Q8NHTA3F",
+     "collection": "commands",
+     "title": "grep",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: is sshd running?",
+     "answer": "ps aux | grep -v grep | grep ssh",
+     "expected": [
+      "ps aux | grep -v grep | grep ssh"
+     ],
+     "hint": "starts with “grep”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-09T09:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-09T09:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-08T09:00:00.000Z",
+     "firstAt": "2026-11-08T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CNSQRZKNWYHG5WAXJ",
+     "collection": "commands",
+     "title": "touch",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: create an empty file",
+     "answer": "touch notes.txt",
+     "expected": [
+      "touch notes.txt"
+     ],
+     "hint": "starts with “touch”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-10T09:10:00.000Z",
+    "srs": {
+     "ease": 2.26,
+     "intervalDays": 0,
+     "dueAt": "2026-11-10T09:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-10T09:00:00.000Z",
+     "firstAt": "2026-10-29T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BH9T1D9K21YKS4CWR",
+     "collection": "commands",
+     "title": "mkdir",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: mkdir ____ projects/web/assets",
+     "answer": "mkdir -p projects/web/assets",
+     "expected": [
+      "-p"
+     ],
+     "hint": "create a whole path at once"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-11T10:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 8,
+     "dueAt": "2026-11-11T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-03T10:00:00.000Z",
+     "firstAt": "2026-10-28T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DQ85V7YNJGAJKE1NF",
+     "collection": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Wildcards and Globbing”?",
+     "answer": "Special characters the shell expands into matching file names before the command runs, so one pattern can stand for many files."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-11T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-11T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-10T12:00:00.000Z",
+     "firstAt": "2026-11-10T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CGNRGGJ763GMJZ5HQ",
+     "collection": "commands",
+     "title": "sort",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: alphabetical order",
+     "answer": "sort names.txt",
+     "expected": [
+      "sort names.txt"
+     ],
+     "hint": "starts with “sort”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-12T11:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-12T11:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-11T11:00:00.000Z",
+     "firstAt": "2026-11-11T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CZSZ473ET970R52EH",
+     "collection": "commands",
+     "title": "df",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: free space where /var lives",
+     "answer": "df -h /var",
+     "expected": [
+      "df -h /var"
+     ],
+     "hint": "starts with “df”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-12T11:10:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 0,
+     "dueAt": "2026-11-12T11:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-12T11:00:00.000Z",
+     "firstAt": "2026-11-06T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C0FGRSBG40NQANYBQ",
+     "collection": "commands",
+     "title": "wc",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: how many entries in this folder?",
+     "answer": "ls | wc -l",
+     "expected": [
+      "ls | wc -l"
+     ],
+     "hint": "starts with “wc”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-14T08:10:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 0,
+     "dueAt": "2026-11-14T08:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-14T08:00:00.000Z",
+     "firstAt": "2026-11-14T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C8F51ZV9H31B0ASH2",
+     "collection": "commands",
+     "title": "file",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: file ____ /bin/ls",
+     "answer": "file -b /bin/ls",
+     "expected": [
+      "-b"
+     ],
+     "hint": "description only"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T09:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 6,
+     "dueAt": "2026-11-15T09:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-09T09:00:00.000Z",
+     "firstAt": "2026-11-03T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DJ3REMY39K95XYBSD",
+     "collection": "concepts",
+     "title": "Pipes and Redirection",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Pipes and Redirection”?",
+     "answer": "Every program has input (stdin), output (stdout) and error output (stderr). Redirection sends them to files; pipes connect one program's output to the next one's input."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-15T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-12T12:00:00.000Z",
+     "firstAt": "2026-11-12T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DM9832W9T47SM4HF3",
+     "collection": "concepts",
+     "title": "DNS (Domain Name System)",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “DNS (Domain Name System)”?",
+     "answer": "DNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember numbers."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-15T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-14T12:00:00.000Z",
+     "firstAt": "2026-11-14T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620D5RSN4J5HMCFNQF1K",
+     "collection": "concepts",
+     "title": "TCP/IP and Ports",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “TCP/IP and Ports” in your own words. What is it basically like…?",
+     "answer": "\"The address gets you to the building, the port gets you to the right door.\""
+    },
+    "isNew": false,
+    "dueAt": "2026-11-19T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-19T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-16T12:00:00.000Z",
+     "firstAt": "2026-11-16T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DATFHQBZKCP2AQT3M",
+     "collection": "concepts",
+     "title": "HTTP Basics",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “HTTP Basics” in your own words. What is it basically like…?",
+     "answer": "\"A polite letter exchange: a request in, a status and a reply out.\""
+    },
+    "isNew": false,
+    "dueAt": "2026-11-19T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-19T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-18T12:00:00.000Z",
+     "firstAt": "2026-11-18T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYYX36Q8GRE9D5PRR",
+     "collection": "commands",
+     "title": "xargs",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: copy each match, using {} as the placeholder",
+     "answer": "ls *.png | xargs -I {} cp {} /tmp/",
+     "expected": [
+      "ls *.png | xargs -I {} cp {} /tmp/"
+     ],
+     "hint": "starts with “xargs”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-20T10:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-20T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-17T10:00:00.000Z",
+     "firstAt": "2026-11-17T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CNZJHHB30Y86FB1S9",
+     "collection": "commands",
+     "title": "uniq",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `uniq`, what does `-i` do?",
+     "answer": "ignore case when comparing"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-22T10:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 4,
+     "dueAt": "2026-11-22T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-18T10:00:00.000Z",
+     "firstAt": "2026-11-12T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C8940C8QF1W8CJA4S",
+     "collection": "commands",
+     "title": "sed",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: sed /^#/d ____",
+     "answer": "sed '/^#/d' config.conf",
+     "expected": [
+      "config.conf"
+     ],
+     "hint": "drop comment lines"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-23T08:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 8,
+     "dueAt": "2026-11-23T08:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-15T08:00:00.000Z",
+     "firstAt": "2026-11-09T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DGYW3DE7F3KFVDRZ7",
+     "collection": "concepts",
+     "title": "Hashing vs Encryption",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Hashing vs Encryption”?",
+     "answer": "Encryption is reversible with a key; hashing is a one-way fingerprint of data. They solve different problems."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-23T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-23T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-20T12:00:00.000Z",
+     "firstAt": "2026-11-20T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C7145SPENQS808D5M",
+     "collection": "commands",
+     "title": "tar",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `tar` do?",
+     "answer": "create and extract archives"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-25T10:00:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 6,
+     "dueAt": "2026-11-25T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 1,
+     "lastAt": "2026-11-19T10:00:00.000Z",
+     "firstAt": "2026-11-07T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C451QED07D4K0RJ9R",
+     "collection": "commands",
+     "title": "find",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `find` do?",
+     "answer": "search for files by name, type, size or time"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-26T08:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 10,
+     "dueAt": "2026-11-26T08:00:00.000Z",
+     "reps": 3,
+     "lapses": 0,
+     "lastAt": "2026-11-16T08:00:00.000Z",
+     "firstAt": "2026-11-04T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CY5Y6QXV38C1M77RM",
+     "collection": "commands",
+     "title": "cut",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `cut`, what does `-c` do?",
+     "answer": "which character positions to print, such as -c1-8"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-26T09:00:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 1,
+     "dueAt": "2026-11-26T09:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-25T09:00:00.000Z",
+     "firstAt": "2026-11-13T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CDAEH5DJE2V4H41G6",
+     "collection": "commands",
+     "title": "tr",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: tr ____   < spaced.txt",
+     "answer": "tr -s ' ' < spaced.txt",
+     "expected": [
+      "-s"
+     ],
+     "hint": "collapse runs of spaces"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-27T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 6,
+     "dueAt": "2026-11-27T12:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-21T12:00:00.000Z",
+     "firstAt": "2026-11-15T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BA2HZEMYQVCPBZNZF",
+     "collection": "commands",
+     "title": "rm",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: rm ____",
+     "answer": "rm old.log",
+     "expected": [
+      "old.log"
+     ],
+     "hint": "delete one file"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-28T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 21,
+     "dueAt": "2026-11-28T12:00:00.000Z",
+     "reps": 3,
+     "lapses": 0,
+     "lastAt": "2026-11-07T12:00:00.000Z",
+     "firstAt": "2026-10-26T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CTEEFWQWDXE4T4ZA9",
+     "collection": "commands",
+     "title": "curl",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `curl` do?",
+     "answer": "transfer data from or to a URL"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CJKPACGJ94XF6101W",
+     "collection": "commands",
+     "title": "dig",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `dig` do?",
+     "answer": "query DNS records"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DV5D7AAKGT4Z3677H",
+     "collection": "concepts",
+     "title": "File Permissions",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “File Permissions” in your own words. What is it basically like…?",
+     "answer": "\"A three-by-three grid of who may do what, checked top to bottom.\""
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CCGV7S680P79JFAXX",
+     "collection": "commands",
+     "title": "id",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `id` do?",
+     "answer": "show user and group IDs"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CXWYRXZKNDNVM0PE4",
+     "collection": "commands",
+     "title": "ip",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `ip` do?",
+     "answer": "show and manage network interfaces and routes"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DCPBHAM35TYAF6V1E",
+     "collection": "commands",
+     "title": "kill",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `kill` do?",
+     "answer": "send a signal to a process"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DFST8X901HCJR00FQ",
+     "collection": "concepts",
+     "title": "Linux Filesystem Hierarchy",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “Linux Filesystem Hierarchy” in your own words. What is it basically like…?",
+     "answer": "\"One big tree, and every file has exactly one address.\""
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C2JHSJDJ3ZDFVEB33",
+     "collection": "commands",
+     "title": "man",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `man` do?",
+     "answer": "read the manual page for a command"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYJP215Q2QRT695T7",
+     "collection": "commands",
+     "title": "nc",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `nc` do?",
+     "answer": "read and write network connections"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CC9BF0194ZJ7JP7XN",
+     "collection": "commands",
+     "title": "nmap",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `nmap` do?",
+     "answer": "scan hosts and ports"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   }
+  ]
+ },
+ "queue300": {
+  "due": 31,
+  "newAvailable": 19,
+  "newToday": 0,
+  "items": [
+   {
+    "card": {
+     "entityId": "01M80T620BJS9FYZ6YARGSPD06",
+     "collection": "commands",
+     "title": "ls",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: log files with readable sizes",
+     "answer": "ls -lh /var/log",
+     "expected": [
+      "ls -lh /var/log"
+     ],
+     "hint": "starts with “ls”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-22T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-10-22T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-21T12:00:00.000Z",
+     "firstAt": "2026-10-21T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B31YJAK2CYRT5ZMPK",
+     "collection": "commands",
+     "title": "cp",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: copy, but confirm before replacing",
+     "answer": "cp -i report.txt ~/Documents/",
+     "expected": [
+      "cp -i report.txt ~/Documents/"
+     ],
+     "hint": "starts with “cp”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-24T09:10:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 0,
+     "dueAt": "2026-10-24T09:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-10-24T09:00:00.000Z",
+     "firstAt": "2026-10-24T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BZ2FRJPP0TZ6E3VCD",
+     "collection": "commands",
+     "title": "ln",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: make a hard link to a file",
+     "answer": "ln data.txt data-hardlink.txt",
+     "expected": [
+      "ln data.txt data-hardlink.txt"
+     ],
+     "hint": "starts with “ln”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-30T11:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-10-30T11:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-27T11:00:00.000Z",
+     "firstAt": "2026-10-27T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CDX7SS73NJR1P941S",
+     "collection": "commands",
+     "title": "cat",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: join two files into a third",
+     "answer": "cat a.txt b.txt > both.txt",
+     "expected": [
+      "cat a.txt b.txt > both.txt"
+     ],
+     "hint": "starts with “cat”"
+    },
+    "isNew": false,
+    "dueAt": "2026-10-31T08:00:00.000Z",
+    "srs": {
+     "ease": 2.36,
+     "intervalDays": 1,
+     "dueAt": "2026-10-31T08:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-10-30T08:00:00.000Z",
+     "firstAt": "2026-10-30T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B91MDQVMZZ4KG0QQP",
+     "collection": "commands",
+     "title": "cd",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `cd` do?",
+     "answer": "change the current directory"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-01T11:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 4,
+     "dueAt": "2026-11-01T11:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-10-28T11:00:00.000Z",
+     "firstAt": "2026-10-22T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CTN9H30HZN5PE80AQ",
+     "collection": "commands",
+     "title": "tail",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: the last 50 authentication log lines",
+     "answer": "tail -n 50 /var/log/auth.log",
+     "expected": [
+      "tail -n 50 /var/log/auth.log"
+     ],
+     "hint": "starts with “tail”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-03T10:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-03T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-02T10:00:00.000Z",
+     "firstAt": "2026-11-02T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620B5AQ1SCEWCECT7Q7X",
+     "collection": "commands",
+     "title": "pwd",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `pwd`, what does `-P` do?",
+     "answer": "show the physical path with symbolic links resolved"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-05T10:00:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 1,
+     "dueAt": "2026-11-05T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-04T10:00:00.000Z",
+     "firstAt": "2026-10-23T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BJ2PHCNHG461R0RYM",
+     "collection": "commands",
+     "title": "mv",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: mv draft.txt ____",
+     "answer": "mv draft.txt final.txt",
+     "expected": [
+      "final.txt"
+     ],
+     "hint": "rename a file"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-06T08:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 6,
+     "dueAt": "2026-11-06T08:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-10-31T08:00:00.000Z",
+     "firstAt": "2026-10-25T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYV4GTJVRTAHZ8C29",
+     "collection": "commands",
+     "title": "less",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `less`, what does `-S` do?",
+     "answer": "do not wrap long lines"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-07T12:00:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 1,
+     "dueAt": "2026-11-07T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-06T12:00:00.000Z",
+     "firstAt": "2026-10-31T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C5MNW5RGJV4ZAPB1X",
+     "collection": "commands",
+     "title": "du",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: how big is my Downloads folder?",
+     "answer": "du -sh ~/Downloads",
+     "expected": [
+      "du -sh ~/Downloads"
+     ],
+     "hint": "starts with “du”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-08T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-08T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-05T12:00:00.000Z",
+     "firstAt": "2026-11-05T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C0Q9YB5D2Q8NHTA3F",
+     "collection": "commands",
+     "title": "grep",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: is sshd running?",
+     "answer": "ps aux | grep -v grep | grep ssh",
+     "expected": [
+      "ps aux | grep -v grep | grep ssh"
+     ],
+     "hint": "starts with “grep”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-09T09:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-09T09:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-08T09:00:00.000Z",
+     "firstAt": "2026-11-08T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CNSQRZKNWYHG5WAXJ",
+     "collection": "commands",
+     "title": "touch",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: create an empty file",
+     "answer": "touch notes.txt",
+     "expected": [
+      "touch notes.txt"
+     ],
+     "hint": "starts with “touch”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-10T09:10:00.000Z",
+    "srs": {
+     "ease": 2.26,
+     "intervalDays": 0,
+     "dueAt": "2026-11-10T09:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-10T09:00:00.000Z",
+     "firstAt": "2026-10-29T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BH9T1D9K21YKS4CWR",
+     "collection": "commands",
+     "title": "mkdir",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: mkdir ____ projects/web/assets",
+     "answer": "mkdir -p projects/web/assets",
+     "expected": [
+      "-p"
+     ],
+     "hint": "create a whole path at once"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-11T10:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 8,
+     "dueAt": "2026-11-11T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-03T10:00:00.000Z",
+     "firstAt": "2026-10-28T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DQ85V7YNJGAJKE1NF",
+     "collection": "concepts",
+     "title": "Wildcards and Globbing",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Wildcards and Globbing”?",
+     "answer": "Special characters the shell expands into matching file names before the command runs, so one pattern can stand for many files."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-11T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-11T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-10T12:00:00.000Z",
+     "firstAt": "2026-11-10T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CGNRGGJ763GMJZ5HQ",
+     "collection": "commands",
+     "title": "sort",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: alphabetical order",
+     "answer": "sort names.txt",
+     "expected": [
+      "sort names.txt"
+     ],
+     "hint": "starts with “sort”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-12T11:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-12T11:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-11T11:00:00.000Z",
+     "firstAt": "2026-11-11T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CZSZ473ET970R52EH",
+     "collection": "commands",
+     "title": "df",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: free space where /var lives",
+     "answer": "df -h /var",
+     "expected": [
+      "df -h /var"
+     ],
+     "hint": "starts with “df”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-12T11:10:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 0,
+     "dueAt": "2026-11-12T11:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-12T11:00:00.000Z",
+     "firstAt": "2026-11-06T11:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C0FGRSBG40NQANYBQ",
+     "collection": "commands",
+     "title": "wc",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: how many entries in this folder?",
+     "answer": "ls | wc -l",
+     "expected": [
+      "ls | wc -l"
+     ],
+     "hint": "starts with “wc”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-14T08:10:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 0,
+     "dueAt": "2026-11-14T08:10:00.000Z",
+     "reps": 0,
+     "lapses": 1,
+     "lastAt": "2026-11-14T08:00:00.000Z",
+     "firstAt": "2026-11-14T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C8F51ZV9H31B0ASH2",
+     "collection": "commands",
+     "title": "file",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: file ____ /bin/ls",
+     "answer": "file -b /bin/ls",
+     "expected": [
+      "-b"
+     ],
+     "hint": "description only"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T09:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 6,
+     "dueAt": "2026-11-15T09:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-09T09:00:00.000Z",
+     "firstAt": "2026-11-03T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DJ3REMY39K95XYBSD",
+     "collection": "concepts",
+     "title": "Pipes and Redirection",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Pipes and Redirection”?",
+     "answer": "Every program has input (stdin), output (stdout) and error output (stderr). Redirection sends them to files; pipes connect one program's output to the next one's input."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-15T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-12T12:00:00.000Z",
+     "firstAt": "2026-11-12T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DM9832W9T47SM4HF3",
+     "collection": "concepts",
+     "title": "DNS (Domain Name System)",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “DNS (Domain Name System)”?",
+     "answer": "DNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember numbers."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-15T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-15T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-14T12:00:00.000Z",
+     "firstAt": "2026-11-14T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620D5RSN4J5HMCFNQF1K",
+     "collection": "concepts",
+     "title": "TCP/IP and Ports",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “TCP/IP and Ports” in your own words. What is it basically like…?",
+     "answer": "\"The address gets you to the building, the port gets you to the right door.\""
+    },
+    "isNew": false,
+    "dueAt": "2026-11-19T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-19T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-16T12:00:00.000Z",
+     "firstAt": "2026-11-16T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DATFHQBZKCP2AQT3M",
+     "collection": "concepts",
+     "title": "HTTP Basics",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “HTTP Basics” in your own words. What is it basically like…?",
+     "answer": "\"A polite letter exchange: a request in, a status and a reply out.\""
+    },
+    "isNew": false,
+    "dueAt": "2026-11-19T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 1,
+     "dueAt": "2026-11-19T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-18T12:00:00.000Z",
+     "firstAt": "2026-11-18T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYYX36Q8GRE9D5PRR",
+     "collection": "commands",
+     "title": "xargs",
+     "type": "task",
+     "kind": "type",
+     "prompt": "Type the command: copy each match, using {} as the placeholder",
+     "answer": "ls *.png | xargs -I {} cp {} /tmp/",
+     "expected": [
+      "ls *.png | xargs -I {} cp {} /tmp/"
+     ],
+     "hint": "starts with “xargs”"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-20T10:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-20T10:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-17T10:00:00.000Z",
+     "firstAt": "2026-11-17T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CNZJHHB30Y86FB1S9",
+     "collection": "commands",
+     "title": "uniq",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `uniq`, what does `-i` do?",
+     "answer": "ignore case when comparing"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-22T10:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 4,
+     "dueAt": "2026-11-22T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-18T10:00:00.000Z",
+     "firstAt": "2026-11-12T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C8940C8QF1W8CJA4S",
+     "collection": "commands",
+     "title": "sed",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: sed /^#/d ____",
+     "answer": "sed '/^#/d' config.conf",
+     "expected": [
+      "config.conf"
+     ],
+     "hint": "drop comment lines"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-23T08:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 8,
+     "dueAt": "2026-11-23T08:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-15T08:00:00.000Z",
+     "firstAt": "2026-11-09T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DGYW3DE7F3KFVDRZ7",
+     "collection": "concepts",
+     "title": "Hashing vs Encryption",
+     "kind": "reveal",
+     "type": "what",
+     "prompt": "What is “Hashing vs Encryption”?",
+     "answer": "Encryption is reversible with a key; hashing is a one-way fingerprint of data. They solve different problems."
+    },
+    "isNew": false,
+    "dueAt": "2026-11-23T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 3,
+     "dueAt": "2026-11-23T12:00:00.000Z",
+     "reps": 1,
+     "lapses": 0,
+     "lastAt": "2026-11-20T12:00:00.000Z",
+     "firstAt": "2026-11-20T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C7145SPENQS808D5M",
+     "collection": "commands",
+     "title": "tar",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `tar` do?",
+     "answer": "create and extract archives"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-25T10:00:00.000Z",
+    "srs": {
+     "ease": 2.3,
+     "intervalDays": 6,
+     "dueAt": "2026-11-25T10:00:00.000Z",
+     "reps": 2,
+     "lapses": 1,
+     "lastAt": "2026-11-19T10:00:00.000Z",
+     "firstAt": "2026-11-07T10:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C451QED07D4K0RJ9R",
+     "collection": "commands",
+     "title": "find",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `find` do?",
+     "answer": "search for files by name, type, size or time"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-26T08:00:00.000Z",
+    "srs": {
+     "ease": 2.46,
+     "intervalDays": 10,
+     "dueAt": "2026-11-26T08:00:00.000Z",
+     "reps": 3,
+     "lapses": 0,
+     "lastAt": "2026-11-16T08:00:00.000Z",
+     "firstAt": "2026-11-04T08:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CY5Y6QXV38C1M77RM",
+     "collection": "commands",
+     "title": "cut",
+     "type": "flag",
+     "kind": "reveal",
+     "prompt": "In `cut`, what does `-c` do?",
+     "answer": "which character positions to print, such as -c1-8"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-26T09:00:00.000Z",
+    "srs": {
+     "ease": 2.16,
+     "intervalDays": 1,
+     "dueAt": "2026-11-26T09:00:00.000Z",
+     "reps": 1,
+     "lapses": 1,
+     "lastAt": "2026-11-25T09:00:00.000Z",
+     "firstAt": "2026-11-13T09:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CDAEH5DJE2V4H41G6",
+     "collection": "commands",
+     "title": "tr",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: tr ____   < spaced.txt",
+     "answer": "tr -s ' ' < spaced.txt",
+     "expected": [
+      "-s"
+     ],
+     "hint": "collapse runs of spaces"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-27T12:00:00.000Z",
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 6,
+     "dueAt": "2026-11-27T12:00:00.000Z",
+     "reps": 2,
+     "lapses": 0,
+     "lastAt": "2026-11-21T12:00:00.000Z",
+     "firstAt": "2026-11-15T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620BA2HZEMYQVCPBZNZF",
+     "collection": "commands",
+     "title": "rm",
+     "type": "fill",
+     "kind": "type",
+     "prompt": "Fill in the blank: rm ____",
+     "answer": "rm old.log",
+     "expected": [
+      "old.log"
+     ],
+     "hint": "delete one file"
+    },
+    "isNew": false,
+    "dueAt": "2026-11-28T12:00:00.000Z",
+    "srs": {
+     "ease": 2.6,
+     "intervalDays": 21,
+     "dueAt": "2026-11-28T12:00:00.000Z",
+     "reps": 3,
+     "lapses": 0,
+     "lastAt": "2026-11-07T12:00:00.000Z",
+     "firstAt": "2026-10-26T12:00:00.000Z"
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CTEEFWQWDXE4T4ZA9",
+     "collection": "commands",
+     "title": "curl",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `curl` do?",
+     "answer": "transfer data from or to a URL"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CJKPACGJ94XF6101W",
+     "collection": "commands",
+     "title": "dig",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `dig` do?",
+     "answer": "query DNS records"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DV5D7AAKGT4Z3677H",
+     "collection": "concepts",
+     "title": "File Permissions",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “File Permissions” in your own words. What is it basically like…?",
+     "answer": "\"A three-by-three grid of who may do what, checked top to bottom.\""
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CCGV7S680P79JFAXX",
+     "collection": "commands",
+     "title": "id",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `id` do?",
+     "answer": "show user and group IDs"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CXWYRXZKNDNVM0PE4",
+     "collection": "commands",
+     "title": "ip",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `ip` do?",
+     "answer": "show and manage network interfaces and routes"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DCPBHAM35TYAF6V1E",
+     "collection": "commands",
+     "title": "kill",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `kill` do?",
+     "answer": "send a signal to a process"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620DFST8X901HCJR00FQ",
+     "collection": "concepts",
+     "title": "Linux Filesystem Hierarchy",
+     "kind": "reveal",
+     "type": "teach",
+     "prompt": "Explain “Linux Filesystem Hierarchy” in your own words. What is it basically like…?",
+     "answer": "\"One big tree, and every file has exactly one address.\""
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620C2JHSJDJ3ZDFVEB33",
+     "collection": "commands",
+     "title": "man",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `man` do?",
+     "answer": "read the manual page for a command"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CYJP215Q2QRT695T7",
+     "collection": "commands",
+     "title": "nc",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `nc` do?",
+     "answer": "read and write network connections"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   },
+   {
+    "card": {
+     "entityId": "01M80T620CC9BF0194ZJ7JP7XN",
+     "collection": "commands",
+     "title": "nmap",
+     "type": "name",
+     "kind": "reveal",
+     "prompt": "What does `nmap` do?",
+     "answer": "scan hosts and ports"
+    },
+    "isNew": true,
+    "srs": {
+     "ease": 2.5,
+     "intervalDays": 0,
+     "reps": 0,
+     "lapses": 0
+    }
+   }
+  ]
+ },
+ "stats": {
+  "due": 31,
+  "newAvailable": 10,
+  "newToday": 0,
+  "reviewedToday": 0,
+  "reviews30d": 52,
+  "retention30d": 77,
+  "newPerDay": 10
+ },
+ "questions": [
+  {
+   "conceptId": "01M80T620DQ85V7YNJGAJKE1NF",
+   "concept": "Wildcards and Globbing",
+   "text": "How do I preview exactly what a glob will expand to before using it with rm?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DJ3REMY39K95XYBSD",
+   "concept": "Pipes and Redirection",
+   "text": "How would I log both output and errors of a long scan to a file and still watch it live?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DGYW3DE7F3KFVDRZ7",
+   "concept": "Hashing vs Encryption",
+   "text": "Why is a slow hash a feature for passwords but a drawback for file checksums?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DFST8X901HCJR00FQ",
+   "concept": "Linux Filesystem Hierarchy",
+   "text": "Which files in /etc are readable by any user on this machine, and which should not be?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DV5D7AAKGT4Z3677H",
+   "concept": "File Permissions",
+   "text": "What does it take for a setuid program to become a vulnerability?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DRCPTBNWMW86RD9SF",
+   "concept": "Processes and Signals",
+   "text": "How can I tell which process opened a particular network port?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620D90H5NMK39SND3R4V",
+   "concept": "Principle of Least Privilege",
+   "text": "Which services on my machine run as root, and could any of them run as a normal user?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T62E2X8KXFQKGF8WVFBCM",
+   "concept": "Open questions demo",
+   "text": "Why?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T62E2X8KXFQKGF8WVFBCM",
+   "concept": "Open questions demo",
+   "text": "Done?",
+   "line": 1,
+   "done": true
+  },
+  {
+   "conceptId": "01M80T62E2X8KXFQKGF8WVFBCM",
+   "concept": "Open questions demo",
+   "text": "How?",
+   "line": 2,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DM9832W9T47SM4HF3",
+   "concept": "DNS (Domain Name System)",
+   "text": "How can I see which resolver my machine is actually using right now?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620D5RSN4J5HMCFNQF1K",
+   "concept": "TCP/IP and Ports",
+   "text": "What does a SYN scan look like in tcpdump compared with a full connect scan?",
+   "line": 0,
+   "done": false
+  },
+  {
+   "conceptId": "01M80T620DATFHQBZKCP2AQT3M",
+   "concept": "HTTP Basics",
+   "text": "Which response headers would tell me the most about how a site is protected?",
+   "line": 0,
+   "done": false
+  }
+ ],
+ "overview": {
+  "generatedAt": "2026-11-30T12:00:00.000Z",
+  "banner": {
+   "name": "HQ",
+   "status": "ACTIVE",
+   "mode": "LEARNING",
+   "threat": {
+    "level": "MODERATE",
+    "score": 25,
+    "daysSinceActivity": 0,
+    "streak": 5,
+    "overdue": 29,
+    "explanation": "MODERATE (score 25): active today, 29 card(s) overdue by more than 3 days, 5-day streak. Score = 10×days idle + 2×overdue (max 20) − 3×streak (max 14). LOW < 20, MODERATE < 50, ELEVATED < 90, HIGH above."
+   }
+  },
+  "counts": {
+   "commands": 45,
+   "concepts": 11,
+   "labs": 6,
+   "projects": 2,
+   "log": 12,
+   "notes": 6,
+   "snippets": 1
+  },
+  "kpis": {
+   "commandsMastered": 3,
+   "commandsTotal": 45,
+   "conceptsStudied": 11,
+   "conceptsConfident": 0,
+   "labsCompleted": 2,
+   "labsTotal": 6,
+   "activeProjects": 1
+  },
+  "mastery": [
+   15,
+   18,
+   9,
+   3
+  ],
+  "labs": {
+   "byPlatform": {
+    "Bandit": {
+     "total": 2,
+     "completed": 1
+    },
+    "Practice": {
+     "total": 3,
+     "completed": 0
+    },
+    "TryHackMe": {
+     "total": 1,
+     "completed": 1
+    }
+   },
+   "byStatus": {
+    "Completed": 2,
+    "In Progress": 1,
+    "Not Started": 3
+   },
+   "byDifficulty": {
+    "Easy": 3,
+    "Medium": 2,
+    "Hard": 1
+   }
+  },
+  "timePerWeek": [
+   {
+    "week": "2026-09-14",
+    "minutes": 0
+   },
+   {
+    "week": "2026-09-21",
+    "minutes": 0
+   },
+   {
+    "week": "2026-09-28",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-05",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-12",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-19",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-26",
+    "minutes": 115
+   },
+   {
+    "week": "2026-11-02",
+    "minutes": 55
+   },
+   {
+    "week": "2026-11-09",
+    "minutes": 150
+   },
+   {
+    "week": "2026-11-16",
+    "minutes": 150
+   },
+   {
+    "week": "2026-11-23",
+    "minutes": 175
+   },
+   {
+    "week": "2026-11-30",
+    "minutes": 20
+   }
+  ],
+  "streak": {
+   "current": 5,
+   "longest": 5
+  },
+  "heatmap": {
+   "from": "2025-11-25",
+   "to": "2026-11-30",
+   "days": {
+    "2026-10-16": 3,
+    "2026-10-30": 3,
+    "2026-10-31": 3,
+    "2026-11-14": 3,
+    "2026-11-15": 3,
+    "2026-11-21": 3,
+    "2026-11-22": 3,
+    "2026-11-23": 3,
+    "2026-11-26": 3,
+    "2026-11-27": 3,
+    "2026-11-28": 3,
+    "2026-11-29": 3,
+    "2026-11-30": 3
+   }
+  },
+  "study": {
+   "due": 31,
+   "newAvailable": 10,
+   "newToday": 0,
+   "reviewedToday": 0,
+   "reviews30d": 52,
+   "retention30d": 77,
+   "newPerDay": 10,
+   "overdue": 29
+  },
+  "skillMap": [
+   {
+    "name": "Linux",
+    "weight": 1,
+    "score": 47,
+    "parts": {
+     "concepts": 8.8,
+     "commands": 24.2,
+     "labs": 3.8,
+     "recency": 10
+    },
+    "counts": {
+     "concepts": 5,
+     "commands": 25,
+     "labs": 2
+    },
+    "lastActivity": "2026-12-01T08:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Bash",
+    "weight": 1,
+    "score": 33,
+    "parts": {
+     "concepts": 6.2,
+     "commands": 13.3,
+     "labs": 3.8,
+     "recency": 9.3
+    },
+    "counts": {
+     "concepts": 2,
+     "commands": 10,
+     "labs": 2
+    },
+    "lastActivity": "2026-11-28T11:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Networking",
+    "weight": 1,
+    "score": 28,
+    "parts": {
+     "concepts": 7.8,
+     "commands": 0,
+     "labs": 11.3,
+     "recency": 9
+    },
+    "counts": {
+     "concepts": 2,
+     "commands": 10,
+     "labs": 2
+    },
+    "lastActivity": "2026-11-27T12:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Web Security",
+    "weight": 1,
+    "score": 23,
+    "parts": {
+     "concepts": 3.1,
+     "commands": 0,
+     "labs": 11.3,
+     "recency": 9
+    },
+    "counts": {
+     "concepts": 1,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-27T12:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Windows",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Cryptography",
+    "weight": 1,
+    "score": 12,
+    "parts": {
+     "concepts": 4.7,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 1,
+     "commands": 0,
+     "labs": 0
+    },
+    "lastActivity": "2026-11-22T05:03:12.587Z",
+    "trend": null
+   },
+   {
+    "name": "Forensics",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "OSINT",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Log Analysis",
+    "weight": 1,
+    "score": 8,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-22T05:03:11.679Z",
+    "trend": null
+   },
+   {
+    "name": "Scanning & Recon",
+    "weight": 1,
+    "score": 8,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-22T05:03:11.681Z",
+    "trend": null
+   },
+   {
+    "name": "Password Cracking",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Reverse Engineering",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Binary Exploitation",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   }
+  ],
+  "skillTrend": [
+   {
+    "day": "2026-11-30",
+    "scores": {
+     "Linux": 47,
+     "Bash": 33,
+     "Networking": 28,
+     "Web Security": 23,
+     "Windows": 0,
+     "Cryptography": 12,
+     "Forensics": 0,
+     "OSINT": 0,
+     "Log Analysis": 8,
+     "Scanning & Recon": 8,
+     "Password Cracking": 0,
+     "Reverse Engineering": 0,
+     "Binary Exploitation": 0
+    }
+   }
+  ],
+  "recommendations": [
+   {
+    "id": "review",
+    "kind": "review",
+    "title": "Review 31 due cards",
+    "why": "Spaced repetition brings cards back just before you would forget them; clearing them keeps your streak and threat level low.",
+    "route": "/study",
+    "priority": 100
+   },
+   {
+    "id": "domain:Log Analysis",
+    "kind": "weak-domain",
+    "title": "Strengthen Log Analysis",
+    "why": "Log Analysis is your weakest weighted domain among those you have started (8/100). Biggest gap: concepts. Try to study a concept.",
+    "route": "/concepts",
+    "priority": 80
+   },
+   {
+    "id": "lab:01M80T62AKZFNFS93M0TBXXSC3",
+    "kind": "lab-in-progress",
+    "title": "Finish “Bandit 1”",
+    "why": "In progress, last touched 8 days ago.",
+    "route": "/labs/01M80T62AKZFNFS93M0TBXXSC3",
+    "priority": 70
+   },
+   {
+    "id": "concept:01M80T620DGYW3DE7F3KFVDRZ7",
+    "kind": "concept-no-lab",
+    "title": "Practise “Hashing vs Encryption” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DGYW3DE7F3KFVDRZ7",
+    "priority": 60
+   },
+   {
+    "id": "concept:01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "concept-no-lab",
+    "title": "Practise “File Permissions” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DV5D7AAKGT4Z3677H",
+    "priority": 60
+   },
+   {
+    "id": "concept:01M80T620DRCPTBNWMW86RD9SF",
+    "kind": "concept-no-lab",
+    "title": "Practise “Processes and Signals” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DRCPTBNWMW86RD9SF",
+    "priority": 60
+   },
+   {
+    "id": "cmd:01M80T620C2JHSJDJ3ZDFVEB33",
+    "kind": "stale-command",
+    "title": "Revisit `man`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620C2JHSJDJ3ZDFVEB33",
+    "priority": 50
+   },
+   {
+    "id": "cmd:01M80T620DGDJZRRV7G9XMH7MG",
+    "kind": "stale-command",
+    "title": "Revisit `ps`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620DGDJZRRV7G9XMH7MG",
+    "priority": 50
+   },
+   {
+    "id": "cmd:01M80T620DCPBHAM35TYAF6V1E",
+    "kind": "stale-command",
+    "title": "Revisit `kill`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620DCPBHAM35TYAF6V1E",
+    "priority": 50
+   },
+   {
+    "id": "questions",
+    "kind": "open-question",
+    "title": "Answer 12 open questions",
+    "why": "Questions you wrote down while studying are the cheapest next step: each one points at a gap.",
+    "route": "/questions",
+    "priority": 40
+   }
+  ],
+  "recent": [
+   {
+    "ts": "2026-11-30T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls"
+   },
+   {
+    "ts": "2026-11-30T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd"
+   },
+   {
+    "ts": "2026-11-30T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-29T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd"
+   },
+   {
+    "ts": "2026-11-29T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-29T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-28T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-28T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-28T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv"
+   },
+   {
+    "ts": "2026-11-27T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-27T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv"
+   },
+   {
+    "ts": "2026-11-27T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620BA2HZEMYQVCPBZNZF",
+    "title": "rm"
+   }
+  ]
+ },
+ "overview300": {
+  "generatedAt": "2026-11-30T12:00:00.000Z",
+  "banner": {
+   "name": "HQ",
+   "status": "ACTIVE",
+   "mode": "LEARNING",
+   "threat": {
+    "level": "MODERATE",
+    "score": 25,
+    "daysSinceActivity": 0,
+    "streak": 5,
+    "overdue": 29,
+    "explanation": "MODERATE (score 25): active today, 29 card(s) overdue by more than 3 days, 5-day streak. Score = 10×days idle + 2×overdue (max 20) − 3×streak (max 14). LOW < 20, MODERATE < 50, ELEVATED < 90, HIGH above."
+   }
+  },
+  "counts": {
+   "commands": 45,
+   "concepts": 11,
+   "labs": 6,
+   "projects": 2,
+   "log": 12,
+   "notes": 6,
+   "snippets": 1
+  },
+  "kpis": {
+   "commandsMastered": 3,
+   "commandsTotal": 45,
+   "conceptsStudied": 11,
+   "conceptsConfident": 0,
+   "labsCompleted": 2,
+   "labsTotal": 6,
+   "activeProjects": 1
+  },
+  "mastery": [
+   15,
+   18,
+   9,
+   3
+  ],
+  "labs": {
+   "byPlatform": {
+    "Bandit": {
+     "total": 2,
+     "completed": 1
+    },
+    "Practice": {
+     "total": 3,
+     "completed": 0
+    },
+    "TryHackMe": {
+     "total": 1,
+     "completed": 1
+    }
+   },
+   "byStatus": {
+    "Completed": 2,
+    "In Progress": 1,
+    "Not Started": 3
+   },
+   "byDifficulty": {
+    "Easy": 3,
+    "Medium": 2,
+    "Hard": 1
+   }
+  },
+  "timePerWeek": [
+   {
+    "week": "2026-09-14",
+    "minutes": 0
+   },
+   {
+    "week": "2026-09-21",
+    "minutes": 0
+   },
+   {
+    "week": "2026-09-28",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-05",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-12",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-19",
+    "minutes": 0
+   },
+   {
+    "week": "2026-10-26",
+    "minutes": 115
+   },
+   {
+    "week": "2026-11-02",
+    "minutes": 55
+   },
+   {
+    "week": "2026-11-09",
+    "minutes": 150
+   },
+   {
+    "week": "2026-11-16",
+    "minutes": 150
+   },
+   {
+    "week": "2026-11-23",
+    "minutes": 175
+   },
+   {
+    "week": "2026-11-30",
+    "minutes": 20
+   }
+  ],
+  "streak": {
+   "current": 5,
+   "longest": 5
+  },
+  "heatmap": {
+   "from": "2025-11-25",
+   "to": "2026-11-30",
+   "days": {
+    "2026-10-16": 3,
+    "2026-10-30": 3,
+    "2026-10-31": 3,
+    "2026-11-14": 3,
+    "2026-11-15": 3,
+    "2026-11-21": 3,
+    "2026-11-22": 3,
+    "2026-11-23": 3,
+    "2026-11-26": 3,
+    "2026-11-27": 3,
+    "2026-11-28": 3,
+    "2026-11-29": 3,
+    "2026-11-30": 3
+   }
+  },
+  "study": {
+   "due": 31,
+   "newAvailable": 10,
+   "newToday": 0,
+   "reviewedToday": 0,
+   "reviews30d": 52,
+   "retention30d": 77,
+   "newPerDay": 10,
+   "overdue": 29
+  },
+  "skillMap": [
+   {
+    "name": "Linux",
+    "weight": 1,
+    "score": 47,
+    "parts": {
+     "concepts": 8.8,
+     "commands": 24.2,
+     "labs": 3.8,
+     "recency": 10
+    },
+    "counts": {
+     "concepts": 5,
+     "commands": 25,
+     "labs": 2
+    },
+    "lastActivity": "2026-12-01T08:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Bash",
+    "weight": 1,
+    "score": 33,
+    "parts": {
+     "concepts": 6.2,
+     "commands": 13.3,
+     "labs": 3.8,
+     "recency": 9.3
+    },
+    "counts": {
+     "concepts": 2,
+     "commands": 10,
+     "labs": 2
+    },
+    "lastActivity": "2026-11-28T11:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Networking",
+    "weight": 1,
+    "score": 28,
+    "parts": {
+     "concepts": 7.8,
+     "commands": 0,
+     "labs": 11.3,
+     "recency": 9
+    },
+    "counts": {
+     "concepts": 2,
+     "commands": 10,
+     "labs": 2
+    },
+    "lastActivity": "2026-11-27T12:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Web Security",
+    "weight": 1,
+    "score": 23,
+    "parts": {
+     "concepts": 3.1,
+     "commands": 0,
+     "labs": 11.3,
+     "recency": 9
+    },
+    "counts": {
+     "concepts": 1,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-27T12:00:00.000Z",
+    "trend": null
+   },
+   {
+    "name": "Windows",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Cryptography",
+    "weight": 1,
+    "score": 12,
+    "parts": {
+     "concepts": 4.7,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 1,
+     "commands": 0,
+     "labs": 0
+    },
+    "lastActivity": "2026-11-22T05:03:12.587Z",
+    "trend": null
+   },
+   {
+    "name": "Forensics",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "OSINT",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Log Analysis",
+    "weight": 1,
+    "score": 8,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-22T05:03:11.679Z",
+    "trend": null
+   },
+   {
+    "name": "Scanning & Recon",
+    "weight": 1,
+    "score": 8,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 7.6
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 1
+    },
+    "lastActivity": "2026-11-22T05:03:11.681Z",
+    "trend": null
+   },
+   {
+    "name": "Password Cracking",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Reverse Engineering",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   },
+   {
+    "name": "Binary Exploitation",
+    "weight": 1,
+    "score": 0,
+    "parts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0,
+     "recency": 0
+    },
+    "counts": {
+     "concepts": 0,
+     "commands": 0,
+     "labs": 0
+    },
+    "trend": null
+   }
+  ],
+  "skillTrend": [
+   {
+    "day": "2026-11-30",
+    "scores": {
+     "Linux": 47,
+     "Bash": 33,
+     "Networking": 28,
+     "Web Security": 23,
+     "Windows": 0,
+     "Cryptography": 12,
+     "Forensics": 0,
+     "OSINT": 0,
+     "Log Analysis": 8,
+     "Scanning & Recon": 8,
+     "Password Cracking": 0,
+     "Reverse Engineering": 0,
+     "Binary Exploitation": 0
+    }
+   }
+  ],
+  "recommendations": [
+   {
+    "id": "review",
+    "kind": "review",
+    "title": "Review 31 due cards",
+    "why": "Spaced repetition brings cards back just before you would forget them; clearing them keeps your streak and threat level low.",
+    "route": "/study",
+    "priority": 100
+   },
+   {
+    "id": "domain:Log Analysis",
+    "kind": "weak-domain",
+    "title": "Strengthen Log Analysis",
+    "why": "Log Analysis is your weakest weighted domain among those you have started (8/100). Biggest gap: concepts. Try to study a concept.",
+    "route": "/concepts",
+    "priority": 80
+   },
+   {
+    "id": "lab:01M80T62AKZFNFS93M0TBXXSC3",
+    "kind": "lab-in-progress",
+    "title": "Finish “Bandit 1”",
+    "why": "In progress, last touched 8 days ago.",
+    "route": "/labs/01M80T62AKZFNFS93M0TBXXSC3",
+    "priority": 70
+   },
+   {
+    "id": "concept:01M80T620DGYW3DE7F3KFVDRZ7",
+    "kind": "concept-no-lab",
+    "title": "Practise “Hashing vs Encryption” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DGYW3DE7F3KFVDRZ7",
+    "priority": 60
+   },
+   {
+    "id": "concept:01M80T620DV5D7AAKGT4Z3677H",
+    "kind": "concept-no-lab",
+    "title": "Practise “File Permissions” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DV5D7AAKGT4Z3677H",
+    "priority": 60
+   },
+   {
+    "id": "concept:01M80T620DRCPTBNWMW86RD9SF",
+    "kind": "concept-no-lab",
+    "title": "Practise “Processes and Signals” in a lab",
+    "why": "You have notes on this concept but no lab uses it yet. Applying it makes it stick.",
+    "route": "/concepts/01M80T620DRCPTBNWMW86RD9SF",
+    "priority": 60
+   },
+   {
+    "id": "cmd:01M80T620C2JHSJDJ3ZDFVEB33",
+    "kind": "stale-command",
+    "title": "Revisit `man`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620C2JHSJDJ3ZDFVEB33",
+    "priority": 50
+   },
+   {
+    "id": "cmd:01M80T620DGDJZRRV7G9XMH7MG",
+    "kind": "stale-command",
+    "title": "Revisit `ps`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620DGDJZRRV7G9XMH7MG",
+    "priority": 50
+   },
+   {
+    "id": "cmd:01M80T620DCPBHAM35TYAF6V1E",
+    "kind": "stale-command",
+    "title": "Revisit `kill`",
+    "why": "Never practised (mastery 0/3).",
+    "route": "/commands/01M80T620DCPBHAM35TYAF6V1E",
+    "priority": 50
+   },
+   {
+    "id": "questions",
+    "kind": "open-question",
+    "title": "Answer 12 open questions",
+    "why": "Questions you wrote down while studying are the cheapest next step: each one points at a gap.",
+    "route": "/questions",
+    "priority": 40
+   }
+  ],
+  "recent": [
+   {
+    "ts": "2026-11-30T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620BJS9FYZ6YARGSPD06",
+    "title": "ls"
+   },
+   {
+    "ts": "2026-11-30T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd"
+   },
+   {
+    "ts": "2026-11-30T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-29T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B91MDQVMZZ4KG0QQP",
+    "title": "cd"
+   },
+   {
+    "ts": "2026-11-29T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-29T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-28T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+    "title": "pwd"
+   },
+   {
+    "ts": "2026-11-28T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-28T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv"
+   },
+   {
+    "ts": "2026-11-27T12:00:00.000Z",
+    "type": "update",
+    "collection": "commands",
+    "id": "01M80T620B31YJAK2CYRT5ZMPK",
+    "title": "cp"
+   },
+   {
+    "ts": "2026-11-27T11:00:00.000Z",
+    "type": "study",
+    "collection": "commands",
+    "id": "01M80T620BJ2PHCNHG461R0RYM",
+    "title": "mv"
+   },
+   {
+    "ts": "2026-11-27T10:00:00.000Z",
+    "type": "create",
+    "collection": "commands",
+    "id": "01M80T620BA2HZEMYQVCPBZNZF",
+    "title": "rm"
+   }
+  ]
+ },
+ "scheduleSample": [
+  [
+   {
+    "ease": 2.5,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.5,
+    "intervalDays": 6,
+    "reps": 2,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-06T12:00:00.000Z"
+   },
+   {
+    "ease": 2.6,
+    "intervalDays": 20,
+    "reps": 3,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-20T12:00:00.000Z"
+   },
+   {
+    "ease": 2.46,
+    "intervalDays": 24,
+    "reps": 4,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-24T12:00:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 0,
+    "reps": 0,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-11-30T12:10:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.36,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   }
+  ],
+  [
+   {
+    "ease": 2.5,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.6,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   },
+   {
+    "ease": 2.46,
+    "intervalDays": 10,
+    "reps": 3,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-10T12:00:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 0,
+    "reps": 0,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-11-30T12:10:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.36,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   }
+  ],
+  [
+   {
+    "ease": 2.6,
+    "intervalDays": 3,
+    "reps": 1,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-03T12:00:00.000Z"
+   },
+   {
+    "ease": 2.46,
+    "intervalDays": 4,
+    "reps": 2,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-04T12:00:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 0,
+    "reps": 0,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-11-30T12:10:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.36,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   }
+  ],
+  [
+   {
+    "ease": 2.36,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 0,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.16,
+    "intervalDays": 0,
+    "reps": 0,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-11-30T12:10:00.000Z"
+   },
+   {
+    "ease": 2.16,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.26,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   }
+  ],
+  [
+   {
+    "ease": 2.3,
+    "intervalDays": 0,
+    "reps": 0,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-11-30T12:10:00.000Z"
+   },
+   {
+    "ease": 2.3,
+    "intervalDays": 1,
+    "reps": 1,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-01T12:00:00.000Z"
+   },
+   {
+    "ease": 2.4,
+    "intervalDays": 8,
+    "reps": 2,
+    "lapses": 1,
+    "lastAt": "2026-11-30T12:00:00.000Z",
+    "dueAt": "2026-12-08T12:00:00.000Z"
+   }
+  ]
+ ]
+}

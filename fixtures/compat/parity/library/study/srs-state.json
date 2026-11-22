@@ -1,0 +1,331 @@
+{
+  "data": {
+    "items": {
+      "01M80T620B31YJAK2CYRT5ZMPK": {
+        "dueAt": "2026-10-24T09:10:00.000Z",
+        "ease": 2.3,
+        "firstAt": "2026-10-24T09:00:00.000Z",
+        "intervalDays": 0,
+        "lapses": 1,
+        "lastAt": "2026-10-24T09:00:00.000Z",
+        "reps": 0
+      },
+      "01M80T620B5AQ1SCEWCECT7Q7X": {
+        "dueAt": "2026-11-05T10:00:00.000Z",
+        "ease": 2.16,
+        "firstAt": "2026-10-23T10:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 1,
+        "lastAt": "2026-11-04T10:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620B91MDQVMZZ4KG0QQP": {
+        "dueAt": "2026-11-01T11:00:00.000Z",
+        "ease": 2.46,
+        "firstAt": "2026-10-22T11:00:00.000Z",
+        "intervalDays": 4,
+        "lapses": 0,
+        "lastAt": "2026-10-28T11:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620BA2HZEMYQVCPBZNZF": {
+        "dueAt": "2026-11-28T12:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-10-26T12:00:00.000Z",
+        "intervalDays": 21,
+        "lapses": 0,
+        "lastAt": "2026-11-07T12:00:00.000Z",
+        "reps": 3
+      },
+      "01M80T620BH9T1D9K21YKS4CWR": {
+        "dueAt": "2026-11-11T10:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-10-28T10:00:00.000Z",
+        "intervalDays": 8,
+        "lapses": 0,
+        "lastAt": "2026-11-03T10:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620BJ2PHCNHG461R0RYM": {
+        "dueAt": "2026-11-06T08:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-10-25T08:00:00.000Z",
+        "intervalDays": 6,
+        "lapses": 0,
+        "lastAt": "2026-10-31T08:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620BJS9FYZ6YARGSPD06": {
+        "dueAt": "2026-10-22T12:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-10-21T12:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-10-21T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620BZ2FRJPP0TZ6E3VCD": {
+        "dueAt": "2026-10-30T11:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-10-27T11:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-10-27T11:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620C0FGRSBG40NQANYBQ": {
+        "dueAt": "2026-11-14T08:10:00.000Z",
+        "ease": 2.3,
+        "firstAt": "2026-11-14T08:00:00.000Z",
+        "intervalDays": 0,
+        "lapses": 1,
+        "lastAt": "2026-11-14T08:00:00.000Z",
+        "reps": 0
+      },
+      "01M80T620C0Q9YB5D2Q8NHTA3F": {
+        "dueAt": "2026-11-09T09:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-08T09:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-08T09:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620C451QED07D4K0RJ9R": {
+        "dueAt": "2026-11-26T08:00:00.000Z",
+        "ease": 2.46,
+        "firstAt": "2026-11-04T08:00:00.000Z",
+        "intervalDays": 10,
+        "lapses": 0,
+        "lastAt": "2026-11-16T08:00:00.000Z",
+        "reps": 3
+      },
+      "01M80T620C56NSWYP6SB320CNB": {
+        "dueAt": "2026-12-13T12:00:00.000Z",
+        "ease": 2.7,
+        "firstAt": "2026-11-10T12:00:00.000Z",
+        "intervalDays": 21,
+        "lapses": 0,
+        "lastAt": "2026-11-22T12:00:00.000Z",
+        "reps": 3
+      },
+      "01M80T620C58C7Z9CJYXDN5W7V": {
+        "dueAt": "2026-12-01T08:10:00.000Z",
+        "ease": 2.26,
+        "firstAt": "2026-11-19T08:00:00.000Z",
+        "intervalDays": 0,
+        "lapses": 1,
+        "lastAt": "2026-12-01T08:00:00.000Z",
+        "reps": 0
+      },
+      "01M80T620C5MNW5RGJV4ZAPB1X": {
+        "dueAt": "2026-11-08T12:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-05T12:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-11-05T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620C7145SPENQS808D5M": {
+        "dueAt": "2026-11-25T10:00:00.000Z",
+        "ease": 2.3,
+        "firstAt": "2026-11-07T10:00:00.000Z",
+        "intervalDays": 6,
+        "lapses": 1,
+        "lastAt": "2026-11-19T10:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620C7AWTY7F41QRCMCYJ": {
+        "dueAt": "2026-12-02T09:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-18T09:00:00.000Z",
+        "intervalDays": 8,
+        "lapses": 0,
+        "lastAt": "2026-11-24T09:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620C8940C8QF1W8CJA4S": {
+        "dueAt": "2026-11-23T08:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-09T08:00:00.000Z",
+        "intervalDays": 8,
+        "lapses": 0,
+        "lastAt": "2026-11-15T08:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620C8F51ZV9H31B0ASH2": {
+        "dueAt": "2026-11-15T09:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-03T09:00:00.000Z",
+        "intervalDays": 6,
+        "lapses": 0,
+        "lastAt": "2026-11-09T09:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620CDAEH5DJE2V4H41G6": {
+        "dueAt": "2026-11-27T12:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-15T12:00:00.000Z",
+        "intervalDays": 6,
+        "lapses": 0,
+        "lastAt": "2026-11-21T12:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620CDX7SS73NJR1P941S": {
+        "dueAt": "2026-10-31T08:00:00.000Z",
+        "ease": 2.36,
+        "firstAt": "2026-10-30T08:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-10-30T08:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CGNRGGJ763GMJZ5HQ": {
+        "dueAt": "2026-11-12T11:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-11T11:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-11T11:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CNSQRZKNWYHG5WAXJ": {
+        "dueAt": "2026-11-10T09:10:00.000Z",
+        "ease": 2.26,
+        "firstAt": "2026-10-29T09:00:00.000Z",
+        "intervalDays": 0,
+        "lapses": 1,
+        "lastAt": "2026-11-10T09:00:00.000Z",
+        "reps": 0
+      },
+      "01M80T620CNZJHHB30Y86FB1S9": {
+        "dueAt": "2026-11-22T10:00:00.000Z",
+        "ease": 2.46,
+        "firstAt": "2026-11-12T10:00:00.000Z",
+        "intervalDays": 4,
+        "lapses": 0,
+        "lastAt": "2026-11-18T10:00:00.000Z",
+        "reps": 2
+      },
+      "01M80T620CTN9H30HZN5PE80AQ": {
+        "dueAt": "2026-11-03T10:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-02T10:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-02T10:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CXE80QKY854J4HN8H": {
+        "dueAt": "2026-12-19T11:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-16T11:00:00.000Z",
+        "intervalDays": 21,
+        "lapses": 0,
+        "lastAt": "2026-11-28T11:00:00.000Z",
+        "reps": 3
+      },
+      "01M80T620CXVDR38G0XQ4H08RN": {
+        "dueAt": "2026-12-03T11:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-01T11:00:00.000Z",
+        "intervalDays": 20,
+        "lapses": 0,
+        "lastAt": "2026-11-13T11:00:00.000Z",
+        "reps": 3
+      },
+      "01M80T620CY5Y6QXV38C1M77RM": {
+        "dueAt": "2026-11-26T09:00:00.000Z",
+        "ease": 2.16,
+        "firstAt": "2026-11-13T09:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 1,
+        "lastAt": "2026-11-25T09:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CYV4GTJVRTAHZ8C29": {
+        "dueAt": "2026-11-07T12:00:00.000Z",
+        "ease": 2.3,
+        "firstAt": "2026-10-31T12:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 1,
+        "lastAt": "2026-11-06T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CYYX36Q8GRE9D5PRR": {
+        "dueAt": "2026-11-20T10:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-17T10:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-11-17T10:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620CZSZ473ET970R52EH": {
+        "dueAt": "2026-11-12T11:10:00.000Z",
+        "ease": 2.16,
+        "firstAt": "2026-11-06T11:00:00.000Z",
+        "intervalDays": 0,
+        "lapses": 1,
+        "lastAt": "2026-11-12T11:00:00.000Z",
+        "reps": 0
+      },
+      "01M80T620D5RSN4J5HMCFNQF1K": {
+        "dueAt": "2026-11-19T12:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-16T12:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-11-16T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620DATFHQBZKCP2AQT3M": {
+        "dueAt": "2026-11-19T12:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-18T12:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-18T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620DGYW3DE7F3KFVDRZ7": {
+        "dueAt": "2026-11-23T12:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-20T12:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-11-20T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620DJ3REMY39K95XYBSD": {
+        "dueAt": "2026-11-15T12:00:00.000Z",
+        "ease": 2.6,
+        "firstAt": "2026-11-12T12:00:00.000Z",
+        "intervalDays": 3,
+        "lapses": 0,
+        "lastAt": "2026-11-12T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620DM9832W9T47SM4HF3": {
+        "dueAt": "2026-11-15T12:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-14T12:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-14T12:00:00.000Z",
+        "reps": 1
+      },
+      "01M80T620DQ85V7YNJGAJKE1NF": {
+        "dueAt": "2026-11-11T12:00:00.000Z",
+        "ease": 2.5,
+        "firstAt": "2026-11-10T12:00:00.000Z",
+        "intervalDays": 1,
+        "lapses": 0,
+        "lastAt": "2026-11-10T12:00:00.000Z",
+        "reps": 1
+      }
+    }
+  },
+  "schemaVersion": 1
+}

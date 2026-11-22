@@ -1,0 +1,287 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.730Z",
+        "date": "2026-11-30",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62BJJZT71RYKH2EZZB6A",
+        "keyTakeaway": "Learned thing 0",
+        "labIds": [],
+        "links": [],
+        "slug": "day-0",
+        "tags": [],
+        "timeSpentMin": 20,
+        "timeSpentRaw": null,
+        "title": "Day 0",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.730Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.738Z",
+        "date": "2026-11-27",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62BTBMRKZCQ9GSS16KXE",
+        "keyTakeaway": "Learned thing 1",
+        "labIds": [],
+        "links": [],
+        "slug": "day-1",
+        "tags": [],
+        "timeSpentMin": 35,
+        "timeSpentRaw": null,
+        "title": "Day 1",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.738Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.743Z",
+        "date": "2026-11-24",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62BZ968YNGQ3G6SN9P7D",
+        "keyTakeaway": "Learned thing 2",
+        "labIds": [],
+        "links": [],
+        "slug": "day-2",
+        "tags": [],
+        "timeSpentMin": 50,
+        "timeSpentRaw": null,
+        "title": "Day 2",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.743Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.751Z",
+        "date": "2026-11-21",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62C7S8QWKC90RSQDP28R",
+        "keyTakeaway": "Learned thing 3",
+        "labIds": [],
+        "links": [],
+        "slug": "day-3",
+        "tags": [],
+        "timeSpentMin": 65,
+        "timeSpentRaw": null,
+        "title": "Day 3",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.751Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.755Z",
+        "date": "2026-11-18",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62CBR5PD2YSGK61MYRR2",
+        "keyTakeaway": "Learned thing 4",
+        "labIds": [],
+        "links": [],
+        "slug": "day-4",
+        "tags": [],
+        "timeSpentMin": 20,
+        "timeSpentRaw": null,
+        "title": "Day 4",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.755Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.759Z",
+        "date": "2026-11-15",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62CF97GSY7HVY8X9F3RX",
+        "keyTakeaway": "Learned thing 5",
+        "labIds": [],
+        "links": [],
+        "slug": "day-5",
+        "tags": [],
+        "timeSpentMin": 35,
+        "timeSpentRaw": null,
+        "title": "Day 5",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.759Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.763Z",
+        "date": "2026-11-12",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62CKSN0465EZ7E9QGH4Z",
+        "keyTakeaway": "Learned thing 6",
+        "labIds": [],
+        "links": [],
+        "slug": "day-6",
+        "tags": [],
+        "timeSpentMin": 50,
+        "timeSpentRaw": null,
+        "title": "Day 6",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.763Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.767Z",
+        "date": "2026-11-09",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62CQFY3MJWBH9E0B17AY",
+        "keyTakeaway": "Learned thing 7",
+        "labIds": [],
+        "links": [],
+        "slug": "day-7",
+        "tags": [],
+        "timeSpentMin": 65,
+        "timeSpentRaw": null,
+        "title": "Day 7",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.767Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.772Z",
+        "date": "2026-11-06",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62CW2BZMCYESWNAR6CKM",
+        "keyTakeaway": "Learned thing 8",
+        "labIds": [],
+        "links": [],
+        "slug": "day-8",
+        "tags": [],
+        "timeSpentMin": 20,
+        "timeSpentRaw": null,
+        "title": "Day 8",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.772Z"
+      },
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.777Z",
+        "date": "2026-11-03",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62D1JCKVCKV8BP2ADJCE",
+        "keyTakeaway": "Learned thing 9",
+        "labIds": [],
+        "links": [],
+        "slug": "day-9",
+        "tags": [],
+        "timeSpentMin": 35,
+        "timeSpentRaw": null,
+        "title": "Day 9",
+        "topics": [
+          "linux",
+          "bash"
+        ],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-22T05:03:11.777Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

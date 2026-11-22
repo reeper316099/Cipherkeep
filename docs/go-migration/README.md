@@ -50,7 +50,7 @@ more than once.
 | ----- | --------------------------------------------------------------------------- | ------- |
 | 0     | [Baseline and scaffold](phase-0-baseline-and-scaffold.md)                   | Done    |
 | 1     | [Storage engine (jsonstore in Go)](phase-1-storage-engine.md)               | Done    |
-| 2     | [Repositories, search, links, study engine](phase-2-domain-search-study.md) | Planned |
+| 2     | [Repositories, search, links, study engine](phase-2-domain-search-study.md) | Done    |
 | 3     | [Import and export](phase-3-import-export.md)                               | Planned |
 | 4     | [API layer and vault](phase-4-api-and-vault.md)                             | Planned |
 | 5     | [Wails shell and UI](phase-5-wails-shell-and-ui.md)                         | Planned |

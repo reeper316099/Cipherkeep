@@ -116,6 +116,11 @@ export class NoteRepo extends EventEmitter<RepoEvents> implements Repo {
   private async scan(): Promise<void> {
     const files = await this.listMarkdown(this.root);
     await mapPool(files, 48, (f) => this.loadFile(f, true));
+    // Files finish loading in whatever order the disk answers; put the notes in path order so lists, search ties and
+    // the graph come out the same on every run and every system.
+    this.byId = new Map(
+      [...this.byId.entries()].sort(([, a], [, b]) => (a.rel < b.rel ? -1 : a.rel > b.rel ? 1 : 0)),
+    );
   }
 
   private async loadFile(abs: string, quiet = false): Promise<void> {

@@ -1,0 +1,33 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [
+          "01M80T620DM9832W9T47SM4HF3"
+        ],
+        "createdAt": "2026-11-22T05:03:11.703Z",
+        "difficulty": "Hard",
+        "domain": "web security",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62AQRBQBTRS08M4A1QVT",
+        "links": [],
+        "platform": "TryHackMe",
+        "scriptIds": [],
+        "slug": "web-101",
+        "solvedAt": "2026-11-27T12:00:00.000Z",
+        "status": "Completed",
+        "tags": [],
+        "timeSpentMin": 90,
+        "title": "Web 101",
+        "updatedAt": "2026-11-22T05:03:11.703Z",
+        "writeup": "",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

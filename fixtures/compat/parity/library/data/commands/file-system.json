@@ -1,0 +1,1437 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files or directories to list (default: the current directory)",
+            "name": "path"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.373Z",
+        "examples": [
+          {
+            "command": "ls -la ~",
+            "description": "long listing of your home directory including hidden files"
+          },
+          {
+            "command": "ls -lh /var/log",
+            "description": "log files with readable sizes"
+          },
+          {
+            "command": "ls -ltr",
+            "description": "newest files last: handy at the end of a long listing"
+          },
+          {
+            "command": "ls -d */",
+            "description": "only the directories in the current folder"
+          }
+        ],
+        "explanation": "list directory contents",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620BJS9FYZ6YARGSPD06",
+        "importRef": "starter:commands:ls",
+        "lastPracticedAt": "2026-10-21T12:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "ls",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-a",
+            "meaning": "include hidden entries (names starting with a dot)"
+          },
+          {
+            "flag": "-l",
+            "meaning": "long format: permissions, owner, size, modified time"
+          },
+          {
+            "flag": "-h",
+            "meaning": "human-readable sizes such as 4.0K or 1.2M (use with -l)"
+          },
+          {
+            "flag": "-t",
+            "meaning": "sort by modification time, newest first"
+          },
+          {
+            "flag": "-r",
+            "meaning": "reverse the sort order"
+          },
+          {
+            "flag": "-S",
+            "meaning": "sort by size, largest first"
+          },
+          {
+            "flag": "-R",
+            "meaning": "list subdirectories recursively"
+          },
+          {
+            "flag": "-d",
+            "meaning": "list a directory itself instead of its contents"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "safe",
+        "slug": "ls",
+        "srs": {
+          "dueAt": "2026-10-22T12:00:00.000Z",
+          "ease": 2.5,
+          "intervalDays": 1
+        },
+        "syntax": "ls [flags] [path...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "ls",
+        "updatedAt": "2026-11-22T05:03:11.823Z",
+        "whatItDoes": "Prints the names of files and directories. With flags it also shows sizes, owners, permissions and timestamps."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "where to go; relative to the current directory unless it starts with /",
+            "name": "directory"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.382Z",
+        "examples": [
+          {
+            "command": "cd /var/log",
+            "description": "jump to an absolute path"
+          },
+          {
+            "command": "cd -",
+            "description": "toggle back to where you just were"
+          },
+          {
+            "command": "cd ../..",
+            "description": "go up two levels"
+          }
+        ],
+        "explanation": "change the current directory",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620B91MDQVMZZ4KG0QQP",
+        "importRef": "starter:commands:cd",
+        "lastPracticedAt": "2026-10-28T11:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "cd",
+        "notes": "cd is built into the shell, so it has no man page of its own; use help cd in bash.",
+        "options": [
+          {
+            "flag": "cd -",
+            "meaning": "return to the previous directory"
+          },
+          {
+            "flag": "cd ~",
+            "meaning": "go to your home directory (same as plain cd)"
+          },
+          {
+            "flag": "cd ..",
+            "meaning": "go up one level"
+          },
+          {
+            "flag": "cd ~user",
+            "meaning": "go to another user's home directory"
+          }
+        ],
+        "placeholders": [
+          "directory"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "safe",
+        "slug": "cd",
+        "srs": {
+          "dueAt": "2026-11-01T11:00:00.000Z",
+          "ease": 2.46,
+          "intervalDays": 4
+        },
+        "syntax": "cd [directory]",
+        "tags": [
+          "starter"
+        ],
+        "title": "cd",
+        "updatedAt": "2026-11-22T05:03:11.848Z",
+        "whatItDoes": "A shell built-in that moves your shell into another directory. Without an argument it goes to your home directory."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.386Z",
+        "examples": [
+          {
+            "command": "pwd",
+            "description": "where am I?"
+          },
+          {
+            "command": "pwd -P",
+            "description": "the real location when you are inside a symlinked directory"
+          }
+        ],
+        "explanation": "print the current directory",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620B5AQ1SCEWCECT7Q7X",
+        "importRef": "starter:commands:pwd",
+        "lastPracticedAt": "2026-11-04T10:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "pwd",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-L",
+            "meaning": "show the logical path, keeping symbolic links as you typed them (default)"
+          },
+          {
+            "flag": "-P",
+            "meaning": "show the physical path with symbolic links resolved"
+          }
+        ],
+        "placeholders": [],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "safe",
+        "slug": "pwd",
+        "srs": {
+          "dueAt": "2026-11-05T10:00:00.000Z",
+          "ease": 2.16,
+          "intervalDays": 1
+        },
+        "syntax": "pwd [-L|-P]",
+        "tags": [
+          "starter"
+        ],
+        "title": "pwd",
+        "updatedAt": "2026-11-22T05:03:11.883Z",
+        "whatItDoes": "Shows the full path of the directory your shell is in."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "file or directory to copy",
+            "name": "source"
+          },
+          {
+            "meaning": "target file, or an existing directory to copy into",
+            "name": "destination"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.391Z",
+        "examples": [
+          {
+            "command": "cp notes.txt notes.bak",
+            "description": "make a backup copy"
+          },
+          {
+            "command": "cp -r project/ /tmp/project-copy",
+            "description": "copy a whole directory"
+          },
+          {
+            "command": "cp -i report.txt ~/Documents/",
+            "description": "copy, but confirm before replacing"
+          }
+        ],
+        "explanation": "copy files and directories",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620B31YJAK2CYRT5ZMPK",
+        "importRef": "starter:commands:cp",
+        "lastPracticedAt": "2026-10-24T09:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "cp",
+        "notes": "Without -i or -n, cp silently replaces an existing destination file.",
+        "options": [
+          {
+            "flag": "-r",
+            "meaning": "copy directories recursively"
+          },
+          {
+            "flag": "-i",
+            "meaning": "ask before overwriting"
+          },
+          {
+            "flag": "-n",
+            "meaning": "never overwrite an existing file"
+          },
+          {
+            "flag": "-v",
+            "meaning": "print each file as it is copied"
+          },
+          {
+            "flag": "-p",
+            "meaning": "preserve mode, ownership and timestamps"
+          },
+          {
+            "flag": "-a",
+            "meaning": "archive: recursive and preserve attributes (GNU and recent macOS)"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "caution",
+        "slug": "cp",
+        "srs": {
+          "dueAt": "2026-10-24T09:10:00.000Z",
+          "ease": 2.3,
+          "intervalDays": 0
+        },
+        "syntax": "cp [flags] source... destination",
+        "tags": [
+          "starter"
+        ],
+        "title": "cp",
+        "updatedAt": "2026-11-22T05:03:11.891Z",
+        "whatItDoes": "Copies one or more files to a destination. Existing destination files are overwritten without asking unless you use -i."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "what to move or rename",
+            "name": "source"
+          },
+          {
+            "meaning": "new name, or a directory to move into",
+            "name": "destination"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.395Z",
+        "examples": [
+          {
+            "command": "mv draft.txt final.txt",
+            "description": "rename a file"
+          },
+          {
+            "command": "mv *.log /var/archive/",
+            "description": "move many files into a directory"
+          },
+          {
+            "command": "mv -i a.txt ~/docs/",
+            "description": "move but confirm before replacing"
+          }
+        ],
+        "explanation": "move or rename files",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620BJ2PHCNHG461R0RYM",
+        "importRef": "starter:commands:mv",
+        "lastPracticedAt": "2026-10-31T08:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "mv",
+        "notes": "mv silently overwrites an existing destination unless you use -i or -n.",
+        "options": [
+          {
+            "flag": "-i",
+            "meaning": "ask before overwriting"
+          },
+          {
+            "flag": "-n",
+            "meaning": "never overwrite"
+          },
+          {
+            "flag": "-v",
+            "meaning": "say what was moved"
+          },
+          {
+            "flag": "-f",
+            "meaning": "overwrite without asking (the default; overrides -i)"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "caution",
+        "slug": "mv",
+        "srs": {
+          "dueAt": "2026-11-06T08:00:00.000Z",
+          "ease": 2.5,
+          "intervalDays": 6
+        },
+        "syntax": "mv [flags] source... destination",
+        "tags": [
+          "starter"
+        ],
+        "title": "mv",
+        "updatedAt": "2026-11-22T05:03:11.914Z",
+        "whatItDoes": "Moves files to another place or renames them. Within one filesystem it is instant and keeps the data in place."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files or directories to delete",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.400Z",
+        "examples": [
+          {
+            "command": "rm old.log",
+            "description": "delete one file"
+          },
+          {
+            "command": "rm -i *.tmp",
+            "description": "delete temp files, confirming each one"
+          },
+          {
+            "command": "rm -r build/",
+            "description": "delete a directory and its contents"
+          },
+          {
+            "command": "rm -- -odd-name",
+            "description": "delete a file whose name starts with a dash"
+          }
+        ],
+        "explanation": "remove files and directories",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620BA2HZEMYQVCPBZNZF",
+        "importRef": "starter:commands:rm",
+        "lastPracticedAt": "2026-11-07T12:00:00.000Z",
+        "links": [],
+        "mastery": 3,
+        "name": "rm",
+        "notes": "rm -rf with a wrong path or an unquoted variable is how data gets lost. Prefer rm -i while learning, and put -- before names that begin with a dash.",
+        "options": [
+          {
+            "flag": "-i",
+            "meaning": "ask before each removal"
+          },
+          {
+            "flag": "-r",
+            "meaning": "remove directories and everything inside them"
+          },
+          {
+            "flag": "-f",
+            "meaning": "never prompt and ignore missing files"
+          },
+          {
+            "flag": "-v",
+            "meaning": "say what was removed"
+          },
+          {
+            "flag": "-d",
+            "meaning": "remove empty directories"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "destructive",
+        "slug": "rm",
+        "srs": {
+          "dueAt": "2026-11-28T12:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 21
+        },
+        "syntax": "rm [flags] file...",
+        "tags": [
+          "starter"
+        ],
+        "title": "rm",
+        "updatedAt": "2026-11-22T05:03:11.948Z",
+        "whatItDoes": "Deletes files permanently. There is no trash can and no undo, so check the path before you press Enter."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the existing file or directory",
+            "name": "target"
+          },
+          {
+            "meaning": "the new name to create",
+            "name": "link_name"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.404Z",
+        "examples": [
+          {
+            "command": "ln -s /opt/tool/bin/tool ~/bin/tool",
+            "description": "put a tool on your PATH with a symlink"
+          },
+          {
+            "command": "ln data.txt data-hardlink.txt",
+            "description": "make a hard link to a file"
+          },
+          {
+            "command": "ln -sf /etc/hosts ./hosts",
+            "description": "create or replace a symlink"
+          }
+        ],
+        "explanation": "create links between files",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620BZ2FRJPP0TZ6E3VCD",
+        "importRef": "starter:commands:ln",
+        "lastPracticedAt": "2026-10-27T11:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "ln",
+        "notes": "Hard links cannot cross filesystems or point to directories; symbolic links can do both and can dangle if the target is removed.",
+        "options": [
+          {
+            "flag": "-s",
+            "meaning": "create a symbolic link instead of a hard link"
+          },
+          {
+            "flag": "-f",
+            "meaning": "replace an existing link name"
+          },
+          {
+            "flag": "-v",
+            "meaning": "print what was linked"
+          }
+        ],
+        "placeholders": [],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "safe",
+        "slug": "ln",
+        "srs": {
+          "dueAt": "2026-10-30T11:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 3
+        },
+        "syntax": "ln [-s] target link_name",
+        "tags": [
+          "starter"
+        ],
+        "title": "ln",
+        "updatedAt": "2026-11-22T05:03:11.958Z",
+        "whatItDoes": "Makes a second name for a file. A hard link shares the same data; a symbolic link (-s) is a small file that points to a path."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "name of the directory to create",
+            "name": "directory"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.409Z",
+        "examples": [
+          {
+            "command": "mkdir notes",
+            "description": "create one directory"
+          },
+          {
+            "command": "mkdir -p projects/web/assets",
+            "description": "create a whole path at once"
+          },
+          {
+            "command": "mkdir -m 700 secrets",
+            "description": "create a private directory"
+          }
+        ],
+        "explanation": "make directories",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620BH9T1D9K21YKS4CWR",
+        "importRef": "starter:commands:mkdir",
+        "lastPracticedAt": "2026-11-03T10:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "mkdir",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-p",
+            "meaning": "create missing parent directories and do not fail if it already exists"
+          },
+          {
+            "flag": "-m",
+            "meaning": "set the permission mode, for example -m 700"
+          },
+          {
+            "flag": "-v",
+            "meaning": "print each directory created"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "safe",
+        "slug": "mkdir",
+        "srs": {
+          "dueAt": "2026-11-11T10:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 8
+        },
+        "syntax": "mkdir [flags] directory...",
+        "tags": [
+          "starter"
+        ],
+        "title": "mkdir",
+        "updatedAt": "2026-11-22T05:03:11.979Z",
+        "whatItDoes": "Creates one or more empty directories."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "file to create or update",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.414Z",
+        "examples": [
+          {
+            "command": "touch notes.txt",
+            "description": "create an empty file"
+          },
+          {
+            "command": "touch -c build.stamp",
+            "description": "update the time only if the file exists"
+          },
+          {
+            "command": "touch -t 202601011200 old.txt",
+            "description": "set a specific modification time"
+          }
+        ],
+        "explanation": "create an empty file or update timestamps",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CNSQRZKNWYHG5WAXJ",
+        "importRef": "starter:commands:touch",
+        "lastPracticedAt": "2026-11-10T09:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "touch",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-c",
+            "meaning": "do not create missing files"
+          },
+          {
+            "flag": "-a",
+            "meaning": "change only the access time"
+          },
+          {
+            "flag": "-m",
+            "meaning": "change only the modification time"
+          },
+          {
+            "flag": "-t",
+            "meaning": "use a given time, format [[CC]YY]MMDDhhmm[.ss]"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "safe",
+        "slug": "touch",
+        "srs": {
+          "dueAt": "2026-11-10T09:10:00.000Z",
+          "ease": 2.26,
+          "intervalDays": 0
+        },
+        "syntax": "touch [flags] file...",
+        "tags": [
+          "starter"
+        ],
+        "title": "touch",
+        "updatedAt": "2026-11-22T05:03:12.015Z",
+        "whatItDoes": "Creates the file if it does not exist, otherwise just updates its access and modification times."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to print, joined in the order given",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.417Z",
+        "examples": [
+          {
+            "command": "cat /etc/hostname",
+            "description": "show a short file"
+          },
+          {
+            "command": "cat a.txt b.txt > both.txt",
+            "description": "join two files into a third"
+          },
+          {
+            "command": "cat -n script.sh",
+            "description": "show a file with line numbers"
+          }
+        ],
+        "explanation": "print and join files",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CDX7SS73NJR1P941S",
+        "importRef": "starter:commands:cat",
+        "lastPracticedAt": "2026-10-30T08:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "cat",
+        "notes": "For long files use less. Redirecting onto a file you are reading from (cat f > f) empties it.",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "number every output line"
+          },
+          {
+            "flag": "-b",
+            "meaning": "number only non-blank lines"
+          },
+          {
+            "flag": "-s",
+            "meaning": "squeeze repeated blank lines into one"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "safe",
+        "slug": "cat",
+        "srs": {
+          "dueAt": "2026-10-31T08:00:00.000Z",
+          "ease": 2.36,
+          "intervalDays": 1
+        },
+        "syntax": "cat [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "cat",
+        "updatedAt": "2026-11-22T05:03:12.025Z",
+        "whatItDoes": "Writes the contents of files to the terminal, in order. With no file it copies standard input."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "file to view (or pipe text into less)",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.421Z",
+        "examples": [
+          {
+            "command": "less /var/log/syslog",
+            "description": "read a log"
+          },
+          {
+            "command": "journalctl | less -R",
+            "description": "page the output of another command"
+          },
+          {
+            "command": "less -N script.sh",
+            "description": "read a file with line numbers"
+          }
+        ],
+        "explanation": "page through a file",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CYV4GTJVRTAHZ8C29",
+        "importRef": "starter:commands:less",
+        "lastPracticedAt": "2026-11-06T12:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "less",
+        "notes": "Keys inside less: space = next page, b = back, /text = search, n = next match, G = end, g = start, q = quit.",
+        "options": [
+          {
+            "flag": "-N",
+            "meaning": "show line numbers"
+          },
+          {
+            "flag": "-S",
+            "meaning": "do not wrap long lines"
+          },
+          {
+            "flag": "-R",
+            "meaning": "show ANSI colours correctly"
+          },
+          {
+            "flag": "-i",
+            "meaning": "case-insensitive search unless the pattern has capitals"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "safe",
+        "slug": "less",
+        "srs": {
+          "dueAt": "2026-11-07T12:00:00.000Z",
+          "ease": 2.3,
+          "intervalDays": 1
+        },
+        "syntax": "less [flags] file",
+        "tags": [
+          "starter"
+        ],
+        "title": "less",
+        "updatedAt": "2026-11-22T05:03:12.051Z",
+        "whatItDoes": "Shows a file one screen at a time without loading it all, with searching and scrolling."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to read",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.426Z",
+        "examples": [
+          {
+            "command": "head access.log",
+            "description": "the first ten lines"
+          },
+          {
+            "command": "head -n 3 /etc/passwd",
+            "description": "just three lines"
+          },
+          {
+            "command": "ls -l | head -n 5",
+            "description": "the first five entries of a listing"
+          }
+        ],
+        "explanation": "show the start of a file",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CXVDR38G0XQ4H08RN",
+        "importRef": "starter:commands:head",
+        "lastPracticedAt": "2026-11-13T11:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "head",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "number of lines to show, for example -n 20"
+          },
+          {
+            "flag": "-c",
+            "meaning": "number of bytes to show instead of lines"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "safe",
+        "slug": "head",
+        "srs": {
+          "dueAt": "2026-12-03T11:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 20
+        },
+        "syntax": "head [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "head",
+        "updatedAt": "2026-11-22T05:03:12.107Z",
+        "whatItDoes": "Prints the first lines (10 by default) of each file."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to read",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.430Z",
+        "examples": [
+          {
+            "command": "tail -n 50 /var/log/auth.log",
+            "description": "the last 50 authentication log lines"
+          },
+          {
+            "command": "tail -f app.log",
+            "description": "watch a log live (Ctrl+C to stop)"
+          },
+          {
+            "command": "tail -F app.log",
+            "description": "keep following across log rotation"
+          }
+        ],
+        "explanation": "show the end of a file",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CTN9H30HZN5PE80AQ",
+        "importRef": "starter:commands:tail",
+        "lastPracticedAt": "2026-11-02T10:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "tail",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "number of lines to show"
+          },
+          {
+            "flag": "-f",
+            "meaning": "follow: keep printing lines as they are appended"
+          },
+          {
+            "flag": "-F",
+            "meaning": "follow and keep trying if the file is rotated or recreated"
+          },
+          {
+            "flag": "-c",
+            "meaning": "number of bytes to show"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "safe",
+        "slug": "tail",
+        "srs": {
+          "dueAt": "2026-11-03T10:00:00.000Z",
+          "ease": 2.5,
+          "intervalDays": 1
+        },
+        "syntax": "tail [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "tail",
+        "updatedAt": "2026-11-22T05:03:12.117Z",
+        "whatItDoes": "Prints the last lines (10 by default); with -f it keeps watching the file for new lines."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to examine",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.435Z",
+        "examples": [
+          {
+            "command": "file mystery.bin",
+            "description": "what kind of file is this?"
+          },
+          {
+            "command": "file --mime-type photo.jpg",
+            "description": "just the MIME type"
+          },
+          {
+            "command": "file -b /bin/ls",
+            "description": "description only"
+          }
+        ],
+        "explanation": "identify a file by its content",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C8F51ZV9H31B0ASH2",
+        "importRef": "starter:commands:file",
+        "lastPracticedAt": "2026-11-09T09:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "file",
+        "notes": "Useful for forensics and CTF work where extensions lie.",
+        "options": [
+          {
+            "flag": "-b",
+            "meaning": "brief: omit the file name from the output"
+          },
+          {
+            "flag": "--mime-type",
+            "meaning": "print only the MIME type, such as text/plain"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "safe",
+        "slug": "file",
+        "srs": {
+          "dueAt": "2026-11-15T09:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 6
+        },
+        "syntax": "file [flags] file...",
+        "tags": [
+          "starter"
+        ],
+        "title": "file",
+        "updatedAt": "2026-11-22T05:03:12.140Z",
+        "whatItDoes": "Looks at the bytes of a file, not its name, and says what it appears to be."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "where to start searching (default: the current directory)",
+            "name": "path"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.440Z",
+        "examples": [
+          {
+            "command": "find . -name \"*.log\"",
+            "description": "every .log file below here"
+          },
+          {
+            "command": "find /var -type f -size +100M",
+            "description": "large files under /var"
+          },
+          {
+            "command": "find / -perm -4000 -type f 2>/dev/null",
+            "description": "list setuid programs, hiding permission errors"
+          },
+          {
+            "command": "find . -maxdepth 2 -type d",
+            "description": "directories at most two levels down"
+          }
+        ],
+        "explanation": "search for files by name, type, size or time",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C451QED07D4K0RJ9R",
+        "importRef": "starter:commands:find",
+        "lastPracticedAt": "2026-11-16T08:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "find",
+        "notes": "-delete and -exec act on everything matched. Run the search without them first and read the list.",
+        "options": [
+          {
+            "flag": "-name",
+            "meaning": "match the file name against a pattern; quote it: -name \"*.log\""
+          },
+          {
+            "flag": "-iname",
+            "meaning": "like -name but ignoring case"
+          },
+          {
+            "flag": "-type",
+            "meaning": "f for files, d for directories, l for symlinks"
+          },
+          {
+            "flag": "-mtime",
+            "meaning": "modified N days ago; -mtime -1 means within the last day"
+          },
+          {
+            "flag": "-size",
+            "meaning": "size test such as +10M (larger than 10 MiB)"
+          },
+          {
+            "flag": "-perm",
+            "meaning": "match permissions, for example -perm -4000 for setuid"
+          },
+          {
+            "flag": "-maxdepth",
+            "meaning": "do not descend more than N levels (put it before the tests)"
+          },
+          {
+            "flag": "-exec",
+            "meaning": "run a command on each match: -exec cmd {} \\;"
+          },
+          {
+            "flag": "-delete",
+            "meaning": "delete every match (dangerous)"
+          }
+        ],
+        "placeholders": [
+          "tests",
+          "actions"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "caution",
+        "slug": "find",
+        "srs": {
+          "dueAt": "2026-11-26T08:00:00.000Z",
+          "ease": 2.46,
+          "intervalDays": 10
+        },
+        "syntax": "find [path...] [tests] [actions]",
+        "tags": [
+          "starter"
+        ],
+        "title": "find",
+        "updatedAt": "2026-11-22T05:03:12.167Z",
+        "whatItDoes": "Walks a directory tree and prints the files that match your conditions. It can also run a command on each match."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files or directories to measure (default: the current directory)",
+            "name": "path"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.445Z",
+        "examples": [
+          {
+            "command": "du -sh *",
+            "description": "size of everything in this folder"
+          },
+          {
+            "command": "du -sh ~/Downloads",
+            "description": "how big is my Downloads folder?"
+          },
+          {
+            "command": "du -ah . | sort -h | tail",
+            "description": "the ten largest items below here"
+          }
+        ],
+        "explanation": "show disk usage of files and directories",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C5MNW5RGJV4ZAPB1X",
+        "importRef": "starter:commands:du",
+        "lastPracticedAt": "2026-11-05T12:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "du",
+        "notes": "To limit depth use --max-depth=N on GNU/Linux or -d N on macOS.",
+        "options": [
+          {
+            "flag": "-h",
+            "meaning": "human-readable sizes"
+          },
+          {
+            "flag": "-s",
+            "meaning": "show only a total for each argument"
+          },
+          {
+            "flag": "-c",
+            "meaning": "add a grand total"
+          },
+          {
+            "flag": "-a",
+            "meaning": "include files, not just directories"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 1,
+        "risk": "safe",
+        "slug": "du",
+        "srs": {
+          "dueAt": "2026-11-08T12:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 3
+        },
+        "syntax": "du [flags] [path...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "du",
+        "updatedAt": "2026-11-22T05:03:12.178Z",
+        "whatItDoes": "Reports how much space files and directory trees use."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "show only the filesystem that holds this path",
+            "name": "path"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.449Z",
+        "examples": [
+          {
+            "command": "df -h",
+            "description": "free space on every mounted disk"
+          },
+          {
+            "command": "df -h /var",
+            "description": "free space where /var lives"
+          },
+          {
+            "command": "df -i",
+            "description": "check whether you have run out of inodes"
+          }
+        ],
+        "explanation": "show free space on filesystems",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CZSZ473ET970R52EH",
+        "importRef": "starter:commands:df",
+        "lastPracticedAt": "2026-11-12T11:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "df",
+        "notes": "A disk can be \"full\" because it ran out of inodes even when space remains; check df -i.",
+        "options": [
+          {
+            "flag": "-h",
+            "meaning": "human-readable sizes"
+          },
+          {
+            "flag": "-i",
+            "meaning": "show inode usage instead of blocks"
+          },
+          {
+            "flag": "-T",
+            "meaning": "show the filesystem type (GNU/Linux)"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "safe",
+        "slug": "df",
+        "srs": {
+          "dueAt": "2026-11-12T11:10:00.000Z",
+          "ease": 2.16,
+          "intervalDays": 0
+        },
+        "syntax": "df [flags] [path...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "df",
+        "updatedAt": "2026-11-22T05:03:12.198Z",
+        "whatItDoes": "Reports total, used and free space for each mounted filesystem."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the .tar / .tar.gz file to create or read",
+            "name": "archive"
+          },
+          {
+            "meaning": "files or directories to add",
+            "name": "file"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:03:11.454Z",
+        "examples": [
+          {
+            "command": "tar -czvf backup.tar.gz project/",
+            "description": "create a compressed archive"
+          },
+          {
+            "command": "tar -tf backup.tar.gz",
+            "description": "peek inside an archive"
+          },
+          {
+            "command": "tar -xzvf backup.tar.gz -C /tmp",
+            "description": "extract into /tmp"
+          },
+          {
+            "command": "tar -xf archive.tar notes.txt",
+            "description": "extract a single file"
+          }
+        ],
+        "explanation": "create and extract archives",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C7145SPENQS808D5M",
+        "importRef": "starter:commands:tar",
+        "lastPracticedAt": "2026-11-19T10:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "tar",
+        "notes": "Extracting overwrites files with the same name. List an unknown archive with -t first.",
+        "options": [
+          {
+            "flag": "-c",
+            "meaning": "create an archive"
+          },
+          {
+            "flag": "-x",
+            "meaning": "extract an archive"
+          },
+          {
+            "flag": "-t",
+            "meaning": "list the contents without extracting"
+          },
+          {
+            "flag": "-v",
+            "meaning": "verbose: print file names"
+          },
+          {
+            "flag": "-f",
+            "meaning": "the archive file name (must come right before it)"
+          },
+          {
+            "flag": "-z",
+            "meaning": "filter through gzip (.tar.gz)"
+          },
+          {
+            "flag": "-j",
+            "meaning": "filter through bzip2 (.tar.bz2)"
+          },
+          {
+            "flag": "-C",
+            "meaning": "change to this directory before extracting"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "caution",
+        "slug": "tar",
+        "srs": {
+          "dueAt": "2026-11-25T10:00:00.000Z",
+          "ease": 2.3,
+          "intervalDays": 6
+        },
+        "syntax": "tar [flags] [-f archive] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "tar",
+        "updatedAt": "2026-11-22T05:03:12.236Z",
+        "whatItDoes": "Bundles many files into one archive and unpacks them again, optionally compressing with gzip, bzip2 or xz."
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

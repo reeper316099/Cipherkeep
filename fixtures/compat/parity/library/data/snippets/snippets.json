@@ -1,0 +1,24 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "code": "find / -size +100M 2>/dev/null",
+        "createdAt": "2026-11-22T05:03:11.792Z",
+        "description": "Large files",
+        "extras": {},
+        "favorite": false,
+        "filePath": null,
+        "id": "01M80T62DGXQT2ZP5W9ZG03FC0",
+        "language": "bash",
+        "links": [],
+        "slug": "find-big-files",
+        "tags": [],
+        "title": "Find big files",
+        "updatedAt": "2026-11-22T05:03:11.792Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

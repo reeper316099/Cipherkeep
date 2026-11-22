@@ -1,0 +1,116 @@
+{
+  "data": [
+    {
+      "aliases": [
+        "linux",
+        "file system",
+        "general",
+        "permissions"
+      ],
+      "name": "Linux",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "bash",
+        "shell",
+        "text processing"
+      ],
+      "name": "Bash",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "networking",
+        "network",
+        "tcp/ip"
+      ],
+      "name": "Networking",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "web security",
+        "web",
+        "xss",
+        "sqli"
+      ],
+      "name": "Web Security",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "windows",
+        "powershell"
+      ],
+      "name": "Windows",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "cryptography",
+        "crypto"
+      ],
+      "name": "Cryptography",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "forensics"
+      ],
+      "name": "Forensics",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "osint"
+      ],
+      "name": "OSINT",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "log analysis",
+        "logs"
+      ],
+      "name": "Log Analysis",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "scanning & recon",
+        "scanning",
+        "recon",
+        "reconnaissance"
+      ],
+      "name": "Scanning & Recon",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "password cracking",
+        "passwords"
+      ],
+      "name": "Password Cracking",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "reverse engineering",
+        "reversing",
+        "rev"
+      ],
+      "name": "Reverse Engineering",
+      "weight": 1
+    },
+    {
+      "aliases": [
+        "binary exploitation",
+        "pwn"
+      ],
+      "name": "Binary Exploitation",
+      "weight": 1
+    }
+  ],
+  "schemaVersion": 2
+}

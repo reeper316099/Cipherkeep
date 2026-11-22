@@ -2,6 +2,8 @@ package jsonstore
 
 import (
 	"archive/zip"
+	"bytes"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -149,5 +151,52 @@ func TestKeyedMutexSerialisesTheSameKeyOnly(t *testing.T) {
 	unlock()
 	if first, second := <-order, <-order; first != 1 || second != 2 {
 		t.Fatalf("order %d then %d", first, second)
+	}
+}
+
+type tagged struct {
+	Name  string             `json:"name"`
+	Omit  string             `json:"omit,omitempty"`
+	Skip  string             `json:"-"`
+	Num   float64            `json:"num"`
+	Items []int              `json:"items"`
+	Nil   []int              `json:"nil"`
+	Map   map[string]any     `json:"map"`
+	Ptr   *string            `json:"ptr"`
+	Nest  struct{ A, B int } `json:"nest"`
+	hid   int
+}
+
+type embedded struct {
+	tagged
+	Extra int `json:"extra"`
+}
+
+// The direct writer must produce exactly what the encode-decode-write route produces for the same value.
+func TestDirectWriterMatchesTheRoundTripRoute(t *testing.T) {
+	s := "x"
+	values := []any{
+		tagged{Name: "<a&b>", Num: 3, Items: []int{1, 2}, Map: map[string]any{"z": 1.5, "a": []any{map[string]any{"k": nil}}}, Ptr: &s},
+		tagged{Num: 1e-7, Items: []int{}},
+		embedded{tagged: tagged{Name: "n"}, Extra: 5}, // embedded structs take the slow path
+		map[string]any{"b": []string{"x"}, "a": map[string]int{"y": 2}, "c": int64(7), "d": uint8(3), "e": true},
+		[]any{nil, "s", 2.0, json.Number("12")},
+		struct{ Raw json.RawMessage }{Raw: json.RawMessage(`{"q": [1, 2]}`)},
+	}
+	for i, v := range values {
+		direct, err := StableStringify(v)
+		if err != nil {
+			t.Fatalf("%d: %v", i, err)
+		}
+		generic, err := toGeneric(v)
+		if err != nil {
+			t.Fatalf("%d: %v", i, err)
+		}
+		var buf bytes.Buffer
+		writeValue(&buf, generic, 0)
+		buf.WriteByte('\n')
+		if string(direct) != buf.String() {
+			t.Errorf("%d differs:\n direct %q\n  trip  %q", i, direct, buf.String())
+		}
 	}
 }

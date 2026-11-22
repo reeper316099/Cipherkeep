@@ -1,0 +1,320 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "numeric (755) or symbolic (u+x, go-w)",
+            "name": "mode"
+          },
+          {
+            "meaning": "files or directories to change",
+            "name": "file"
+          }
+        ],
+        "category": "Permissions",
+        "createdAt": "2026-11-22T05:03:11.502Z",
+        "examples": [
+          {
+            "command": "chmod 600 ~/.ssh/id_ed25519",
+            "description": "private key readable only by you"
+          },
+          {
+            "command": "chmod +x script.sh",
+            "description": "make a script executable"
+          },
+          {
+            "command": "chmod 755 public_html",
+            "description": "owner full, others read and enter"
+          },
+          {
+            "command": "chmod -R u=rwX,go=rX site/",
+            "description": "directories enterable, files not executable"
+          }
+        ],
+        "explanation": "change file permissions",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C7AWTY7F41QRCMCYJ",
+        "importRef": "starter:commands:chmod",
+        "lastPracticedAt": "2026-11-24T09:00:00.000Z",
+        "links": [],
+        "mastery": 2,
+        "name": "chmod",
+        "notes": "Numeric modes: r=4, w=2, x=1, summed per owner / group / others. chmod -R 777 is almost never the answer.",
+        "options": [
+          {
+            "flag": "-R",
+            "meaning": "apply to directories recursively"
+          },
+          {
+            "flag": "-v",
+            "meaning": "say what changed"
+          },
+          {
+            "flag": "+x",
+            "meaning": "symbolic: add execute permission"
+          },
+          {
+            "flag": "u+rw",
+            "meaning": "symbolic: give the owner read and write"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 2,
+        "risk": "caution",
+        "slug": "chmod",
+        "srs": {
+          "dueAt": "2026-12-02T09:00:00.000Z",
+          "ease": 2.6,
+          "intervalDays": 8
+        },
+        "syntax": "chmod [flags] mode file...",
+        "tags": [
+          "starter"
+        ],
+        "title": "chmod",
+        "updatedAt": "2026-11-22T05:03:12.488Z",
+        "whatItDoes": "Sets who may read, write or execute a file or directory."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "new owner, optionally followed by a group",
+            "name": "owner[:group]"
+          },
+          {
+            "meaning": "files or directories to change",
+            "name": "file"
+          }
+        ],
+        "category": "Permissions",
+        "createdAt": "2026-11-22T05:03:11.508Z",
+        "examples": [
+          {
+            "command": "sudo chown alice notes.txt",
+            "description": "give a file to alice"
+          },
+          {
+            "command": "sudo chown -R www-data:www-data /var/www",
+            "description": "set owner and group for a web root"
+          },
+          {
+            "command": "sudo chown :developers shared/",
+            "description": "change only the group"
+          }
+        ],
+        "explanation": "change file owner and group",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620C58C7Z9CJYXDN5W7V",
+        "importRef": "starter:commands:chown",
+        "lastPracticedAt": "2026-12-01T08:00:00.000Z",
+        "links": [],
+        "mastery": 1,
+        "name": "chown",
+        "notes": "chown -R on the wrong directory (for example /) can break a system. Double-check the path.",
+        "options": [
+          {
+            "flag": "-R",
+            "meaning": "apply recursively"
+          },
+          {
+            "flag": "-h",
+            "meaning": "change a symlink itself, not its target"
+          },
+          {
+            "flag": "-v",
+            "meaning": "say what changed"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 3,
+        "risk": "caution",
+        "slug": "chown",
+        "srs": {
+          "dueAt": "2026-12-01T08:10:00.000Z",
+          "ease": 2.26,
+          "intervalDays": 0
+        },
+        "syntax": "chown [flags] owner[:group] file...",
+        "tags": [
+          "starter"
+        ],
+        "title": "chown",
+        "updatedAt": "2026-11-22T05:03:12.515Z",
+        "whatItDoes": "Changes who owns a file. Usually needs root."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the command to run with elevated privileges",
+            "name": "command"
+          }
+        ],
+        "category": "Permissions",
+        "createdAt": "2026-11-22T05:03:11.512Z",
+        "examples": [
+          {
+            "command": "sudo apt update",
+            "description": "run a package command as root"
+          },
+          {
+            "command": "sudo -l",
+            "description": "what may I run with sudo?"
+          },
+          {
+            "command": "sudo -u postgres psql",
+            "description": "run a command as the postgres user"
+          }
+        ],
+        "explanation": "run a command with another user's privileges",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CZSXVGAA7P8VMPPR9",
+        "importRef": "starter:commands:sudo",
+        "links": [],
+        "mastery": 0,
+        "name": "sudo",
+        "notes": "sudo -l is a first step in privilege-escalation checks. Prefer one sudo command over a long root shell (least privilege).",
+        "options": [
+          {
+            "flag": "-u",
+            "meaning": "run as this user instead of root"
+          },
+          {
+            "flag": "-l",
+            "meaning": "list the commands you are allowed to run"
+          },
+          {
+            "flag": "-i",
+            "meaning": "start a login shell as the target user"
+          },
+          {
+            "flag": "-k",
+            "meaning": "forget cached credentials"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "sudo",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "sudo [flags] command",
+        "tags": [
+          "starter"
+        ],
+        "title": "sudo",
+        "updatedAt": "2026-11-22T05:03:11.512Z",
+        "whatItDoes": "Runs one command as root (or another user) after checking /etc/sudoers."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "user to look up (default: you)",
+            "name": "user"
+          }
+        ],
+        "category": "Permissions",
+        "createdAt": "2026-11-22T05:03:11.515Z",
+        "examples": [
+          {
+            "command": "id",
+            "description": "who am I and which groups am I in?"
+          },
+          {
+            "command": "id -un",
+            "description": "just my user name"
+          },
+          {
+            "command": "id www-data",
+            "description": "groups of another account"
+          }
+        ],
+        "explanation": "show user and group IDs",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620CCGV7S680P79JFAXX",
+        "importRef": "starter:commands:id",
+        "links": [],
+        "mastery": 0,
+        "name": "id",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-u",
+            "meaning": "print only the user ID"
+          },
+          {
+            "flag": "-g",
+            "meaning": "print only the primary group ID"
+          },
+          {
+            "flag": "-G",
+            "meaning": "print all group IDs"
+          },
+          {
+            "flag": "-n",
+            "meaning": "print names instead of numbers (with -u, -g or -G)"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "user"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "id",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "id [flags] [user]",
+        "tags": [
+          "starter"
+        ],
+        "title": "id",
+        "updatedAt": "2026-11-22T05:03:11.515Z",
+        "whatItDoes": "Prints the numeric and named user ID, primary group and all groups of a user."
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

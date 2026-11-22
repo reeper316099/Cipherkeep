@@ -193,7 +193,9 @@ export function buildCommandCard(c: CmdLike, type: CardType, seed = 0): Card | u
       const idxs = fillCandidates(ex.command);
       // prefer flags: they are what you forget
       const flagIdx = idxs.filter((i) => toks[i]!.startsWith('-'));
-      const i = pick(flagIdx.length ? flagIdx : idxs, s >> 3)!;
+      // `>>>`, not `>>`: a signed shift turns the seed negative for about half of all ids, `xs[negative]` is
+      // undefined, and the card would have no blank and no accepted answer.
+      const i = pick(flagIdx.length ? flagIdx : idxs, s >>> 3)!;
       const shown = toks.map((t, k) => (k === i ? '____' : t)).join(' ');
       return {
         ...base,

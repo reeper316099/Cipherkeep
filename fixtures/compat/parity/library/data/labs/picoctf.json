@@ -1,0 +1,28 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": true,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.711Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62AZ43JKYBYBZH2MBN31",
+        "links": [],
+        "platform": "picoCTF",
+        "scriptIds": [],
+        "slug": "old-lab",
+        "status": "Not Started",
+        "tags": [],
+        "title": "Old lab",
+        "updatedAt": "2026-11-22T05:03:11.711Z",
+        "writeup": "",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

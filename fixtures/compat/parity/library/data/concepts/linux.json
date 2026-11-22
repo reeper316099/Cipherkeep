@@ -1,0 +1,537 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:03:11.578Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DFST8X901HCJR00FQ",
+        "importRef": "starter:concepts:Linux Filesystem Hierarchy",
+        "links": [
+          {
+            "targetId": "01M80T620BJS9FYZ6YARGSPD06",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620B91MDQVMZZ4KG0QQP",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620B5AQ1SCEWCECT7Q7X",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C451QED07D4K0RJ9R",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CZSZ473ET970R52EH",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620DV5D7AAKGT4Z3677H",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06",
+          "01M80T620B91MDQVMZZ4KG0QQP",
+          "01M80T620B5AQ1SCEWCECT7Q7X",
+          "01M80T620C451QED07D4K0RJ9R",
+          "01M80T620CZSZ473ET970R52EH"
+        ],
+        "relatedConceptIds": [
+          "01M80T620DV5D7AAKGT4Z3677H"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Linux organises everything under a single tree that starts at `/` (root). Hardware, programs, settings and your files all appear as paths in that tree.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. Everything hangs off `/`, there are no drive letters.\n2. Each top-level directory has a conventional purpose.\n3. Other disks and devices are *mounted* onto empty directories in the tree.\n4. Programs find things by absolute paths (`/etc/hosts`) or relative ones (`../logs`).",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "| Path | Holds |\n| --- | --- |\n| `/bin`, `/usr/bin` | programs available to all users |\n| `/sbin`, `/usr/sbin` | system administration programs |\n| `/etc` | system-wide configuration files |\n| `/home` | users' personal files |\n| `/root` | the root user's home |\n| `/var` | data that changes: logs, mail, caches |\n| `/tmp` | temporary files, cleared often |\n| `/dev` | device files (disks, terminals) |\n| `/proc` | a live view of the kernel and processes |\n| `/boot` | kernel and bootloader files |",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: you run `ls /etc`.\nProcess: the shell asks the kernel to list the directory at that absolute path.\nOutput: configuration files such as `hosts`, `passwd` and `ssh/`.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Knowing where things live lets you find configuration, logs and binaries quickly, which is most of what troubleshooting is.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Attackers look in `/etc` (configuration, account files) and `/var/log` (what was recorded) first.\n- Defenders watch these directories for unexpected changes and keep `/tmp` from becoming a staging area.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- ls\n- cd\n- pwd\n- find\n- df",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- File Permissions",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Thinking `/root` and `/` are the same thing: `/` is the top of the tree, `/root` is one user's home.\n- Assuming a path is the same on every distribution; confirm with `ls` and `man hier`.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"One big tree, and every file has exactly one address.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Which files in /etc are readable by any user on this machine, and which should not be?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "linux-filesystem-hierarchy",
+        "tags": [
+          "starter",
+          "foundations"
+        ],
+        "title": "Linux Filesystem Hierarchy",
+        "updatedAt": "2026-11-22T05:03:11.578Z"
+      },
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:03:11.586Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DV5D7AAKGT4Z3677H",
+        "importRef": "starter:concepts:File Permissions",
+        "links": [
+          {
+            "targetId": "01M80T620BJS9FYZ6YARGSPD06",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C7AWTY7F41QRCMCYJ",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C58C7Z9CJYXDN5W7V",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CCGV7S680P79JFAXX",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CZSXVGAA7P8VMPPR9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620D90H5NMK39SND3R4V",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M80T620DFST8X901HCJR00FQ",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06",
+          "01M80T620C7AWTY7F41QRCMCYJ",
+          "01M80T620C58C7Z9CJYXDN5W7V",
+          "01M80T620CCGV7S680P79JFAXX",
+          "01M80T620CZSXVGAA7P8VMPPR9"
+        ],
+        "relatedConceptIds": [
+          "01M80T620D90H5NMK39SND3R4V",
+          "01M80T620DFST8X901HCJR00FQ"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Every file has an owner, a group, and three sets of read / write / execute rights: for the owner, the group, and everyone else.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. `ls -l` shows a string like `-rwxr-x---`.\n2. The first character is the type (`-` file, `d` directory, `l` link).\n3. The next nine are three triplets: owner, group, others.\n4. The kernel checks them in that order and uses the first that applies to you.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **r** (4) read the contents; for a directory, list names\n- **w** (2) change the contents; for a directory, create or delete entries\n- **x** (1) run the file; for a directory, enter it\n- **setuid / setgid** run a program with its owner's or group's identity\n- **sticky bit** on a directory lets only a file's owner delete it (`/tmp`)",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `chmod 640 notes.txt`.\nProcess: 6 = rw for the owner, 4 = r for the group, 0 = nothing for others.\nOutput: `ls -l notes.txt` shows `-rw-r-----`.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Permissions are the first line of defence on a multi-user system: they decide who can read secrets and who can change programs.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Overly open files (world-writable scripts, readable private keys) are common privilege-escalation paths.\n- SSH refuses private keys that others can read, so `chmod 600` is a habit.\n- Auditing setuid programs is a standard enumeration step: `find / -perm -4000 -type f 2>/dev/null`.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- ls\n- chmod\n- chown\n- id\n- sudo",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- Principle of Least Privilege\n- Linux Filesystem Hierarchy",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Using `chmod 777` to \"fix\" a problem; it hides the real cause and opens the file to everyone.\n- Forgetting that directories need `x` to enter them.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"A three-by-three grid of who may do what, checked top to bottom.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- What does it take for a setuid program to become a vulnerability?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "file-permissions",
+        "tags": [
+          "starter",
+          "foundations",
+          "access-control"
+        ],
+        "title": "File Permissions",
+        "updatedAt": "2026-11-22T05:03:11.586Z"
+      },
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:03:11.601Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DRCPTBNWMW86RD9SF",
+        "importRef": "starter:concepts:Processes and Signals",
+        "links": [
+          {
+            "targetId": "01M80T620DGDJZRRV7G9XMH7MG",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620DCPBHAM35TYAF6V1E",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CPQQDK9HEEK3KHBYK",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CZSXVGAA7P8VMPPR9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620DJ3REMY39K95XYBSD",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M80T620DV5D7AAKGT4Z3677H",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620DGDJZRRV7G9XMH7MG",
+          "01M80T620DCPBHAM35TYAF6V1E",
+          "01M80T620CPQQDK9HEEK3KHBYK",
+          "01M80T620CZSXVGAA7P8VMPPR9"
+        ],
+        "relatedConceptIds": [
+          "01M80T620DJ3REMY39K95XYBSD",
+          "01M80T620DV5D7AAKGT4Z3677H"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "A process is a running program with its own ID (PID), owner and memory. Signals are small messages the kernel or other processes send to it.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. Starting a program creates a process with a PID and a parent (PPID).\n2. The process runs with the permissions of the user who started it.\n3. `kill` sends a signal; the process can handle most of them.\n4. When it exits, its parent collects the exit status.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **PID / PPID** process and parent IDs\n- **SIGTERM (15)** polite request to quit\n- **SIGKILL (9)** cannot be caught or ignored\n- **SIGHUP (1)** often \"reload your configuration\"\n- **daemon** a background service process",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `ps aux | grep sshd` shows PID 812.\nProcess: `kill 812` sends SIGTERM, sshd cleans up and exits.\nOutput: the process disappears from `ps`.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "You will constantly need to see what is running, what it runs as, and how to stop it cleanly.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Unexpected processes, or ones running as root from odd locations, are classic signs of compromise.\n- Services that run as root when they do not need to widen the damage of any bug.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- ps\n- kill\n- ss\n- sudo",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- Pipes and Redirection\n- File Permissions",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Using `kill -9` first: it skips cleanup and can corrupt data.\n- Assuming a process listening on a port is yours; check the owner with `ss -p` or `ps`.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"Each process is a worker with a badge number and a boss; signals are tapping its shoulder.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- How can I tell which process opened a particular network port?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "processes-and-signals",
+        "tags": [
+          "starter",
+          "foundations"
+        ],
+        "title": "Processes and Signals",
+        "updatedAt": "2026-11-22T05:03:11.601Z"
+      },
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:03:11.637Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620D90H5NMK39SND3R4V",
+        "importRef": "starter:concepts:Principle of Least Privilege",
+        "links": [
+          {
+            "targetId": "01M80T620CZSXVGAA7P8VMPPR9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C7AWTY7F41QRCMCYJ",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C58C7Z9CJYXDN5W7V",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CCGV7S680P79JFAXX",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620DV5D7AAKGT4Z3677H",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M80T620DRCPTBNWMW86RD9SF",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620CZSXVGAA7P8VMPPR9",
+          "01M80T620C7AWTY7F41QRCMCYJ",
+          "01M80T620C58C7Z9CJYXDN5W7V",
+          "01M80T620CCGV7S680P79JFAXX"
+        ],
+        "relatedConceptIds": [
+          "01M80T620DV5D7AAKGT4Z3677H",
+          "01M80T620DRCPTBNWMW86RD9SF"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Give every user, program and process only the access it needs to do its job, and nothing more.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. List what the task actually requires.\n2. Create a dedicated account or role with just those rights.\n3. Run the program as that account instead of root.\n4. Review and remove access when it is no longer needed.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **Separate accounts** for people and for services\n- **Narrow sudo rules** instead of full root\n- **File permissions** that follow need-to-know\n- **Network rules** that expose only required ports\n- **Time limits** on elevated access",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: a web server needs to read `/var/www` and bind to port 443.\nProcess: it starts as root only to bind the port, then drops to the unprivileged `www-data` user.\nOutput: a bug in the site code cannot overwrite system files.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "It limits the damage of mistakes, stolen credentials and software bugs.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Attackers love over-privileged accounts: one foothold becomes full control.\n- Defenders audit sudo rules, setuid binaries and service accounts to shrink what an intruder could reach.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- sudo\n- chmod\n- chown\n- id",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- File Permissions\n- Processes and Signals",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Running everything as root for convenience.\n- Granting broad access \"temporarily\" and never removing it.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"Hand out keys to single rooms, not the master key.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Which services on my machine run as root, and could any of them run as a normal user?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "principle-of-least-privilege",
+        "tags": [
+          "starter",
+          "foundations",
+          "security"
+        ],
+        "title": "Principle of Least Privilege",
+        "updatedAt": "2026-11-22T05:03:11.637Z"
+      },
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:03:11.810Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62E2X8KXFQKGF8WVFBCM",
+        "links": [],
+        "questionsOpen": 0,
+        "relatedCommandIds": [
+          "01M80T620C0Q9YB5D2Q8NHTA3F"
+        ],
+        "relatedConceptIds": [],
+        "sections": [
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Why?\n- [x] Done?\n- How?\n",
+            "title": "Questions"
+          }
+        ],
+        "slug": "open-questions-demo",
+        "tags": [],
+        "title": "Open questions demo",
+        "updatedAt": "2026-11-22T05:03:11.810Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

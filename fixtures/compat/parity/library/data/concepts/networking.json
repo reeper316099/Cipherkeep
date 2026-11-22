@@ -1,0 +1,267 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Networking",
+        "confidence": 1,
+        "createdAt": "2026-11-22T05:03:11.605Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620DM9832W9T47SM4HF3",
+        "importRef": "starter:concepts:DNS (Domain Name System)",
+        "links": [
+          {
+            "targetId": "01M80T620CJKPACGJ94XF6101W",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C66Q6TH07SPAAVHEW",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CTEEFWQWDXE4T4ZA9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CTYTVM1ESJ7D24N8B",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620D5RSN4J5HMCFNQF1K",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M80T620DATFHQBZKCP2AQT3M",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620CJKPACGJ94XF6101W",
+          "01M80T620C66Q6TH07SPAAVHEW",
+          "01M80T620CTEEFWQWDXE4T4ZA9",
+          "01M80T620CTYTVM1ESJ7D24N8B"
+        ],
+        "relatedConceptIds": [
+          "01M80T620D5RSN4J5HMCFNQF1K",
+          "01M80T620DATFHQBZKCP2AQT3M"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "DNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember numbers.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. An application asks the local resolver for `example.com`.\n2. The resolver checks its cache, then asks upstream servers.\n3. Authoritative servers for the domain give the answer with a TTL.\n4. The answer is cached until the TTL expires.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "| Record | Meaning |\n| --- | --- |\n| A / AAAA | IPv4 / IPv6 address |\n| CNAME | alias to another name |\n| MX | mail servers |\n| TXT | free text (SPF, verification) |\n| NS | the zone's name servers |\n| PTR | reverse lookup, IP to name |",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `dig +short example.com A`.\nProcess: your resolver (or the one after `@`) finds the authoritative answer.\nOutput: one or more IP addresses.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Almost every connection starts with a lookup; when \"the internet is down\" it is often DNS.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Recon: DNS records reveal hosts, mail providers and sometimes internal names.\n- Attacks include spoofing/poisoning, subdomain takeover and DNS tunnelling.\n- Defenders log queries, use DNSSEC where possible and watch for odd TXT or very long names.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- dig\n- ping\n- curl\n- tcpdump",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- TCP/IP and Ports\n- HTTP Basics",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Believing a changed record is visible everywhere at once: caches obey the old TTL.\n- Editing /etc/hosts and forgetting it overrides DNS on that machine.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"The internet's phone book, with caches that remember answers for a while.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- How can I see which resolver my machine is actually using right now?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "dns-domain-name-system",
+        "tags": [
+          "starter",
+          "foundations",
+          "networking"
+        ],
+        "title": "DNS (Domain Name System)",
+        "updatedAt": "2026-11-22T05:03:12.553Z"
+      },
+      {
+        "archived": false,
+        "category": "Networking",
+        "confidence": 1,
+        "createdAt": "2026-11-22T05:03:11.613Z",
+        "difficulty": "Medium",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M80T620D5RSN4J5HMCFNQF1K",
+        "importRef": "starter:concepts:TCP/IP and Ports",
+        "links": [
+          {
+            "targetId": "01M80T620CPQQDK9HEEK3KHBYK",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CC9BF0194ZJ7JP7XN",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CTYTVM1ESJ7D24N8B",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CYJP215Q2QRT695T7",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620C66Q6TH07SPAAVHEW",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620CXWYRXZKNDNVM0PE4",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80T620DM9832W9T47SM4HF3",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M80T620DATFHQBZKCP2AQT3M",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M80T620CPQQDK9HEEK3KHBYK",
+          "01M80T620CC9BF0194ZJ7JP7XN",
+          "01M80T620CTYTVM1ESJ7D24N8B",
+          "01M80T620CYJP215Q2QRT695T7",
+          "01M80T620C66Q6TH07SPAAVHEW",
+          "01M80T620CXWYRXZKNDNVM0PE4"
+        ],
+        "relatedConceptIds": [
+          "01M80T620DM9832W9T47SM4HF3",
+          "01M80T620DATFHQBZKCP2AQT3M"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "IP gets packets between machines by address; TCP and UDP add ports so many conversations can share one address, and TCP adds reliable, ordered delivery.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. Your machine has an IP address; each service listens on a port (0-65535).\n2. A TCP connection starts with a three-way handshake: SYN, SYN-ACK, ACK.\n3. Data flows in ordered, acknowledged segments.\n4. The connection closes with FIN/ACK (or is reset with RST).\n5. UDP skips the handshake: faster, but no delivery guarantee.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **IP address** where (IPv4 `192.0.2.10`, IPv6 `2001:db8::1`)\n- **Port** which service (22 SSH, 53 DNS, 80 HTTP, 443 HTTPS)\n- **TCP flags** SYN, ACK, FIN, RST, PSH\n- **Socket** an IP + port + protocol endpoint\n- **NAT / firewall** devices that rewrite or filter traffic",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `nc -zv 192.0.2.10 22`.\nProcess: nc sends a SYN to port 22; an open port answers SYN-ACK, a closed one answers RST.\nOutput: \"succeeded\" or \"refused\".",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Port scanning, firewall rules and most network troubleshooting depend on understanding these two layers.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- A scanner tells open, closed and filtered ports apart by how (or whether) they answer.\n- Every listening port is attack surface: close what you do not need.\n- Packet captures show the handshake and reveal unencrypted data.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- ss\n- nmap\n- tcpdump\n- nc\n- ping\n- ip",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- DNS (Domain Name System)\n- HTTP Basics",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Treating \"filtered\" as \"closed\": filtered means no answer, often a firewall drop.\n- Assuming a port number proves the service: anything can listen anywhere.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"The address gets you to the building, the port gets you to the right door.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Medium",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- What does a SYN scan look like in tcpdump compared with a full connect scan?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "tcp-ip-and-ports",
+        "tags": [
+          "starter",
+          "foundations",
+          "networking"
+        ],
+        "title": "TCP/IP and Ports",
+        "updatedAt": "2026-11-22T05:03:12.563Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

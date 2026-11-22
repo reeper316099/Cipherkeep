@@ -6,12 +6,15 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"math"
 	"os"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 	"unicode/utf8"
@@ -88,12 +91,10 @@ func ReadFileRetry(file string) ([]byte, error) {
 // object keys sorted, two-space indent, a trailing newline, and JavaScript's string escaping (it does not escape
 // <, > or &, and does not escape U+2028/2029).
 func StableStringify(v any) ([]byte, error) {
-	generic, err := toGeneric(v)
-	if err != nil {
+	var buf bytes.Buffer
+	if err := writeReflect(&buf, reflect.ValueOf(v), 0); err != nil {
 		return nil, err
 	}
-	var buf bytes.Buffer
-	writeValue(&buf, generic, 0)
 	buf.WriteByte('\n')
 	return buf.Bytes(), nil
 }
@@ -294,4 +295,236 @@ func jsNumber(n json.Number) string {
 		exp = "0"
 	}
 	return mant + "e" + sign + exp
+}
+
+var (
+	jsonNumberType    = reflect.TypeOf(json.Number(""))
+	marshalerType     = reflect.TypeOf((*json.Marshaler)(nil)).Elem()
+	textMarshalerType = reflect.TypeOf((*interface{ MarshalText() ([]byte, error) })(nil)).Elem()
+)
+
+// writeReflect writes v in canonical form straight from the Go value (maps, slices, strings, numbers, structs with
+// json tags), which avoids encoding to JSON and decoding again. Anything unusual (custom marshalers, embedded structs,
+// json.RawMessage) takes the slower round trip through encoding/json, so the output is always the same.
+func writeReflect(buf *bytes.Buffer, v reflect.Value, depth int) error {
+	for v.IsValid() && (v.Kind() == reflect.Interface || v.Kind() == reflect.Pointer) {
+		if v.IsNil() {
+			buf.WriteString("null")
+			return nil
+		}
+		v = v.Elem()
+	}
+	if !v.IsValid() {
+		buf.WriteString("null")
+		return nil
+	}
+	t := v.Type()
+	if t == jsonNumberType {
+		buf.WriteString(jsNumber(json.Number(v.String()))) // a number, not a string
+		return nil
+	}
+	if t.Implements(marshalerType) || reflect.PointerTo(t).Implements(marshalerType) ||
+		t.Implements(textMarshalerType) || reflect.PointerTo(t).Implements(textMarshalerType) {
+		return writeViaJSON(buf, v, depth)
+	}
+	switch v.Kind() {
+	case reflect.String:
+		writeString(buf, v.String())
+	case reflect.Bool:
+		if v.Bool() {
+			buf.WriteString("true")
+		} else {
+			buf.WriteString("false")
+		}
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		buf.WriteString(strconv.FormatInt(v.Int(), 10))
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		buf.WriteString(strconv.FormatUint(v.Uint(), 10))
+	case reflect.Float32, reflect.Float64:
+		f := v.Float()
+		if math.IsNaN(f) || math.IsInf(f, 0) {
+			return errors.New("jsonstore: cannot encode NaN or Inf")
+		}
+		buf.WriteString(jsNumber(json.Number(strconv.FormatFloat(f, 'g', -1, 64))))
+	case reflect.Slice, reflect.Array:
+		if v.Kind() == reflect.Slice && v.IsNil() {
+			buf.WriteString("null")
+			return nil
+		}
+		if v.Type().Elem().Kind() == reflect.Uint8 {
+			return writeViaJSON(buf, v, depth) // []byte is base64 in JSON
+		}
+		n := v.Len()
+		if n == 0 {
+			buf.WriteString("[]")
+			return nil
+		}
+		buf.WriteString("[\n")
+		for i := 0; i < n; i++ {
+			indent(buf, depth+1)
+			if err := writeReflect(buf, v.Index(i), depth+1); err != nil {
+				return err
+			}
+			if i < n-1 {
+				buf.WriteByte(',')
+			}
+			buf.WriteByte('\n')
+		}
+		indent(buf, depth)
+		buf.WriteByte(']')
+	case reflect.Map:
+		if v.Type().Key().Kind() != reflect.String {
+			return writeViaJSON(buf, v, depth)
+		}
+		if v.IsNil() {
+			buf.WriteString("null")
+			return nil
+		}
+		keys := v.MapKeys()
+		if len(keys) == 0 {
+			buf.WriteString("{}")
+			return nil
+		}
+		names := make([]string, len(keys))
+		for i, k := range keys {
+			names[i] = k.String()
+		}
+		order := make([]int, len(keys))
+		for i := range order {
+			order[i] = i
+		}
+		sort.Slice(order, func(a, b int) bool { return utf16Less(names[order[a]], names[order[b]]) })
+		buf.WriteString("{\n")
+		for n, i := range order {
+			indent(buf, depth+1)
+			writeString(buf, names[i])
+			buf.WriteString(": ")
+			if err := writeReflect(buf, v.MapIndex(keys[i]), depth+1); err != nil {
+				return err
+			}
+			if n < len(order)-1 {
+				buf.WriteByte(',')
+			}
+			buf.WriteByte('\n')
+		}
+		indent(buf, depth)
+		buf.WriteByte('}')
+	case reflect.Struct:
+		return writeStruct(buf, v, depth)
+	default:
+		return writeViaJSON(buf, v, depth)
+	}
+	return nil
+}
+
+type field struct {
+	name  string
+	index int
+	omit  bool
+}
+
+var fieldCache sync.Map // reflect.Type -> []field (nil: use the slow path)
+
+func structFields(t reflect.Type) []field {
+	if c, ok := fieldCache.Load(t); ok {
+		return c.([]field)
+	}
+	var out []field
+	ok := true
+	for i := 0; i < t.NumField(); i++ {
+		f := t.Field(i)
+		if f.Anonymous {
+			ok = false // embedded structs flatten in encoding/json; leave those to the slow path
+			break
+		}
+		if !f.IsExported() {
+			continue
+		}
+		tag := f.Tag.Get("json")
+		if tag == "-" {
+			continue
+		}
+		name, opts, _ := strings.Cut(tag, ",")
+		if name == "" {
+			name = f.Name
+		}
+		out = append(out, field{name: name, index: i, omit: strings.Contains(opts, "omitempty")})
+		if strings.Contains(opts, "string") {
+			ok = false
+			break
+		}
+	}
+	if !ok {
+		out = nil
+	}
+	fieldCache.Store(t, out)
+	return out
+}
+
+func isEmptyValue(v reflect.Value) bool {
+	switch v.Kind() {
+	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
+		return v.Len() == 0
+	case reflect.Bool:
+		return !v.Bool()
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		return v.Int() == 0
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		return v.Uint() == 0
+	case reflect.Float32, reflect.Float64:
+		return v.Float() == 0
+	case reflect.Interface, reflect.Pointer:
+		return v.IsNil()
+	}
+	return false
+}
+
+func writeStruct(buf *bytes.Buffer, v reflect.Value, depth int) error {
+	fields := structFields(v.Type())
+	if fields == nil {
+		return writeViaJSON(buf, v, depth)
+	}
+	type kv struct {
+		name string
+		val  reflect.Value
+	}
+	var kvs []kv
+	for _, f := range fields {
+		fv := v.Field(f.index)
+		if f.omit && isEmptyValue(fv) {
+			continue
+		}
+		kvs = append(kvs, kv{f.name, fv})
+	}
+	if len(kvs) == 0 {
+		buf.WriteString("{}")
+		return nil
+	}
+	sort.Slice(kvs, func(a, b int) bool { return utf16Less(kvs[a].name, kvs[b].name) })
+	buf.WriteString("{\n")
+	for i, e := range kvs {
+		indent(buf, depth+1)
+		writeString(buf, e.name)
+		buf.WriteString(": ")
+		if err := writeReflect(buf, e.val, depth+1); err != nil {
+			return err
+		}
+		if i < len(kvs)-1 {
+			buf.WriteByte(',')
+		}
+		buf.WriteByte('\n')
+	}
+	indent(buf, depth)
+	buf.WriteByte('}')
+	return nil
+}
+
+// writeViaJSON is the slow path: encode with encoding/json, decode generically, and write that.
+func writeViaJSON(buf *bytes.Buffer, v reflect.Value, depth int) error {
+	generic, err := toGeneric(v.Interface())
+	if err != nil {
+		return err
+	}
+	writeValue(buf, generic, depth)
+	return nil
 }

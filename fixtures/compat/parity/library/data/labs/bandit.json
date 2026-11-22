@@ -1,0 +1,59 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [
+          "01M80T620BJS9FYZ6YARGSPD06"
+        ],
+        "conceptIds": [
+          "01M80T620DQ85V7YNJGAJKE1NF"
+        ],
+        "createdAt": "2026-11-22T05:03:11.693Z",
+        "difficulty": "Easy",
+        "domain": "linux",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62AD276MRZETBQGY45HR",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "bandit-0",
+        "solvedAt": "2026-11-20T12:00:00.000Z",
+        "status": "Completed",
+        "tags": [],
+        "timeSpentMin": 40,
+        "title": "Bandit 0",
+        "updatedAt": "2026-11-22T05:03:11.693Z",
+        "writeup": "",
+        "writeupPrivate": true
+      },
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [
+          "01M80T620CDX7SS73NJR1P941S"
+        ],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:03:11.699Z",
+        "difficulty": "Medium",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80T62AKZFNFS93M0TBXXSC3",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "bandit-1",
+        "status": "In Progress",
+        "tags": [],
+        "timeSpentMin": 25,
+        "title": "Bandit 1",
+        "updatedAt": "2026-11-22T05:03:11.699Z",
+        "writeup": "",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

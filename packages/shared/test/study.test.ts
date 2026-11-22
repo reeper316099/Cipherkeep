@@ -151,6 +151,16 @@ describe('card building', () => {
     expect(fill.prompt).toBe('Fill in the blank: ls ____ ~');
     expect(fill.expected).toEqual(['-al']);
   });
+  it('always blanks exactly one token in a fill card, whatever the id hashes to', () => {
+    const many = {
+      examples: [{ command: 'ls -a -l -h ~', description: 'long list' }],
+    };
+    for (let i = 0; i < 300; i++) {
+      const fill = buildCommandCard(cmd({ ...many, id: `01HZ${i}ABCDEFG` }), 'fill', i % 5)!;
+      expect(fill.prompt, `id ${i}`).toContain('____');
+      expect(fill.expected?.[0], `id ${i}`).toMatch(/^-[alh]$/); // a flag, never undefined
+    }
+  });
   it('skips card types the data cannot support', () => {
     const bare = cmd({
       explanation: '',
