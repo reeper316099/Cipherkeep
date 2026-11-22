@@ -1,0 +1,73 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:42:33.452Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4QCCAPXWAZTQ2Q0M5EG",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "secret-lab",
+        "status": "Not Started",
+        "tags": [],
+        "title": "Secret Lab",
+        "updatedAt": "2026-11-22T05:42:33.452Z",
+        "writeup": "the flag is here",
+        "writeupPrivate": true
+      },
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:42:33.460Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4QMDG5T0YPCT61XR90B",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "open-lab",
+        "status": "Not Started",
+        "tags": [],
+        "title": "Open Lab",
+        "updatedAt": "2026-11-22T05:42:33.460Z",
+        "writeup": "public notes",
+        "writeupPrivate": false
+      },
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-22T05:42:33.463Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4QQAY73KHX8TQZV3ZD7",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "hidden-quoted-lab",
+        "status": "Not Started",
+        "tags": [
+          "x",
+          "y z"
+        ],
+        "title": "Hidden, \"quoted\"\nLab",
+        "updatedAt": "2026-11-22T05:42:33.463Z",
+        "writeup": "line one\nline two | pipe",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

@@ -7,13 +7,28 @@ last phase.
 | Path                 | What it is                                                                          |
 | -------------------- | ----------------------------------------------------------------------------------- |
 | `internal/jsonstore` | Storage engine: atomic writes, locks, backups, watcher, AES-256-GCM codec (phase 1) |
-| `cmd/bench-store`    | Benchmark that pairs with `scripts/bench-store.ts`                                  |
+| `internal/domain`    | Entity model, validation, slugs, wiki links, settings (phase 2)                     |
+| `internal/repo`      | Repositories: JSON shards and Markdown notes, including encrypted notes (phase 2)   |
+| `internal/search`    | Full-text index with the same scoring as the Node version (phase 2)                 |
+| `internal/links`     | Relations, backlinks and the graph (phase 2)                                        |
+| `internal/study`     | Spaced repetition, cards, skill map, recommendations (phase 2)                      |
+| `internal/library`   | Opens a whole library and wires the above together (phase 2)                        |
+| `internal/notion`    | Notion export parsing: names, pages, tables, relations, dates (phase 3)             |
+| `internal/csvx`      | CSV reader and writer that behave like PapaParse (phase 3)                          |
+| `internal/importer`  | Planners, commit, undo and previews for every import source (phase 3)               |
+| `internal/exporter`  | Markdown vault, CSV and JSON export (phase 3)                                       |
+| `internal/starter`   | The embedded starter pack (phase 3)                                                 |
+| `internal/notionapi` | Optional Notion API import (phase 3)                                                |
+| `internal/sanitize`  | Writeup redaction (phase 3)                                                         |
+| `internal/parity`    | Tests that compare Go with the TypeScript output on shared inputs (phase 3)         |
+| `cmd/bench-*`        | Benchmarks that pair with `scripts/bench-*.ts`                                      |
 
 ```bash
 cd go
 go vet ./... && go test -race ./...          # run before every commit
 UPDATE_COMPAT=1 go test -run TestCompatWriteGoFixtures ./internal/jsonstore   # regenerate fixtures/compat/go
 go run ./cmd/bench-store <dataset-dir>       # see docs/go-migration/phase-1-storage-engine.md
+npx tsx scripts/gen-importer-fixtures.ts     # from the repo root: regenerate fixtures/compat/importers (only when TS behaviour changes on purpose)
 ```
 
 ## Compatibility with the Node version

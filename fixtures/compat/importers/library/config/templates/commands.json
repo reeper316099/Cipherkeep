@@ -1,0 +1,20 @@
+{
+  "name": "Command",
+  "sections": [
+    {
+      "hint": "(A simple explanation.)",
+      "key": "what-it-does",
+      "title": "📌 What it does"
+    },
+    {
+      "hint": "command [options] [arguments]",
+      "key": "basic-syntax",
+      "title": "⚙️ Basic Syntax"
+    },
+    {
+      "hint": "```bash\ncommand example\n```",
+      "key": "examples",
+      "title": "💡 Examples"
+    }
+  ]
+}

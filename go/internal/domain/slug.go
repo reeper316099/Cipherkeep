@@ -41,10 +41,13 @@ func isJSSpace(r rune) bool {
 // NormalizeTitle is a case-, Unicode- and emoji-variation-insensitive key for matching titles.
 func NormalizeTitle(s string) string {
 	s = norm.NFKC.String(s)
-	s = strings.NewReplacer("︎", "", "️", "").Replace(s)
 	var b strings.Builder
+	b.Grow(len(s))
 	space := false
 	for _, r := range s {
+		if r == 0xFE0E || r == 0xFE0F { // text and emoji variation selectors
+			continue
+		}
 		if isJSSpace(r) {
 			space = true
 			continue

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Linux Command Cheat Sheet",
+    "folder": "starter-pack/cheat-sheets",
+    "kind": "cheatsheet",
+    "tags": ["starter", "linux"],
+    "markdown": "# Linux Command Cheat Sheet\n\nA one-page reminder. Each command has a full entry in the Commands library.\n\n## Moving around\n\n| Task | Command |\n| --- | --- |\n| Where am I? | `pwd` |\n| List with details, including hidden | `ls -la` |\n| Go home / back / up | `cd ~` · `cd -` · `cd ..` |\n| Find files by name | `find . -name \"*.conf\"` |\n\n## Looking at files\n\n| Task | Command |\n| --- | --- |\n| Page through a file | `less file` (q to quit) |\n| First / last 20 lines | `head -n 20 file` · `tail -n 20 file` |\n| Watch a log grow | `tail -f file` |\n| What kind of file is it? | `file mystery` |\n\n## Searching and shaping text\n\n| Task | Command |\n| --- | --- |\n| Lines containing a word | `grep -rn \"word\" dir/` |\n| Count lines | `wc -l file` |\n| Most frequent values | `sort file \\| uniq -c \\| sort -nr \\| head` |\n| Second column of a CSV | `cut -d, -f2 data.csv` |\n\n## Permissions and users\n\n| Task | Command |\n| --- | --- |\n| Who am I? | `id` |\n| Make a script executable | `chmod +x script.sh` |\n| Private key permissions | `chmod 600 key` |\n| What can I run as root? | `sudo -l` |\n\n> [!WARNING]\n> `rm` has no undo. Preview with `ls` first, and prefer `rm -i` while learning.\n"
+  },
+  {
+    "title": "Common Ports and Protocols",
+    "folder": "starter-pack/cheat-sheets",
+    "kind": "cheatsheet",
+    "tags": ["starter", "networking"],
+    "markdown": "# Common Ports and Protocols\n\nDefaults only: any service can listen on any port.\n\n| Port | Protocol | Service |\n| --- | --- | --- |\n| 20, 21 | TCP | FTP (data, control) |\n| 22 | TCP | SSH, SCP, SFTP |\n| 23 | TCP | Telnet (unencrypted) |\n| 25 | TCP | SMTP (mail between servers) |\n| 53 | UDP/TCP | DNS |\n| 67, 68 | UDP | DHCP (server, client) |\n| 80 | TCP | HTTP |\n| 110 | TCP | POP3 |\n| 123 | UDP | NTP |\n| 143 | TCP | IMAP |\n| 161 | UDP | SNMP |\n| 389 | TCP/UDP | LDAP |\n| 443 | TCP | HTTPS |\n| 445 | TCP | SMB (Windows file sharing) |\n| 587 | TCP | SMTP submission (mail clients) |\n| 993 | TCP | IMAPS |\n| 995 | TCP | POP3S |\n| 1433 | TCP | Microsoft SQL Server |\n| 3306 | TCP | MySQL / MariaDB |\n| 3389 | TCP | RDP (Windows Remote Desktop) |\n| 5432 | TCP | PostgreSQL |\n| 5900 | TCP | VNC |\n| 6379 | TCP | Redis |\n| 8080 | TCP | Alternate HTTP (proxies, dev servers) |\n\n## Checking a port\n\n- Is something listening here? `ss -tulpn` (Linux)\n- Is that port reachable? `nc -zv host 443`\n- What is running on it? `nmap -sV -p 443 host` (only against systems you may test)\n"
+  },
+  {
+    "title": "SSH Quick Guide",
+    "folder": "starter-pack/guides",
+    "kind": "guide",
+    "tags": ["starter", "ssh"],
+    "markdown": "# SSH Quick Guide\n\n## Make a key pair\n\n```bash\nssh-keygen -t ed25519 -C \"lab laptop\"\n```\n\nAccept the default location and set a passphrase. This creates `~/.ssh/id_ed25519` (private, never share) and `~/.ssh/id_ed25519.pub` (public).\n\n## Install the public key on a server\n\n```bash\nssh-copy-id student@192.0.2.10\n```\n\n## Permissions SSH insists on\n\n```bash\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/id_ed25519\n```\n\n## A tidy `~/.ssh/config`\n\n```text\nHost lab\n  HostName 192.0.2.10\n  User student\n  Port 22\n  IdentityFile ~/.ssh/id_ed25519\n```\n\nThen `ssh lab` is enough.\n\n## Tunnels\n\n| Goal | Command |\n| --- | --- |\n| Reach a remote web server locally | `ssh -L 8080:localhost:80 lab` then open http://localhost:8080 |\n| SOCKS proxy through the host | `ssh -D 1080 -N lab` |\n| Go through a jump host | `ssh -J jump@198.51.100.5 student@10.0.0.7` |\n\n> [!TIP]\n> On first connection compare the host key fingerprint with one you trust. A changed key later means a rebuilt server, or someone in the middle.\n\nRelated: [[cmd:ssh]], [[cmd:scp]], [[File Permissions]].\n"
+  },
+  {
+    "title": "Local DNS and the hosts file",
+    "folder": "starter-pack/guides",
+    "kind": "guide",
+    "tags": ["starter", "dns"],
+    "markdown": "# Local DNS and the hosts file\n\nThe hosts file maps names to addresses on one machine and is consulted before DNS. Handy for lab setups (`web.lab.test` pointing at a VM) and for testing.\n\n## Where it lives\n\n| System | Path |\n| --- | --- |\n| Linux, macOS | `/etc/hosts` |\n| Windows | `C:\\Windows\\System32\\drivers\\etc\\hosts` |\n\nEditing needs administrator rights (`sudo` on Linux/macOS, an elevated editor on Windows).\n\n## Add an entry\n\n```text\n192.0.2.10   web.lab.test\n```\n\nOne address, then one or more names, separated by spaces.\n\n## Flush the DNS cache after changes\n\n| System | Command |\n| --- | --- |\n| macOS | `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder` |\n| Windows | `ipconfig /flushdns` |\n| Linux (systemd-resolved) | `resolvectl flush-caches` |\n\n## Check it\n\n```bash\nping -c 1 web.lab.test\ndig +short web.lab.test      # asks DNS, so it will NOT show hosts-file entries\n```\n\n> [!NOTE]\n> `dig` talks to DNS servers directly and ignores the hosts file; `ping` and browsers use the system resolver, which reads it.\n\nRelated: [[DNS (Domain Name System)]], [[cmd:dig]].\n"
+  }
+]

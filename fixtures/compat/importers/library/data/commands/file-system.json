@@ -1,0 +1,615 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "folder to list",
+            "name": "directory"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.275Z",
+        "examples": [
+          {
+            "command": "ls -al",
+            "description": "list directory entries"
+          },
+          {
+            "command": "ls /var",
+            "description": "list /var"
+          },
+          {
+            "command": "ls --color=auto",
+            "description": "colourised output"
+          },
+          {
+            "command": "ls -lh ~",
+            "description": "long listing of home, human sizes"
+          }
+        ],
+        "explanation": "list directory entries",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HTZQS98P7M94C2520G",
+        "importRef": "6cff1aec8e9f4348e71088667742493b",
+        "links": [],
+        "mastery": 0,
+        "name": "ls",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-a",
+            "meaning": "include dotfiles"
+          },
+          {
+            "flag": "-l",
+            "meaning": "long listing"
+          },
+          {
+            "flag": "-h",
+            "meaning": "sizes in K/M/G"
+          },
+          {
+            "flag": "-t",
+            "meaning": "newest first"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "directory"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ls",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ls [flags] [directory]",
+        "tags": [],
+        "title": "ls",
+        "updatedAt": "2026-11-22T05:42:33.275Z",
+        "whatItDoes": "Prints the entries of a directory."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.285Z",
+        "examples": [
+          {
+            "command": "pwd",
+            "description": "print the current folder"
+          }
+        ],
+        "explanation": "print working directory",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HT3RGVEKTF12WM4A18",
+        "importRef": "601e8843335af52824016f26b0572845",
+        "links": [],
+        "mastery": 0,
+        "name": "pwd",
+        "notes": "",
+        "options": [],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "pwd",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "pwd",
+        "tags": [],
+        "title": "pwd",
+        "updatedAt": "2026-11-22T05:42:33.285Z",
+        "whatItDoes": "Shows where you are."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "destination",
+            "name": "directory"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.288Z",
+        "examples": [
+          {
+            "command": "cd ~",
+            "description": "change directory"
+          },
+          {
+            "command": "cd ~/projects",
+            "description": "enter projects"
+          }
+        ],
+        "explanation": "change directory",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HT90W904T4GM0MY1N3",
+        "importRef": "619a9b2a94ff5d8eac00d100e9814d84",
+        "links": [],
+        "mastery": 0,
+        "name": "cd",
+        "notes": "",
+        "options": [
+          {
+            "flag": "cd",
+            "meaning": "jump home"
+          },
+          {
+            "flag": "cd -",
+            "meaning": "jump back"
+          },
+          {
+            "flag": "cd ..",
+            "meaning": "one level up"
+          }
+        ],
+        "placeholders": [
+          "directory"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "cd",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "cd [directory]",
+        "tags": [],
+        "title": "cd",
+        "updatedAt": "2026-11-22T05:42:33.288Z",
+        "whatItDoes": "Moves into another folder."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "target file",
+            "name": "filename"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.292Z",
+        "examples": [
+          {
+            "command": "file photo.jpg",
+            "description": "report the type of photo.jpg"
+          }
+        ],
+        "explanation": "detect file type",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HTMZK40P9PXZP9HAYA",
+        "importRef": "f25864a50971c1fe3f3d493480e60317",
+        "links": [],
+        "mastery": 0,
+        "name": "file",
+        "notes": "",
+        "options": [],
+        "placeholders": [
+          "filename"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "file",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "file [filename]",
+        "tags": [],
+        "title": "file",
+        "updatedAt": "2026-11-22T05:42:33.292Z",
+        "whatItDoes": "Guesses a file type from content."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "file to view",
+            "name": "filename"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.297Z",
+        "examples": [
+          {
+            "command": "less log.txt",
+            "description": "view log.txt"
+          }
+        ],
+        "explanation": "page through a file",
+        "extras": {
+          "optionsHeading": "Commands"
+        },
+        "favorite": false,
+        "id": "01M80WE4HTR5Q5NPTBJYVJKA8T",
+        "importRef": "dbb0a9877745d41c14e00e76550b9313",
+        "links": [],
+        "mastery": 0,
+        "name": "less",
+        "notes": "",
+        "options": [
+          {
+            "flag": "space",
+            "meaning": "next page"
+          },
+          {
+            "flag": "b",
+            "meaning": "previous page"
+          },
+          {
+            "flag": "/text",
+            "meaning": "search forward"
+          },
+          {
+            "flag": "q",
+            "meaning": "quit"
+          }
+        ],
+        "placeholders": [
+          "filename"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "less",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "less [filename]",
+        "tags": [],
+        "title": "less",
+        "updatedAt": "2026-11-22T05:42:33.297Z",
+        "whatItDoes": "Scrollable file viewer."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "name to create",
+            "name": "directory"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.301Z",
+        "examples": [
+          {
+            "command": "mkdir demo",
+            "description": "create demo"
+          },
+          {
+            "command": "mkdir a b",
+            "description": "create two folders"
+          }
+        ],
+        "explanation": "create folders",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HT4K3EYVQKYN6R6T5C",
+        "importRef": "e2cc311a88ee76eeccb9c201805eb24b",
+        "links": [],
+        "mastery": 0,
+        "name": "mkdir",
+        "notes": "",
+        "options": [],
+        "placeholders": [
+          "directory"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "mkdir",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "mkdir [directory]",
+        "tags": [],
+        "title": "mkdir",
+        "updatedAt": "2026-11-22T05:42:33.301Z",
+        "whatItDoes": "Makes new directories."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "what to copy",
+            "name": "source"
+          },
+          {
+            "meaning": "where it goes",
+            "name": "destination"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.306Z",
+        "examples": [
+          {
+            "command": "cp a.txt b.txt",
+            "description": "copy a.txt to b.txt"
+          },
+          {
+            "command": "cp one two",
+            "description": "Copy one to two, replacing two if it exists."
+          },
+          {
+            "command": "cp -r d1 d2",
+            "description": "Copy folder d1 into d2."
+          },
+          {
+            "command": "cp -u big small",
+            "description": "Only copy newer files into the destination."
+          }
+        ],
+        "explanation": "copy files",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HTGM465EQRFX6M4EQZ",
+        "importRef": "83ac453b913ef30785621e232fdd2661",
+        "links": [],
+        "mastery": 0,
+        "name": "cp",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-r",
+            "meaning": "copy folders recursively"
+          },
+          {
+            "flag": "-i",
+            "meaning": "ask before overwriting"
+          },
+          {
+            "flag": "-u",
+            "meaning": "copy only when the source is newer or missing"
+          }
+        ],
+        "placeholders": [
+          "source",
+          "destination"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "cp",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "cp [source] [destination]",
+        "tags": [],
+        "title": "cp",
+        "updatedAt": "2026-11-22T05:42:33.306Z",
+        "whatItDoes": "Duplicates files or folders."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "item to move",
+            "name": "source"
+          },
+          {
+            "meaning": "new place or name",
+            "name": "destination"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.312Z",
+        "examples": [
+          {
+            "command": "mv a.txt dir",
+            "description": "move a.txt into dir"
+          },
+          {
+            "command": "mv one",
+            "description": "Runs mv on one."
+          },
+          {
+            "command": "mv -i one",
+            "description": "Same, but with a prompt."
+          }
+        ],
+        "explanation": "move or rename",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HT6WMBWYTVGRQ8594S",
+        "importRef": "f31b94f6281f97d25e6ce53ed4f6ec37",
+        "links": [],
+        "mastery": 0,
+        "name": "mv",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-i",
+            "meaning": "confirm overwrite"
+          },
+          {
+            "flag": "-n",
+            "meaning": "never overwrite"
+          }
+        ],
+        "placeholders": [
+          "source",
+          "destination"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "mv",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "mv [source] [destination]",
+        "tags": [],
+        "title": "mv",
+        "updatedAt": "2026-11-22T05:42:33.312Z",
+        "whatItDoes": "Moves or renames files."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "what to remove",
+            "name": "target"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.315Z",
+        "examples": [
+          {
+            "command": "rm old.txt",
+            "description": "delete old.txt"
+          },
+          {
+            "command": "rm one",
+            "description": "Runs rm on one."
+          },
+          {
+            "command": "rm -i one",
+            "description": "Same, but with a prompt."
+          }
+        ],
+        "explanation": "delete files",
+        "extras": {
+          "droppedTemplateHints": [
+            "(Inputs the command takes.)"
+          ]
+        },
+        "favorite": false,
+        "id": "01M80WE4HTHHZVRV87Z7SSRY45",
+        "importRef": "2a7291deb7de31c4b53fb6cd346b3088",
+        "links": [],
+        "mastery": 0,
+        "name": "rm",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-r",
+            "meaning": "recurse into folders"
+          },
+          {
+            "flag": "-f",
+            "meaning": "never prompt"
+          },
+          {
+            "flag": "-i",
+            "meaning": "prompt each time"
+          }
+        ],
+        "placeholders": [
+          "target"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "destructive",
+        "slug": "rm",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "rm [target]",
+        "tags": [],
+        "title": "rm",
+        "updatedAt": "2026-11-22T05:42:33.315Z",
+        "whatItDoes": "Removes files or folders permanently."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "existing item",
+            "name": "target"
+          },
+          {
+            "meaning": "new name",
+            "name": "link"
+          }
+        ],
+        "category": "File System",
+        "createdAt": "2026-11-22T05:42:33.318Z",
+        "examples": [
+          {
+            "command": "ln -s real alias",
+            "description": "make links"
+          },
+          {
+            "command": "ln data data-hard",
+            "description": "hard link"
+          },
+          {
+            "command": "ln -s data data-soft",
+            "description": "symbolic link"
+          }
+        ],
+        "explanation": "make links",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HT3N8WYT7SBY5DF59N",
+        "importRef": "76d9fac0b2d27e9cf92a2938436a1d9e",
+        "links": [],
+        "mastery": 0,
+        "name": "ln",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-s",
+            "meaning": "symbolic link"
+          }
+        ],
+        "placeholders": [
+          "target",
+          "link"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "ln",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "ln [target] [link]",
+        "tags": [],
+        "title": "ln",
+        "updatedAt": "2026-11-22T05:42:33.318Z",
+        "whatItDoes": "Creates hard or symbolic links."
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

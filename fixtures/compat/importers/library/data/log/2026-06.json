@@ -1,0 +1,46 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "body": "## 📚 What I learned\n\n- less\n- Directory Tree\n- tar\n\n## ⚡ Key insight\n\n- One root\n\n## ❓ Questions\n\n- Why so many bin folders?\n\n## 🔁 Review later\n\n-",
+        "category": "",
+        "commandIds": [
+          "01M80WE4HTR5Q5NPTBJYVJKA8T"
+        ],
+        "conceptIds": [
+          "01M80WE4HV1W18F8XQE7QN0HZC"
+        ],
+        "createdAt": "2026-11-22T05:42:33.348Z",
+        "date": "2026-06-03",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HV282V4AD7AHAY83RQ",
+        "importRef": "dee1e95d2c0b5340de4abab1b00bd8da",
+        "keyTakeaway": "Everything hangs off one root",
+        "labIds": [],
+        "links": [
+          {
+            "targetId": "01M80WE4HTR5Q5NPTBJYVJKA8T",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80WE4HV1W18F8XQE7QN0HZC",
+            "type": "concept"
+          }
+        ],
+        "slug": "june-3-2026",
+        "tags": [],
+        "timeSpentMin": 90,
+        "timeSpentRaw": "~1.5 hours",
+        "title": "June 3, 2026",
+        "topics": [
+          "Folders and paging"
+        ],
+        "topicsRaw": "Folders and paging",
+        "updatedAt": "2026-11-22T05:42:33.348Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

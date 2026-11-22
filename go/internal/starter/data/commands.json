@@ -1,0 +1,1095 @@
+[
+  {
+    "name": "ls",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "ls [flags] [path...]",
+    "explanation": "list directory contents",
+    "whatItDoes": "Prints the names of files and directories. With flags it also shows sizes, owners, permissions and timestamps.",
+    "arguments": [["path", "files or directories to list (default: the current directory)"]],
+    "options": [
+      ["-a", "include hidden entries (names starting with a dot)"],
+      ["-l", "long format: permissions, owner, size, modified time"],
+      ["-h", "human-readable sizes such as 4.0K or 1.2M (use with -l)"],
+      ["-t", "sort by modification time, newest first"],
+      ["-r", "reverse the sort order"],
+      ["-S", "sort by size, largest first"],
+      ["-R", "list subdirectories recursively"],
+      ["-d", "list a directory itself instead of its contents"]
+    ],
+    "examples": [
+      ["ls -la ~", "long listing of your home directory including hidden files"],
+      ["ls -lh /var/log", "log files with readable sizes"],
+      ["ls -ltr", "newest files last: handy at the end of a long listing"],
+      ["ls -d */", "only the directories in the current folder"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "cd",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "cd [directory]",
+    "explanation": "change the current directory",
+    "whatItDoes": "A shell built-in that moves your shell into another directory. Without an argument it goes to your home directory.",
+    "arguments": [
+      ["directory", "where to go; relative to the current directory unless it starts with /"]
+    ],
+    "options": [
+      ["cd -", "return to the previous directory"],
+      ["cd ~", "go to your home directory (same as plain cd)"],
+      ["cd ..", "go up one level"],
+      ["cd ~user", "go to another user's home directory"]
+    ],
+    "examples": [
+      ["cd /var/log", "jump to an absolute path"],
+      ["cd -", "toggle back to where you just were"],
+      ["cd ../..", "go up two levels"]
+    ],
+    "notes": "cd is built into the shell, so it has no man page of its own; use help cd in bash."
+  },
+  {
+    "name": "pwd",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "pwd [-L|-P]",
+    "explanation": "print the current directory",
+    "whatItDoes": "Shows the full path of the directory your shell is in.",
+    "arguments": [],
+    "options": [
+      ["-L", "show the logical path, keeping symbolic links as you typed them (default)"],
+      ["-P", "show the physical path with symbolic links resolved"]
+    ],
+    "examples": [
+      ["pwd", "where am I?"],
+      ["pwd -P", "the real location when you are inside a symlinked directory"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "cp",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "cp [flags] source... destination",
+    "explanation": "copy files and directories",
+    "whatItDoes": "Copies one or more files to a destination. Existing destination files are overwritten without asking unless you use -i.",
+    "arguments": [
+      ["source", "file or directory to copy"],
+      ["destination", "target file, or an existing directory to copy into"]
+    ],
+    "options": [
+      ["-r", "copy directories recursively"],
+      ["-i", "ask before overwriting"],
+      ["-n", "never overwrite an existing file"],
+      ["-v", "print each file as it is copied"],
+      ["-p", "preserve mode, ownership and timestamps"],
+      ["-a", "archive: recursive and preserve attributes (GNU and recent macOS)"]
+    ],
+    "examples": [
+      ["cp notes.txt notes.bak", "make a backup copy"],
+      ["cp -r project/ /tmp/project-copy", "copy a whole directory"],
+      ["cp -i report.txt ~/Documents/", "copy, but confirm before replacing"]
+    ],
+    "notes": "Without -i or -n, cp silently replaces an existing destination file."
+  },
+  {
+    "name": "mv",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "mv [flags] source... destination",
+    "explanation": "move or rename files",
+    "whatItDoes": "Moves files to another place or renames them. Within one filesystem it is instant and keeps the data in place.",
+    "arguments": [
+      ["source", "what to move or rename"],
+      ["destination", "new name, or a directory to move into"]
+    ],
+    "options": [
+      ["-i", "ask before overwriting"],
+      ["-n", "never overwrite"],
+      ["-v", "say what was moved"],
+      ["-f", "overwrite without asking (the default; overrides -i)"]
+    ],
+    "examples": [
+      ["mv draft.txt final.txt", "rename a file"],
+      ["mv *.log /var/archive/", "move many files into a directory"],
+      ["mv -i a.txt ~/docs/", "move but confirm before replacing"]
+    ],
+    "notes": "mv silently overwrites an existing destination unless you use -i or -n."
+  },
+  {
+    "name": "rm",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "destructive",
+    "syntax": "rm [flags] file...",
+    "explanation": "remove files and directories",
+    "whatItDoes": "Deletes files permanently. There is no trash can and no undo, so check the path before you press Enter.",
+    "arguments": [["file", "files or directories to delete"]],
+    "options": [
+      ["-i", "ask before each removal"],
+      ["-r", "remove directories and everything inside them"],
+      ["-f", "never prompt and ignore missing files"],
+      ["-v", "say what was removed"],
+      ["-d", "remove empty directories"]
+    ],
+    "examples": [
+      ["rm old.log", "delete one file"],
+      ["rm -i *.tmp", "delete temp files, confirming each one"],
+      ["rm -r build/", "delete a directory and its contents"],
+      ["rm -- -odd-name", "delete a file whose name starts with a dash"]
+    ],
+    "notes": "rm -rf with a wrong path or an unquoted variable is how data gets lost. Prefer rm -i while learning, and put -- before names that begin with a dash."
+  },
+  {
+    "name": "ln",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "ln [-s] target link_name",
+    "explanation": "create links between files",
+    "whatItDoes": "Makes a second name for a file. A hard link shares the same data; a symbolic link (-s) is a small file that points to a path.",
+    "arguments": [
+      ["target", "the existing file or directory"],
+      ["link_name", "the new name to create"]
+    ],
+    "options": [
+      ["-s", "create a symbolic link instead of a hard link"],
+      ["-f", "replace an existing link name"],
+      ["-v", "print what was linked"]
+    ],
+    "examples": [
+      ["ln -s /opt/tool/bin/tool ~/bin/tool", "put a tool on your PATH with a symlink"],
+      ["ln data.txt data-hardlink.txt", "make a hard link to a file"],
+      ["ln -sf /etc/hosts ./hosts", "create or replace a symlink"]
+    ],
+    "notes": "Hard links cannot cross filesystems or point to directories; symbolic links can do both and can dangle if the target is removed."
+  },
+  {
+    "name": "mkdir",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "mkdir [flags] directory...",
+    "explanation": "make directories",
+    "whatItDoes": "Creates one or more empty directories.",
+    "arguments": [["directory", "name of the directory to create"]],
+    "options": [
+      ["-p", "create missing parent directories and do not fail if it already exists"],
+      ["-m", "set the permission mode, for example -m 700"],
+      ["-v", "print each directory created"]
+    ],
+    "examples": [
+      ["mkdir notes", "create one directory"],
+      ["mkdir -p projects/web/assets", "create a whole path at once"],
+      ["mkdir -m 700 secrets", "create a private directory"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "touch",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "touch [flags] file...",
+    "explanation": "create an empty file or update timestamps",
+    "whatItDoes": "Creates the file if it does not exist, otherwise just updates its access and modification times.",
+    "arguments": [["file", "file to create or update"]],
+    "options": [
+      ["-c", "do not create missing files"],
+      ["-a", "change only the access time"],
+      ["-m", "change only the modification time"],
+      ["-t", "use a given time, format [[CC]YY]MMDDhhmm[.ss]"]
+    ],
+    "examples": [
+      ["touch notes.txt", "create an empty file"],
+      ["touch -c build.stamp", "update the time only if the file exists"],
+      ["touch -t 202601011200 old.txt", "set a specific modification time"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "cat",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "cat [flags] [file...]",
+    "explanation": "print and join files",
+    "whatItDoes": "Writes the contents of files to the terminal, in order. With no file it copies standard input.",
+    "arguments": [["file", "files to print, joined in the order given"]],
+    "options": [
+      ["-n", "number every output line"],
+      ["-b", "number only non-blank lines"],
+      ["-s", "squeeze repeated blank lines into one"]
+    ],
+    "examples": [
+      ["cat /etc/hostname", "show a short file"],
+      ["cat a.txt b.txt > both.txt", "join two files into a third"],
+      ["cat -n script.sh", "show a file with line numbers"]
+    ],
+    "notes": "For long files use less. Redirecting onto a file you are reading from (cat f > f) empties it."
+  },
+  {
+    "name": "less",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "less [flags] file",
+    "explanation": "page through a file",
+    "whatItDoes": "Shows a file one screen at a time without loading it all, with searching and scrolling.",
+    "arguments": [["file", "file to view (or pipe text into less)"]],
+    "options": [
+      ["-N", "show line numbers"],
+      ["-S", "do not wrap long lines"],
+      ["-R", "show ANSI colours correctly"],
+      ["-i", "case-insensitive search unless the pattern has capitals"]
+    ],
+    "examples": [
+      ["less /var/log/syslog", "read a log"],
+      ["journalctl | less -R", "page the output of another command"],
+      ["less -N script.sh", "read a file with line numbers"]
+    ],
+    "notes": "Keys inside less: space = next page, b = back, /text = search, n = next match, G = end, g = start, q = quit."
+  },
+  {
+    "name": "head",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "head [flags] [file...]",
+    "explanation": "show the start of a file",
+    "whatItDoes": "Prints the first lines (10 by default) of each file.",
+    "arguments": [["file", "files to read"]],
+    "options": [
+      ["-n", "number of lines to show, for example -n 20"],
+      ["-c", "number of bytes to show instead of lines"]
+    ],
+    "examples": [
+      ["head access.log", "the first ten lines"],
+      ["head -n 3 /etc/passwd", "just three lines"],
+      ["ls -l | head -n 5", "the first five entries of a listing"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "tail",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "tail [flags] [file...]",
+    "explanation": "show the end of a file",
+    "whatItDoes": "Prints the last lines (10 by default); with -f it keeps watching the file for new lines.",
+    "arguments": [["file", "files to read"]],
+    "options": [
+      ["-n", "number of lines to show"],
+      ["-f", "follow: keep printing lines as they are appended"],
+      ["-F", "follow and keep trying if the file is rotated or recreated"],
+      ["-c", "number of bytes to show"]
+    ],
+    "examples": [
+      ["tail -n 50 /var/log/auth.log", "the last 50 authentication log lines"],
+      ["tail -f app.log", "watch a log live (Ctrl+C to stop)"],
+      ["tail -F app.log", "keep following across log rotation"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "file",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "file [flags] file...",
+    "explanation": "identify a file by its content",
+    "whatItDoes": "Looks at the bytes of a file, not its name, and says what it appears to be.",
+    "arguments": [["file", "files to examine"]],
+    "options": [
+      ["-b", "brief: omit the file name from the output"],
+      ["--mime-type", "print only the MIME type, such as text/plain"]
+    ],
+    "examples": [
+      ["file mystery.bin", "what kind of file is this?"],
+      ["file --mime-type photo.jpg", "just the MIME type"],
+      ["file -b /bin/ls", "description only"]
+    ],
+    "notes": "Useful for forensics and CTF work where extensions lie."
+  },
+  {
+    "name": "find",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "find [path...] [tests] [actions]",
+    "explanation": "search for files by name, type, size or time",
+    "whatItDoes": "Walks a directory tree and prints the files that match your conditions. It can also run a command on each match.",
+    "arguments": [["path", "where to start searching (default: the current directory)"]],
+    "options": [
+      ["-name", "match the file name against a pattern; quote it: -name \"*.log\""],
+      ["-iname", "like -name but ignoring case"],
+      ["-type", "f for files, d for directories, l for symlinks"],
+      ["-mtime", "modified N days ago; -mtime -1 means within the last day"],
+      ["-size", "size test such as +10M (larger than 10 MiB)"],
+      ["-perm", "match permissions, for example -perm -4000 for setuid"],
+      ["-maxdepth", "do not descend more than N levels (put it before the tests)"],
+      ["-exec", "run a command on each match: -exec cmd {} \\;"],
+      ["-delete", "delete every match (dangerous)"]
+    ],
+    "examples": [
+      ["find . -name \"*.log\"", "every .log file below here"],
+      ["find /var -type f -size +100M", "large files under /var"],
+      ["find / -perm -4000 -type f 2>/dev/null", "list setuid programs, hiding permission errors"],
+      ["find . -maxdepth 2 -type d", "directories at most two levels down"]
+    ],
+    "notes": "-delete and -exec act on everything matched. Run the search without them first and read the list."
+  },
+  {
+    "name": "du",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "du [flags] [path...]",
+    "explanation": "show disk usage of files and directories",
+    "whatItDoes": "Reports how much space files and directory trees use.",
+    "arguments": [["path", "files or directories to measure (default: the current directory)"]],
+    "options": [
+      ["-h", "human-readable sizes"],
+      ["-s", "show only a total for each argument"],
+      ["-c", "add a grand total"],
+      ["-a", "include files, not just directories"]
+    ],
+    "examples": [
+      ["du -sh *", "size of everything in this folder"],
+      ["du -sh ~/Downloads", "how big is my Downloads folder?"],
+      ["du -ah . | sort -h | tail", "the ten largest items below here"]
+    ],
+    "notes": "To limit depth use --max-depth=N on GNU/Linux or -d N on macOS."
+  },
+  {
+    "name": "df",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "df [flags] [path...]",
+    "explanation": "show free space on filesystems",
+    "whatItDoes": "Reports total, used and free space for each mounted filesystem.",
+    "arguments": [["path", "show only the filesystem that holds this path"]],
+    "options": [
+      ["-h", "human-readable sizes"],
+      ["-i", "show inode usage instead of blocks"],
+      ["-T", "show the filesystem type (GNU/Linux)"]
+    ],
+    "examples": [
+      ["df -h", "free space on every mounted disk"],
+      ["df -h /var", "free space where /var lives"],
+      ["df -i", "check whether you have run out of inodes"]
+    ],
+    "notes": "A disk can be \"full\" because it ran out of inodes even when space remains; check df -i."
+  },
+  {
+    "name": "tar",
+    "category": "File System",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "tar [flags] [-f archive] [file...]",
+    "explanation": "create and extract archives",
+    "whatItDoes": "Bundles many files into one archive and unpacks them again, optionally compressing with gzip, bzip2 or xz.",
+    "arguments": [
+      ["archive", "the .tar / .tar.gz file to create or read"],
+      ["file", "files or directories to add"]
+    ],
+    "options": [
+      ["-c", "create an archive"],
+      ["-x", "extract an archive"],
+      ["-t", "list the contents without extracting"],
+      ["-v", "verbose: print file names"],
+      ["-f", "the archive file name (must come right before it)"],
+      ["-z", "filter through gzip (.tar.gz)"],
+      ["-j", "filter through bzip2 (.tar.bz2)"],
+      ["-C", "change to this directory before extracting"]
+    ],
+    "examples": [
+      ["tar -czvf backup.tar.gz project/", "create a compressed archive"],
+      ["tar -tf backup.tar.gz", "peek inside an archive"],
+      ["tar -xzvf backup.tar.gz -C /tmp", "extract into /tmp"],
+      ["tar -xf archive.tar notes.txt", "extract a single file"]
+    ],
+    "notes": "Extracting overwrites files with the same name. List an unknown archive with -t first."
+  },
+  {
+    "name": "grep",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "grep [flags] pattern [file...]",
+    "explanation": "search text for a pattern",
+    "whatItDoes": "Prints lines that match a pattern, from files or from standard input.",
+    "arguments": [
+      ["pattern", "text or regular expression to look for"],
+      ["file", "files to search (omit to read standard input)"]
+    ],
+    "options": [
+      ["-i", "ignore case"],
+      ["-v", "invert: show lines that do not match"],
+      ["-r", "search directories recursively"],
+      ["-n", "show line numbers"],
+      ["-c", "count matching lines"],
+      ["-l", "list only the names of files that match"],
+      ["-E", "use extended regular expressions"],
+      ["-w", "match whole words only"],
+      ["-o", "print only the matching part"],
+      ["-C", "show N lines of context around each match, for example -C 2"]
+    ],
+    "examples": [
+      ["grep -rn \"TODO\" src/", "find TODO comments with file and line number"],
+      ["grep -i \"failed\" /var/log/auth.log", "failed logins, ignoring case"],
+      ["ps aux | grep -v grep | grep ssh", "is sshd running?"],
+      ["grep -E \"^(root|admin):\" /etc/passwd", "lines starting with root: or admin:"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "sed",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "sed [flags] 'script' [file...]",
+    "explanation": "edit a stream of text",
+    "whatItDoes": "Applies editing commands to each line, most often a substitution like s/old/new/.",
+    "arguments": [
+      ["script", "the editing commands, in quotes"],
+      ["file", "files to process (omit to read standard input)"]
+    ],
+    "options": [
+      ["-n", "print only lines selected with the p command"],
+      ["-e", "add a script; can be repeated"],
+      ["-E", "use extended regular expressions"],
+      ["-i", "edit the file in place (GNU: -i; macOS needs -i \"\")"]
+    ],
+    "examples": [
+      ["sed 's/foo/bar/g' notes.txt", "replace every foo with bar and print the result"],
+      ["sed -n '5,10p' log.txt", "print only lines 5 to 10"],
+      ["sed '/^#/d' config.conf", "drop comment lines"],
+      ["sed -i.bak 's/http:/https:/' links.txt", "edit in place, keeping a .bak copy"]
+    ],
+    "notes": "-i rewrites the file. Use -i.bak to keep a backup until you are sure."
+  },
+  {
+    "name": "awk",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "awk [-F sep] 'program' [file...]",
+    "explanation": "process text by fields",
+    "whatItDoes": "Splits each line into fields ($1, $2, …) and runs a small program on them. Great for columns and quick sums.",
+    "arguments": [
+      ["program", "pattern { action } pairs, in single quotes"],
+      ["file", "files to read (omit for standard input)"]
+    ],
+    "options": [
+      ["-F", "set the field separator, for example -F: or -F,"],
+      ["-v", "set a variable before running: -v name=value"]
+    ],
+    "examples": [
+      ["awk '{print $1}' access.log", "print the first column of every line"],
+      ["awk -F: '{print $1, $3}' /etc/passwd", "user names and their IDs"],
+      ["awk '$3 > 100' data.txt", "lines where the third field is above 100"],
+      ["awk '{s+=$1} END {print s}' nums.txt", "add up the first column"]
+    ],
+    "notes": "Built-ins: NR is the line number, NF the number of fields, $0 the whole line."
+  },
+  {
+    "name": "sort",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "sort [flags] [file...]",
+    "explanation": "sort lines of text",
+    "whatItDoes": "Sorts lines alphabetically by default; flags change the order and the key.",
+    "arguments": [["file", "files to sort (omit for standard input)"]],
+    "options": [
+      ["-n", "sort numerically"],
+      ["-r", "reverse the order"],
+      ["-u", "keep only the first of equal lines"],
+      ["-k", "sort by a field: -k2 sorts on the second field"],
+      ["-t", "field separator for -k, for example -t,"],
+      ["-h", "sort human-readable sizes such as 2K and 1G"]
+    ],
+    "examples": [
+      ["sort names.txt", "alphabetical order"],
+      ["sort -nr scores.txt", "highest number first"],
+      ["sort -t, -k2 -n data.csv", "sort a CSV by its second column"],
+      ["du -sh * | sort -h", "folders from smallest to largest"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "uniq",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "uniq [flags] [input [output]]",
+    "explanation": "collapse repeated lines",
+    "whatItDoes": "Removes or counts adjacent duplicate lines, so the input normally needs to be sorted first.",
+    "arguments": [["input", "file to read (omit for standard input)"]],
+    "options": [
+      ["-c", "prefix each line with how many times it occurred"],
+      ["-d", "show only lines that were repeated"],
+      ["-u", "show only lines that were not repeated"],
+      ["-i", "ignore case when comparing"]
+    ],
+    "examples": [
+      ["sort ips.txt | uniq -c | sort -nr", "rank values by how often they appear"],
+      ["sort words.txt | uniq -d", "which words appear more than once?"],
+      ["uniq -u sorted.txt", "lines that appear exactly once"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "cut",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "cut [flags] [file...]",
+    "explanation": "extract columns from text",
+    "whatItDoes": "Prints selected fields or characters from each line.",
+    "arguments": [["file", "files to read (omit for standard input)"]],
+    "options": [
+      ["-d", "field delimiter, for example -d: or -d,"],
+      ["-f", "which fields to print, such as -f1 or -f1,3"],
+      ["-c", "which character positions to print, such as -c1-8"]
+    ],
+    "examples": [
+      ["cut -d: -f1 /etc/passwd", "list user names"],
+      ["cut -d, -f2,4 data.csv", "second and fourth CSV columns"],
+      ["echo \"2026-03-24\" | cut -c1-4", "take the year from a date"]
+    ],
+    "notes": "cut cannot handle quoted CSV fields that contain the delimiter; use awk or a CSV tool for that."
+  },
+  {
+    "name": "wc",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "wc [flags] [file...]",
+    "explanation": "count lines, words and bytes",
+    "whatItDoes": "Counts how much text a file or a stream contains.",
+    "arguments": [["file", "files to count (omit for standard input)"]],
+    "options": [
+      ["-l", "count lines"],
+      ["-w", "count words"],
+      ["-c", "count bytes"],
+      ["-m", "count characters"]
+    ],
+    "examples": [
+      ["wc -l access.log", "how many lines?"],
+      ["ls | wc -l", "how many entries in this folder?"],
+      ["wc -w essay.txt", "word count"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "tr",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "tr [flags] set1 [set2]",
+    "explanation": "translate or delete characters",
+    "whatItDoes": "Reads standard input and swaps, squeezes or deletes characters. It does not take file names.",
+    "arguments": [
+      ["set1", "characters to match"],
+      ["set2", "characters to replace them with"]
+    ],
+    "options": [
+      ["-d", "delete characters in set1"],
+      ["-s", "squeeze repeated characters into one"],
+      ["-c", "use the complement of set1"]
+    ],
+    "examples": [
+      ["echo hello | tr 'a-z' 'A-Z'", "upper-case a string"],
+      ["tr -d '\\r' < dos.txt > unix.txt", "remove Windows carriage returns"],
+      ["tr -s ' ' < spaced.txt", "collapse runs of spaces"]
+    ],
+    "notes": "tr works on single characters, not words: tr \"ab\" \"xy\" maps a→x and b→y."
+  },
+  {
+    "name": "diff",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "diff [flags] file1 file2",
+    "explanation": "compare files line by line",
+    "whatItDoes": "Shows what changed between two files or two directories.",
+    "arguments": [
+      ["file1", "the original"],
+      ["file2", "the changed version"]
+    ],
+    "options": [
+      ["-u", "unified format, the one patches and code review use"],
+      ["-r", "compare directories recursively"],
+      ["-q", "only report whether files differ"],
+      ["-i", "ignore case differences"],
+      ["-w", "ignore all whitespace"]
+    ],
+    "examples": [
+      ["diff -u old.conf new.conf", "readable change list"],
+      ["diff -rq dirA dirB", "which files differ between two folders?"],
+      ["diff -w a.txt b.txt", "ignore spacing changes"]
+    ],
+    "notes": "Lines starting with - exist only in the first file, lines starting with + only in the second."
+  },
+  {
+    "name": "xargs",
+    "category": "Text Processing",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "xargs [flags] [command [args]]",
+    "explanation": "build commands from standard input",
+    "whatItDoes": "Turns lines or words from a pipe into arguments for another command.",
+    "arguments": [["command", "the command to run with the collected arguments (default: echo)"]],
+    "options": [
+      ["-n", "use at most N arguments per run"],
+      ["-I", "replace a placeholder such as {} with each input item"],
+      ["-0", "items are separated by NUL bytes (pair with find -print0)"],
+      ["-P", "run up to N commands in parallel"],
+      ["-t", "print each command before running it"]
+    ],
+    "examples": [
+      [
+        "find . -name \"*.txt\" -print0 | xargs -0 grep -l secret",
+        "files containing a word, safe for odd names"
+      ],
+      ["cat hosts.txt | xargs -n 1 ping -c 1", "ping each host once"],
+      ["ls *.png | xargs -I {} cp {} /tmp/", "copy each match, using {} as the placeholder"]
+    ],
+    "notes": "Preview with -t or echo before using xargs with rm or mv."
+  },
+  {
+    "name": "chmod",
+    "category": "Permissions",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "chmod [flags] mode file...",
+    "explanation": "change file permissions",
+    "whatItDoes": "Sets who may read, write or execute a file or directory.",
+    "arguments": [
+      ["mode", "numeric (755) or symbolic (u+x, go-w)"],
+      ["file", "files or directories to change"]
+    ],
+    "options": [
+      ["-R", "apply to directories recursively"],
+      ["-v", "say what changed"],
+      ["+x", "symbolic: add execute permission"],
+      ["u+rw", "symbolic: give the owner read and write"]
+    ],
+    "examples": [
+      ["chmod 600 ~/.ssh/id_ed25519", "private key readable only by you"],
+      ["chmod +x script.sh", "make a script executable"],
+      ["chmod 755 public_html", "owner full, others read and enter"],
+      ["chmod -R u=rwX,go=rX site/", "directories enterable, files not executable"]
+    ],
+    "notes": "Numeric modes: r=4, w=2, x=1, summed per owner / group / others. chmod -R 777 is almost never the answer."
+  },
+  {
+    "name": "chown",
+    "category": "Permissions",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "chown [flags] owner[:group] file...",
+    "explanation": "change file owner and group",
+    "whatItDoes": "Changes who owns a file. Usually needs root.",
+    "arguments": [
+      ["owner[:group]", "new owner, optionally followed by a group"],
+      ["file", "files or directories to change"]
+    ],
+    "options": [
+      ["-R", "apply recursively"],
+      ["-h", "change a symlink itself, not its target"],
+      ["-v", "say what changed"]
+    ],
+    "examples": [
+      ["sudo chown alice notes.txt", "give a file to alice"],
+      ["sudo chown -R www-data:www-data /var/www", "set owner and group for a web root"],
+      ["sudo chown :developers shared/", "change only the group"]
+    ],
+    "notes": "chown -R on the wrong directory (for example /) can break a system. Double-check the path."
+  },
+  {
+    "name": "sudo",
+    "category": "Permissions",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "sudo [flags] command",
+    "explanation": "run a command with another user's privileges",
+    "whatItDoes": "Runs one command as root (or another user) after checking /etc/sudoers.",
+    "arguments": [["command", "the command to run with elevated privileges"]],
+    "options": [
+      ["-u", "run as this user instead of root"],
+      ["-l", "list the commands you are allowed to run"],
+      ["-i", "start a login shell as the target user"],
+      ["-k", "forget cached credentials"]
+    ],
+    "examples": [
+      ["sudo apt update", "run a package command as root"],
+      ["sudo -l", "what may I run with sudo?"],
+      ["sudo -u postgres psql", "run a command as the postgres user"]
+    ],
+    "notes": "sudo -l is a first step in privilege-escalation checks. Prefer one sudo command over a long root shell (least privilege)."
+  },
+  {
+    "name": "id",
+    "category": "Permissions",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "id [flags] [user]",
+    "explanation": "show user and group IDs",
+    "whatItDoes": "Prints the numeric and named user ID, primary group and all groups of a user.",
+    "arguments": [["user", "user to look up (default: you)"]],
+    "options": [
+      ["-u", "print only the user ID"],
+      ["-g", "print only the primary group ID"],
+      ["-G", "print all group IDs"],
+      ["-n", "print names instead of numbers (with -u, -g or -G)"]
+    ],
+    "examples": [
+      ["id", "who am I and which groups am I in?"],
+      ["id -un", "just my user name"],
+      ["id www-data", "groups of another account"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "ping",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "ping [flags] host",
+    "explanation": "check if a host answers",
+    "whatItDoes": "Sends ICMP echo requests and reports whether and how fast replies come back.",
+    "arguments": [["host", "name or IP address to test"]],
+    "options": [
+      ["-c", "stop after N packets (otherwise it runs until Ctrl+C)"],
+      ["-i", "seconds to wait between packets"],
+      ["-s", "size of the packet payload in bytes"],
+      ["-q", "quiet: print only the summary"]
+    ],
+    "examples": [
+      ["ping -c 4 example.com", "four probes then summary"],
+      ["ping -c 1 192.0.2.10", "a quick single check"],
+      ["ping -i 0.5 -c 10 example.com", "ten probes, two per second"]
+    ],
+    "notes": "On Windows the count flag is -n. A firewall that drops ICMP makes a healthy host look dead."
+  },
+  {
+    "name": "curl",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "curl [flags] url",
+    "explanation": "transfer data from or to a URL",
+    "whatItDoes": "Makes HTTP(S) and other requests from the command line. The standard tool for poking at web APIs.",
+    "arguments": [["url", "the address to request"]],
+    "options": [
+      ["-I", "fetch headers only (HEAD request)"],
+      ["-s", "silent: hide the progress meter"],
+      ["-L", "follow redirects"],
+      ["-o", "save output to a file name you choose"],
+      ["-O", "save using the remote file name"],
+      ["-X", "choose the HTTP method, for example -X POST"],
+      ["-H", "add a request header"],
+      ["-d", "send data in the request body"],
+      ["-v", "verbose: show the request and response headers"],
+      ["-k", "skip TLS certificate checks (insecure)"]
+    ],
+    "examples": [
+      ["curl -I https://example.com", "just the response headers"],
+      ["curl -sL https://example.com/robots.txt", "fetch quietly, following redirects"],
+      [
+        "curl -X POST -H 'Content-Type: application/json' -d '{\"a\":1}' https://example.test/api",
+        "send JSON to an API"
+      ],
+      ["curl -v https://example.com 2>&1 | head -20", "inspect the TLS and header exchange"]
+    ],
+    "notes": "-k disables the protection TLS gives you; use it only against your own lab hosts."
+  },
+  {
+    "name": "dig",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "dig [@server] name [type] [flags]",
+    "explanation": "query DNS records",
+    "whatItDoes": "Asks a DNS server for records and shows the full answer, including TTLs and flags.",
+    "arguments": [
+      ["name", "the domain to look up"],
+      ["type", "record type such as A, AAAA, MX, TXT, NS (default A)"]
+    ],
+    "options": [
+      ["+short", "print only the answer data"],
+      ["@server", "ask a specific DNS server, for example @1.1.1.1"],
+      ["-x", "reverse lookup of an IP address"],
+      ["+trace", "follow delegation from the root servers down"]
+    ],
+    "examples": [
+      ["dig example.com", "full answer for the A record"],
+      ["dig +short example.com MX", "just the mail servers"],
+      ["dig @1.1.1.1 example.com TXT", "TXT records from a chosen resolver"],
+      ["dig -x 192.0.2.10", "which name does this IP have?"]
+    ],
+    "notes": ""
+  },
+  {
+    "name": "ssh",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "ssh [flags] [user@]host [command]",
+    "explanation": "log in to a remote machine securely",
+    "whatItDoes": "Opens an encrypted shell (or runs one command) on another machine, and can tunnel network traffic.",
+    "arguments": [
+      ["user@host", "account and machine to connect to"],
+      ["command", "optional command to run instead of a shell"]
+    ],
+    "options": [
+      ["-p", "connect to this port"],
+      ["-i", "use this private key file"],
+      ["-L", "local port forward: -L 8080:localhost:80"],
+      ["-D", "dynamic SOCKS proxy on a local port"],
+      ["-J", "jump through another host"],
+      ["-N", "do not run a command (for tunnels only)"],
+      ["-v", "verbose: debug connection problems"]
+    ],
+    "examples": [
+      ["ssh student@192.0.2.10", "log in as student"],
+      ["ssh -i ~/.ssh/lab_key -p 2222 student@192.0.2.10", "custom key and port"],
+      [
+        "ssh -L 8080:localhost:80 student@192.0.2.10",
+        "reach the remote web server at http://localhost:8080"
+      ],
+      ["ssh -J jump@198.51.100.5 student@10.0.0.7", "reach an internal host through a jump box"]
+    ],
+    "notes": "Verify the host key fingerprint on first connect, and keep private keys at chmod 600."
+  },
+  {
+    "name": "scp",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "scp [flags] source... destination",
+    "explanation": "copy files over ssh",
+    "whatItDoes": "Copies files between machines using ssh for transport and authentication.",
+    "arguments": [
+      ["source", "local path or user@host:path"],
+      ["destination", "local path or user@host:path"]
+    ],
+    "options": [
+      ["-P", "remote port (capital P, unlike ssh)"],
+      ["-r", "copy directories recursively"],
+      ["-i", "private key file"],
+      ["-C", "compress during transfer"]
+    ],
+    "examples": [
+      ["scp report.pdf student@192.0.2.10:~/", "upload a file"],
+      ["scp student@192.0.2.10:/var/log/app.log .", "download a file here"],
+      ["scp -r -P 2222 site/ student@192.0.2.10:/tmp/", "upload a folder over a custom port"]
+    ],
+    "notes": "Like cp, scp overwrites existing destination files without asking."
+  },
+  {
+    "name": "nmap",
+    "category": "Networking",
+    "platforms": ["linux", "macos", "windows"],
+    "risk": "caution",
+    "syntax": "nmap [flags] <target>",
+    "explanation": "scan hosts and ports",
+    "whatItDoes": "Discovers hosts and open ports and can identify services and versions. Only scan systems you own or have written permission to test.",
+    "arguments": [["target", "host name, IP address or network range (for example 192.0.2.0/24)"]],
+    "options": [
+      ["-sn", "ping scan: find live hosts without scanning ports"],
+      ["-sS", "TCP SYN scan (needs root)"],
+      ["-sV", "detect service versions"],
+      ["-p", "ports to scan, such as -p 22,80 or -p-"],
+      ["-Pn", "skip host discovery and assume the host is up"],
+      ["-A", "aggressive: version, OS, scripts and traceroute"],
+      ["-T4", "faster timing template"],
+      ["-oN", "save normal output to a file"]
+    ],
+    "examples": [
+      ["nmap -sV -p 22,80,443 <target>", "service versions on three common ports"],
+      ["nmap -sn 192.0.2.0/24", "which hosts are up on this network?"],
+      ["sudo nmap -sS -p- -T4 <target>", "every TCP port, quickly"],
+      ["nmap -A scanme.nmap.org", "scan the project's own permitted test host"]
+    ],
+    "notes": "Scanning machines you do not have permission for can be illegal. scanme.nmap.org is provided for light testing; your own lab VMs are better."
+  },
+  {
+    "name": "ss",
+    "category": "Networking",
+    "platforms": ["linux"],
+    "risk": "safe",
+    "syntax": "ss [flags] [filter]",
+    "explanation": "show network sockets",
+    "whatItDoes": "Lists open sockets and listening ports. The modern replacement for netstat on Linux.",
+    "arguments": [],
+    "options": [
+      ["-t", "TCP sockets"],
+      ["-u", "UDP sockets"],
+      ["-l", "only listening sockets"],
+      ["-n", "show numbers instead of resolving names"],
+      ["-p", "show the owning process (needs root for other users)"],
+      ["-a", "all sockets, listening and not"],
+      ["-s", "print a summary"]
+    ],
+    "examples": [
+      ["ss -tulpn", "every listening TCP/UDP port and its process"],
+      ["ss -tn state established", "current TCP connections"],
+      ["ss -s", "quick totals"]
+    ],
+    "notes": "On macOS use netstat -an or lsof -i instead."
+  },
+  {
+    "name": "tcpdump",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "tcpdump [flags] [filter]",
+    "explanation": "capture and display network packets",
+    "whatItDoes": "Prints packets crossing a network interface, optionally filtered, or saves them for Wireshark. Needs root.",
+    "arguments": [["filter", "a capture filter such as port 53 or host 192.0.2.10"]],
+    "options": [
+      ["-i", "interface to listen on (any listens on all)"],
+      ["-n", "do not resolve names; -nn also skips port names"],
+      ["-c", "stop after N packets"],
+      ["-w", "write raw packets to a file"],
+      ["-r", "read packets from a file"],
+      ["-A", "print packet payloads as ASCII"],
+      ["-v", "more detail; repeat for even more"]
+    ],
+    "examples": [
+      ["sudo tcpdump -i any -nn port 53", "watch DNS traffic"],
+      ["sudo tcpdump -i eth0 -c 20 host 192.0.2.10", "twenty packets to or from one host"],
+      ["sudo tcpdump -w capture.pcap -i eth0", "save a capture for later analysis"],
+      ["tcpdump -nn -r capture.pcap", "read it back"]
+    ],
+    "notes": "Capture only on networks you are authorised to monitor; captures can contain passwords and personal data."
+  },
+  {
+    "name": "nc",
+    "category": "Networking",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "nc [flags] host port",
+    "explanation": "read and write network connections",
+    "whatItDoes": "Netcat opens TCP/UDP connections or listens on a port, which makes it handy for testing services and moving small amounts of data.",
+    "arguments": [
+      ["host", "where to connect"],
+      ["port", "port number or range"]
+    ],
+    "options": [
+      ["-l", "listen for an incoming connection"],
+      ["-v", "verbose"],
+      ["-z", "scan: connect and close without sending data"],
+      ["-u", "use UDP instead of TCP"],
+      ["-w", "timeout in seconds"]
+    ],
+    "examples": [
+      ["nc -zv 192.0.2.10 20-25", "which of ports 20 to 25 are open?"],
+      ["nc -l 4444", "wait for one connection on port 4444 (OpenBSD/macOS nc)"],
+      ["echo hello | nc 192.0.2.10 4444", "send one line to a listener"]
+    ],
+    "notes": "Netcat versions differ: traditional (GNU) nc needs -p to set a listen port (nc -l -p 4444)."
+  },
+  {
+    "name": "ip",
+    "category": "Networking",
+    "platforms": ["linux"],
+    "risk": "safe",
+    "syntax": "ip [options] object command",
+    "explanation": "show and manage network interfaces and routes",
+    "whatItDoes": "The modern Linux tool for addresses, links and routing (replaces ifconfig and route).",
+    "arguments": [["object", "addr, link, route or neigh"]],
+    "options": [
+      ["-br", "brief one-line-per-interface output"],
+      ["-4", "only IPv4"],
+      ["-6", "only IPv6"],
+      ["-c", "colourised output"]
+    ],
+    "examples": [
+      ["ip -br addr", "interfaces and their addresses at a glance"],
+      ["ip route", "show the routing table and default gateway"],
+      ["ip neigh", "show the ARP/neighbour cache"]
+    ],
+    "notes": "On macOS use ifconfig and netstat -rn."
+  },
+  {
+    "name": "man",
+    "category": "General",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "man [section] page",
+    "explanation": "read the manual page for a command",
+    "whatItDoes": "Opens the reference manual for a command, file format or library function.",
+    "arguments": [
+      ["page", "the command or topic"],
+      ["section", "optional section number, such as 5 for file formats"]
+    ],
+    "options": [
+      ["-k", "search page names and descriptions for a keyword (apropos)"],
+      ["-f", "show a one-line description of a page (whatis)"],
+      ["-a", "show all matching pages"]
+    ],
+    "examples": [
+      ["man ls", "read about ls"],
+      ["man 5 passwd", "the format of /etc/passwd, not the passwd command"],
+      ["man -k compress", "which commands deal with compression?"]
+    ],
+    "notes": "Inside man: space = next page, / = search, n = next match, q = quit. Built-ins like cd are documented in help."
+  },
+  {
+    "name": "ps",
+    "category": "General",
+    "platforms": ["linux", "macos"],
+    "risk": "safe",
+    "syntax": "ps [flags]",
+    "explanation": "list running processes",
+    "whatItDoes": "Takes a snapshot of the processes running on the machine.",
+    "arguments": [],
+    "options": [
+      ["aux", "BSD style: every process with its user, CPU and memory"],
+      ["-ef", "UNIX style: every process with parent PIDs"],
+      ["-u", "processes of one user: -u alice"],
+      ["-p", "show specific process IDs"],
+      ["-o", "choose columns, for example -o pid,ppid,args"]
+    ],
+    "examples": [
+      ["ps aux", "everything that is running"],
+      ["ps -ef | grep ssh", "is an ssh process running?"],
+      ["ps -o pid,ppid,etime,args -p 1", "details of PID 1"]
+    ],
+    "notes": "ps aux | grep name also matches the grep itself; use pgrep name for a cleaner search."
+  },
+  {
+    "name": "kill",
+    "category": "General",
+    "platforms": ["linux", "macos"],
+    "risk": "caution",
+    "syntax": "kill [-signal] pid...",
+    "explanation": "send a signal to a process",
+    "whatItDoes": "Asks a process to stop (SIGTERM by default) or sends it another signal. Despite the name it does not always kill.",
+    "arguments": [["pid", "process ID(s) from ps or pgrep"]],
+    "options": [
+      ["-l", "list signal names"],
+      ["-9", "SIGKILL: stop immediately; the process cannot clean up"],
+      ["-15", "SIGTERM: ask politely (the default)"],
+      ["-HUP", "hang up: many daemons reload their config"]
+    ],
+    "examples": [
+      ["kill 4321", "ask process 4321 to exit"],
+      ["kill -9 4321", "force it to stop if it ignores the polite request"],
+      ["kill -HUP $(cat /run/nginx.pid)", "tell a daemon to reload its configuration"]
+    ],
+    "notes": "Try plain kill first; -9 skips cleanup and can leave locks or half-written files. Use pkill name or killall name to match by name."
+  }
+]

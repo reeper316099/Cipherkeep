@@ -400,7 +400,8 @@ export function planNotion(vfs: VirtualFs, opts: NotionPlanOptions): Plan {
         .replace(/```[\s\S]*?```/g, '')
         .replace(/\s+/g, ' ')
         .trim()
-        .slice(0, 300),
+        .slice(0, 300)
+        .replace(/[\ud800-\udbff]$/, ''), // never leave half of an emoji behind
     };
     const asSnippet = blocks.length > 0 && ratio > 0.6;
     const item: PlanItem = {

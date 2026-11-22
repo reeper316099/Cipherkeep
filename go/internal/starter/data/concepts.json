@@ -1,0 +1,752 @@
+[
+  {
+    "title": "Linux Filesystem Hierarchy",
+    "category": "Linux",
+    "difficulty": "Easy",
+    "tags": ["foundations"],
+    "relatedCommands": ["ls", "cd", "pwd", "find", "df"],
+    "relatedConcepts": ["File Permissions"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Linux organises everything under a single tree that starts at `/` (root). Hardware, programs, settings and your files all appear as paths in that tree."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. Everything hangs off `/`, there are no drive letters.\n2. Each top-level directory has a conventional purpose.\n3. Other disks and devices are *mounted* onto empty directories in the tree.\n4. Programs find things by absolute paths (`/etc/hosts`) or relative ones (`../logs`)."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "| Path | Holds |\n| --- | --- |\n| `/bin`, `/usr/bin` | programs available to all users |\n| `/sbin`, `/usr/sbin` | system administration programs |\n| `/etc` | system-wide configuration files |\n| `/home` | users' personal files |\n| `/root` | the root user's home |\n| `/var` | data that changes: logs, mail, caches |\n| `/tmp` | temporary files, cleared often |\n| `/dev` | device files (disks, terminals) |\n| `/proc` | a live view of the kernel and processes |\n| `/boot` | kernel and bootloader files |"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: you run `ls /etc`.\nProcess: the shell asks the kernel to list the directory at that absolute path.\nOutput: configuration files such as `hosts`, `passwd` and `ssh/`."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Knowing where things live lets you find configuration, logs and binaries quickly, which is most of what troubleshooting is."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Attackers look in `/etc` (configuration, account files) and `/var/log` (what was recorded) first.\n- Defenders watch these directories for unexpected changes and keep `/tmp` from becoming a staging area."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- ls\n- cd\n- pwd\n- find\n- df"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- File Permissions"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Thinking `/root` and `/` are the same thing: `/` is the top of the tree, `/root` is one user's home.\n- Assuming a path is the same on every distribution; confirm with `ls` and `man hier`."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"One big tree, and every file has exactly one address.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- Which files in /etc are readable by any user on this machine, and which should not be?"
+      }
+    ]
+  },
+  {
+    "title": "File Permissions",
+    "category": "Linux",
+    "difficulty": "Easy",
+    "tags": ["foundations", "access-control"],
+    "relatedCommands": ["ls", "chmod", "chown", "id", "sudo"],
+    "relatedConcepts": ["Principle of Least Privilege", "Linux Filesystem Hierarchy"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Every file has an owner, a group, and three sets of read / write / execute rights: for the owner, the group, and everyone else."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. `ls -l` shows a string like `-rwxr-x---`.\n2. The first character is the type (`-` file, `d` directory, `l` link).\n3. The next nine are three triplets: owner, group, others.\n4. The kernel checks them in that order and uses the first that applies to you."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **r** (4) read the contents; for a directory, list names\n- **w** (2) change the contents; for a directory, create or delete entries\n- **x** (1) run the file; for a directory, enter it\n- **setuid / setgid** run a program with its owner's or group's identity\n- **sticky bit** on a directory lets only a file's owner delete it (`/tmp`)"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `chmod 640 notes.txt`.\nProcess: 6 = rw for the owner, 4 = r for the group, 0 = nothing for others.\nOutput: `ls -l notes.txt` shows `-rw-r-----`."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Permissions are the first line of defence on a multi-user system: they decide who can read secrets and who can change programs."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Overly open files (world-writable scripts, readable private keys) are common privilege-escalation paths.\n- SSH refuses private keys that others can read, so `chmod 600` is a habit.\n- Auditing setuid programs is a standard enumeration step: `find / -perm -4000 -type f 2>/dev/null`."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- ls\n- chmod\n- chown\n- id\n- sudo"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- Principle of Least Privilege\n- Linux Filesystem Hierarchy"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Using `chmod 777` to \"fix\" a problem; it hides the real cause and opens the file to everyone.\n- Forgetting that directories need `x` to enter them."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"A three-by-three grid of who may do what, checked top to bottom.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- What does it take for a setuid program to become a vulnerability?"
+      }
+    ]
+  },
+  {
+    "title": "Wildcards and Globbing",
+    "category": "Bash",
+    "difficulty": "Easy",
+    "tags": ["foundations", "shell"],
+    "relatedCommands": ["ls", "cp", "find", "rm"],
+    "relatedConcepts": ["Pipes and Redirection"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Special characters the shell expands into matching file names before the command runs, so one pattern can stand for many files."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. You type `ls *.txt`.\n2. The shell (not `ls`) replaces `*.txt` with every matching name.\n3. The command receives the expanded list as its arguments.\n4. If nothing matches, bash passes the pattern through unchanged."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "| Pattern | Matches |\n| --- | --- |\n| `*` | any run of characters (not a leading dot) |\n| `?` | exactly one character |\n| `[abc]` | one character from the set |\n| `[a-z]` | one character from the range |\n| `[!abc]` | one character not in the set |\n| `{a,b}` | brace expansion: `a` and `b` |"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `cp report-?.txt backup/` with `report-1.txt`, `report-2.txt`, `report-10.txt`.\nProcess: `?` matches one character, so only the first two names match.\nOutput: two files copied; `report-10.txt` is left behind."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Globbing saves typing and makes bulk operations possible, but it also decides which files a command touches."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- A file named `-rf` in a directory can be picked up by `rm *` and read as an option (wildcard injection).\n- Quote patterns you want a program to interpret itself, such as `find -name \"*.log\"`."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- ls\n- cp\n- find\n- rm"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- Pipes and Redirection"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Expecting the program to expand `*`: the shell does it first, which is why `find -name *.log` can break.\n- Forgetting that `*` does not match hidden files."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"The shell fills in the file names for you, so look at what it will expand to before you run something destructive.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- How do I preview exactly what a glob will expand to before using it with rm?"
+      }
+    ]
+  },
+  {
+    "title": "Pipes and Redirection",
+    "category": "Bash",
+    "difficulty": "Easy",
+    "tags": ["foundations", "shell"],
+    "relatedCommands": ["cat", "grep", "sort", "uniq", "wc", "xargs"],
+    "relatedConcepts": ["Wildcards and Globbing", "Processes and Signals"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Every program has input (stdin), output (stdout) and error output (stderr). Redirection sends them to files; pipes connect one program's output to the next one's input."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. Programs read from stdin (file descriptor 0) and write to stdout (1) and stderr (2).\n2. `>` writes stdout to a file, `>>` appends, `<` feeds a file in.\n3. `2>` redirects stderr; `2>&1` sends it to the same place as stdout.\n4. `|` connects stdout of the left command to stdin of the right."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- `cmd > file` overwrite · `cmd >> file` append\n- `cmd < file` read input from a file\n- `cmd 2> errors.txt` errors to a file · `cmd > /dev/null 2>&1` discard everything\n- `a | b | c` pipeline: small tools combined"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `sort ips.txt | uniq -c | sort -nr | head -5`.\nProcess: sort groups equal lines, uniq counts them, sort ranks the counts, head keeps five.\nOutput: the five most frequent addresses."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Pipelines let you answer questions about logs and output with a few small, reusable tools."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Log triage is mostly pipelines: filter, extract, count, rank.\n- Be careful what you redirect: `>` silently replaces an existing file."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- cat\n- grep\n- sort\n- uniq\n- wc\n- xargs"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- Wildcards and Globbing\n- Processes and Signals"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Reading and writing the same file in one command (`sort f > f`) which empties it first.\n- Expecting `2>&1 > file` and `> file 2>&1` to behave the same; order matters."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"Small tools joined like garden hose sections: data flows left to right.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- How would I log both output and errors of a long scan to a file and still watch it live?"
+      }
+    ]
+  },
+  {
+    "title": "Processes and Signals",
+    "category": "Linux",
+    "difficulty": "Easy",
+    "tags": ["foundations"],
+    "relatedCommands": ["ps", "kill", "ss", "sudo"],
+    "relatedConcepts": ["Pipes and Redirection", "File Permissions"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "A process is a running program with its own ID (PID), owner and memory. Signals are small messages the kernel or other processes send to it."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. Starting a program creates a process with a PID and a parent (PPID).\n2. The process runs with the permissions of the user who started it.\n3. `kill` sends a signal; the process can handle most of them.\n4. When it exits, its parent collects the exit status."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **PID / PPID** process and parent IDs\n- **SIGTERM (15)** polite request to quit\n- **SIGKILL (9)** cannot be caught or ignored\n- **SIGHUP (1)** often \"reload your configuration\"\n- **daemon** a background service process"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `ps aux | grep sshd` shows PID 812.\nProcess: `kill 812` sends SIGTERM, sshd cleans up and exits.\nOutput: the process disappears from `ps`."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "You will constantly need to see what is running, what it runs as, and how to stop it cleanly."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Unexpected processes, or ones running as root from odd locations, are classic signs of compromise.\n- Services that run as root when they do not need to widen the damage of any bug."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- ps\n- kill\n- ss\n- sudo"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- Pipes and Redirection\n- File Permissions"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Using `kill -9` first: it skips cleanup and can corrupt data.\n- Assuming a process listening on a port is yours; check the owner with `ss -p` or `ps`."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"Each process is a worker with a badge number and a boss; signals are tapping its shoulder.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- How can I tell which process opened a particular network port?"
+      }
+    ]
+  },
+  {
+    "title": "DNS (Domain Name System)",
+    "category": "Networking",
+    "difficulty": "Easy",
+    "tags": ["foundations", "networking"],
+    "relatedCommands": ["dig", "ping", "curl", "tcpdump"],
+    "relatedConcepts": ["TCP/IP and Ports", "HTTP Basics"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "DNS turns names like `example.com` into IP addresses (and other data) so people do not have to remember numbers."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. An application asks the local resolver for `example.com`.\n2. The resolver checks its cache, then asks upstream servers.\n3. Authoritative servers for the domain give the answer with a TTL.\n4. The answer is cached until the TTL expires."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "| Record | Meaning |\n| --- | --- |\n| A / AAAA | IPv4 / IPv6 address |\n| CNAME | alias to another name |\n| MX | mail servers |\n| TXT | free text (SPF, verification) |\n| NS | the zone's name servers |\n| PTR | reverse lookup, IP to name |"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `dig +short example.com A`.\nProcess: your resolver (or the one after `@`) finds the authoritative answer.\nOutput: one or more IP addresses."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Almost every connection starts with a lookup; when \"the internet is down\" it is often DNS."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Recon: DNS records reveal hosts, mail providers and sometimes internal names.\n- Attacks include spoofing/poisoning, subdomain takeover and DNS tunnelling.\n- Defenders log queries, use DNSSEC where possible and watch for odd TXT or very long names."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- dig\n- ping\n- curl\n- tcpdump"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- TCP/IP and Ports\n- HTTP Basics"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Believing a changed record is visible everywhere at once: caches obey the old TTL.\n- Editing /etc/hosts and forgetting it overrides DNS on that machine."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"The internet's phone book, with caches that remember answers for a while.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- How can I see which resolver my machine is actually using right now?"
+      }
+    ]
+  },
+  {
+    "title": "TCP/IP and Ports",
+    "category": "Networking",
+    "difficulty": "Medium",
+    "tags": ["foundations", "networking"],
+    "relatedCommands": ["ss", "nmap", "tcpdump", "nc", "ping", "ip"],
+    "relatedConcepts": ["DNS (Domain Name System)", "HTTP Basics"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "IP gets packets between machines by address; TCP and UDP add ports so many conversations can share one address, and TCP adds reliable, ordered delivery."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. Your machine has an IP address; each service listens on a port (0-65535).\n2. A TCP connection starts with a three-way handshake: SYN, SYN-ACK, ACK.\n3. Data flows in ordered, acknowledged segments.\n4. The connection closes with FIN/ACK (or is reset with RST).\n5. UDP skips the handshake: faster, but no delivery guarantee."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **IP address** where (IPv4 `192.0.2.10`, IPv6 `2001:db8::1`)\n- **Port** which service (22 SSH, 53 DNS, 80 HTTP, 443 HTTPS)\n- **TCP flags** SYN, ACK, FIN, RST, PSH\n- **Socket** an IP + port + protocol endpoint\n- **NAT / firewall** devices that rewrite or filter traffic"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `nc -zv 192.0.2.10 22`.\nProcess: nc sends a SYN to port 22; an open port answers SYN-ACK, a closed one answers RST.\nOutput: \"succeeded\" or \"refused\"."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Port scanning, firewall rules and most network troubleshooting depend on understanding these two layers."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- A scanner tells open, closed and filtered ports apart by how (or whether) they answer.\n- Every listening port is attack surface: close what you do not need.\n- Packet captures show the handshake and reveal unencrypted data."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- ss\n- nmap\n- tcpdump\n- nc\n- ping\n- ip"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- DNS (Domain Name System)\n- HTTP Basics"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Treating \"filtered\" as \"closed\": filtered means no answer, often a firewall drop.\n- Assuming a port number proves the service: anything can listen anywhere."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"The address gets you to the building, the port gets you to the right door.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Medium"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- What does a SYN scan look like in tcpdump compared with a full connect scan?"
+      }
+    ]
+  },
+  {
+    "title": "HTTP Basics",
+    "category": "Web Security",
+    "difficulty": "Easy",
+    "tags": ["foundations", "web"],
+    "relatedCommands": ["curl", "dig", "tcpdump"],
+    "relatedConcepts": ["DNS (Domain Name System)", "TCP/IP and Ports", "Hashing vs Encryption"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "HTTP is the request/response protocol of the web: a client sends a method, a path and headers; the server answers with a status code, headers and a body."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. The client resolves the name and opens a TCP (and usually TLS) connection.\n2. It sends a request line such as `GET /index.html HTTP/1.1` plus headers.\n3. The server replies with a status line (`200 OK`), headers and a body.\n4. Cookies and other headers carry state between requests."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **Methods** GET, POST, PUT, DELETE, HEAD, OPTIONS\n- **Status codes** 2xx success, 3xx redirect, 4xx client error, 5xx server error\n- **Headers** Host, User-Agent, Cookie, Set-Cookie, Content-Type, Authorization\n- **TLS** encrypts the connection (HTTPS)\n- **Cookies** small values the browser sends back to the site"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: `curl -I https://example.com`.\nProcess: curl sends a HEAD request.\nOutput: the status line and response headers, no body."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Every web vulnerability is a story about requests the developer did not expect."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Input in the URL, headers, cookies or body is untrusted: injection, XSS and broken access control start there.\n- Security headers (CSP, HSTS, X-Content-Type-Options) and cookie flags (HttpOnly, Secure, SameSite) reduce risk."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- curl\n- dig\n- tcpdump"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- DNS (Domain Name System)\n- TCP/IP and Ports\n- Hashing vs Encryption"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Thinking POST data is hidden: without HTTPS it is as visible as a URL.\n- Trusting client-side checks; the user controls the client."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"A polite letter exchange: a request in, a status and a reply out.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- Which response headers would tell me the most about how a site is protected?"
+      }
+    ]
+  },
+  {
+    "title": "Hashing vs Encryption",
+    "category": "Cryptography",
+    "difficulty": "Medium",
+    "tags": ["foundations", "crypto"],
+    "relatedCommands": ["file"],
+    "relatedConcepts": ["HTTP Basics", "Principle of Least Privilege"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Encryption is reversible with a key; hashing is a one-way fingerprint of data. They solve different problems."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. Encryption: plaintext + key → ciphertext; ciphertext + key → plaintext.\n2. Hashing: any input → fixed-size digest; you cannot recover the input from it.\n3. Passwords should be stored using a slow, salted password hash, not plain encryption or a fast hash.\n4. Integrity checks compare digests of the same data."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **Symmetric encryption** one shared key (AES)\n- **Asymmetric encryption** public/private key pair (RSA, elliptic curves)\n- **Hash function** SHA-256, SHA-3 (MD5 and SHA-1 are broken for security)\n- **Salt** random value mixed into each password hash\n- **KDF** deliberately slow function for passwords (Argon2, scrypt, bcrypt)"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: the file `setup.iso` and the publisher's SHA-256 digest.\nProcess: you hash your copy and compare.\nOutput: matching digests mean the file was not altered in transit."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "Picking the wrong tool, such as encrypting passwords or hashing secrets you need back, is a common and serious design error."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Cracking attacks target weak or unsalted password hashes with wordlists and GPUs.\n- Fast hashes (MD5, SHA-1, plain SHA-256) are the wrong choice for passwords.\n- Never roll your own cryptography; use vetted libraries."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- file"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- HTTP Basics\n- Principle of Least Privilege"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Saying \"the password is encrypted\" when it should be hashed.\n- Thinking a hash can be \"decrypted\": attackers guess inputs and compare."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"Encryption is a locked box you can reopen; a hash is a fingerprint you can only compare.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Medium"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- Why is a slow hash a feature for passwords but a drawback for file checksums?"
+      }
+    ]
+  },
+  {
+    "title": "Principle of Least Privilege",
+    "category": "Linux",
+    "difficulty": "Easy",
+    "tags": ["foundations", "security"],
+    "relatedCommands": ["sudo", "chmod", "chown", "id"],
+    "relatedConcepts": ["File Permissions", "Processes and Signals"],
+    "sections": [
+      {
+        "key": "what-is-it",
+        "title": "🧠 What is it?",
+        "markdown": "Give every user, program and process only the access it needs to do its job, and nothing more."
+      },
+      {
+        "key": "how-it-works-step-by-step",
+        "title": "⚙️ How it works (Step-by-step)",
+        "markdown": "1. List what the task actually requires.\n2. Create a dedicated account or role with just those rights.\n3. Run the program as that account instead of root.\n4. Review and remove access when it is no longer needed."
+      },
+      {
+        "key": "key-components",
+        "title": "🧩 Key Components",
+        "markdown": "- **Separate accounts** for people and for services\n- **Narrow sudo rules** instead of full root\n- **File permissions** that follow need-to-know\n- **Network rules** that expose only required ports\n- **Time limits** on elevated access"
+      },
+      {
+        "key": "example-walkthrough",
+        "title": "🔁 Example / Walkthrough",
+        "markdown": "Input: a web server needs to read `/var/www` and bind to port 443.\nProcess: it starts as root only to bind the port, then drops to the unprivileged `www-data` user.\nOutput: a bug in the site code cannot overwrite system files."
+      },
+      {
+        "key": "why-it-matters",
+        "title": "💡 Why it matters",
+        "markdown": "It limits the damage of mistakes, stolen credentials and software bugs."
+      },
+      {
+        "key": "security-relevance",
+        "title": "⚔️ Security Relevance",
+        "markdown": "- Attackers love over-privileged accounts: one foothold becomes full control.\n- Defenders audit sudo rules, setuid binaries and service accounts to shrink what an intruder could reach."
+      },
+      {
+        "key": "tools-commands-related",
+        "title": "🛠️ Tools / Commands Related",
+        "markdown": "- sudo\n- chmod\n- chown\n- id"
+      },
+      {
+        "key": "related-concepts",
+        "title": "🔗 Related Concepts",
+        "markdown": "- File Permissions\n- Processes and Signals"
+      },
+      {
+        "key": "common-mistakes-misconceptions",
+        "title": "⚠️ Common Mistakes / Misconceptions",
+        "markdown": "- Running everything as root for convenience.\n- Granting broad access \"temporarily\" and never removing it."
+      },
+      {
+        "key": "intuition-very-important",
+        "title": "🧠 Intuition (VERY IMPORTANT)",
+        "markdown": "> \"Hand out keys to single rooms, not the master key.\""
+      },
+      {
+        "key": "source-where-i-learned-this",
+        "title": "📚 Source / Where I learned this",
+        "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)"
+      },
+      {
+        "key": "difficulty-level",
+        "title": "🔥 Difficulty Level",
+        "markdown": "Easy"
+      },
+      {
+        "key": "questions-i-still-have",
+        "title": "❓ Questions I still have",
+        "markdown": "- Which services on my machine run as root, and could any of them run as a normal user?"
+      }
+    ]
+  }
+]

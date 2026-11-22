@@ -1,0 +1,39 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Script",
+        "conceptIds": [
+          "01M80WE4HV651YCVV3GQFC5466"
+        ],
+        "createdAt": "2026-11-22T05:42:33.367Z",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HVJ0YRCCZ7W5AF9ZNP",
+        "importRef": "cfa7a0f373a39117fb7547782a302cb1",
+        "links": [
+          {
+            "targetId": "01M80WE4HV651YCVV3GQFC5466",
+            "type": "concept"
+          }
+        ],
+        "notes": "",
+        "skillsUsed": [
+          "Bash",
+          "Globs"
+        ],
+        "slug": "log-rotation-helper",
+        "status": "In progress",
+        "tags": [
+          "bash",
+          "globs"
+        ],
+        "title": "Log Rotation Helper",
+        "type": "Script",
+        "updatedAt": "2026-11-22T05:42:33.367Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

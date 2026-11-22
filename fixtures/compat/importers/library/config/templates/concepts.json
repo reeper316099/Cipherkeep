@@ -1,0 +1,70 @@
+{
+  "name": "Cyber Concepts",
+  "sections": [
+    {
+      "hint": "(fill me in)",
+      "key": "what-is-it",
+      "title": "🧠 What is it?"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "how-it-works-step-by-step",
+      "title": "⚙️ How it works (Step-by-step)"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "key-components",
+      "title": "🧩 Key Components"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "example-walkthrough",
+      "title": "🔁 Example / Walkthrough"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "why-it-matters",
+      "title": "💡 Why it matters"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "security-relevance",
+      "title": "⚔️ Security Relevance"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "tools-commands-related",
+      "title": "🛠️ Tools / Commands Related"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "related-concepts",
+      "title": "🔗 Related Concepts"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "common-mistakes-misconceptions",
+      "title": "⚠️ Common Mistakes / Misconceptions"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "intuition-very-important",
+      "title": "🧠 Intuition (VERY IMPORTANT)"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "source-where-i-learned-this",
+      "title": "📚 Source / Where I learned this"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "difficulty-level",
+      "title": "🔥 Difficulty Level"
+    },
+    {
+      "hint": "(fill me in)",
+      "key": "questions-i-still-have",
+      "title": "❓ Questions I still have"
+    }
+  ]
+}

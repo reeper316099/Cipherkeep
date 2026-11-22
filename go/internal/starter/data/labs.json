@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Example: find the hidden file",
+    "platform": "Practice",
+    "difficulty": "Easy",
+    "domain": "linux",
+    "commands": ["ls", "cd", "find", "cat"],
+    "concepts": ["Linux Filesystem Hierarchy"],
+    "writeup": "## 🎯 Goal\n\nCreate a folder on your own machine with a hidden file inside, then find it again using only the command line.\n\n## 🔍 Process\n\n1. `mkdir -p ~/practice/hidden-demo && cd ~/practice/hidden-demo`\n2. `echo \"found me\" > .secret.txt`\n3. Run `ls` (nothing shown) and then `ls -a`.\n4. Search from the parent folder: `find ~/practice -name \".secret*\"`.\n\n## 💥 Solution\n\n`ls -a` shows names that start with a dot; `find` searches by name whether or not it is hidden.\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`ls`, `cd`, `find`, `cat`\n"
+  },
+  {
+    "title": "Example: who failed to log in?",
+    "platform": "Practice",
+    "difficulty": "Easy",
+    "domain": "log analysis",
+    "commands": ["grep", "cut", "sort", "uniq", "wc"],
+    "concepts": ["Pipes and Redirection"],
+    "writeup": "## 🎯 Goal\n\nPractise log triage with a pipeline. Make a small fake log first so nothing real is involved.\n\n## 🔍 Process\n\n1. Create `auth.log` with a few lines such as `Failed password for admin from 198.51.100.7`, `Accepted password for alice from 192.0.2.4`, repeated with different users and addresses.\n2. Keep only failures: `grep \"Failed\" auth.log`.\n3. Extract the address: `awk '{print $NF}'` (or `cut` if your lines have a fixed shape).\n4. Rank them: `... | sort | uniq -c | sort -nr`.\n\n## 💥 Solution\n\n`grep \"Failed password\" auth.log | awk '{print $NF}' | sort | uniq -c | sort -nr`\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`grep`, `awk`, `sort`, `uniq`\n"
+  },
+  {
+    "title": "Example: scan my own machine",
+    "platform": "Practice",
+    "difficulty": "Medium",
+    "domain": "scanning",
+    "commands": ["nmap", "ss", "nc"],
+    "concepts": ["TCP/IP and Ports"],
+    "writeup": "## 🎯 Goal\n\nSee your own computer the way a scanner does, and compare it with what the operating system says is listening. Only scan machines you own.\n\n## 🔍 Process\n\n1. List listening sockets: `ss -tulpn` (Linux) or `lsof -iTCP -sTCP:LISTEN -n -P` (macOS).\n2. Scan yourself: `nmap -sV -p- 127.0.0.1`.\n3. Start something to find: `python3 -m http.server 8000` in another terminal, then scan again.\n4. Confirm one port with `nc -zv 127.0.0.1 8000`.\n\n## 💥 Solution\n\nThe new port 8000 appears in both views. Anything nmap sees that you did not expect deserves a look.\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`ss`, `nmap`, `nc`\n"
+  }
+]

@@ -1,0 +1,207 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:42:33.354Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HV1W18F8XQE7QN0HZC",
+        "importRef": "82400661f09a91a038efe5215f1d3130",
+        "links": [
+          {
+            "targetId": "01M80WE4HT3RGVEKTF12WM4A18",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80WE4HT90W904T4GM0MY1N3",
+            "type": "command"
+          }
+        ],
+        "questionsOpen": 2,
+        "relatedCommandIds": [
+          "01M80WE4HT3RGVEKTF12WM4A18",
+          "01M80WE4HT90W904T4GM0MY1N3"
+        ],
+        "relatedConceptIds": [],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Folders nest inside one another like branches.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "| / | the top of everything |\n| --- | --- |\n| /etc | settings |\n| /var/log | logs |",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "-",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "-",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "-",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "-",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- cd\n- pwd\n- awk",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "-",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "-",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"A tree you can walk.\"\n>",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "-",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "-",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Who can read /etc?\n- Where do logs rotate?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "directory-tree",
+        "tags": [
+          "Foundations"
+        ],
+        "title": "Directory Tree",
+        "updatedAt": "2026-11-22T05:42:33.354Z"
+      },
+      {
+        "archived": false,
+        "category": "Linux",
+        "confidence": 0,
+        "createdAt": "2026-11-22T05:42:33.362Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HV651YCVV3GQFC5466",
+        "importRef": "819f4be9e3a9f56ac37d0e013db5b64d",
+        "links": [
+          {
+            "targetId": "01M80WE4HTGM465EQRFX6M4EQZ",
+            "type": "command"
+          },
+          {
+            "targetId": "01M80WE4HTZQS98P7M94C2520G",
+            "type": "command"
+          }
+        ],
+        "questionsOpen": 0,
+        "relatedCommandIds": [
+          "01M80WE4HTGM465EQRFX6M4EQZ",
+          "01M80WE4HTZQS98P7M94C2520G"
+        ],
+        "relatedConceptIds": [],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Patterns that expand to file names.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "-",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "| * | any run of characters |\n| --- | --- |\n| ? | one character |\n| [[:digit:]] | any digit |\n\nExamples\n\n| *.txt | every text file |\n| --- | --- |",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "-",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "-",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "-",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- cp\n- ls",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "-",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "-",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "-",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "-",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "-",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "-",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "globs",
+        "tags": [
+          "Foundations"
+        ],
+        "title": "Globs",
+        "updatedAt": "2026-11-22T05:42:33.362Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

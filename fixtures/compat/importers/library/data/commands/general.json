@@ -1,0 +1,248 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.323Z",
+        "examples": [
+          {
+            "command": "df",
+            "description": "show disk usage"
+          }
+        ],
+        "explanation": "disk space",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HTDX8FFRDH99E3HV0A",
+        "importRef": "f09798b32034c80c1eb5157213ec74d7",
+        "links": [],
+        "mastery": 0,
+        "name": "df",
+        "notes": "",
+        "options": [],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "df",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "df",
+        "tags": [],
+        "title": "df",
+        "updatedAt": "2026-11-22T05:42:33.323Z",
+        "whatItDoes": "Free space per mounted disk."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.332Z",
+        "examples": [
+          {
+            "command": "free",
+            "description": "show memory"
+          }
+        ],
+        "explanation": "memory usage",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HV94J8VGQR0YP8F2QV",
+        "importRef": "47d2bc693547a7c9008518f41f207914",
+        "links": [],
+        "mastery": 0,
+        "name": "free",
+        "notes": "",
+        "options": [],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "free",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "free",
+        "tags": [],
+        "title": "free",
+        "updatedAt": "2026-11-22T05:42:33.332Z",
+        "whatItDoes": "Shows RAM and swap."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.336Z",
+        "examples": [
+          {
+            "command": "exit",
+            "description": "close this shell"
+          }
+        ],
+        "explanation": "leave the shell",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HVR3A1EVM6RBADAVH3",
+        "importRef": "138c7185039c567cbfdd4677e824a252",
+        "links": [],
+        "mastery": 0,
+        "name": "exit",
+        "notes": "",
+        "options": [],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "exit",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "exit",
+        "tags": [],
+        "title": "exit",
+        "updatedAt": "2026-11-22T05:42:33.336Z",
+        "whatItDoes": "Ends the session."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "name to look up",
+            "name": "command"
+          }
+        ],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.340Z",
+        "examples": [
+          {
+            "command": "type ls",
+            "description": "resolve ls"
+          }
+        ],
+        "explanation": "how a name resolves",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HVD5JKM1NZQNG0RVKC",
+        "importRef": "066fec24677e5a9a153d629cd6816f1c",
+        "links": [],
+        "mastery": 0,
+        "name": "type",
+        "notes": "",
+        "options": [],
+        "placeholders": [
+          "command"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "type",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "type [command]",
+        "tags": [],
+        "title": "type",
+        "updatedAt": "2026-11-22T05:42:33.340Z",
+        "whatItDoes": "Tells you if a name is a builtin, alias or file."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "program name",
+            "name": "command"
+          }
+        ],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.344Z",
+        "examples": [
+          {
+            "command": "which ls",
+            "description": "path of ls"
+          }
+        ],
+        "explanation": "locate an executable",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4HVPKT7NH30X91BGFQ1",
+        "importRef": "7fabcbbf3b3d2a4f1394fece0fd39927",
+        "links": [],
+        "mastery": 0,
+        "name": "which",
+        "notes": "",
+        "options": [],
+        "placeholders": [
+          "command"
+        ],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "which",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "which [command]",
+        "tags": [],
+        "title": "which",
+        "updatedAt": "2026-11-22T05:42:33.344Z",
+        "whatItDoes": "Prints the path of a program."
+      },
+      {
+        "archived": false,
+        "arguments": [],
+        "category": "General",
+        "createdAt": "2026-11-22T05:42:33.466Z",
+        "examples": [],
+        "explanation": "",
+        "extras": {},
+        "favorite": false,
+        "id": "01M80WE4QTQ27HREE18C9T2A31",
+        "links": [],
+        "mastery": 0,
+        "name": "=cmd",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-x",
+            "meaning": "x"
+          }
+        ],
+        "placeholders": [],
+        "platforms": [
+          "any"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "cmd",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "=cmd",
+        "tags": [],
+        "title": "=cmd",
+        "updatedAt": "2026-11-22T05:42:33.466Z",
+        "whatItDoes": ""
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

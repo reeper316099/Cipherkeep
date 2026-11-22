@@ -1,0 +1,25 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "code": "#!/usr/bin/env bash\nfor f in *.log; do\n  gzip \"$f\"\ndone",
+        "createdAt": "2026-11-22T05:42:33.392Z",
+        "description": "",
+        "extras": {},
+        "favorite": false,
+        "filePath": null,
+        "id": "01M80WE4HVZGQGG0KQ44K8481C",
+        "importRef": "e16ccda810daa10584ff6154d5fcf706",
+        "language": "bash",
+        "links": [],
+        "slug": "helper-scripts",
+        "tags": [],
+        "title": "Helper Scripts",
+        "updatedAt": "2026-11-22T05:42:33.392Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

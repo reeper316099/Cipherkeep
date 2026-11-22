@@ -326,10 +326,15 @@ export function exportCsv(ctx: Context, c: CollectionName, o: ExportOptions = {}
 
 export function csvTemplate(c: CollectionName): string {
   return (
-    Papa.unparse({
-      fields: csvColumns(c).filter((k) => !['id', 'createdAt', 'updatedAt', 'extras'].includes(k)),
-      data: [],
-    }) + '\n'
+    Papa.unparse(
+      {
+        fields: csvColumns(c).filter(
+          (k) => !['id', 'createdAt', 'updatedAt', 'extras'].includes(k),
+        ),
+        data: [],
+      },
+      { newline: '\n' },
+    ).trimEnd() + '\n'
   );
 }
 
