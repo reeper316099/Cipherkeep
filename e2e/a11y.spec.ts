@@ -52,7 +52,6 @@ test.afterEach(async () => {
 
 test('starter pack first run, then every page passes axe in dark and light', async ({
   browser,
-  browserName,
 }) => {
   test.setTimeout(180_000);
   const dataDir = mkdtempSync(path.join(os.tmpdir(), 'ck-a11y-'));
@@ -69,10 +68,22 @@ test('starter pack first run, then every page passes axe in dark and light', asy
     await expect(page.getByRole('option').first()).toContainText(/grep/i);
     await page.keyboard.press('Escape');
 
-    // Skip link reaches the main landmark. WebKit (as Safari and the macOS app) moves to links with Option/Alt+Tab
-    // unless full keyboard navigation is turned on; Tab alone skips them.
-    await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
-    await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
+    // The skip link is the first stop from the keyboard. Start from the top of the page (closing the palette may hand
+    // focus back to the last button), then press Tab; WebKit, like Safari and the macOS app, skips links on Tab unless
+    // full keyboard navigation is on, and reaches them with Option/Alt+Tab instead.
+    const skip = page.getByRole('link', { name: 'Skip to main content' });
+    const fromTop = async (key: string) => {
+      // Focusing the body makes the next Tab start from the beginning of the document.
+      await page.evaluate(() => {
+        document.body.tabIndex = -1;
+        document.body.focus();
+        document.body.removeAttribute('tabindex');
+      });
+      await page.keyboard.press(key);
+      return skip.evaluate((el) => el === document.activeElement);
+    };
+    if (!(await fromTop('Tab'))) await fromTop('Alt+Tab');
+    await expect(skip).toBeFocused();
 
     for (const theme of ['dark', 'light'] as const) {
       await page.evaluate((t) => {
