@@ -1,0 +1,108 @@
+{
+  "attachments": [
+    "attachments/f3ee19a6/diagram.png"
+  ],
+  "created": [
+    {
+      "collection": "commands",
+      "id": "01M88G0D97X4KMTCPVFG7T707M"
+    },
+    {
+      "collection": "commands",
+      "id": "01M88G0D97MW43T075TXBN4S2K"
+    },
+    {
+      "collection": "commands",
+      "id": "01M88G0D97KPX2SCX8380PSFD0"
+    },
+    {
+      "collection": "commands",
+      "id": "01M88G0D97TPXSGF2WV2GXZ5S6"
+    },
+    {
+      "collection": "log",
+      "id": "01M88G0D973NY5JJ9ZQH4TFCYQ"
+    },
+    {
+      "collection": "concepts",
+      "id": "01M88G0D973K3YYRYRVRAVFMVE"
+    },
+    {
+      "collection": "concepts",
+      "id": "01M88G0D9710NWFQWHM3BRGKH7"
+    },
+    {
+      "collection": "projects",
+      "id": "01M88G0D97VVYS73K0NNT0ZF6R"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D97648RKT4PJKBWRHV0"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D97ESEHN3PG75T4WQZ2"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D97B9C7B1J1HM9S8DY6"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D97DQ9BE88R3ZYXDC00"
+    },
+    {
+      "collection": "snippets",
+      "id": "01M88G0D97911WPK6DVMFEM7T5"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D97NNNYSG7BXEGMAVGE"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D98QQG0P9C5W4BKENRJ"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D98YNNF3PKNEQ1HFFMG"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D982RB3QNSJPZDVNCFP"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D98EAJ4B1VPBWPSGXRF"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D986AEEVD2FJ4X3Y300"
+    },
+    {
+      "collection": "notes",
+      "id": "01M88G0D98E3XJFPGDY0E83HE7"
+    }
+  ],
+  "createdAt": "2026-11-25T04:39:16.008Z",
+  "id": "20261125T043915-z3mw2n",
+  "templates": [
+    {
+      "before": null,
+      "collection": "commands"
+    },
+    {
+      "before": null,
+      "collection": "log"
+    },
+    {
+      "before": null,
+      "collection": "concepts"
+    },
+    {
+      "before": null,
+      "collection": "labs"
+    }
+  ],
+  "updated": []
+}

@@ -1,0 +1,28 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-25T04:39:16.141Z",
+        "difficulty": "Easy",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0DDDZMWZ8XE67ZB6NY70",
+        "links": [],
+        "platform": "Bandit",
+        "scriptIds": [],
+        "slug": "compat-lab",
+        "status": "Completed",
+        "tags": [],
+        "title": "Compat lab",
+        "updatedAt": "2026-11-25T04:39:16.141Z",
+        "writeup": "",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

@@ -1,0 +1,21 @@
+{
+  "attachments": 0,
+  "created": {
+    "commands": 45,
+    "concepts": 10,
+    "labs": 3,
+    "notes": 4
+  },
+  "createdAt": "2026-11-25T04:39:15.639Z",
+  "id": "20261125T043915-avtqsx",
+  "itemWarnings": [],
+  "kind": "json-backup",
+  "skipped": [],
+  "snapshot": "20261125T043915-pre-import.zip",
+  "sourceName": "Cipherkeep starter pack",
+  "strategy": "skip",
+  "templates": [],
+  "unchanged": {},
+  "updated": {},
+  "warnings": []
+}

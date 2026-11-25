@@ -1,0 +1,117 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Cryptography",
+        "confidence": 0,
+        "createdAt": "2026-11-25T04:39:15.906Z",
+        "difficulty": "Medium",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXQWN2NZAH6PSY2ZNDS",
+        "importRef": "starter:concepts:Hashing vs Encryption",
+        "links": [
+          {
+            "targetId": "01M88G0CXPCJWTDWTRY6MMTQVT",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQ8EKCW5HZ9JRWVXNP",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M88G0CXQZESFZF4PYEW7QMEW",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M88G0CXPCJWTDWTRY6MMTQVT"
+        ],
+        "relatedConceptIds": [
+          "01M88G0CXQ8EKCW5HZ9JRWVXNP",
+          "01M88G0CXQZESFZF4PYEW7QMEW"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Encryption is reversible with a key; hashing is a one-way fingerprint of data. They solve different problems.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. Encryption: plaintext + key → ciphertext; ciphertext + key → plaintext.\n2. Hashing: any input → fixed-size digest; you cannot recover the input from it.\n3. Passwords should be stored using a slow, salted password hash, not plain encryption or a fast hash.\n4. Integrity checks compare digests of the same data.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **Symmetric encryption** one shared key (AES)\n- **Asymmetric encryption** public/private key pair (RSA, elliptic curves)\n- **Hash function** SHA-256, SHA-3 (MD5 and SHA-1 are broken for security)\n- **Salt** random value mixed into each password hash\n- **KDF** deliberately slow function for passwords (Argon2, scrypt, bcrypt)",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: the file `setup.iso` and the publisher's SHA-256 digest.\nProcess: you hash your copy and compare.\nOutput: matching digests mean the file was not altered in transit.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Picking the wrong tool, such as encrypting passwords or hashing secrets you need back, is a common and serious design error.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Cracking attacks target weak or unsalted password hashes with wordlists and GPUs.\n- Fast hashes (MD5, SHA-1, plain SHA-256) are the wrong choice for passwords.\n- Never roll your own cryptography; use vetted libraries.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- file",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- HTTP Basics\n- Principle of Least Privilege",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Saying \"the password is encrypted\" when it should be hashed.\n- Thinking a hash can be \"decrypted\": attackers guess inputs and compare.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"Encryption is a locked box you can reopen; a hash is a fingerprint you can only compare.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Medium",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Why is a slow hash a feature for passwords but a drawback for file checksums?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "hashing-vs-encryption",
+        "tags": [
+          "starter",
+          "foundations",
+          "crypto"
+        ],
+        "title": "Hashing vs Encryption",
+        "updatedAt": "2026-11-25T04:39:15.906Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

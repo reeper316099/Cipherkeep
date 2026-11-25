@@ -1,0 +1,97 @@
+{
+  "attachments": 1,
+  "created": {
+    "commands": 4,
+    "concepts": 2,
+    "log": 1,
+    "notes": 11,
+    "projects": 1,
+    "snippets": 1
+  },
+  "createdAt": "2026-11-25T04:39:16.008Z",
+  "id": "20261125T043915-z3mw2n",
+  "itemWarnings": [
+    {
+      "collection": "commands",
+      "title": "ls",
+      "warnings": [
+        "unresolved labs relation: \"Ghost Lab\""
+      ]
+    }
+  ],
+  "kind": "notion",
+  "skipped": [
+    {
+      "reason": "dashboard hub page (progress and navigation are computed natively); override to import as a note",
+      "ref": "65acf0a7ced564a4880cf946224e60b7",
+      "title": "Lab Dashboard"
+    },
+    {
+      "reason": "already exists",
+      "ref": "6cff1aec8e9f4348e71088667742493b",
+      "title": "ls"
+    },
+    {
+      "reason": "already exists",
+      "ref": "601e8843335af52824016f26b0572845",
+      "title": "pwd"
+    },
+    {
+      "reason": "already exists",
+      "ref": "619a9b2a94ff5d8eac00d100e9814d84",
+      "title": "cd"
+    },
+    {
+      "reason": "already exists",
+      "ref": "f25864a50971c1fe3f3d493480e60317",
+      "title": "file"
+    },
+    {
+      "reason": "already exists",
+      "ref": "dbb0a9877745d41c14e00e76550b9313",
+      "title": "less"
+    },
+    {
+      "reason": "already exists",
+      "ref": "e2cc311a88ee76eeccb9c201805eb24b",
+      "title": "mkdir"
+    },
+    {
+      "reason": "already exists",
+      "ref": "83ac453b913ef30785621e232fdd2661",
+      "title": "cp"
+    },
+    {
+      "reason": "already exists",
+      "ref": "f31b94f6281f97d25e6ce53ed4f6ec37",
+      "title": "mv"
+    },
+    {
+      "reason": "already exists",
+      "ref": "2a7291deb7de31c4b53fb6cd346b3088",
+      "title": "rm"
+    },
+    {
+      "reason": "already exists",
+      "ref": "76d9fac0b2d27e9cf92a2938436a1d9e",
+      "title": "ln"
+    },
+    {
+      "reason": "already exists",
+      "ref": "f09798b32034c80c1eb5157213ec74d7",
+      "title": "df"
+    }
+  ],
+  "snapshot": "20261125T043915-pre-import-1.zip",
+  "sourceName": "notion-export",
+  "strategy": "skip",
+  "templates": [
+    "commands",
+    "log",
+    "concepts",
+    "labs"
+  ],
+  "unchanged": {},
+  "updated": {},
+  "warnings": []
+}

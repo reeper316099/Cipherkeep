@@ -17,13 +17,17 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-go@v5 # the API contract tests build and run the Go server
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
       - run: npm ci
       - run: npm run guard
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
 
-  # The Go port (see docs/go-migration). Race detector on, all three systems: path separators and file watching differ.
+  # The Go backend and shell. Race detector on, all three systems: path separators and file watching differ.
   go:
     strategy:
       fail-fast: false
@@ -44,26 +48,6 @@ jobs:
         if: runner.os != 'Windows'
         run: test -z "$(gofmt -l .)"
       - run: go test -race -count=1 ./...
-
-  # The TypeScript API, vault and UI-serving tests, run against the Go server (go/cmd/ck-server).
-  go-contract:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go/go.mod
-          cache-dependency-path: go/go.sum
-      - run: npm ci
-      - run: npm run test:go-contract
 
   # Builds the Go + Wails app and its installers on each system, then smoke-tests the built app with its window hidden
   # (the real UI loads, calls the in-process API, and receives a live update after a hand edit).
@@ -106,10 +90,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: go-app-${{ matrix.os }}
-          path: release-go/*
+          path: release/*
           retention-days: 7
 
-  # Drives the real Electron app (built, not packaged): first run, import, study, restart, security checks.
+  # Drives the app's UI and the Go API together in WebKit (the engine of the macOS and Linux web views) and Chromium
+  # (close to Windows' WebView2): first run, import, study, restart, live edits, encryption, accessibility.
   e2e:
     needs: verify
     strategy:
@@ -123,14 +108,13 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
       - run: npm ci
-      - run: npm run desktop:build
-      - name: e2e (Linux, virtual display)
-        if: runner.os == 'Linux'
-        run: xvfb-run -a npx playwright test
-      - name: e2e
-        if: runner.os != 'Linux'
-        run: npx playwright test
+      - run: npx playwright install --with-deps webkit chromium
+      - run: npm run e2e
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

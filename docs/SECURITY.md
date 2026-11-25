@@ -5,17 +5,20 @@ Cipherkeep is a local-first desktop app. This page says what it protects, what i
 ## What stays on your computer
 
 - Everything: notes, commands, progress, settings, backups. There are no accounts, no telemetry, no update pings.
-- The desktop window talks only to a small server inside the app on `127.0.0.1`. Every request needs a random token
-  that is created at launch and handed to the window directly (never written to disk). Requests whose `Host` is not
-  a loopback name are refused (DNS-rebinding guard).
-- The window is sandboxed with context isolation. Any request to a non-loopback address is cancelled and all
-  permission prompts (camera, location, …) are denied. Links open in your browser only after you click them.
+- The app opens no network port. The window's requests to its own API are answered inside the app's process, so no
+  other program on the computer (or on the network) can reach your data through it.
+- The page may connect only to the app itself (its Content-Security-Policy says so), never to the internet. Links to
+  web sites open in your browser, and only after you click them. The few desktop actions the page can ask for (open a
+  link, show a file in its folder, pick or move the data folder) check what they are given; a stored file is shown in
+  the file manager, never opened or run.
+- For development, `go/cmd/ck-server` serves the same API on `127.0.0.1` instead. There every request needs a random
+  token made at start, and requests whose `Host` is not a loopback name are refused (DNS-rebinding guard).
 - Markdown is sanitised before it is shown; remote images are not loaded.
 
 ## The one optional network feature
 
 **Import from the Notion API** is off by default (Settings → Privacy). When on, and only while an import is running,
-the server (not the window) calls `https://api.notion.com/v1/…` with the integration token you paste.
+the app's Go backend (not the window) calls `https://api.notion.com/v1/…` with the integration token you paste.
 
 - The token is kept in memory for the length of the job. It is never written to disk, logged, put in a URL, or
   returned by the API. A test asserts it appears nowhere in the data folder.

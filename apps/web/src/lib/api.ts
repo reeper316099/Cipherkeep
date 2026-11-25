@@ -3,8 +3,9 @@ import type { Command, Concept, Lab } from '@cipherkeep/shared';
 declare global {
   interface Window {
     /**
-     * Injected by the Electron preload via contextBridge, or built from the Wails bindings (wails-bridge.ts). Absent in
-     * the dev browser (Vite proxies /api). In the Wails app apiBase and token are empty: the API is in process.
+     * Built from the Wails bindings in the desktop app (wails-bridge.ts), where apiBase and token are empty because
+     * the API is answered in process. The end-to-end tests set it with a loopback token. Absent in the dev browser
+     * (Vite proxies /api).
      */
     cipherkeep?: {
       apiBase: string;

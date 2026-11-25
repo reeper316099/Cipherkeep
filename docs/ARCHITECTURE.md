@@ -1,40 +1,49 @@
 # Architecture
 
 ```
-apps/desktop    Electron shell: window, menu, security policy, installers
-apps/web        React + Vite UI (served by the local server inside the app)
-packages/server Fastify API on 127.0.0.1, repositories, search, study, import/export, vault
-packages/jsonstore  standalone storage engine (atomic writes, watcher, backups, codec) - no app code
-packages/shared Zod schemas, constants, pure logic (study engine, Notion parsing, wiki links)
-starter-pack/   original MIT content that can be loaded on first run
-e2e/            Playwright tests that drive the real Electron app
+go/app             Wails desktop app: window, menu, single instance, the bridge the UI uses for desktop actions
+go/internal/api    the /api/v1 HTTP handler (open and locked), vault routes, live events
+go/internal/...    storage engine (jsonstore), repositories, search, links, study, importer, exporter, vault
+go/cmd/ck-server   the same API on a loopback port, for development and tests
+apps/web           React + Vite UI, embedded in the app
+packages/shared    constants, schemas and pure logic the UI uses (study engine, wiki links, Notion helpers)
+starter-pack/      original MIT content, embedded in the app and loadable on first run
+e2e/               Playwright tests of the UI and the Go API in WebKit and Chromium
+tests/contract     the API contract tests, run against the Go server
 ```
 
 ## Process model
 
-The desktop main process starts `startServer` (packages/server) on an ephemeral loopback port with a per-launch bearer
-token and opens a sandboxed window that loads the UI from that server. The preload script exposes only the port and
-token plus a few folder helpers. There is no remote content.
+One process. The Wails window shows the UI bundle from the asset server built into the app. Every request the bundle
+does not answer itself (everything under `/api/v1`) goes to the Go API handler, inside the process: there is no
+network port, so there is nothing for another program to reach and no token to protect. The UI calls the Go side
+directly only for desktop actions (open a link in the browser, show a file in the folder, pick a folder, move the data
+folder), through the Wails bindings that `apps/web/src/lib/wails-bridge.ts` turns into `window.cipherkeep`.
 
-`startServer` owns one listening socket and swaps between two apps: the **open** app (full API) and, for an
-encrypted library that has no key yet, a **locked** app (UI shell, `/vault/unlock`, and `423` for everything else).
-Unlocking builds a context with the keyed codec and swaps in the full app; locking swaps back and drops the key.
+`api.Server` owns the data folder (an instance lock) and serves one of two handlers: the **open** handler (the full
+API) or, for an encrypted library that has no key yet, the **locked** handler (status, `/vault/unlock`, and `423` for
+everything else). Unlocking opens the library with the keyed codec and swaps in the open handler; locking swaps back,
+closes the library and drops the key. During an encryption change other requests get `503 BUSY`.
+
+Live updates (an edit made in another editor, an import) reach the window as Wails events. The same events are also
+served as a server-sent event stream for the loopback server.
 
 ## Storage
 
-- `JsonStore` / `JsonFile`: validated, versioned, atomically written shards with a keyed mutex per file, a watcher
-  for hand edits, quarantine plus restore-from-backup for corrupt files, and multi-file transactions with rollback.
-- A `Codec` sits between memory and disk. The default is the identity; the AES-GCM codec encrypts each file. Anything
-  that reads or writes outside the store (templates, attachments, import records, logs, notes) goes through the same
-  codec.
-- `Repo` objects (`JsonRepo`, `NoteRepo`) keep entities in memory and emit change events; search, links and the SSE
-  stream listen to those events. Search (MiniSearch) and the link graph are rebuilt in memory at start-up.
+- `jsonstore`: validated, versioned, atomically written JSON files with a lock per file, a watcher for hand edits,
+  quarantine plus restore-from-backup for corrupt files, transactions with rollback, and zip backups.
+- A codec sits between memory and disk. The plain codec stores files as they are; the AES-256-GCM codec encrypts each
+  file. Everything written outside the store (templates, attachments, import records, logs, notes) goes through the
+  same codec.
+- Repositories (JSON shards, and Markdown notes) keep entities in memory and report changes; search, links and live
+  events listen to them. The search index (BM25 with prefix and typo matching) and the link graph are built in memory
+  when the library opens. In the desktop app, watching for hand edits starts right after the library is shown.
 
 ## Import and export
 
 Importers build a **plan** (pure, no writes): Notion export, Notion API (reads the workspace into a virtual export,
-then the same planner), CSV, Markdown folder, JSON backup. `commitPlan` applies a plan after taking a backup and
-writes a manifest so `undoImport` can reverse it. Imports are idempotent through stable `importRef`s.
+then the same planner), CSV, Markdown folder, JSON backup. Commit applies a plan after taking a backup and writes a
+manifest so the import can be undone. Imports are idempotent through stable `importRef`s.
 
 ## UI
 
@@ -43,123 +52,78 @@ fetched on open (list responses omit them). A `VaultGate` shows the unlock scree
 
 ## Testing
 
-Vitest runs node tests (storage, API, importers, study engine, vault, starter pack) and jsdom tests (UI). Playwright
-launches the built Electron app for the end-to-end flows, including an axe accessibility audit of every page in both
-themes.
+- **Go** (`go test -race ./...` in `go/`): the storage engine, repositories, search, study, importers, exporters, API,
+  vault and shell logic, including parity tests against results recorded from the Node version (`fixtures/compat`)
+  and a test that opens libraries written by the Node app, plain and encrypted.
+- **Vitest** (`npm test`): the UI (jsdom), `packages/shared`, and the API contract tests (`tests/contract`), which start
+  the Go server.
+- **Playwright** (`npm run e2e`): the UI the app embeds and the Go API, in WebKit and Chromium: first run, import,
+  study, restart, a hand edit, encryption, and an axe accessibility audit of every page in both themes.
+- **Smoke test** (`npm run app:smoke`): the built desktop app, with its window hidden, on all three systems in CI.
 
 ## Diagram
 
 ```mermaid
-%% Generated by https://gitdiagram.com/reeper316099/cipherkeep
 flowchart TD
 
-subgraph group_clients["User interfaces"]
-  node_desktop["Desktop shell<br/>[main.ts]"]
-  node_webapp["Application routes<br/>[App.tsx]"]
-  node_commandlib["Command library<br/>[CommandLibrary.tsx]"]
-  node_knowledge["Learning records<br/>[ConceptsPage.tsx]"]
-  node_labs["Lab journal<br/>[LabsPage.tsx]"]
-  node_studyui["Study review<br/>[StudyPage.tsx]"]
-  node_graphui["Knowledge graph<br/>[GraphPage.tsx]"]
-  node_dashboard["Dashboard<br/>[Dashboard.tsx]"]
-  node_importui["Import interface<br/>[ImportPage.tsx]"]
-  node_vaultui["Vault gate<br/>[VaultGate.tsx]"]
-  node_api_client["HTTP client<br/>[api.ts]"]
+subgraph group_app["Desktop app (one process)"]
+  node_shell["Wails shell<br/>[go/app]"]
+  node_assets["UI bundle<br/>[apps/web]"]
+  node_bridge["Desktop bridge<br/>[wails-bridge.ts]"]
+  node_api["API handler<br/>[internal/api]"]
+  node_vault["Vault<br/>[internal/vault]"]
 end
 
-subgraph group_server["Local API"]
-  node_api_server["Fastify API<br/>[app.ts]"]
-  node_vault_routes["Vault routes<br/>[vault-routes.ts]"]
-  node_repo["Entity repository<br/>[repo.ts]"]
-  node_search["Entity search<br/>[search.ts]"]
-end
-
-subgraph group_domain["Learning domain"]
-  node_shared["Shared schemas<br/>[schemas.ts]"]
-  node_study_engine["Study engine<br/>[cards.ts]"]
+subgraph group_domain["Library"]
+  node_library["Library<br/>[internal/library]"]
+  node_repo["Repositories<br/>[internal/repo]"]
+  node_search["Search<br/>[internal/search]"]
+  node_links["Links and graph<br/>[internal/links]"]
+  node_study["Study engine<br/>[internal/study]"]
 end
 
 subgraph group_persistence["Local data"]
-  node_jsonstore[("JSON file store<br/>[store.ts]")]
+  node_store[("Storage engine<br/>[internal/jsonstore]")]
 end
 
 subgraph group_integrations["Import and export"]
-  node_notion_markdown["Notion parsing<br/>[markdown.ts]"]
-  node_import_pipeline["Import planning<br/>[index.ts]"]
-  node_notion_api["Notion API importer<br/>[notion-api.ts]"]
-  node_exporter["Vault export<br/>[export.ts]"]
-  node_starter["Starter pack<br/>[starter.ts]"]
+  node_importer["Import planning<br/>[internal/importer]"]
+  node_notion["Notion parsing<br/>[internal/notion]"]
+  node_notionapi["Notion API importer<br/>[internal/notionapi]"]
+  node_exporter["Export<br/>[internal/exporter]"]
+  node_starter["Starter pack<br/>[internal/starter]"]
 end
 
 node_user(("Learner"))
 node_notion_service["Notion workspace"]
 
-node_user -->|"launches"| node_desktop
-node_user -->|"uses"| node_webapp
-node_desktop -->|"starts local API"| node_api_server
-node_webapp -->|"routes to"| node_commandlib
-node_webapp -->|"routes to"| node_knowledge
-node_webapp -->|"routes to"| node_labs
-node_webapp -->|"routes to"| node_studyui
-node_webapp -->|"routes to"| node_graphui
-node_webapp -->|"routes to"| node_dashboard
-node_webapp -->|"routes to"| node_importui
-node_webapp -->|"gates routes"| node_vaultui
-node_commandlib -.->|"requests data"| node_api_client
-node_knowledge -->|"reads and saves"| node_api_client
-node_labs -->|"reads and saves"| node_api_client
-node_studyui -->|"requests review"| node_api_client
-node_importui -.->|"submits imports"| node_api_client
-node_vaultui -.->|"manages vault"| node_api_client
-node_api_client -->|"HTTP requests"| node_api_server
-node_api_server -->|"queries entities"| node_repo
-node_api_server -->|"registers routes"| node_vault_routes
-node_repo -->|"uses storage"| node_jsonstore
-node_api_server -->|"builds import plan"| node_import_pipeline
-node_api_server -->|"exports vault"| node_exporter
-node_api_server -->|"uses importer"| node_notion_api
-node_api_server -.->|"loads starter content"| node_starter
-node_search -->|"searches records"| node_repo
-node_studyui -->|"uses study logic"| node_study_engine
-node_import_pipeline -.->|"parses Markdown"| node_notion_markdown
-node_notion_api -.->|"reads workspace"| node_notion_service
-node_api_server -.->|"validates domain data"| node_shared
-node_api_server -.->|"reads and writes files"| node_jsonstore
+node_user -->|"launches"| node_shell
+node_shell -->|"shows"| node_assets
+node_assets -->|"/api/v1, in process"| node_api
+node_assets -.->|"desktop actions"| node_bridge
+node_bridge -.->|"Wails bindings"| node_shell
+node_shell -.->|"live events"| node_assets
+node_api -->|"locked or open"| node_vault
+node_api -->|"reads and writes"| node_library
+node_library --> node_repo
+node_library --> node_search
+node_library --> node_links
+node_library --> node_study
+node_repo -->|"files"| node_store
+node_api -->|"plans and commits"| node_importer
+node_importer --> node_notion
+node_api -.->|"optional, off by default"| node_notionapi
+node_notionapi -.->|"reads workspace"| node_notion_service
+node_api --> node_exporter
+node_api --> node_starter
 
-click node_desktop "https://github.com/reeper316099/cipherkeep/blob/main/apps/desktop/src/main.ts"
-click node_webapp "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/App.tsx"
-click node_commandlib "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/commands/CommandLibrary.tsx"
-click node_knowledge "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/concepts/ConceptsPage.tsx"
-click node_labs "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/labs/LabsPage.tsx"
-click node_studyui "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/study/StudyPage.tsx"
-click node_graphui "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/graph/GraphPage.tsx"
-click node_dashboard "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/dashboard/Dashboard.tsx"
-click node_importui "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/import/ImportPage.tsx"
-click node_vaultui "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/features/vault/VaultGate.tsx"
-click node_api_client "https://github.com/reeper316099/cipherkeep/blob/main/apps/web/src/lib/api.ts"
-click node_api_server "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/app.ts"
-click node_vault_routes "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/vault-routes.ts"
-click node_repo "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/repo.ts"
-click node_search "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/search.ts"
-click node_shared "https://github.com/reeper316099/cipherkeep/blob/main/packages/shared/src/schemas.ts"
-click node_study_engine "https://github.com/reeper316099/cipherkeep/blob/main/packages/shared/src/study/cards.ts"
-click node_notion_markdown "https://github.com/reeper316099/cipherkeep/blob/main/packages/shared/src/notion/markdown.ts"
-click node_import_pipeline "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/import/index.ts"
-click node_notion_api "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/import/notion-api.ts"
-click node_exporter "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/export.ts"
-click node_starter "https://github.com/reeper316099/cipherkeep/blob/main/packages/server/src/starter.ts"
-click node_jsonstore "https://github.com/reeper316099/cipherkeep/blob/main/packages/jsonstore/src/store.ts"
-
-classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
 classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
 classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
 classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
 classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
 classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
-classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
-class node_desktop,node_webapp,node_commandlib,node_knowledge,node_labs,node_studyui,node_graphui,node_dashboard,node_importui,node_vaultui,node_api_client toneBlue
-class node_api_server,node_vault_routes,node_repo,node_search toneAmber
-class node_shared,node_study_engine toneMint
-class node_jsonstore toneRose
-class node_notion_markdown,node_import_pipeline,node_notion_api,node_exporter,node_starter,node_user,node_notion_service toneIndigo
+class node_shell,node_assets,node_bridge,node_api,node_vault toneBlue
+class node_library,node_repo,node_search,node_links,node_study toneAmber
+class node_store toneRose
+class node_importer,node_notion,node_notionapi,node_exporter,node_starter,node_user,node_notion_service toneIndigo
 ```

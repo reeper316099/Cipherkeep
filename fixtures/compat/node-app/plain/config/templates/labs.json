@@ -1,0 +1,15 @@
+{
+  "name": "Labs",
+  "sections": [
+    {
+      "hint": "(What was the challenge?)",
+      "key": "goal",
+      "title": "🎯 Goal"
+    },
+    {
+      "hint": "(Steps)",
+      "key": "process",
+      "title": "🔍 Process"
+    }
+  ]
+}

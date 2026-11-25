@@ -1,0 +1,166 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Practice",
+        "commandIds": [
+          "01M88G0CXPH9DFJZBGP73ETTN9",
+          "01M88G0CXPKATVQARWT9QN1FSW",
+          "01M88G0CXP2ZA35F6ZN14YAX4D",
+          "01M88G0CXPZBN9ZWM9D79WB44E"
+        ],
+        "conceptIds": [
+          "01M88G0CXQ3FTHGWBBMMB5D0HF"
+        ],
+        "createdAt": "2026-11-25T04:39:15.936Z",
+        "difficulty": "Easy",
+        "domain": "linux",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0CXQK9TRKHFQA09WEK0F",
+        "importRef": "starter:labs:Example: find the hidden file",
+        "links": [
+          {
+            "targetId": "01M88G0CXPH9DFJZBGP73ETTN9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPKATVQARWT9QN1FSW",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP2ZA35F6ZN14YAX4D",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPZBN9ZWM9D79WB44E",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQ3FTHGWBBMMB5D0HF",
+            "type": "concept"
+          }
+        ],
+        "platform": "Practice",
+        "scriptIds": [],
+        "slug": "example-find-the-hidden-file",
+        "status": "Not Started",
+        "tags": [
+          "starter"
+        ],
+        "title": "Example: find the hidden file",
+        "updatedAt": "2026-11-25T04:39:15.936Z",
+        "writeup": "## 🎯 Goal\n\nCreate a folder on your own machine with a hidden file inside, then find it again using only the command line.\n\n## 🔍 Process\n\n1. `mkdir -p ~/practice/hidden-demo && cd ~/practice/hidden-demo`\n2. `echo \"found me\" > .secret.txt`\n3. Run `ls` (nothing shown) and then `ls -a`.\n4. Search from the parent folder: `find ~/practice -name \".secret*\"`.\n\n## 💥 Solution\n\n`ls -a` shows names that start with a dot; `find` searches by name whether or not it is hidden.\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`ls`, `cd`, `find`, `cat`\n",
+        "writeupPrivate": true
+      },
+      {
+        "archived": false,
+        "category": "Practice",
+        "commandIds": [
+          "01M88G0CXPJMMMX10EX145H7BK",
+          "01M88G0CXPK6CT03261TVN2K26",
+          "01M88G0CXP1A1PR7RYVDD6RCNH",
+          "01M88G0CXPP7JXVPWNA95TTPPT",
+          "01M88G0CXP4KS9JVTG10G1GZ89"
+        ],
+        "conceptIds": [
+          "01M88G0CXQE0DXF0MPM25V09SW"
+        ],
+        "createdAt": "2026-11-25T04:39:15.944Z",
+        "difficulty": "Easy",
+        "domain": "log analysis",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0CXQG8HYPH8HXMK1948C",
+        "importRef": "starter:labs:Example: who failed to log in?",
+        "links": [
+          {
+            "targetId": "01M88G0CXPJMMMX10EX145H7BK",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPK6CT03261TVN2K26",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP1A1PR7RYVDD6RCNH",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPP7JXVPWNA95TTPPT",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP4KS9JVTG10G1GZ89",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQE0DXF0MPM25V09SW",
+            "type": "concept"
+          }
+        ],
+        "platform": "Practice",
+        "scriptIds": [],
+        "slug": "example-who-failed-to-log-in",
+        "status": "Not Started",
+        "tags": [
+          "starter"
+        ],
+        "title": "Example: who failed to log in?",
+        "updatedAt": "2026-11-25T04:39:15.944Z",
+        "writeup": "## 🎯 Goal\n\nPractise log triage with a pipeline. Make a small fake log first so nothing real is involved.\n\n## 🔍 Process\n\n1. Create `auth.log` with a few lines such as `Failed password for admin from 198.51.100.7`, `Accepted password for alice from 192.0.2.4`, repeated with different users and addresses.\n2. Keep only failures: `grep \"Failed\" auth.log`.\n3. Extract the address: `awk '{print $NF}'` (or `cut` if your lines have a fixed shape).\n4. Rank them: `... | sort | uniq -c | sort -nr`.\n\n## 💥 Solution\n\n`grep \"Failed password\" auth.log | awk '{print $NF}' | sort | uniq -c | sort -nr`\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`grep`, `awk`, `sort`, `uniq`\n",
+        "writeupPrivate": true
+      },
+      {
+        "archived": false,
+        "category": "Practice",
+        "commandIds": [
+          "01M88G0CXQ76T458E3BWVGGGRC",
+          "01M88G0CXQZWGG1Y78Y09FR1TC",
+          "01M88G0CXQTXF7576FA57EFZ86"
+        ],
+        "conceptIds": [
+          "01M88G0CXQWVS7T1V2B5GSHBYG"
+        ],
+        "createdAt": "2026-11-25T04:39:15.948Z",
+        "difficulty": "Medium",
+        "domain": "scanning",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0CXQVEPN3TZZ4AWSMXDS",
+        "importRef": "starter:labs:Example: scan my own machine",
+        "links": [
+          {
+            "targetId": "01M88G0CXQ76T458E3BWVGGGRC",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQZWGG1Y78Y09FR1TC",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQTXF7576FA57EFZ86",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQWVS7T1V2B5GSHBYG",
+            "type": "concept"
+          }
+        ],
+        "platform": "Practice",
+        "scriptIds": [],
+        "slug": "example-scan-my-own-machine",
+        "status": "Not Started",
+        "tags": [
+          "starter"
+        ],
+        "title": "Example: scan my own machine",
+        "updatedAt": "2026-11-25T04:39:15.948Z",
+        "writeup": "## 🎯 Goal\n\nSee your own computer the way a scanner does, and compare it with what the operating system says is listening. Only scan machines you own.\n\n## 🔍 Process\n\n1. List listening sockets: `ss -tulpn` (Linux) or `lsof -iTCP -sTCP:LISTEN -n -P` (macOS).\n2. Scan yourself: `nmap -sV -p- 127.0.0.1`.\n3. Start something to find: `python3 -m http.server 8000` in another terminal, then scan again.\n4. Confirm one port with `nc -zv 127.0.0.1 8000`.\n\n## 💥 Solution\n\nThe new port 8000 appears in both views. Anything nmap sees that you did not expect deserves a look.\n\n## 🧠 What I learned\n\n(your notes here)\n\n## 🛠️ Commands Used\n\n`ss`, `nmap`, `nc`\n",
+        "writeupPrivate": true
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

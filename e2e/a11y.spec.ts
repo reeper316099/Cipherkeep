@@ -1,18 +1,11 @@
-import {
-  _electron as electron,
-  expect,
-  test,
-  type ElectronApplication,
-  type Page,
-} from '@playwright/test';
+import { expect, test, type BrowserContext, type Page } from '@playwright/test';
 import axe from 'axe-core';
 import { mkdtempSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { removeDir } from './cleanup';
+import { openApp, startGo, type GoServer } from './go-app';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MOD = process.platform === 'darwin' ? 'Meta' : 'Control';
 const PAGES = [
   '/',
@@ -30,9 +23,10 @@ const PAGES = [
   '/import',
 ];
 
-let app: ElectronApplication | undefined;
+let server: GoServer | undefined;
+let context: BrowserContext | undefined;
 
-/** AxeBuilder needs a second page, which Electron cannot create; inject axe into the window instead. */
+/** Injects axe into the page and runs the WCAG 2 A and AA rules. */
 async function audit(page: Page): Promise<string[]> {
   await page.evaluate(axe.source);
   return page.evaluate(async () => {
@@ -52,22 +46,19 @@ interface AxeViolation {
   nodes: { target: unknown[] }[];
 }
 test.afterEach(async () => {
-  await app?.close().catch(() => undefined);
+  await context?.close().catch(() => undefined);
+  await server?.close().catch(() => undefined);
 });
 
-test('starter pack first run, then every page passes axe in dark and light', async () => {
+test('starter pack first run, then every page passes axe in dark and light', async ({
+  browser,
+}) => {
   test.setTimeout(180_000);
   const dataDir = mkdtempSync(path.join(os.tmpdir(), 'ck-a11y-'));
   try {
-    app = await electron.launch({
-      args: [
-        path.join(ROOT, 'apps/desktop'),
-        ...(process.env.CI && process.platform === 'linux' ? ['--no-sandbox'] : []),
-      ],
-      env: { ...(process.env as Record<string, string>), CIPHERKEEP_DATA_DIR: dataDir },
-    });
-    const page = await app.firstWindow();
-    await page.waitForLoadState('domcontentloaded');
+    server = await startGo(dataDir);
+    context = await browser.newContext();
+    const page = await openApp(context, server);
 
     // First run: pick the starter pack and find a bundled command by search.
     await page.getByRole('button', { name: 'Start with the starter pack' }).click();
@@ -97,7 +88,8 @@ test('starter pack first run, then every page passes axe in dark and light', asy
       }
     }
   } finally {
-    await app?.close().catch(() => undefined);
+    await context?.close().catch(() => undefined);
+    await server?.close().catch(() => undefined);
     removeDir(dataDir);
   }
 });

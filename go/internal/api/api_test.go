@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"bufio"
 	"bytes"
+	"context"
 	"encoding/json"
 	"io"
 	"io/fs"
@@ -12,11 +13,13 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 	"testing/fstest"
 	"time"
 
 	"github.com/reeper316099/Cipherkeep/go/internal/jsonstore"
+	"github.com/reeper316099/Cipherkeep/go/internal/notionapi"
 	"github.com/reeper316099/Cipherkeep/go/internal/vault"
 )
 
@@ -353,4 +356,80 @@ func TestEventsStreamHelloAndChanges(t *testing.T) {
 			t.Fatalf("still waiting for %v", want)
 		}
 	}
+}
+
+// The optional Notion API import through the API (the route test of the Node server's notion-api.test.ts): off by
+// default, then a job against a fake Notion that only api.notion.com is asked, with the token as a bearer header and
+// written nowhere.
+func TestNotionAPIImportIsOffByDefaultAndKeepsTheTokenOffDisk(t *testing.T) {
+	const token = "secret_fake-notion-token-for-tests-only"
+	var hosts []string
+	var mu sync.Mutex
+	fake := func(r *http.Request) (*http.Response, error) {
+		mu.Lock()
+		hosts = append(hosts, r.URL.Host)
+		mu.Unlock()
+		if r.Header.Get("Authorization") != "Bearer "+token {
+			return &http.Response{StatusCode: 401, Header: http.Header{}, Body: io.NopCloser(strings.NewReader(`{"code":"unauthorized"}`))}, nil
+		}
+		// One loose page in the workspace; no databases, and the page has no blocks.
+		results := `[]`
+		if r.Body != nil {
+			b, _ := io.ReadAll(r.Body)
+			if bytes.Contains(b, []byte(`"value":"page"`)) {
+				results = `[{"object":"page","id":"1234567890abcdef1234567890abcdef","parent":{"type":"workspace","workspace":true},` +
+					`"properties":{"Name":{"type":"title","title":[{"plain_text":"Fake Notion page"}]}}}]`
+			}
+		}
+		return &http.Response{StatusCode: 200, Header: http.Header{"Content-Type": {"application/json"}},
+			Body: io.NopCloser(strings.NewReader(`{"object":"list","results":` + results + `,"has_more":false,"next_cursor":null}`))}, nil
+	}
+	dir := t.TempDir()
+	s := newServer(t, Options{DataDir: dir, Notion: notionapi.ClientOptions{Do: fake, MinInterval: time.Nanosecond,
+		Sleep: func(context.Context, time.Duration) error { return nil }}})
+	defer s.Close()
+
+	if r := call(t, s, "POST", "/import/notion-api/start", map[string]any{"token": token}); r.status != 403 || errCode(r) != "NOTION_API_DISABLED" {
+		t.Fatalf("while off: %d %v", r.status, r.body)
+	}
+	if r := call(t, s, "PUT", "/settings", map[string]any{"notionApiEnabled": true}); r.status != 200 {
+		t.Fatalf("turn on: %d", r.status)
+	}
+	if r := call(t, s, "POST", "/import/notion-api/start", map[string]any{"token": "short"}); r.status != 400 {
+		t.Fatalf("a too-short token must be refused: %d", r.status)
+	}
+	start := call(t, s, "POST", "/import/notion-api/start", map[string]any{"token": token})
+	id, _ := start.body["jobId"].(string)
+	if start.status != 200 || id == "" {
+		t.Fatalf("start: %d %v", start.status, start.body)
+	}
+	var job resp
+	for deadline := time.Now().Add(10 * time.Second); time.Now().Before(deadline); time.Sleep(20 * time.Millisecond) {
+		job = call(t, s, "GET", "/import/notion-api/"+id, nil)
+		if job.body["state"] != "running" {
+			break
+		}
+	}
+	if job.body["state"] != "done" || job.body["preview"] == nil {
+		t.Fatalf("job: %v", job.body)
+	}
+	items, _ := job.body["preview"].(map[string]any)["items"].([]any)
+	if len(items) != 1 || items[0].(map[string]any)["title"] != "Fake Notion page" {
+		t.Fatalf("preview items: %v", items)
+	}
+	mu.Lock()
+	for _, h := range hosts {
+		if h != "api.notion.com" {
+			t.Errorf("contacted %s", h)
+		}
+	}
+	mu.Unlock()
+	_ = filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
+		if err == nil && !d.IsDir() {
+			if raw, _ := os.ReadFile(p); bytes.Contains(raw, []byte(token)) {
+				t.Errorf("the token was written to %s", p)
+			}
+		}
+		return nil
+	})
 }

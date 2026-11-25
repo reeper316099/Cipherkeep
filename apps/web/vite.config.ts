@@ -6,8 +6,9 @@ const API = process.env.CIPHERKEEP_API ?? 'http://127.0.0.1:5174';
 const TOKEN = process.env.CIPHERKEEP_TOKEN ?? 'dev-token';
 
 /**
- * Strict CSP for the production bundle: no inline scripts, no remote origins. The Electron app talks to its server
- * on a loopback port; the Wails build (`--mode wails`) answers the API in process, so it may reach only its own origin.
+ * Strict CSP for the production bundle: no inline scripts, no remote origins. The desktop build (`--mode wails`)
+ * answers the API in process, so it may reach only its own origin; a plain build may also reach a loopback API port
+ * (the Go dev server).
  */
 function csp(mode: string): Plugin {
   const connect = mode === 'wails' ? "'self'" : "'self' http://127.0.0.1:*";
@@ -37,7 +38,7 @@ function appName(): Plugin {
 
 export default defineConfig(({ mode }) => ({
   plugins: [react(), appName(), csp(mode)],
-  base: './', // works from file:// inside Electron
+  base: './', // relative asset paths, so the bundle works wherever it is served from
   server: {
     port: 5173,
     strictPort: true,

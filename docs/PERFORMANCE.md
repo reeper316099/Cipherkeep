@@ -2,31 +2,34 @@
 
 Target: stay responsive with 10,000 notes and 5,000 commands on a normal laptop.
 
-Reproduce with `npm run bench`. It generates a synthetic library in a temp folder, starts the server
-and prints timings. Nothing leaves your machine.
+The measurements live with the move to Go + Wails, where every figure was taken for both the old Node + Electron
+version and the Go version on the same machine and data: [docs/go-migration](go-migration/README.md). Nothing leaves
+your machine while they run.
 
 ## Measured (10k notes + 5k commands, Apple-silicon laptop)
 
-| Measurement                          | Result               |
-| ------------------------------------ | -------------------- |
-| Startup (load + index + watch)       | ~5.8 s (was 10.5 s)  |
-| `GET /notes?limit=500&omit=markdown` | 144 KB (was 1183 KB) |
-| Search (keyword, operators)          | 1–13 ms              |
-| `GET /stats/overview`                | 39 ms (was 129 ms)   |
-| `GET /notes/:id`                     | 0.3 ms               |
-| `PATCH` one note                     | ~12 ms               |
+| Measurement                              | Go + Wails    | Node + Electron (before) |
+| ---------------------------------------- | ------------- | ------------------------ |
+| Launch to first screen with that library | 1.5 s         | 4.4 s                    |
+| Idle memory, whole app                   | 481 MB        | 896 MB                   |
+| Search (`nmap`, `-sV`, prefix)           | 2.6 to 3.2 ms | 8.6 to 15.9 ms           |
+| Dashboard (`GET /stats/overview`)        | 11.6 ms       | 38.4 ms                  |
+| One note (`GET /notes/:id`, in the app)  | 0.01 ms       | 0.29 ms                  |
+| Edit one note (`PATCH`)                  | 5.3 ms        | 8.9 ms                   |
 
-## What changed
+API figures are over loopback HTTP for both, except where marked; in the app the Go API is called in process.
 
-- **Parallel note scan**: Markdown files are read with a bounded pool (48 at a time) instead of one by one.
-- **Bounded watcher start-up**: the file watcher's "ready" wait is capped at 1.5 s.
-- **Background launch backup**: the on-launch zip backup runs 3 s after start and is streamed
-  (`yazl`) to a temp file, then renamed, so it never blocks the event loop.
-- **Lean list responses**: list endpoints accept `omit=markdown,sections,...`. The web app omits
-  note bodies from lists and fetches the full note only when you open it.
-- **Skill-map scoring** precomputes per-entity domains once instead of per skill.
+## How it stays fast
+
+- **Lean list responses**: list endpoints accept `omit=markdown,sections,...`. The UI leaves note bodies out of lists
+  and fetches a note when you open it.
+- **A search index of its own**: BM25 scoring with prefix and typo matching, built in parallel when the library opens.
+- **Background work after the first screen**: the launch backup runs 3 s after start and streams to a temp file; file
+  watching starts once the library is shown.
 
 ## Known limits
 
 - Start-up is dominated by reading and indexing every note once. It scales roughly linearly.
-- Everything is held in memory (about 270 MB heap at 10k notes + 5k commands).
+- Everything is held in memory.
+- Listing 500 commands and exact-name lookups (`cmd:name`) are about a millisecond slower than in the Node version.
+- Importing thousands of items at once takes seconds, because each item rewrites its shard file.

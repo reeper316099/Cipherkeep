@@ -1,5 +1,6 @@
 name: Release
-# Pushing a tag like v0.1.0 builds installers on all three OSes and attaches them to a draft GitHub release.
+# Pushing a tag like v1.1.0 builds the Go + Wails installers on all three OSes, smoke-tests them, and attaches them to a
+# draft GitHub release.
 # Builds are unsigned; see docs/PACKAGING.md for adding signing and notarisation.
 on:
   push:
@@ -10,41 +11,8 @@ permissions:
   contents: write
 
 jobs:
+  # The Go + Wails app: installers for each system, smoke-tested before they are attached.
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - name: Linux packaging tools (rpm, deb)
-        if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y rpm fakeroot dpkg
-      - run: npm ci
-      - run: npm run guard
-      - run: npm test
-      - run: npm run desktop:build
-      - name: Package
-        working-directory: apps/desktop
-        run: npx electron-builder --config electron-builder.yml --publish never
-      - uses: actions/upload-artifact@v4
-        with:
-          name: installers-${{ matrix.os }}
-          if-no-files-found: error
-          path: |
-            release/*.dmg
-            release/*.exe
-            release/*.AppImage
-            release/*.deb
-            release/*.rpm
-
-  # The Go + Wails app (see docs/go-migration). Shipped next to the Electron installers until the cut-over (phase 7).
-  build-go:
     strategy:
       fail-fast: false
       matrix:
@@ -82,12 +50,12 @@ jobs:
         run: node scripts/smoke-app.mjs
       - uses: actions/upload-artifact@v4
         with:
-          name: installers-go-${{ matrix.os }}
+          name: installers-${{ matrix.os }}
           if-no-files-found: error
-          path: release-go/*
+          path: release/*
 
   publish:
-    needs: [build, build-go]
+    needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:

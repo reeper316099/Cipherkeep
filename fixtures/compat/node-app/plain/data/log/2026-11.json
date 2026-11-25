@@ -1,0 +1,30 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "body": "",
+        "category": "",
+        "commandIds": [],
+        "conceptIds": [],
+        "createdAt": "2026-11-25T04:39:16.148Z",
+        "date": "2026-11-20",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0DDM4CRMTEZ6MABQ4NV0",
+        "keyTakeaway": "",
+        "labIds": [],
+        "links": [],
+        "slug": "compat-day",
+        "tags": [],
+        "timeSpentMin": null,
+        "timeSpentRaw": null,
+        "title": "Compat day",
+        "topics": [],
+        "topicsRaw": null,
+        "updatedAt": "2026-11-25T04:39:16.148Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

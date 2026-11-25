@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-11-25T04:39:16.905Z",
+  "kdf": {
+    "N": 1024,
+    "algo": "scrypt",
+    "p": 1,
+    "r": 8
+  },
+  "passphrase": {
+    "salt": "/d5kfQNajoE7cueQ8Sej9Q==",
+    "wrap": "zjDi0U/Vumd/ebaHs5H19W/1ouI/9PVLvpgtH9HocSExZsDcGDUc5smR9CnxcAdIZx7nluQVFvFM/F6m"
+  },
+  "recovery": {
+    "salt": "ybAf/SEe+yQS23WwAk7jZQ==",
+    "wrap": "zeS6WtZLNfp/Q2F/5Skgf27oIGnm+ZcyL0XcEsRbfxNT+0WRZDoV25UcKtZ+vEmcFGkyGvV7TNuz8Aah"
+  },
+  "version": 1
+}

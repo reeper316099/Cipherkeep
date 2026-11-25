@@ -1,0 +1,51 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "body": "## 📚 What I learned\n\n- less\n- Directory Tree\n- tar\n\n## ⚡ Key insight\n\n- One root\n\n## ❓ Questions\n\n- Why so many bin folders?\n\n## 🔁 Review later\n\n-",
+        "category": "",
+        "commandIds": [
+          "01M88G0CXP2K3QB19B82RDTFWT",
+          "01M88G0CXPV8TMAH3BK3H3CTAH"
+        ],
+        "conceptIds": [
+          "01M88G0D973K3YYRYRVRAVFMVE"
+        ],
+        "createdAt": "2026-11-25T04:39:16.025Z",
+        "date": "2026-06-03",
+        "extras": {},
+        "favorite": false,
+        "id": "01M88G0D973NY5JJ9ZQH4TFCYQ",
+        "importRef": "dee1e95d2c0b5340de4abab1b00bd8da",
+        "keyTakeaway": "Everything hangs off one root",
+        "labIds": [],
+        "links": [
+          {
+            "targetId": "01M88G0CXP2K3QB19B82RDTFWT",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPV8TMAH3BK3H3CTAH",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0D973K3YYRYRVRAVFMVE",
+            "type": "concept"
+          }
+        ],
+        "slug": "june-3-2026",
+        "tags": [],
+        "timeSpentMin": 90,
+        "timeSpentRaw": "~1.5 hours",
+        "title": "June 3, 2026",
+        "topics": [
+          "Folders and paging"
+        ],
+        "topicsRaw": "Folders and paging",
+        "updatedAt": "2026-11-25T04:39:16.025Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

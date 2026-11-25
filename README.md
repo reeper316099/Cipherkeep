@@ -29,48 +29,65 @@ default.
   import only, never saved).
 - **Accessible**: keyboard-friendly, a skip link, dark and light themes, and an automated axe audit of every
   page.
-- **Fast**: tested with 10,000 notes and 5,000 commands. See [docs/PERFORMANCE.md](docs/PERFORMANCE.md).
+- **Fast and small**: tested with 10,000 notes and 5,000 commands; about half the memory of the old Electron version.
+  See [docs/PERFORMANCE.md](docs/PERFORMANCE.md).
 
 The app never runs commands or scripts you store.
 
 ## Install
 
-Installers are built by `npm run desktop:dist` for your OS (into `./release`), and a `v*` tag builds all
-three in CI. Builds are **unsigned**, so macOS and Windows warn about an unidentified developer on first
-launch. See [docs/PACKAGING.md](docs/PACKAGING.md) for how to open them and how to add signing.
+Download the installer for your system from the [releases page](https://github.com/reeper316099/Cipherkeep/releases):
+a universal `.dmg` for macOS (Apple silicon and Intel), a setup or portable `.exe` for Windows, and a `.deb`, `.rpm` or
+`.tar.gz` for Linux. They are 7 to 18 MB. Builds are **unsigned**, so macOS and Windows warn about an unidentified
+developer on first launch. See [docs/PACKAGING.md](docs/PACKAGING.md) for how to open them and how to add signing.
+
+The app uses the web view your system already has: WebKit on macOS, WebView2 on Windows (built into Windows 11 and
+current Windows 10) and WebKitGTK 4.1 on Linux (the `.deb` and `.rpm` pull it in).
 
 Your data lives in the OS app-data folder (change it in Settings, or set `CIPHERKEEP_DATA_DIR`). Back it up
-by copying the folder. See [docs/DATA_FORMAT.md](docs/DATA_FORMAT.md).
+by copying the folder. See [docs/DATA_FORMAT.md](docs/DATA_FORMAT.md). Libraries made by the earlier Electron version
+open unchanged, encrypted ones included.
 
 ## Develop
 
+You need Go (the version in `go/go.mod`), Node 20 or newer (to build the UI), and the
+[Wails](https://wails.io) v2 CLI (`go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.1`). On Linux, also
+`libgtk-3-dev` and `libwebkit2gtk-4.1-dev`.
+
 ```bash
 npm install
-npm run desktop:start        # build and run the desktop app
-npm run dev                  # API on :5174 (data in .dev-data/) + web on http://localhost:5173
-npm test                     # unit and API tests (Vitest)
-npm run e2e                  # build the desktop app and drive it with Playwright
+npm run app:dev              # the desktop app with hot reload
+npm run app:build            # build it (go/app/build/bin)
+npm run app:package          # installers for this system (./release)
+npm run dev                  # Go API on :5174 (data in .dev-data/) + the UI on http://localhost:5173
+npm test                     # UI, shared and API contract tests (Vitest; the contract tests run the Go server)
+(cd go && go test -race ./...)   # the Go tests
+npm run e2e                  # the UI and the Go API in WebKit and Chromium (Playwright)
 npm run lint && npm run typecheck
-npm run bench                # 10k-note performance benchmark
 npm run fixtures:generate    # rebuild the synthetic Notion export
 ```
 
-In dev the Vite server proxies `/api` to the API and adds the bearer token; in the packaged app the
-Electron preload passes a random per-launch token and port instead.
+In the desktop app the UI's `/api/v1` calls are answered by the Go API inside the process: there is no network port.
+In dev the Vite server proxies `/api` to the Go dev server (`go/cmd/ck-server`) and adds its token.
 
 ## Layout
 
-| Path                 | Purpose                                                          |
-| -------------------- | ---------------------------------------------------------------- |
-| `packages/shared`    | `APP_NAME`, Zod schemas, study engine, Notion parsing            |
-| `packages/jsonstore` | Standalone, reusable JSON storage engine (atomic writes, codecs) |
-| `packages/server`    | Fastify API, importers/exporters, search, study, encryption      |
-| `apps/web`           | React frontend                                                   |
-| `apps/desktop`       | Electron main process and preload                                |
-| `starter-pack/`      | Original MIT starter content                                     |
-| `fixtures/synthetic` | Generated fake Notion-style export used by tests                 |
-| `e2e/`               | Playwright tests against the built desktop app                   |
-| `private-fixtures/`  | Your real export. **Gitignored; never commit.**                  |
+| Path                 | Purpose                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------- |
+| `go/app`             | The desktop app: Wails window, menu, and the bridge the UI uses for desktop actions   |
+| `go/internal`        | The backend: storage engine, repositories, search, study, import/export, API, vault   |
+| `go/cmd/ck-server`   | The API on a loopback port, for development and tests                                 |
+| `apps/web`           | React frontend                                                                        |
+| `packages/shared`    | Constants, schemas and logic the UI uses (study engine, wiki links, Notion helpers)   |
+| `starter-pack/`      | Original MIT starter content (embedded in the app)                                    |
+| `fixtures/synthetic` | Generated fake Notion-style export used by tests                                      |
+| `fixtures/compat`    | Libraries and expected results from the Node version, which the Go version must match |
+| `tests/contract`     | The API contract tests, run against the Go server                                     |
+| `e2e/`               | Playwright tests of the UI and the Go API                                             |
+| `private-fixtures/`  | Your real export. **Gitignored; never commit.**                                       |
+
+Cipherkeep was a Node + Electron app until version 1.1; [docs/go-migration](docs/go-migration/README.md) describes the
+move to Go + Wails and measures it against the old version.
 
 ## Docs
 
@@ -81,6 +98,7 @@ Electron preload passes a random per-launch token and port instead.
 - [Study engine](docs/STUDY_ENGINE.md)
 - [Performance](docs/PERFORMANCE.md)
 - [Packaging](docs/PACKAGING.md)
+- [Moving to Go + Wails](docs/go-migration/README.md)
 
 ## Keeping the public repo clean
 

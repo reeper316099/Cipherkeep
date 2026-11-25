@@ -1,0 +1,18 @@
+{
+  "data": {
+    "accent": "#38e8c6",
+    "backupIntervalHours": 6,
+    "backupKeep": 20,
+    "blurSensitive": false,
+    "density": "comfortable",
+    "notionApiEnabled": false,
+    "sanitizePatterns": [
+      "ZEBRA"
+    ],
+    "storeFlagsInLabs": false,
+    "studyNewPerDay": 15,
+    "theme": "light",
+    "vimMode": false
+  },
+  "schemaVersion": 1
+}

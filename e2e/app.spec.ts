@@ -1,97 +1,56 @@
-import {
-  _electron as electron,
-  expect,
-  test,
-  type ElectronApplication,
-  type Page,
-} from '@playwright/test';
+import { expect, test, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import AdmZip from 'adm-zip';
-import { mkdirSync, mkdtempSync, writeFileSync, existsSync } from 'node:fs';
+import { existsSync, mkdtempSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { removeDir } from './cleanup';
+import { copied, openApp, startGo, type GoServer } from './go-app';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FIXTURE = path.join(ROOT, 'fixtures/synthetic/notion-export');
 const MOD = process.platform === 'darwin' ? 'Meta' : 'Control';
-
 const tmp = (p: string) => mkdtempSync(path.join(os.tmpdir(), p));
 
-const launched: ElectronApplication[] = [];
+let server: GoServer | undefined;
+let context: BrowserContext | undefined;
 test.afterEach(async () => {
-  for (const a of launched.splice(0)) await a.close().catch(() => undefined);
+  await context?.close().catch(() => undefined);
+  await server?.close().catch(() => undefined);
+  context = server = undefined;
 });
 
-async function launch(
-  env: Record<string, string>,
-): Promise<{ app: ElectronApplication; page: Page }> {
-  const bin = process.env.CIPHERKEEP_E2E_BIN; // set to test an installed/packaged build instead of the dev build
-  const app = await electron.launch({
-    ...(bin ? { executablePath: bin } : {}),
-    args: [
-      ...(bin ? [] : [path.join(ROOT, 'apps/desktop')]),
-      ...(process.env.CI && process.platform === 'linux' ? ['--no-sandbox'] : []),
-    ],
-    env: { ...(process.env as Record<string, string>), ...env },
-  });
-  launched.push(app);
-  const page = await app.firstWindow();
-  await page.waitForLoadState('domcontentloaded');
-  return { app, page };
+async function launch(browser: Browser, dataDir: string): Promise<Page> {
+  server = await startGo(dataDir);
+  context = await browser.newContext();
+  return openApp(context, server);
+}
+async function quit(): Promise<void> {
+  await context?.close();
+  await server?.close();
+  context = server = undefined;
 }
 
-test.describe('first run → import → study → persistence', () => {
+test('a whole session survives a restart', async ({ browser }) => {
   const dataDir = tmp('ck-e2e-data-');
-  const home = tmp('ck-e2e-home-');
-  const env = {
-    CIPHERKEEP_DATA_DIR: dataDir,
-    HOME: home,
-    USERPROFILE: home,
-    APPDATA: path.join(home, 'AppData', 'Roaming'),
-    XDG_CONFIG_HOME: path.join(home, '.config'),
-  };
-  test.afterAll(() => {
-    removeDir(dataDir);
-    removeDir(home);
-  });
+  try {
+    let page = await launch(browser, dataDir);
 
-  test('a whole session survives a restart', async () => {
-    let { app, page } = await launch(env);
-
-    // --- security: sandboxed page, token only via the bridge, no remote network ---
+    // --- security: the API needs the per-launch token, and the page cannot reach the network ---
     await expect(page.getByText(/Welcome to Cipherkeep/)).toBeVisible();
     const probe = await page.evaluate(async () => {
-      const w = window as unknown as {
-        cipherkeep?: { token: string };
-        require?: unknown;
-        process?: unknown;
-      };
+      const w = window as unknown as { cipherkeep: { token: string } };
       const noToken = await fetch('/api/v1/health').then((r) => r.status);
       const withToken = await fetch('/api/v1/health', {
-        headers: { authorization: `Bearer ${w.cipherkeep!.token}` },
+        headers: { authorization: `Bearer ${w.cipherkeep.token}` },
       }).then((r) => r.status);
       const remote = await fetch('https://example.com/', { mode: 'no-cors' }).then(
         () => 'reached',
         () => 'blocked',
       );
-      return {
-        hasBridge: typeof w.cipherkeep?.token === 'string' && w.cipherkeep.token.length > 20,
-        noRequire: typeof w.require === 'undefined',
-        noProcess: typeof w.process === 'undefined',
-        noToken,
-        withToken,
-        remote,
-      };
+      return { noToken, withToken, remote };
     });
-    expect(probe).toEqual({
-      hasBridge: true,
-      noRequire: true,
-      noProcess: true,
-      noToken: 401,
-      withToken: 200,
-      remote: 'blocked',
-    });
+    expect(probe).toEqual({ noToken: 401, withToken: 200, remote: 'blocked' });
     expect(page.url()).toMatch(/^http:\/\/127\.0\.0\.1:\d+\//);
 
     // --- import the synthetic Notion export through the UI ---
@@ -104,6 +63,7 @@ test.describe('first run → import → study → persistence', () => {
     await expect(page.getByRole('region', { name: 'Import preview' })).toContainText('15');
     await page.getByRole('button', { name: 'Import', exact: true }).click();
     await expect(page.getByRole('region', { name: 'Import report' })).toContainText('created');
+    removeDir(path.dirname(zipPath));
 
     // --- search a command, fill a placeholder once, copy ---
     await page.getByRole('link', { name: 'Commands' }).first().click();
@@ -113,16 +73,14 @@ test.describe('first run → import → study → persistence', () => {
     await bar.getByPlaceholder('<source>').fill('a.txt');
     await bar.getByPlaceholder('<destination>').fill('b.txt');
     await page.getByRole('button', { name: 'Copy syntax' }).click();
-    await expect
-      .poll(() => app.evaluate(({ clipboard }) => clipboard.readText()))
-      .toBe('cp a.txt b.txt');
+    await expect.poll(() => copied(page)).toBe('cp a.txt b.txt');
 
     // --- command palette: Enter copies the primary example ---
     await page.keyboard.press(`${MOD}+k`);
     await page.getByRole('dialog', { name: 'Command palette' }).getByRole('combobox').fill('ls');
     await expect(page.getByRole('option', { name: /ls/ }).first()).toBeVisible();
     await page.keyboard.press('Enter');
-    await expect.poll(() => app.evaluate(({ clipboard }) => clipboard.readText())).toBe('ls -al');
+    await expect.poll(() => copied(page)).toBe('ls -al');
 
     // --- study five cards from the keyboard ---
     await page.getByRole('link', { name: 'Review' }).click();
@@ -160,10 +118,11 @@ test.describe('first run → import → study → persistence', () => {
     await expect(page.getByText('Labs completed')).toBeVisible();
 
     // --- restart: nothing is lost ---
-    await app.close();
+    await quit();
     expect(existsSync(path.join(dataDir, 'meta.json'))).toBe(true);
     expect(existsSync(path.join(dataDir, 'study', 'srs-state.json'))).toBe(true);
-    ({ app, page } = await launch(env));
+    expect(existsSync(path.join(dataDir, '.lock'))).toBe(false); // released on a clean quit
+    page = await launch(browser, dataDir);
     await expect(page.getByLabel('Status banner')).toContainText('STATUS: ACTIVE');
     await expect(page.getByRole('link', { name: /Commands/ }).first()).toContainText('15');
     await page.getByRole('link', { name: 'Labs', exact: true }).click();
@@ -177,36 +136,25 @@ test.describe('first run → import → study → persistence', () => {
       );
     });
     expect(stats.reviewedToday).toBeGreaterThanOrEqual(5);
-    await app.close();
-  });
+  } finally {
+    await quit().catch(() => undefined);
+    removeDir(dataDir);
+  }
 });
 
-test('uses the standard per-OS app data folder when not overridden', async () => {
-  // macOS resolves ~/Library from the user database, ignoring $HOME, so this would touch the real profile.
-  // The macOS convention is covered by the resolveDataDir unit tests instead.
-  test.skip(process.platform === 'darwin', 'would use the real macOS profile');
-  const home = tmp('ck-e2e-default-');
-  const env: Record<string, string> = {
-    HOME: home,
-    USERPROFILE: home,
-    APPDATA: path.join(home, 'AppData', 'Roaming'),
-    XDG_CONFIG_HOME: path.join(home, '.config'),
-    CIPHERKEEP_DATA_DIR: '',
-  };
-  // Windows resolves userData from %APPDATA%, which must exist.
-  mkdirSync(env.APPDATA!, { recursive: true });
-  mkdirSync(env.XDG_CONFIG_HOME!, { recursive: true });
-  const { app, page } = await launch(env);
-  const dir = await page.evaluate(
-    () => (window as unknown as { cipherkeep: { dataDir: string } }).cipherkeep.dataDir,
-  );
-  const expected = {
-    darwin: path.join(home, 'Library', 'Application Support', 'Cipherkeep'),
-    win32: path.join(home, 'AppData', 'Roaming', 'Cipherkeep'),
-    linux: path.join(home, '.config', 'Cipherkeep'),
-  }[process.platform as 'darwin' | 'win32' | 'linux'];
-  expect(path.resolve(dir)).toBe(path.resolve(expected));
-  expect(existsSync(path.join(dir, 'meta.json'))).toBe(true);
-  await app.close();
-  removeDir(home);
+test('a hand edit on disk reaches the open page', async ({ browser }) => {
+  const dataDir = tmp('ck-e2e-live-');
+  try {
+    const page = await launch(browser, dataDir);
+    await expect(page.getByText(/Welcome to Cipherkeep/)).toBeVisible();
+    await page.evaluate(() => (window.location.hash = '#/notes'));
+    writeFileSync(
+      path.join(dataDir, 'data/notes/written-by-hand.md'),
+      '---\nid: 01JABCDEFGHJKMNPQRSTVWXYZ0\ntitle: Written by hand\ncreatedAt: 2026-01-01T00:00:00.000Z\nupdatedAt: 2026-01-01T00:00:00.000Z\n---\nfrom another editor\n',
+    );
+    await expect(page.getByText('Written by hand').first()).toBeVisible();
+  } finally {
+    await quit().catch(() => undefined);
+    removeDir(dataDir);
+  }
 });

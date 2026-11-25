@@ -1,0 +1,16 @@
+{
+  "data": {
+    "items": {
+      "01M88G0DCX473D8JH6966S5VMJ": {
+        "dueAt": "2026-12-05T04:39:16.202Z",
+        "ease": 2.46,
+        "firstAt": "2026-11-25T04:39:16.175Z",
+        "intervalDays": 10,
+        "lapses": 0,
+        "lastAt": "2026-11-25T04:39:16.202Z",
+        "reps": 3
+      }
+    }
+  },
+  "schemaVersion": 1
+}

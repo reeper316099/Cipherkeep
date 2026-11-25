@@ -1,0 +1,10 @@
+{
+  "name": "Compat template",
+  "sections": [
+    {
+      "hint": "one line",
+      "key": "what",
+      "title": "What"
+    }
+  ]
+}

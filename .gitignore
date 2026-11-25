@@ -10,7 +10,6 @@ coverage/
 private-fixtures/
 *.private.*
 .dev-data/
-apps/desktop/web/
 playwright-report/
 test-results/
 # Go + Wails app build output
@@ -19,4 +18,3 @@ go/app/build/bin/
 go/app/build/wailsjs/
 # written by the Wails CLI to decide when to reinstall frontend packages
 apps/web/package.json.md5
-release-go/

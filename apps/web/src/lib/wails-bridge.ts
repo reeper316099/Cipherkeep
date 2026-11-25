@@ -1,5 +1,5 @@
-// In the Go + Wails desktop app there is no preload script. This builds the same `window.cipherkeep` surface the
-// Electron preload offers, from the Go bindings (window.go.main.App) and the Wails runtime (events). The API itself
+// In the Go + Wails desktop app this builds `window.cipherkeep` (the surface the UI uses for desktop-only actions)
+// from the Go bindings (window.go.main.App) and the Wails runtime (events). The API itself
 // needs no bridge: fetch('/api/v1/...') is answered inside the process, so there is no address and no token.
 
 interface WailsApp {

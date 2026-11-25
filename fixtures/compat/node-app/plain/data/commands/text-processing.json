@@ -1,0 +1,818 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "text or regular expression to look for",
+            "name": "pattern"
+          },
+          {
+            "meaning": "files to search (omit to read standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.733Z",
+        "examples": [
+          {
+            "command": "grep -rn \"TODO\" src/",
+            "description": "find TODO comments with file and line number"
+          },
+          {
+            "command": "grep -i \"failed\" /var/log/auth.log",
+            "description": "failed logins, ignoring case"
+          },
+          {
+            "command": "ps aux | grep -v grep | grep ssh",
+            "description": "is sshd running?"
+          },
+          {
+            "command": "grep -E \"^(root|admin):\" /etc/passwd",
+            "description": "lines starting with root: or admin:"
+          }
+        ],
+        "explanation": "search text for a pattern",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPJMMMX10EX145H7BK",
+        "importRef": "starter:commands:grep",
+        "links": [],
+        "mastery": 0,
+        "name": "grep",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-i",
+            "meaning": "ignore case"
+          },
+          {
+            "flag": "-v",
+            "meaning": "invert: show lines that do not match"
+          },
+          {
+            "flag": "-r",
+            "meaning": "search directories recursively"
+          },
+          {
+            "flag": "-n",
+            "meaning": "show line numbers"
+          },
+          {
+            "flag": "-c",
+            "meaning": "count matching lines"
+          },
+          {
+            "flag": "-l",
+            "meaning": "list only the names of files that match"
+          },
+          {
+            "flag": "-E",
+            "meaning": "use extended regular expressions"
+          },
+          {
+            "flag": "-w",
+            "meaning": "match whole words only"
+          },
+          {
+            "flag": "-o",
+            "meaning": "print only the matching part"
+          },
+          {
+            "flag": "-C",
+            "meaning": "show N lines of context around each match, for example -C 2"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "grep",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "grep [flags] pattern [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "grep",
+        "updatedAt": "2026-11-25T04:39:15.733Z",
+        "whatItDoes": "Prints lines that match a pattern, from files or from standard input."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the editing commands, in quotes",
+            "name": "script"
+          },
+          {
+            "meaning": "files to process (omit to read standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.741Z",
+        "examples": [
+          {
+            "command": "sed 's/foo/bar/g' notes.txt",
+            "description": "replace every foo with bar and print the result"
+          },
+          {
+            "command": "sed -n '5,10p' log.txt",
+            "description": "print only lines 5 to 10"
+          },
+          {
+            "command": "sed '/^#/d' config.conf",
+            "description": "drop comment lines"
+          },
+          {
+            "command": "sed -i.bak 's/http:/https:/' links.txt",
+            "description": "edit in place, keeping a .bak copy"
+          }
+        ],
+        "explanation": "edit a stream of text",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPBQJKWMGDASBE5PYT",
+        "importRef": "starter:commands:sed",
+        "links": [],
+        "mastery": 0,
+        "name": "sed",
+        "notes": "-i rewrites the file. Use -i.bak to keep a backup until you are sure.",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "print only lines selected with the p command"
+          },
+          {
+            "flag": "-e",
+            "meaning": "add a script; can be repeated"
+          },
+          {
+            "flag": "-E",
+            "meaning": "use extended regular expressions"
+          },
+          {
+            "flag": "-i",
+            "meaning": "edit the file in place (GNU: -i; macOS needs -i \"\")"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "sed",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "sed [flags] 'script' [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "sed",
+        "updatedAt": "2026-11-25T04:39:15.741Z",
+        "whatItDoes": "Applies editing commands to each line, most often a substitution like s/old/new/."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "pattern { action } pairs, in single quotes",
+            "name": "program"
+          },
+          {
+            "meaning": "files to read (omit for standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.744Z",
+        "examples": [
+          {
+            "command": "awk '{print $1}' access.log",
+            "description": "print the first column of every line"
+          },
+          {
+            "command": "awk -F: '{print $1, $3}' /etc/passwd",
+            "description": "user names and their IDs"
+          },
+          {
+            "command": "awk '$3 > 100' data.txt",
+            "description": "lines where the third field is above 100"
+          },
+          {
+            "command": "awk '{s+=$1} END {print s}' nums.txt",
+            "description": "add up the first column"
+          }
+        ],
+        "explanation": "process text by fields",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPR2YKGEQG9W22WHSG",
+        "importRef": "starter:commands:awk",
+        "links": [],
+        "mastery": 0,
+        "name": "awk",
+        "notes": "Built-ins: NR is the line number, NF the number of fields, $0 the whole line.",
+        "options": [
+          {
+            "flag": "-F",
+            "meaning": "set the field separator, for example -F: or -F,"
+          },
+          {
+            "flag": "-v",
+            "meaning": "set a variable before running: -v name=value"
+          }
+        ],
+        "placeholders": [],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "awk",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "awk [-F sep] 'program' [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "awk",
+        "updatedAt": "2026-11-25T04:39:15.744Z",
+        "whatItDoes": "Splits each line into fields ($1, $2, …) and runs a small program on them. Great for columns and quick sums."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to sort (omit for standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.749Z",
+        "examples": [
+          {
+            "command": "sort names.txt",
+            "description": "alphabetical order"
+          },
+          {
+            "command": "sort -nr scores.txt",
+            "description": "highest number first"
+          },
+          {
+            "command": "sort -t, -k2 -n data.csv",
+            "description": "sort a CSV by its second column"
+          },
+          {
+            "command": "du -sh * | sort -h",
+            "description": "folders from smallest to largest"
+          }
+        ],
+        "explanation": "sort lines of text",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXP1A1PR7RYVDD6RCNH",
+        "importRef": "starter:commands:sort",
+        "links": [],
+        "mastery": 0,
+        "name": "sort",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "sort numerically"
+          },
+          {
+            "flag": "-r",
+            "meaning": "reverse the order"
+          },
+          {
+            "flag": "-u",
+            "meaning": "keep only the first of equal lines"
+          },
+          {
+            "flag": "-k",
+            "meaning": "sort by a field: -k2 sorts on the second field"
+          },
+          {
+            "flag": "-t",
+            "meaning": "field separator for -k, for example -t,"
+          },
+          {
+            "flag": "-h",
+            "meaning": "sort human-readable sizes such as 2K and 1G"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "sort",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "sort [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "sort",
+        "updatedAt": "2026-11-25T04:39:15.749Z",
+        "whatItDoes": "Sorts lines alphabetically by default; flags change the order and the key."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "file to read (omit for standard input)",
+            "name": "input"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.754Z",
+        "examples": [
+          {
+            "command": "sort ips.txt | uniq -c | sort -nr",
+            "description": "rank values by how often they appear"
+          },
+          {
+            "command": "sort words.txt | uniq -d",
+            "description": "which words appear more than once?"
+          },
+          {
+            "command": "uniq -u sorted.txt",
+            "description": "lines that appear exactly once"
+          }
+        ],
+        "explanation": "collapse repeated lines",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPP7JXVPWNA95TTPPT",
+        "importRef": "starter:commands:uniq",
+        "links": [],
+        "mastery": 0,
+        "name": "uniq",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-c",
+            "meaning": "prefix each line with how many times it occurred"
+          },
+          {
+            "flag": "-d",
+            "meaning": "show only lines that were repeated"
+          },
+          {
+            "flag": "-u",
+            "meaning": "show only lines that were not repeated"
+          },
+          {
+            "flag": "-i",
+            "meaning": "ignore case when comparing"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "output"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "uniq",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "uniq [flags] [input [output]]",
+        "tags": [
+          "starter"
+        ],
+        "title": "uniq",
+        "updatedAt": "2026-11-25T04:39:15.754Z",
+        "whatItDoes": "Removes or counts adjacent duplicate lines, so the input normally needs to be sorted first."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to read (omit for standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.758Z",
+        "examples": [
+          {
+            "command": "cut -d: -f1 /etc/passwd",
+            "description": "list user names"
+          },
+          {
+            "command": "cut -d, -f2,4 data.csv",
+            "description": "second and fourth CSV columns"
+          },
+          {
+            "command": "echo \"2026-03-24\" | cut -c1-4",
+            "description": "take the year from a date"
+          }
+        ],
+        "explanation": "extract columns from text",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPK6CT03261TVN2K26",
+        "importRef": "starter:commands:cut",
+        "links": [],
+        "mastery": 0,
+        "name": "cut",
+        "notes": "cut cannot handle quoted CSV fields that contain the delimiter; use awk or a CSV tool for that.",
+        "options": [
+          {
+            "flag": "-d",
+            "meaning": "field delimiter, for example -d: or -d,"
+          },
+          {
+            "flag": "-f",
+            "meaning": "which fields to print, such as -f1 or -f1,3"
+          },
+          {
+            "flag": "-c",
+            "meaning": "which character positions to print, such as -c1-8"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "cut",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "cut [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "cut",
+        "updatedAt": "2026-11-25T04:39:15.758Z",
+        "whatItDoes": "Prints selected fields or characters from each line."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "files to count (omit for standard input)",
+            "name": "file"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.761Z",
+        "examples": [
+          {
+            "command": "wc -l access.log",
+            "description": "how many lines?"
+          },
+          {
+            "command": "ls | wc -l",
+            "description": "how many entries in this folder?"
+          },
+          {
+            "command": "wc -w essay.txt",
+            "description": "word count"
+          }
+        ],
+        "explanation": "count lines, words and bytes",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXP4KS9JVTG10G1GZ89",
+        "importRef": "starter:commands:wc",
+        "links": [],
+        "mastery": 0,
+        "name": "wc",
+        "notes": "",
+        "options": [
+          {
+            "flag": "-l",
+            "meaning": "count lines"
+          },
+          {
+            "flag": "-w",
+            "meaning": "count words"
+          },
+          {
+            "flag": "-c",
+            "meaning": "count bytes"
+          },
+          {
+            "flag": "-m",
+            "meaning": "count characters"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "wc",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "wc [flags] [file...]",
+        "tags": [
+          "starter"
+        ],
+        "title": "wc",
+        "updatedAt": "2026-11-25T04:39:15.761Z",
+        "whatItDoes": "Counts how much text a file or a stream contains."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "characters to match",
+            "name": "set1"
+          },
+          {
+            "meaning": "characters to replace them with",
+            "name": "set2"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.764Z",
+        "examples": [
+          {
+            "command": "echo hello | tr 'a-z' 'A-Z'",
+            "description": "upper-case a string"
+          },
+          {
+            "command": "tr -d '\\r' < dos.txt > unix.txt",
+            "description": "remove Windows carriage returns"
+          },
+          {
+            "command": "tr -s ' ' < spaced.txt",
+            "description": "collapse runs of spaces"
+          }
+        ],
+        "explanation": "translate or delete characters",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPVTA4ZQ07T6QK7PV2",
+        "importRef": "starter:commands:tr",
+        "links": [],
+        "mastery": 0,
+        "name": "tr",
+        "notes": "tr works on single characters, not words: tr \"ab\" \"xy\" maps a→x and b→y.",
+        "options": [
+          {
+            "flag": "-d",
+            "meaning": "delete characters in set1"
+          },
+          {
+            "flag": "-s",
+            "meaning": "squeeze repeated characters into one"
+          },
+          {
+            "flag": "-c",
+            "meaning": "use the complement of set1"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "set2"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "tr",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "tr [flags] set1 [set2]",
+        "tags": [
+          "starter"
+        ],
+        "title": "tr",
+        "updatedAt": "2026-11-25T04:39:15.764Z",
+        "whatItDoes": "Reads standard input and swaps, squeezes or deletes characters. It does not take file names."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the original",
+            "name": "file1"
+          },
+          {
+            "meaning": "the changed version",
+            "name": "file2"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.769Z",
+        "examples": [
+          {
+            "command": "diff -u old.conf new.conf",
+            "description": "readable change list"
+          },
+          {
+            "command": "diff -rq dirA dirB",
+            "description": "which files differ between two folders?"
+          },
+          {
+            "command": "diff -w a.txt b.txt",
+            "description": "ignore spacing changes"
+          }
+        ],
+        "explanation": "compare files line by line",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXPRDCRS7BDWBHNKMYZ",
+        "importRef": "starter:commands:diff",
+        "links": [],
+        "mastery": 0,
+        "name": "diff",
+        "notes": "Lines starting with - exist only in the first file, lines starting with + only in the second.",
+        "options": [
+          {
+            "flag": "-u",
+            "meaning": "unified format, the one patches and code review use"
+          },
+          {
+            "flag": "-r",
+            "meaning": "compare directories recursively"
+          },
+          {
+            "flag": "-q",
+            "meaning": "only report whether files differ"
+          },
+          {
+            "flag": "-i",
+            "meaning": "ignore case differences"
+          },
+          {
+            "flag": "-w",
+            "meaning": "ignore all whitespace"
+          }
+        ],
+        "placeholders": [
+          "flags"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "safe",
+        "slug": "diff",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "diff [flags] file1 file2",
+        "tags": [
+          "starter"
+        ],
+        "title": "diff",
+        "updatedAt": "2026-11-25T04:39:15.769Z",
+        "whatItDoes": "Shows what changed between two files or two directories."
+      },
+      {
+        "archived": false,
+        "arguments": [
+          {
+            "meaning": "the command to run with the collected arguments (default: echo)",
+            "name": "command"
+          }
+        ],
+        "category": "Text Processing",
+        "createdAt": "2026-11-25T04:39:15.774Z",
+        "examples": [
+          {
+            "command": "find . -name \"*.txt\" -print0 | xargs -0 grep -l secret",
+            "description": "files containing a word, safe for odd names"
+          },
+          {
+            "command": "cat hosts.txt | xargs -n 1 ping -c 1",
+            "description": "ping each host once"
+          },
+          {
+            "command": "ls *.png | xargs -I {} cp {} /tmp/",
+            "description": "copy each match, using {} as the placeholder"
+          }
+        ],
+        "explanation": "build commands from standard input",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXQPFWFPF39S5QSVWXC",
+        "importRef": "starter:commands:xargs",
+        "links": [],
+        "mastery": 0,
+        "name": "xargs",
+        "notes": "Preview with -t or echo before using xargs with rm or mv.",
+        "options": [
+          {
+            "flag": "-n",
+            "meaning": "use at most N arguments per run"
+          },
+          {
+            "flag": "-I",
+            "meaning": "replace a placeholder such as {} with each input item"
+          },
+          {
+            "flag": "-0",
+            "meaning": "items are separated by NUL bytes (pair with find -print0)"
+          },
+          {
+            "flag": "-P",
+            "meaning": "run up to N commands in parallel"
+          },
+          {
+            "flag": "-t",
+            "meaning": "print each command before running it"
+          }
+        ],
+        "placeholders": [
+          "flags",
+          "args"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "practiceCount": 0,
+        "risk": "caution",
+        "slug": "xargs",
+        "srs": {
+          "ease": 2.5,
+          "intervalDays": 0
+        },
+        "syntax": "xargs [flags] [command [args]]",
+        "tags": [
+          "starter"
+        ],
+        "title": "xargs",
+        "updatedAt": "2026-11-25T04:39:15.774Z",
+        "whatItDoes": "Turns lines or words from a pipe into arguments for another command."
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

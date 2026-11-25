@@ -1,35 +1,29 @@
-import { _electron as electron, expect, test, type ElectronApplication } from '@playwright/test';
+import { expect, test, type BrowserContext } from '@playwright/test';
 import { mkdtempSync, readFileSync, readdirSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { removeDir } from './cleanup';
+import { openApp, startGo, type GoServer } from './go-app';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PASS = 'correct horse battery';
-let app: ElectronApplication | undefined;
-test.afterEach(async () => {
-  await app?.close().catch(() => undefined);
-});
-
-const launch = async (dataDir: string) => {
-  app = await electron.launch({
-    args: [
-      path.join(ROOT, 'apps/desktop'),
-      ...(process.env.CI && process.platform === 'linux' ? ['--no-sandbox'] : []),
-    ],
-    env: { ...(process.env as Record<string, string>), CIPHERKEEP_DATA_DIR: dataDir },
-  });
-  const page = await app.firstWindow();
-  await page.waitForLoadState('domcontentloaded');
-  return page;
+let server: GoServer | undefined;
+let context: BrowserContext | undefined;
+const quit = async () => {
+  await context?.close().catch(() => undefined);
+  await server?.close().catch(() => undefined);
+  context = server = undefined;
 };
+test.afterEach(quit);
 
-test('an encrypted library starts locked, rejects a wrong passphrase, and unlocks', async () => {
+test('an encrypted library starts locked, rejects a wrong passphrase, and unlocks', async ({
+  browser,
+}) => {
   test.setTimeout(120_000);
   const dir = mkdtempSync(path.join(os.tmpdir(), 'ck-e2e-vault-'));
   try {
-    let page = await launch(dir);
+    server = await startGo(dir);
+    context = await browser.newContext();
+    let page = await openApp(context, server);
     await expect(page.getByText(/Welcome to Cipherkeep/)).toBeVisible();
     await page.evaluate(async (pass) => {
       const b = (window as unknown as { cipherkeep: { apiBase: string; token: string } })
@@ -51,9 +45,11 @@ test('an encrypted library starts locked, rejects a wrong passphrase, and unlock
     expect(readdirSync(notes)).toEqual(['_enc']);
     for (const f of readdirSync(path.join(notes, '_enc')))
       expect(readFileSync(path.join(notes, '_enc', f)).includes('ZEBRA-E2E-BODY')).toBe(false);
-    await app!.close();
+    await quit();
 
-    page = await launch(dir);
+    server = await startGo(dir);
+    context = await browser.newContext();
+    page = await openApp(context, server);
     await expect(page.getByRole('heading', { name: /is locked/i })).toBeVisible();
     await page.getByLabel('PASSPHRASE').fill('not the passphrase');
     await page.getByRole('button', { name: 'Unlock' }).click();
@@ -64,7 +60,7 @@ test('an encrypted library starts locked, rejects a wrong passphrase, and unlock
     await page.evaluate(() => (window.location.hash = '#/notes'));
     await expect(page.getByText('Zebra e2e note').first()).toBeVisible();
   } finally {
-    await app?.close().catch(() => undefined);
+    await quit();
     removeDir(dir);
   }
 });

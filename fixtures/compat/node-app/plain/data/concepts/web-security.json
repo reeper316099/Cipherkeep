@@ -1,0 +1,132 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Web Security",
+        "confidence": 0,
+        "createdAt": "2026-11-25T04:39:15.897Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXQ8EKCW5HZ9JRWVXNP",
+        "importRef": "starter:concepts:HTTP Basics",
+        "links": [
+          {
+            "targetId": "01M88G0CXQRGM2RYMHSVQNP7BC",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQVZ6DJDYE1FCX1C4V",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQSC5SKVFJ0TWN3B8T",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQVPBJ6D8E68Y5E9AB",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M88G0CXQWVS7T1V2B5GSHBYG",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M88G0CXQWN2NZAH6PSY2ZNDS",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M88G0CXQRGM2RYMHSVQNP7BC",
+          "01M88G0CXQVZ6DJDYE1FCX1C4V",
+          "01M88G0CXQSC5SKVFJ0TWN3B8T"
+        ],
+        "relatedConceptIds": [
+          "01M88G0CXQVPBJ6D8E68Y5E9AB",
+          "01M88G0CXQWVS7T1V2B5GSHBYG",
+          "01M88G0CXQWN2NZAH6PSY2ZNDS"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "HTTP is the request/response protocol of the web: a client sends a method, a path and headers; the server answers with a status code, headers and a body.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. The client resolves the name and opens a TCP (and usually TLS) connection.\n2. It sends a request line such as `GET /index.html HTTP/1.1` plus headers.\n3. The server replies with a status line (`200 OK`), headers and a body.\n4. Cookies and other headers carry state between requests.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- **Methods** GET, POST, PUT, DELETE, HEAD, OPTIONS\n- **Status codes** 2xx success, 3xx redirect, 4xx client error, 5xx server error\n- **Headers** Host, User-Agent, Cookie, Set-Cookie, Content-Type, Authorization\n- **TLS** encrypts the connection (HTTPS)\n- **Cookies** small values the browser sends back to the site",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `curl -I https://example.com`.\nProcess: curl sends a HEAD request.\nOutput: the status line and response headers, no body.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Every web vulnerability is a story about requests the developer did not expect.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Input in the URL, headers, cookies or body is untrusted: injection, XSS and broken access control start there.\n- Security headers (CSP, HSTS, X-Content-Type-Options) and cookie flags (HttpOnly, Secure, SameSite) reduce risk.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- curl\n- dig\n- tcpdump",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- DNS (Domain Name System)\n- TCP/IP and Ports\n- Hashing vs Encryption",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Thinking POST data is hidden: without HTTPS it is as visible as a URL.\n- Trusting client-side checks; the user controls the client.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"A polite letter exchange: a request in, a status and a reply out.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- Which response headers would tell me the most about how a site is protected?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "http-basics",
+        "tags": [
+          "starter",
+          "foundations",
+          "web"
+        ],
+        "title": "HTTP Basics",
+        "updatedAt": "2026-11-25T04:39:15.897Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}

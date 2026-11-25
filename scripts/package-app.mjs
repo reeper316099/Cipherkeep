@@ -1,10 +1,10 @@
-// Builds the Go + Wails desktop app and its installers for the current system into ./release-go:
-//   macOS    Cipherkeep-Go-<v>-macos-universal.dmg (arm64 + x86_64)
-//   Windows  Cipherkeep-Go-<v>-windows-amd64-setup.exe (NSIS) and -portable.exe (the bare program)
-//   Linux    Cipherkeep-Go-<v>-linux-amd64.deb / .rpm (nfpm) and .tar.gz
+// Builds the desktop app (Go + Wails) and its installers for the current system into ./release:
+//   macOS    Cipherkeep-<v>-macos-universal.dmg (arm64 + x86_64)
+//   Windows  Cipherkeep-<v>-windows-amd64-setup.exe (NSIS) and -portable.exe (the bare program)
+//   Linux    Cipherkeep-<v>-linux-amd64.deb / .rpm (nfpm) and .tar.gz
 // Needs Go, Node (for the UI build) and the Wails CLI; NSIS on Windows; nfpm and the WebKitGTK 4.1 dev packages on
 // Linux. Builds are unsigned (see docs/PACKAGING.md).
-//   node scripts/package-app.mjs [version]        (default: the version in apps/desktop/package.json)
+//   node scripts/package-app.mjs [version]        (default: the version in package.json)
 import { execFileSync } from 'node:child_process';
 import {
   copyFileSync,
@@ -22,11 +22,11 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const APP = path.join(ROOT, 'go', 'app');
 const BIN = path.join(APP, 'build', 'bin');
-const OUT = path.join(ROOT, 'release-go');
+const OUT = path.join(ROOT, 'release');
 const version =
   process.argv[2]?.replace(/^v/, '') ??
-  JSON.parse(readFileSync(path.join(ROOT, 'apps/desktop/package.json'), 'utf8')).version;
-const name = `Cipherkeep-Go-${version}`;
+  JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf8')).version;
+const name = `Cipherkeep-${version}`;
 const run = (cmd, args, cwd = APP, env = {}) =>
   execFileSync(cmd, args, {
     cwd,

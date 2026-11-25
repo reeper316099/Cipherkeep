@@ -1,0 +1,262 @@
+{
+  "data": {
+    "items": [
+      {
+        "archived": false,
+        "category": "Bash",
+        "confidence": 0,
+        "createdAt": "2026-11-25T04:39:15.869Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXQ4165047V0NP2Q043",
+        "importRef": "starter:concepts:Wildcards and Globbing",
+        "links": [
+          {
+            "targetId": "01M88G0CXPH9DFJZBGP73ETTN9",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPX783RY7NFJA7ASWZ",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP2ZA35F6ZN14YAX4D",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPSMPV8Z5GBHN8ER39",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQE0DXF0MPM25V09SW",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M88G0CXPH9DFJZBGP73ETTN9",
+          "01M88G0CXPX783RY7NFJA7ASWZ",
+          "01M88G0CXP2ZA35F6ZN14YAX4D",
+          "01M88G0CXPSMPV8Z5GBHN8ER39"
+        ],
+        "relatedConceptIds": [
+          "01M88G0CXQE0DXF0MPM25V09SW"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Special characters the shell expands into matching file names before the command runs, so one pattern can stand for many files.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. You type `ls *.txt`.\n2. The shell (not `ls`) replaces `*.txt` with every matching name.\n3. The command receives the expanded list as its arguments.\n4. If nothing matches, bash passes the pattern through unchanged.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "| Pattern | Matches |\n| --- | --- |\n| `*` | any run of characters (not a leading dot) |\n| `?` | exactly one character |\n| `[abc]` | one character from the set |\n| `[a-z]` | one character from the range |\n| `[!abc]` | one character not in the set |\n| `{a,b}` | brace expansion: `a` and `b` |",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `cp report-?.txt backup/` with `report-1.txt`, `report-2.txt`, `report-10.txt`.\nProcess: `?` matches one character, so only the first two names match.\nOutput: two files copied; `report-10.txt` is left behind.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Globbing saves typing and makes bulk operations possible, but it also decides which files a command touches.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- A file named `-rf` in a directory can be picked up by `rm *` and read as an option (wildcard injection).\n- Quote patterns you want a program to interpret itself, such as `find -name \"*.log\"`.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- ls\n- cp\n- find\n- rm",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- Pipes and Redirection",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Expecting the program to expand `*`: the shell does it first, which is why `find -name *.log` can break.\n- Forgetting that `*` does not match hidden files.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"The shell fills in the file names for you, so look at what it will expand to before you run something destructive.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- How do I preview exactly what a glob will expand to before using it with rm?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "wildcards-and-globbing",
+        "tags": [
+          "starter",
+          "foundations",
+          "shell"
+        ],
+        "title": "Wildcards and Globbing",
+        "updatedAt": "2026-11-25T04:39:15.869Z"
+      },
+      {
+        "archived": false,
+        "category": "Bash",
+        "confidence": 0,
+        "createdAt": "2026-11-25T04:39:15.876Z",
+        "difficulty": "Easy",
+        "extras": {
+          "source": "starter-pack"
+        },
+        "favorite": false,
+        "id": "01M88G0CXQE0DXF0MPM25V09SW",
+        "importRef": "starter:concepts:Pipes and Redirection",
+        "links": [
+          {
+            "targetId": "01M88G0CXPZBN9ZWM9D79WB44E",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPJMMMX10EX145H7BK",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP1A1PR7RYVDD6RCNH",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXPP7JXVPWNA95TTPPT",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXP4KS9JVTG10G1GZ89",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQPFWFPF39S5QSVWXC",
+            "type": "command"
+          },
+          {
+            "targetId": "01M88G0CXQ4165047V0NP2Q043",
+            "type": "concept"
+          },
+          {
+            "targetId": "01M88G0CXQG0BQ054RQ97ZPZHH",
+            "type": "concept"
+          }
+        ],
+        "questionsOpen": 1,
+        "relatedCommandIds": [
+          "01M88G0CXPZBN9ZWM9D79WB44E",
+          "01M88G0CXPJMMMX10EX145H7BK",
+          "01M88G0CXP1A1PR7RYVDD6RCNH",
+          "01M88G0CXPP7JXVPWNA95TTPPT",
+          "01M88G0CXP4KS9JVTG10G1GZ89",
+          "01M88G0CXQPFWFPF39S5QSVWXC"
+        ],
+        "relatedConceptIds": [
+          "01M88G0CXQ4165047V0NP2Q043",
+          "01M88G0CXQG0BQ054RQ97ZPZHH"
+        ],
+        "sections": [
+          {
+            "key": "what-is-it",
+            "markdown": "Every program has input (stdin), output (stdout) and error output (stderr). Redirection sends them to files; pipes connect one program's output to the next one's input.",
+            "title": "🧠 What is it?"
+          },
+          {
+            "key": "how-it-works-step-by-step",
+            "markdown": "1. Programs read from stdin (file descriptor 0) and write to stdout (1) and stderr (2).\n2. `>` writes stdout to a file, `>>` appends, `<` feeds a file in.\n3. `2>` redirects stderr; `2>&1` sends it to the same place as stdout.\n4. `|` connects stdout of the left command to stdin of the right.",
+            "title": "⚙️ How it works (Step-by-step)"
+          },
+          {
+            "key": "key-components",
+            "markdown": "- `cmd > file` overwrite · `cmd >> file` append\n- `cmd < file` read input from a file\n- `cmd 2> errors.txt` errors to a file · `cmd > /dev/null 2>&1` discard everything\n- `a | b | c` pipeline: small tools combined",
+            "title": "🧩 Key Components"
+          },
+          {
+            "key": "example-walkthrough",
+            "markdown": "Input: `sort ips.txt | uniq -c | sort -nr | head -5`.\nProcess: sort groups equal lines, uniq counts them, sort ranks the counts, head keeps five.\nOutput: the five most frequent addresses.",
+            "title": "🔁 Example / Walkthrough"
+          },
+          {
+            "key": "why-it-matters",
+            "markdown": "Pipelines let you answer questions about logs and output with a few small, reusable tools.",
+            "title": "💡 Why it matters"
+          },
+          {
+            "key": "security-relevance",
+            "markdown": "- Log triage is mostly pipelines: filter, extract, count, rank.\n- Be careful what you redirect: `>` silently replaces an existing file.",
+            "title": "⚔️ Security Relevance"
+          },
+          {
+            "key": "tools-commands-related",
+            "markdown": "- cat\n- grep\n- sort\n- uniq\n- wc\n- xargs",
+            "title": "🛠️ Tools / Commands Related"
+          },
+          {
+            "key": "related-concepts",
+            "markdown": "- Wildcards and Globbing\n- Processes and Signals",
+            "title": "🔗 Related Concepts"
+          },
+          {
+            "key": "common-mistakes-misconceptions",
+            "markdown": "- Reading and writing the same file in one command (`sort f > f`) which empties it first.\n- Expecting `2>&1 > file` and `> file 2>&1` to behave the same; order matters.",
+            "title": "⚠️ Common Mistakes / Misconceptions"
+          },
+          {
+            "key": "intuition-very-important",
+            "markdown": "> \"Small tools joined like garden hose sections: data flows left to right.\"",
+            "title": "🧠 Intuition (VERY IMPORTANT)"
+          },
+          {
+            "key": "source-where-i-learned-this",
+            "markdown": "- Cipherkeep starter pack (original summary; verify against the manuals)",
+            "title": "📚 Source / Where I learned this"
+          },
+          {
+            "key": "difficulty-level",
+            "markdown": "Easy",
+            "title": "🔥 Difficulty Level"
+          },
+          {
+            "key": "questions-i-still-have",
+            "markdown": "- How would I log both output and errors of a long scan to a file and still watch it live?",
+            "title": "❓ Questions I still have"
+          }
+        ],
+        "slug": "pipes-and-redirection",
+        "tags": [
+          "starter",
+          "foundations",
+          "shell"
+        ],
+        "title": "Pipes and Redirection",
+        "updatedAt": "2026-11-25T04:39:15.876Z"
+      }
+    ]
+  },
+  "schemaVersion": 1
+}
