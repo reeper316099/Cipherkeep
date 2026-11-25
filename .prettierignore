@@ -8,3 +8,4 @@ release
 playwright-report
 test-results
 fixtures/compat
+go/app/build/

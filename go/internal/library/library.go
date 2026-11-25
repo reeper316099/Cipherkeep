@@ -28,6 +28,10 @@ type Options struct {
 	Lock *jsonstore.InstanceLock
 	// LaunchBackupDelay is how long after opening the "launch" backup runs (default 3 s; negative: never).
 	LaunchBackupDelay time.Duration
+	// WatchInBackground starts watching (when Watch is on) after Open returns instead of before. Setting up the
+	// watchers costs seconds on a large library on macOS, where every watched file needs its own handle; the desktop
+	// app shows the library first and starts watching right after. Hand edits made in those seconds are not seen.
+	WatchInBackground bool
 }
 
 // Event is something the live-event stream reports.
@@ -63,6 +67,9 @@ type Library struct {
 	ownsLock bool
 	lock     *jsonstore.InstanceLock
 	timer    *time.Timer
+
+	watchMu sync.Mutex // held while background watching starts, so Close waits for it
+	closed  bool
 }
 
 // Open opens (or creates) a library.
@@ -133,7 +140,7 @@ func Open(o Options) (*Library, error) {
 	for _, c := range domain.Collections {
 		var r repo.Repo
 		if c == "notes" {
-			r = repo.NewNoteRepo(dir, o.Watch, lib.Codec)
+			r = repo.NewNoteRepo(dir, o.Watch && !o.WatchInBackground, lib.Codec)
 		} else {
 			r = repo.NewJSONRepo(lib.Store, c)
 		}
@@ -150,7 +157,16 @@ func Open(o Options) (*Library, error) {
 		r.OnRemove(func(id string) { lib.emit(Event{Kind: "change", Collection: name, ID: id, Change: "remove"}) })
 		r.OnRebuild(func() { lib.emit(Event{Kind: "change", Collection: name, Change: "rebuild"}) })
 	}
-	if o.Watch {
+	if o.Watch && o.WatchInBackground {
+		lib.watchMu.Lock()
+		go func() {
+			defer lib.watchMu.Unlock()
+			if n, ok := lib.Repos["notes"].(*repo.NoteRepo); ok {
+				_ = n.StartWatch()
+			}
+			_ = lib.Store.Watch()
+		}()
+	} else if o.Watch {
 		if err := lib.Store.Watch(); err != nil {
 			return fail(err)
 		}
@@ -202,6 +218,9 @@ func (l *Library) ReloadAll() error {
 
 // Close stops watchers and releases the instance lock (when this library took it).
 func (l *Library) Close() error {
+	l.watchMu.Lock() // let a background watch start finish, so Close stops it
+	l.closed = true
+	l.watchMu.Unlock()
 	if l.timer != nil {
 		l.timer.Stop()
 	}

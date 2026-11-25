@@ -30,6 +30,7 @@ const DEFAULT_EXCLUDE = [
   '.quarantine',
   '.lock',
   '.electron-session',
+  '.desktop-session', // the Go + Wails shell's own files
 ];
 
 /** Rolling zip backups of the whole data directory. */

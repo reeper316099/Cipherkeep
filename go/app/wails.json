@@ -1,0 +1,21 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "Cipherkeep",
+  "outputfilename": "Cipherkeep",
+  "frontend:dir": "../../apps/web",
+  "frontend:install": "npm --version",
+  "frontend:build": "npm run build:wails",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "wailsjsdir": "./build/wailsjs",
+  "author": {
+    "name": "Cipherkeep contributors"
+  },
+  "info": {
+    "companyName": "Cipherkeep",
+    "productName": "Cipherkeep",
+    "productVersion": "0.1.0",
+    "copyright": "MIT License",
+    "comments": "Offline, local-first cybersecurity learning notes"
+  }
+}

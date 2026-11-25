@@ -117,10 +117,20 @@ export function useLiveEvents(): void {
         void qc.invalidateQueries({ queryKey: ['overview'] });
       }, 150);
     };
+    const b = window.cipherkeep;
+    if (b?.onEvent) {
+      // Wails: the shell forwards the library's events directly.
+      const off = b.onEvent((kind) => {
+        if (kind === 'change' || kind === 'reload') refresh();
+      });
+      return () => {
+        off();
+        clearTimeout(timer);
+      };
+    }
     (async () => {
-      const b = window.cipherkeep;
       const res = await fetch(b ? `${b.apiBase}/api/v1/events` : '/api/v1/events', {
-        headers: b ? { authorization: `Bearer ${b.token}` } : {},
+        headers: b?.token ? { authorization: `Bearer ${b.token}` } : {},
         signal: ctl.signal,
       }).catch(() => null);
       if (!res?.body) return;

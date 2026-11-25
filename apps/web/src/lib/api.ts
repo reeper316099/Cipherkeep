@@ -2,7 +2,10 @@ import type { Command, Concept, Lab } from '@cipherkeep/shared';
 
 declare global {
   interface Window {
-    /** Injected by the Electron preload via contextBridge. Absent in the dev browser (Vite proxies /api). */
+    /**
+     * Injected by the Electron preload via contextBridge, or built from the Wails bindings (wails-bridge.ts). Absent in
+     * the dev browser (Vite proxies /api). In the Wails app apiBase and token are empty: the API is in process.
+     */
     cipherkeep?: {
       apiBase: string;
       token: string;
@@ -15,6 +18,8 @@ declare global {
       pickFolder?: () => Promise<string | null>;
       setDataFolder?: (target: string, copy: boolean) => Promise<{ ok: boolean; reason?: string }>;
       onMenu?: (cb: (action: string) => void) => () => void;
+      /** Wails only: live library events, in place of the server-sent event stream. */
+      onEvent?: (cb: (kind: string) => void) => () => void;
     };
   }
 }
@@ -38,7 +43,10 @@ export class ApiError extends Error {
 function base(): { url: string; headers: Record<string, string> } {
   const b = window.cipherkeep;
   return b
-    ? { url: `${b.apiBase}/api/v1`, headers: { authorization: `Bearer ${b.token}` } }
+    ? {
+        url: `${b.apiBase}/api/v1`,
+        headers: b.token ? { authorization: `Bearer ${b.token}` } : {},
+      }
     : { url: '/api/v1', headers: {} };
 }
 

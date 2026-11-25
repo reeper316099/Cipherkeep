@@ -36,6 +36,8 @@ type Options struct {
 	Token string
 	// Watch turns on live reload of hand edits.
 	Watch bool
+	// WatchInBackground starts watching after the library is open (see library.Options).
+	WatchInBackground bool
 	// Static is the built web UI served at / (nil: API only).
 	Static fs.FS
 	// KDF is the scrypt cost for new vaults (tests lower it).
@@ -46,6 +48,9 @@ type Options struct {
 	LaunchBackupDelay time.Duration
 	// Logger, when set, logs one line per request: method, path without the query, status. Never bodies.
 	Logger *log.Logger
+	// OnOpen, when set, is called each time a library opens (at start, or on unlock). The desktop shell uses it to
+	// forward live events to the window; the library's event channels close when it is locked or closed.
+	OnOpen func(*library.Library)
 }
 
 // Server owns a data folder: the instance lock, the vault, and whichever handler is current (open or locked).
@@ -126,8 +131,9 @@ func (s *Server) Close() error {
 }
 
 func (s *Server) openLibrary(codec jsonstore.Codec) error {
-	lib, err := library.Open(library.Options{DataDir: s.dir, Watch: s.o.Watch, Codec: jsonstore.NewCodecHolder(codec),
-		Lock: s.lock, LaunchBackupDelay: s.o.LaunchBackupDelay})
+	lib, err := library.Open(library.Options{DataDir: s.dir, Watch: s.o.Watch, WatchInBackground: s.o.WatchInBackground,
+		Codec: jsonstore.NewCodecHolder(codec),
+		Lock:  s.lock, LaunchBackupDelay: s.o.LaunchBackupDelay})
 	if err != nil {
 		return err
 	}
@@ -135,6 +141,9 @@ func (s *Server) openLibrary(codec jsonstore.Codec) error {
 	s.mu.Lock()
 	s.lib, s.open, s.locked = lib, h, nil
 	s.mu.Unlock()
+	if s.o.OnOpen != nil {
+		s.o.OnOpen(lib)
+	}
 	if lib.Codec.Encrypting() {
 		s.pending.Add(1)
 		go func() {

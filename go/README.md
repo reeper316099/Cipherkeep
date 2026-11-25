@@ -23,6 +23,8 @@ last phase.
 | `internal/parity`    | Tests that compare Go with the TypeScript output on shared inputs (phase 3)         |
 | `internal/vault`     | Encryption keys: passphrase, recovery key, scrypt, attempt limiting (phase 4)       |
 | `internal/api`       | The `/api/v1` HTTP handler, locked and open, with the vault routes (phase 4)        |
+| `internal/desktop`   | Desktop shell logic: data folder, safe links, window placement (phase 5)            |
+| `app`                | The Wails desktop app: window, menu, bridge for the UI (phase 5)                    |
 | `cmd/ck-server`      | The API on a loopback port, for development and the contract tests (phase 4)        |
 | `cmd/bench-*`        | Benchmarks that pair with `scripts/bench-*.ts`                                      |
 
@@ -32,6 +34,7 @@ go vet ./... && go test -race ./...          # run before every commit
 UPDATE_COMPAT=1 go test -run TestCompatWriteGoFixtures ./internal/jsonstore   # regenerate fixtures/compat/go
 go run ./cmd/bench-store <dataset-dir>       # see docs/go-migration/phase-1-storage-engine.md
 npx tsx scripts/gen-importer-fixtures.ts     # from the repo root: regenerate fixtures/compat/importers (only when TS behaviour changes on purpose)
+npm run app:build                            # from the repo root: build the desktop app (needs the Wails CLI)
 npm run test:go-contract                     # from the repo root: the TypeScript API, vault and UI tests against the Go server
 ```
 

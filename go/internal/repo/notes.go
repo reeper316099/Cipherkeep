@@ -200,6 +200,9 @@ func (r *NoteRepo) Init() error {
 // Close stops the watcher.
 func (r *NoteRepo) Close() error { return r.stopWatch() }
 
+// StartWatch starts watching for hand edits later than Init (for a repository made with watch off).
+func (r *NoteRepo) StartWatch() error { return r.startWatch() }
+
 func listMarkdown(dir string) ([]string, error) {
 	var out []string
 	err := filepath.WalkDir(dir, func(p string, d os.DirEntry, err error) error {

@@ -30,7 +30,10 @@
     "desktop:build": "npm run build:web && npm run build --workspace @cipherkeep/desktop",
     "desktop:start": "npm run desktop:build && npm run start --workspace @cipherkeep/desktop",
     "desktop:dist": "npm run desktop:build && npm run dist --workspace @cipherkeep/desktop",
-    "e2e": "npm run desktop:build && playwright test"
+    "e2e": "npm run desktop:build && playwright test",
+    "app:build": "cd go/app && wails build",
+    "app:dev": "cd go/app && wails dev",
+    "measure:desktop": "node scripts/measure-desktop.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

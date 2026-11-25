@@ -34,7 +34,7 @@ type BackupInfo struct {
 	mod time.Time // modification time, used to order backups made in the same second
 }
 
-var defaultExclude = []string{"backups", "exports", "logs", "imports", ".quarantine", ".lock", ".electron-session"}
+var defaultExclude = []string{"backups", "exports", "logs", "imports", ".quarantine", ".lock", ".electron-session", ".desktop-session"}
 
 // BackupManager makes rolling zip backups of a whole data directory.
 type BackupManager struct {
