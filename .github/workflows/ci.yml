@@ -93,8 +93,9 @@ jobs:
           path: release/*
           retention-days: 7
 
-  # Drives the app's UI and the Go API together in WebKit (the engine of the macOS and Linux web views) and Chromium
-  # (close to Windows' WebView2): first run, import, study, restart, live edits, encryption, accessibility.
+  # Drives the app's UI and the Go API together in the engines each system's app uses: WebKit (macOS and Linux) and
+  # Chromium (close to WebView2 on Windows, and checked everywhere): first run, import, study, restart, live edits,
+  # encryption, accessibility.
   e2e:
     needs: verify
     strategy:
@@ -114,7 +115,10 @@ jobs:
           cache-dependency-path: go/go.sum
       - run: npm ci
       - run: npx playwright install --with-deps webkit chromium
+      # The Windows app runs in WebView2 (Chromium); WebKit is the engine on macOS and Linux only.
       - run: npm run e2e
+        env:
+          CK_E2E_BROWSERS: ${{ runner.os == 'Windows' && 'chromium' || 'webkit,chromium' }}
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

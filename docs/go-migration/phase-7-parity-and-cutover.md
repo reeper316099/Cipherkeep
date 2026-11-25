@@ -19,8 +19,8 @@ Prove the Go app does everything the Node app did, then make it the default and 
   the test fail.
 - **End-to-end tests for the Go app.** The Electron tests drove the Electron window, which cannot be done with the system
   web views Wails uses. They now drive the exact UI bundle the app embeds, served with the Go API, in Playwright's
-  **WebKit** (the engine of the macOS and Linux web views) and **Chromium** (close to Windows' WebView2), on all three
-  systems in CI. Every step was kept: the no-network and token checks, a Notion import through the UI, search, filling
+  **WebKit** (the engine of the macOS and Linux web views) and **Chromium** (close to Windows' WebView2): both on macOS
+  and Linux in CI, Chromium on Windows, where no app runs on WebKit. Every step was kept: the no-network and token checks, a Notion import through the UI, search, filling
   a placeholder and copying, the command palette, five study cards from the keyboard, a lab, the dashboard, a restart,
   an encrypted library locking and unlocking, and the axe accessibility audit of all 13 pages in both themes. A new test
   checks that a hand edit on disk reaches the open page. The desktop shell itself is covered by the smoke test of the

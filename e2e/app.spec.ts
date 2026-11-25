@@ -109,7 +109,7 @@ test('a whole session survives a restart', async ({ browser }) => {
     const editor = page.getByRole('dialog', { name: 'E2E Bandit 0' });
     await editor.getByRole('button', { name: 'Completed' }).click();
     await editor.getByRole('button', { name: /^Save/ }).click();
-    await expect(page.getByText('Saved')).toBeVisible();
+    await expect(page.getByText('Saved', { exact: true })).toBeVisible();
     await page.keyboard.press('Escape');
 
     // --- the dashboard reflects it ---
