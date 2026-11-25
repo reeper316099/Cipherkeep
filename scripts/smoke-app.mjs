@@ -1,9 +1,11 @@
 // Smoke test of the built Go + Wails app, with its window hidden, so it can run in CI or in the background:
 //   1. start it on an empty, temporary data folder;
 //   2. wait for the real UI to load and ask the in-process API for its first screen (GET /api/v1/stats/overview);
-//   3. write a note to disk by hand and wait for the UI to refetch (the live-event path, Go -> Wails event -> UI);
+//   3. once the app logs WATCHING, write a note to disk by hand and wait for the UI to refetch (the live-event path:
+//      the app logs EVENT when Go sees the change, then the UI's refetch shows up as requests);
 //   4. quit it and check it released the library lock.
-// It reads the app's request log (CIPHERKEEP_API_LOG: method, path and status only).
+// It reads the app's request log (CIPHERKEEP_API_LOG: method, path and status, plus WATCHING and EVENT <kind> lines;
+// never content).
 //   node scripts/smoke-app.mjs [path-to-binary]      (default: this system's build in go/app/build/bin)
 import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -53,7 +55,12 @@ try {
   const bad = lines().filter((l) => / [45]\d\d /.test(l));
   if (bad.length) throw new Error(`failed requests:\n${bad.join('\n')}`);
 
-  await sleep(3000); // the file watcher starts in the background after the first screen
+  // The file watcher starts in the background after the first screen; the app logs WATCHING when it is ready.
+  await waitFor(
+    'the app started watching for hand edits',
+    () => lines().includes('WATCHING') || lines().some((l) => / WATCHING$/.test(l)),
+    60_000,
+  );
   const before = lines().length;
   mkdirSync(path.join(data, 'data/notes'), { recursive: true });
   writeFileSync(

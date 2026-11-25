@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -25,6 +26,7 @@ type App struct {
 	dataDir    string
 	srv        *api.Server
 	start      desktop.Bounds
+	log        *log.Logger // smoke tests only (CIPHERKEEP_API_LOG): readiness and event kinds, never content
 
 	mu         sync.Mutex
 	ctx        context.Context
@@ -103,6 +105,12 @@ func (a *App) secondInstance(options.SecondInstanceData) {
 // onOpen forwards the library's live events to the window as Wails events ("ck:event"), the in-process stand-in for
 // the server-sent event stream. The loop ends when the library is locked or closed.
 func (a *App) onOpen(lib *library.Library) {
+	if a.log != nil {
+		go func() {
+			<-lib.WatchReady()
+			a.log.Printf("WATCHING")
+		}()
+	}
 	a.mu.Lock()
 	ctx := a.ctx
 	if ctx == nil || a.forwarding[lib] {
@@ -118,6 +126,9 @@ func (a *App) onOpen(lib *library.Library) {
 	go func() {
 		defer stop()
 		for e := range ch {
+			if a.log != nil {
+				a.log.Printf("EVENT %s %s", e.Kind, e.Collection)
+			}
 			wr.EventsEmit(ctx, "ck:event", e.Kind)
 		}
 		a.mu.Lock()

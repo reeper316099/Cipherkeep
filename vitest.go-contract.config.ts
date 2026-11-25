@@ -9,6 +9,7 @@ export default defineConfig({
       'packages/server/test/static.test.ts',
     ],
     environment: 'node',
+    globalSetup: ['packages/server/test/go-contract-setup.ts'],
     testTimeout: 60_000,
     env: { CK_SERVER: 'go' },
   },

@@ -68,8 +68,9 @@ type Library struct {
 	lock     *jsonstore.InstanceLock
 	timer    *time.Timer
 
-	watchMu sync.Mutex // held while background watching starts, so Close waits for it
-	closed  bool
+	watchMu    sync.Mutex // held while background watching starts, so Close waits for it
+	closed     bool
+	watchReady chan struct{}
 }
 
 // Open opens (or creates) a library.
@@ -81,7 +82,7 @@ func Open(o Options) (*Library, error) {
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return nil, err
 	}
-	lib := &Library{Dir: dir, subs: map[int]chan Event{}, lock: o.Lock}
+	lib := &Library{Dir: dir, subs: map[int]chan Event{}, lock: o.Lock, watchReady: make(chan struct{})}
 	if o.Lock == nil {
 		if lib.lock, err = jsonstore.AcquireInstanceLock(dir); err != nil {
 			return nil, err
@@ -160,6 +161,7 @@ func Open(o Options) (*Library, error) {
 	if o.Watch && o.WatchInBackground {
 		lib.watchMu.Lock()
 		go func() {
+			defer close(lib.watchReady)
 			defer lib.watchMu.Unlock()
 			if n, ok := lib.Repos["notes"].(*repo.NoteRepo); ok {
 				_ = n.StartWatch()
@@ -171,11 +173,17 @@ func Open(o Options) (*Library, error) {
 			return fail(err)
 		}
 	}
+	if !(o.Watch && o.WatchInBackground) {
+		close(lib.watchReady)
+	}
 	lib.Links = links.New(lib.Repos)
 	lib.Activity = NewActivityLog(lib.Store)
 	lib.Study = NewStudyService(lib)
 	return lib, nil
 }
+
+// WatchReady is closed once hand edits are being watched (at once, unless watching starts in the background).
+func (l *Library) WatchReady() <-chan struct{} { return l.watchReady }
 
 // Subscribe returns a channel of live events and a function that stops it. A slow reader drops events.
 func (l *Library) Subscribe() (<-chan Event, func()) {

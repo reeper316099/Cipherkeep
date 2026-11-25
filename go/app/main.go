@@ -69,6 +69,7 @@ func main() {
 		if f, err := os.OpenFile(p, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600); err == nil {
 			defer f.Close()
 			o.Logger = log.New(f, "", log.Lmicroseconds)
+			a.log = o.Logger
 		}
 	}
 	srv, err := api.New(o)

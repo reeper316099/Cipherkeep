@@ -32,7 +32,7 @@ const run = (cmd, args, cwd = APP, env = {}) =>
     cwd,
     stdio: 'inherit',
     env: { ...process.env, ...env },
-    shell: process.platform === 'win32',
+    // No shell, so arguments with spaces (-ldflags "-X main.version=…") reach the program whole on Windows too.
   });
 const ldflags = `-X main.version=${version}`;
 

@@ -46,16 +46,16 @@ more than once.
 
 ## Phases
 
-| Phase | Page                                                                        | Status                              |
-| ----- | --------------------------------------------------------------------------- | ----------------------------------- |
-| 0     | [Baseline and scaffold](phase-0-baseline-and-scaffold.md)                   | Done                                |
-| 1     | [Storage engine (jsonstore in Go)](phase-1-storage-engine.md)               | Done                                |
-| 2     | [Repositories, search, links, study engine](phase-2-domain-search-study.md) | Done                                |
-| 3     | [Import and export](phase-3-import-export.md)                               | Done                                |
-| 4     | [API layer and vault](phase-4-api-and-vault.md)                             | Done                                |
-| 5     | [Wails shell and UI](phase-5-wails-shell-and-ui.md)                         | Done (macOS)                        |
-| 6     | [Packaging and CI](phase-6-packaging-and-ci.md)                             | macOS done, Windows and Linux in CI |
-| 7     | [Parity tests and cut-over](phase-7-parity-and-cutover.md)                  | Planned                             |
+| Phase | Page                                                                        | Status                                |
+| ----- | --------------------------------------------------------------------------- | ------------------------------------- |
+| 0     | [Baseline and scaffold](phase-0-baseline-and-scaffold.md)                   | Done                                  |
+| 1     | [Storage engine (jsonstore in Go)](phase-1-storage-engine.md)               | Done                                  |
+| 2     | [Repositories, search, links, study engine](phase-2-domain-search-study.md) | Done                                  |
+| 3     | [Import and export](phase-3-import-export.md)                               | Done                                  |
+| 4     | [API layer and vault](phase-4-api-and-vault.md)                             | Done                                  |
+| 5     | [Wails shell and UI](phase-5-wails-shell-and-ui.md)                         | Done (macOS)                          |
+| 6     | [Packaging and CI](phase-6-packaging-and-ci.md)                             | macOS and Linux done, Windows pending |
+| 7     | [Parity tests and cut-over](phase-7-parity-and-cutover.md)                  | Planned                               |
 
 The Node + Electron app keeps working, unchanged, until phase 7. The Go code lives in `go/`.
 

@@ -21,7 +21,9 @@ export interface TestServer {
 }
 
 let goBin: string | undefined;
-function goBinary(): string {
+/** Builds go/cmd/ck-server once per process. The contract config builds it once for all files (CK_SERVER_BIN). */
+export function goBinary(): string {
+  goBin ??= process.env.CK_SERVER_BIN;
   if (goBin) return goBin;
   const goDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../go');
   const out = path.join(
