@@ -155,6 +155,44 @@ func (s *Store) RewriteAll() error {
 	return nil
 }
 
+// OpenPaths returns the absolute paths of every open file.
+func (s *Store) OpenPaths() []string {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	out := make([]string, 0, len(s.files))
+	for rel := range s.files {
+		if p, err := s.Abs(rel); err == nil {
+			out = append(out, p)
+		}
+	}
+	return out
+}
+
+// RewritePlaintext rewrites, through the current codec, every open file that is not encrypted on disk (used after a
+// plaintext backup was restored into an encrypted library, so nothing readable lingers).
+func (s *Store) RewritePlaintext() error {
+	s.mu.Lock()
+	files := make([]anyFile, 0, len(s.files))
+	for _, f := range s.files {
+		files = append(files, f)
+	}
+	s.mu.Unlock()
+	for _, f := range files {
+		p, err := s.Abs(f.relPath())
+		if err != nil {
+			continue
+		}
+		raw, err := os.ReadFile(p)
+		if err != nil || IsEncrypted(raw) {
+			continue
+		}
+		if err := f.rewrite(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // Options describes a JSON file kept by the store.
 type Options[T any] struct {
 	Version  int

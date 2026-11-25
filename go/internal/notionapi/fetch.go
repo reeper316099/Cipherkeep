@@ -323,6 +323,15 @@ func (j *Jobs) Get(id string) (Job, bool) {
 	return Job{}, false
 }
 
+// DropVFS forgets a finished job's files once they have been turned into a preview.
+func (j *Jobs) DropVFS(id string) {
+	j.mu.Lock()
+	defer j.mu.Unlock()
+	if e := j.jobs[id]; e != nil {
+		e.job.VFS = nil
+	}
+}
+
 // Cancel stops a running job.
 func (j *Jobs) Cancel(id string) {
 	j.mu.Lock()

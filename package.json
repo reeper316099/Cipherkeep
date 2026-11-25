@@ -14,6 +14,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:go-contract": "vitest run -c vitest.go-contract.config.ts",
     "typecheck": "tsc -p tsconfig.json && tsc -p apps/web/tsconfig.json && tsc -p apps/desktop/tsconfig.json",
     "lint": "eslint .",
     "format": "prettier --write .",

@@ -4,8 +4,7 @@ import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { isEncrypted, isEncryptedLine } from '@cipherkeep/jsonstore';
-import { startServer, type RunningServer } from '../src/index.ts';
-import type { Json } from './helpers.ts';
+import { startTestServer, type Json, type TestServer } from './helpers.ts';
 
 const SENTINEL = 'ZEBRA-SENTINEL-4471';
 const PASS = 'correct horse battery';
@@ -18,7 +17,7 @@ const PNG = Buffer.from(
 );
 
 let dir: string;
-let s: RunningServer | undefined;
+let s: TestServer | undefined;
 beforeEach(async () => {
   dir = await mkdtemp(path.join(os.tmpdir(), 'ck-vault-'));
 });
@@ -28,8 +27,8 @@ afterEach(async () => {
   await rm(dir, { recursive: true, force: true });
 });
 
-async function start(): Promise<RunningServer> {
-  s = await startServer({ dataDir: dir, watch: false, kdf: KDF });
+async function start(): Promise<TestServer> {
+  s = await startTestServer({ dataDir: dir, watch: false, kdf: KDF });
   return s;
 }
 async function stop() {
@@ -47,6 +46,11 @@ async function call(method: string, p: string, body?: unknown, token?: string) {
   });
   const text = await res.text();
   return { status: res.status, json: (text ? JSON.parse(text) : null) as Json };
+}
+
+/** Whether the library is locked, asked the way the UI asks. */
+async function locked(): Promise<boolean> {
+  return (await call('GET', '/vault')).json.locked as boolean;
 }
 
 async function files(root: string, skipTop: string[] = []): Promise<string[]> {
@@ -150,7 +154,7 @@ describe('encryption at rest', () => {
     // --- restart: locked ---
     await stop();
     await start();
-    expect(s!.locked).toBe(true);
+    expect(await locked()).toBe(true);
     expect((await call('GET', '/vault')).json).toMatchObject({ enabled: true, locked: true });
     const denied = await call('GET', '/commands');
     expect(denied).toMatchObject({ status: 423, json: { error: { code: 'LOCKED' } } });
@@ -162,7 +166,7 @@ describe('encryption at rest', () => {
     expect(await plaintextOffenders()).toEqual([]);
 
     expect((await call('POST', '/vault/unlock', { passphrase: PASS })).status).toBe(200);
-    expect(s!.locked).toBe(false);
+    expect(await locked()).toBe(false);
     expect((await call('GET', `/notes/${note.id}`)).json.markdown).toContain(SENTINEL);
     expect((await call('GET', `/commands/${cmd.id}`)).json).toMatchObject({ practiceCount: 2 });
     expect((await call('GET', `/notes/${created.json.id}`)).json).toMatchObject({
@@ -192,7 +196,7 @@ describe('encryption at rest', () => {
 
     await stop();
     await start();
-    expect(s!.locked).toBe(false);
+    expect(await locked()).toBe(false);
     expect((await call('GET', `/notes/${note.id}`)).json).toMatchObject({
       folder: 'secret-folder',
     });

@@ -2,9 +2,9 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { startServer, type RunningServer } from '../src/index.ts';
+import { startTestServer, type TestServer } from './helpers.ts';
 
-let s: RunningServer;
+let s: TestServer;
 let root: string;
 let data: string;
 beforeAll(async () => {
@@ -15,7 +15,7 @@ beforeAll(async () => {
   await writeFile(path.join(root, 'assets', 'app-abc123.js'), 'console.log(1)');
   await writeFile(path.join(root, 'assets', 'font.woff2'), 'x');
   await writeFile(path.join(path.dirname(root), 'secret.txt'), 'TOP SECRET');
-  s = await startServer({ dataDir: data, watch: false, staticDir: root });
+  s = await startTestServer({ dataDir: data, watch: false, staticDir: root });
 });
 afterAll(async () => {
   await s.close();
