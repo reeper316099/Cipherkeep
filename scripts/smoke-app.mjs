@@ -52,7 +52,8 @@ try {
     90_000,
   );
   console.log(`first screen data after ${Date.now() - t0} ms`);
-  const bad = lines().filter((l) => / [45]\d\d /.test(l));
+  // Only API failures count: WebView2 also asks for /favicon.ico, which the app does not have (a harmless 404).
+  const bad = lines().filter((l) => / \/api\/\S* [45]\d\d /.test(l));
   if (bad.length) throw new Error(`failed requests:\n${bad.join('\n')}`);
 
   // The file watcher starts in the background after the first screen; the app logs WATCHING when it is ready.

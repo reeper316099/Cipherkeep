@@ -1,8 +1,8 @@
 # Phase 6: packaging and CI
 
-**Status:** all three systems build in CI. macOS and Linux also package and pass the smoke test in CI (and macOS
-locally); the Windows setup installer needs NSIS, which the CI image does not have, so it is now installed in the job.
-The Windows rows stay empty until that run passes.
+**Status:** all three systems build the app and its installers in CI. macOS and Linux also pass the smoke test there
+(and macOS locally). On Windows the app started and the real UI loaded in WebView2, but the smoke test stopped on a
+harmless 404 (below); the fix is here and waits for one more CI run.
 
 ## Goal
 
@@ -54,30 +54,34 @@ Build installers for all three systems with Wails and run the whole test suite i
 - **The second CI run** confirmed the contract tests and the macOS smoke test (first screen after 2.7 s, live update
   received, 15.0 MB dmg) on GitHub's runners. Windows compiled the app but made no setup installer: `makensis` is not on
   the Windows image. The jobs now install NSIS 3.11 first.
+- **The third CI run** built both Windows installers and started the app: the real UI loaded in WebView2 and fetched
+  its first screen data (after 6.1 s on the CI runner). The smoke test then stopped because WebView2 also asks for
+  `/favicon.ico`, which the app does not have, and the test counted that 404 as a failed request. It now counts only
+  API requests. The live-update step has not yet run on Windows.
 
 ## Compared with Node + Electron
 
-macOS figures were measured on the reference machine, Linux figures come from the first CI run, and Electron figures are
+macOS figures were measured on the reference machine, Linux and Windows figures come from CI runs, and Electron figures are
 from phase 0 (the v1.0.3 release assets).
 
-| Metric                               | Node + Electron                          | Go + Wails                                              | Result                                                                                                            |
-| ------------------------------------ | ---------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| macOS installer (universal dmg)      | 231.4 MB                                 | **15.1 MB**                                             | **About 15x smaller.**                                                                                            |
-| macOS app on disk (universal)        | not measured                             | 32 MB                                                   |                                                                                                                   |
-| Windows installer (setup / portable) | 112.9 MB / 112.6 MB                      | not measured yet                                        | From the first CI run.                                                                                            |
-| Linux AppImage / deb / rpm           | 127.3 / 101.1 / 90.3 MB                  | no AppImage / **7.5 / 7.7 MB** (and a 6.8 MB `.tar.gz`) | **deb about 13x and rpm about 12x smaller.** No AppImage (see above). From the first CI run.                      |
-| CI time                              | Node `verify` job on Windows: 1 min 47 s | Go `go` job on Windows (vet and race tests): 1 min 28 s | About the same; one run each. Building and smoke-testing the app adds a job of about 3 min on Linux.              |
-| Go modules a developer downloads     | none                                     | 14 modules, 72 MB unpacked, plus the Wails CLI (32 MB)  | Only what the build compiles on the three systems; the whole module graph, test-only modules included, is 235 MB. |
-| `node_modules`                       | 646 MB today                             | the same, for now                                       | Still needed to build the UI. Electron alone is 312 MB of it and goes away at the cut-over (phase 7).             |
+| Metric                               | Node + Electron                          | Go + Wails                                              | Result                                                                                                                 |
+| ------------------------------------ | ---------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| macOS installer (universal dmg)      | 231.4 MB                                 | **15.1 MB**                                             | **About 15x smaller.**                                                                                                 |
+| macOS app on disk (universal)        | not measured                             | 32 MB                                                   |                                                                                                                        |
+| Windows installer (setup / portable) | 112.9 MB / 112.6 MB                      | **9.1 MB / 18.1 MB**                                    | **About 12x and 6x smaller.** From the third CI run. The setup is compressed; the portable `.exe` is the bare program. |
+| Linux AppImage / deb / rpm           | 127.3 / 101.1 / 90.3 MB                  | no AppImage / **7.5 / 7.7 MB** (and a 6.8 MB `.tar.gz`) | **deb about 13x and rpm about 12x smaller.** No AppImage (see above). From the first CI run.                           |
+| CI time                              | Node `verify` job on Windows: 1 min 47 s | Go `go` job on Windows (vet and race tests): 1 min 28 s | About the same; one run each. Building and smoke-testing the app adds a job of about 3 min on Linux.                   |
+| Go modules a developer downloads     | none                                     | 14 modules, 72 MB unpacked, plus the Wails CLI (32 MB)  | Only what the build compiles on the three systems; the whole module graph, test-only modules included, is 235 MB.      |
+| `node_modules`                       | 646 MB today                             | the same, for now                                       | Still needed to build the UI. Electron alone is 312 MB of it and goes away at the cut-over (phase 7).                  |
 
 The phase 0 page recorded `node_modules` as 339 MB. It is 646 MB today with the same lock file plus the test tools added
 since; measured now, not estimated.
 
 ## Done when
 
-- [ ] Installers build for all three systems from a tag. **macOS (locally) and Linux (CI) yes; Windows after the fix is
-      confirmed by a CI run.**
-- [ ] Sizes are recorded here next to the Node + Electron ones. **macOS and Linux done; Windows after that run.**
+- [ ] Installers build for all three systems from a tag. **Yes, on all three in CI** (from a push; a tag runs the same
+      build). Windows still needs its smoke test to pass.
+- [ ] Sizes are recorded here next to the Node + Electron ones. **Done for all three.**
 - [x] Unsigned-build notes are updated (`docs/PACKAGING.md`).
 
 ## Risks
