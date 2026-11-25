@@ -61,6 +61,11 @@ Build installers for all three systems with Wails and run the whole test suite i
 - **The fourth CI run** passed the whole smoke test on Windows (first screen after 7.5 s on the runner, live update
   received), then failed while deleting the temporary data folder: WebView2's helper processes were still holding files.
   The test now stops the app's whole process tree on Windows and no longer fails on clean-up.
+- **The first release run** (tag `v1.1.0-rc.1`) built all six Go installers, but its Windows Electron job failed in the
+  Node tests, as did the Windows Node job in CI. Two tests were hit by the Node server's background "launch" backup,
+  which starts 3 s after opening and on a slow runner landed mid-test (one extra backup; files still being written while
+  the test folder was deleted). Re-running the job passed and published the draft. The tests now switch that backup off
+  (a new `launchBackupDelayMs` option in Node, `-launch-backup=false` for the Go dev server).
 
 ## Compared with Node + Electron
 
@@ -82,9 +87,10 @@ since; measured now, not estimated.
 
 ## Done when
 
-- [ ] Installers build for all three systems from a tag. **They build on all three in CI on every push, and the built app
-      passes the smoke test on all three. The release workflow runs the same steps on a `v*` tag but has not been run
-      yet: no tag has been pushed.**
+- [x] Installers build for all three systems from a tag. **The `v1.1.0-rc.1` tag built every Electron and Go installer
+      and made a draft pre-release with all of them. Its Go sizes match the CI figures above (dmg 15.1 MB, setup
+      9.1 MB, portable 18.1 MB, deb 7.5 MB, rpm 7.8 MB, tar.gz 6.8 MB), and its Electron sizes match phase 0 to the
+      byte.**
 - [x] Sizes are recorded here next to the Node + Electron ones. **Done for all three.**
 - [x] Unsigned-build notes are updated (`docs/PACKAGING.md`).
 

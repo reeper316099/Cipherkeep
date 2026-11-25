@@ -34,6 +34,7 @@ func main() {
 	static := flag.String("static", "", "built web UI to serve at /")
 	kdfN := flag.Int("kdf-n", 0, "scrypt N for new vaults (tests lower it)")
 	verbose := flag.Bool("log", false, "log one line per request (method, path, status)")
+	launchBackup := flag.Bool("launch-backup", true, "take the background launch backup 3 s after opening (tests turn it off)")
 	flag.Parse()
 	if *data == "" {
 		fmt.Fprintln(os.Stderr, "ck-server: -data is required")
@@ -47,6 +48,9 @@ func main() {
 		*token = base64.RawURLEncoding.EncodeToString(b)
 	}
 	o := api.Options{DataDir: *data, Token: *token, Watch: *watch}
+	if !*launchBackup {
+		o.LaunchBackupDelay = -1
+	}
 	if *static != "" {
 		o.Static = os.DirFS(*static)
 	}

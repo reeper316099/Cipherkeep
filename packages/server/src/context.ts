@@ -58,6 +58,8 @@ export async function createContext(opts: {
   codec?: CodecHolder;
   /** An instance lock the caller already holds (and will release itself). */
   lock?: InstanceLock;
+  /** When the background "launch" backup runs (default 3000 ms; negative: never, as tests use). */
+  launchBackupDelayMs?: number;
 }): Promise<Context> {
   const dataDir = path.resolve(opts.dataDir);
   await fs.mkdir(dataDir, { recursive: true });
@@ -81,7 +83,12 @@ export async function createContext(opts: {
       });
     }
     // Launch backup runs in the background shortly after startup so a big library opens immediately.
-    setTimeout(() => void backups.createIfStale(6, 'launch').catch(() => undefined), 3000).unref();
+    const delay = opts.launchBackupDelayMs ?? 3000;
+    if (delay >= 0)
+      setTimeout(
+        () => void backups.createIfStale(6, 'launch').catch(() => undefined),
+        delay,
+      ).unref();
 
     const settings = await store.open<Settings>('config/settings.json', {
       version: 1,

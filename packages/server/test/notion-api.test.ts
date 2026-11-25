@@ -166,14 +166,24 @@ async function waitDone(jobId: string) {
 
 describe('import from the Notion API', () => {
   it('is off until you turn it on', async () => {
-    s = await startServer({ dataDir: dir, watch: false, notionFetch: fakeNotion().fetch });
+    s = await startServer({
+      launchBackupDelayMs: -1,
+      dataDir: dir,
+      watch: false,
+      notionFetch: fakeNotion().fetch,
+    });
     const r = await call('POST', '/import/notion-api/start', { token: TOKEN });
     expect(r).toMatchObject({ status: 403, json: { error: { code: 'NOTION_API_DISABLED' } } });
   });
 
   it('reads the workspace politely, previews like a normal export, imports, and never keeps the token', async () => {
     const fake = fakeNotion({ rateLimitOnce: true });
-    s = await startServer({ dataDir: dir, watch: false, notionFetch: fake.fetch });
+    s = await startServer({
+      launchBackupDelayMs: -1,
+      dataDir: dir,
+      watch: false,
+      notionFetch: fake.fetch,
+    });
     await call('PUT', '/settings', {
       ...(await call('GET', '/settings')).json,
       notionApiEnabled: true,
@@ -230,6 +240,7 @@ describe('import from the Notion API', () => {
 
   it('reports a rejected token without leaking it', async () => {
     s = await startServer({
+      launchBackupDelayMs: -1,
       dataDir: dir,
       watch: false,
       notionFetch: async () => new Response('{}', { status: 401 }),

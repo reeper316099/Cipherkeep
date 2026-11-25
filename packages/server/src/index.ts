@@ -53,6 +53,8 @@ export async function startServer(opts: {
   kdf?: KdfParams;
   /** Test hook: replaces the network for the optional Notion API import. */
   notionFetch?: FetchFn;
+  /** When the background "launch" backup runs (default 3000 ms; negative: never, as tests use). */
+  launchBackupDelayMs?: number;
 }): Promise<RunningServer> {
   const token = opts.token ?? randomBytes(32).toString('base64url');
   const dataDir = path.resolve(opts.dataDir);
@@ -117,7 +119,13 @@ export async function startServer(opts: {
   };
 
   async function openLibrary(codec: CodecHolder): Promise<void> {
-    const c = await createContext({ dataDir, watch: opts.watch, codec, lock });
+    const c = await createContext({
+      dataDir,
+      watch: opts.watch,
+      codec,
+      lock,
+      launchBackupDelayMs: opts.launchBackupDelayMs,
+    });
     const h: { h?: Handler } = {};
     let app: FastifyInstance;
     try {

@@ -42,7 +42,7 @@ async function startGoServer(opts: {
   staticDir?: string;
   kdf?: { N: number };
 }): Promise<TestServer> {
-  const args = ['-data', opts.dataDir, `-watch=${opts.watch ?? true}`];
+  const args = ['-data', opts.dataDir, `-watch=${opts.watch ?? true}`, '-launch-backup=false'];
   if (opts.staticDir) args.push('-static', opts.staticDir);
   if (opts.kdf) args.push('-kdf-n', String(opts.kdf.N));
   const child = spawn(goBinary(), args, { stdio: ['pipe', 'pipe', 'inherit'] });
@@ -75,7 +75,9 @@ export async function startTestServer(opts: {
   staticDir?: string;
   kdf?: { algo: 'scrypt'; N: number; r: number; p: number };
 }): Promise<TestServer> {
-  return GO ? startGoServer(opts) : startServer(opts);
+  // No background launch backup in tests: on a slow runner it lands mid-test (an extra backup, files still being
+  // written while the test folder is deleted).
+  return GO ? startGoServer(opts) : startServer({ ...opts, launchBackupDelayMs: -1 });
 }
 
 // Test responses are untyped JSON; assertions check the shape.
