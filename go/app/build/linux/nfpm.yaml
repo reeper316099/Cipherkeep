@@ -1,0 +1,27 @@
+# Linux packages for the Go + Wails app (scripts/package-app.mjs runs nfpm with this from go/app).
+name: cipherkeep
+arch: amd64
+platform: linux
+version: ${VERSION}
+section: education
+priority: optional
+maintainer: Cipherkeep contributors <cipherkeep@users.noreply.github.com>
+description: Offline, local-first cybersecurity learning notes.
+homepage: https://github.com/reeper316099/Cipherkeep
+license: MIT
+contents:
+  - src: build/bin/Cipherkeep
+    dst: /usr/bin/cipherkeep
+  - src: build/linux/cipherkeep.desktop
+    dst: /usr/share/applications/cipherkeep.desktop
+  - src: build/appicon.png
+    dst: /usr/share/icons/hicolor/1024x1024/apps/cipherkeep.png
+overrides:
+  deb:
+    depends:
+      - libgtk-3-0
+      - libwebkit2gtk-4.1-0
+  rpm:
+    depends:
+      - gtk3
+      - webkit2gtk4.1

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cipherkeep
+Comment=Offline cybersecurity learning notes
+Exec=cipherkeep
+Icon=cipherkeep
+Categories=Education;
+Terminal=false

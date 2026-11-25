@@ -43,8 +43,46 @@ jobs:
             release/*.deb
             release/*.rpm
 
+  # The Go + Wails app (see docs/go-migration). Shipped next to the Electron installers until the cut-over (phase 7).
+  build-go:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
+      - name: Linux build packages
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev xvfb
+          go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
+      - run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.1
+      - run: npm ci
+      - run: node scripts/package-app.mjs ${{ github.ref_type == 'tag' && github.ref_name || '0.0.0-dev' }}
+      - name: Smoke test (Linux, virtual display)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a node scripts/smoke-app.mjs
+      - name: Smoke test
+        if: runner.os != 'Linux'
+        run: node scripts/smoke-app.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installers-go-${{ matrix.os }}
+          if-no-files-found: error
+          path: release-go/*
+
   publish:
-    needs: build
+    needs: [build, build-go]
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
@@ -52,8 +90,17 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+      - name: Installer sizes
+        run: |
+          echo '| Installer | Size |' > sizes.md
+          echo '| --- | --- |' >> sizes.md
+          for f in artifacts/*; do
+            printf '| %s | %.1f MB |\n' "$(basename "$f")" "$(echo "$(stat -c %s "$f") / 1000000" | bc -l)" >> sizes.md
+          done
+          cat sizes.md
       - uses: softprops/action-gh-release@v2
         with:
           draft: true
+          body_path: sizes.md
           generate_release_notes: true
           files: artifacts/*

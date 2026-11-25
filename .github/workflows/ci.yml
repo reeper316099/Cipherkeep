@@ -65,6 +65,45 @@ jobs:
       - run: npm ci
       - run: npm run test:go-contract
 
+  # Builds the Go + Wails app and its installers on each system, then smoke-tests the built app with its window hidden
+  # (the real UI loads, calls the in-process API, and receives a live update after a hand edit).
+  app:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
+      - name: Linux build and test packages
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev xvfb
+          go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
+      - run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.1
+      - run: npm ci
+      - run: node scripts/package-app.mjs 0.0.0-ci
+      - name: Smoke test (Linux, virtual display)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a node scripts/smoke-app.mjs
+      - name: Smoke test
+        if: runner.os != 'Linux'
+        run: node scripts/smoke-app.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: go-app-${{ matrix.os }}
+          path: release-go/*
+          retention-days: 7
+
   # Drives the real Electron app (built, not packaged): first run, import, study, restart, security checks.
   e2e:
     needs: verify
