@@ -1,7 +1,7 @@
 {
   "name": "@cipherkeep/desktop",
   "productName": "Cipherkeep",
-  "version": "0.1.0",
+  "version": "1.1.0-rc.1",
   "description": "Cipherkeep: offline, local-first cybersecurity learning notes",
   "author": {
     "name": "Cipherkeep contributors",
