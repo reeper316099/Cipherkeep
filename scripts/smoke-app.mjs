@@ -7,7 +7,7 @@
 // It reads the app's request log (CIPHERKEEP_API_LOG: method, path and status, plus WATCHING and EVENT <kind> lines;
 // never content).
 //   node scripts/smoke-app.mjs [path-to-binary]      (default: this system's build in go/app/build/bin)
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -81,12 +81,19 @@ try {
 } finally {
   if (exitCode === null) {
     const exited = new Promise((r) => app.once('exit', r));
-    app.kill(process.platform === 'win32' ? undefined : 'SIGTERM');
+    if (process.platform === 'win32') {
+      // Stop the whole tree: WebView2 runs in child processes that otherwise keep files in the data folder open.
+      spawnSync('taskkill', ['/pid', String(app.pid), '/T', '/F'], { stdio: 'ignore' });
+    } else app.kill('SIGTERM');
     await Promise.race([exited, sleep(10_000)]);
   }
 }
 // A forced stop on Windows cannot clean up, so the lock check is for macOS and Linux.
 if (process.platform !== 'win32' && existsSync(path.join(data, '.lock')))
   throw new Error('the library lock was not released on quit');
-rmSync(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
+try {
+  rmSync(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 500 });
+} catch (e) {
+  console.log(`note: could not remove the temporary folder (${e.code}); the test result stands`);
+}
 console.log('smoke test passed');

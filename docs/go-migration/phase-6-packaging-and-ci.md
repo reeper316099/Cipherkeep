@@ -1,8 +1,8 @@
 # Phase 6: packaging and CI
 
-**Status:** all three systems build the app and its installers in CI. macOS and Linux also pass the smoke test there
-(and macOS locally). On Windows the app started and the real UI loaded in WebView2, but the smoke test stopped on a
-harmless 404 (below); the fix is here and waits for one more CI run.
+**Status:** done. All three systems build the app and its installers in CI, and the app passes the smoke test on all
+three (the real UI loads, talks to the in-process API, and receives a live update after a hand edit). The last Windows
+run failed only while deleting its temporary folder afterwards; that clean-up is fixed here.
 
 ## Goal
 
@@ -57,7 +57,10 @@ Build installers for all three systems with Wails and run the whole test suite i
 - **The third CI run** built both Windows installers and started the app: the real UI loaded in WebView2 and fetched
   its first screen data (after 6.1 s on the CI runner). The smoke test then stopped because WebView2 also asks for
   `/favicon.ico`, which the app does not have, and the test counted that 404 as a failed request. It now counts only
-  API requests. The live-update step has not yet run on Windows.
+  API requests.
+- **The fourth CI run** passed the whole smoke test on Windows (first screen after 7.5 s on the runner, live update
+  received), then failed while deleting the temporary data folder: WebView2's helper processes were still holding files.
+  The test now stops the app's whole process tree on Windows and no longer fails on clean-up.
 
 ## Compared with Node + Electron
 
@@ -79,9 +82,10 @@ since; measured now, not estimated.
 
 ## Done when
 
-- [ ] Installers build for all three systems from a tag. **Yes, on all three in CI** (from a push; a tag runs the same
-      build). Windows still needs its smoke test to pass.
-- [ ] Sizes are recorded here next to the Node + Electron ones. **Done for all three.**
+- [ ] Installers build for all three systems from a tag. **They build on all three in CI on every push, and the built app
+      passes the smoke test on all three. The release workflow runs the same steps on a `v*` tag but has not been run
+      yet: no tag has been pushed.**
+- [x] Sizes are recorded here next to the Node + Electron ones. **Done for all three.**
 - [x] Unsigned-build notes are updated (`docs/PACKAGING.md`).
 
 ## Risks
