@@ -66,6 +66,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev xvfb
           go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
+      - name: NSIS (Windows setup installer)
+        if: runner.os == 'Windows'
+        run: |
+          choco install nsis --version 3.11.0 -y --no-progress
+          echo "C:\Program Files (x86)\NSIS" >> $env:GITHUB_PATH
       - run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.1
       - run: npm ci
       - run: node scripts/package-app.mjs ${{ github.ref_type == 'tag' && github.ref_name || '0.0.0-dev' }}

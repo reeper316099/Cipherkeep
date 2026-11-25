@@ -1,8 +1,8 @@
 # Phase 6: packaging and CI
 
-**Status:** macOS and Linux build, package and pass the smoke test (macOS locally, Linux in CI). Windows and the
-macOS CI runner failed on the first CI run; both are fixed here but not yet confirmed by a second run, so the Windows
-rows are still empty.
+**Status:** all three systems build in CI. macOS and Linux also package and pass the smoke test in CI (and macOS
+locally); the Windows setup installer needs NSIS, which the CI image does not have, so it is now installed in the job.
+The Windows rows stay empty until that run passes.
 
 ## Goal
 
@@ -51,6 +51,9 @@ Build installers for all three systems with Wails and run the whole test suite i
     show whether the edit was missed by Go or by the window, if it still fails.
   - **Contract tests (all systems):** each test file built the Go server in its setup hook, which on a fresh runner
     took longer than the 10 s hook limit. The server is now built once before all files. No API behaviour failed.
+- **The second CI run** confirmed the contract tests and the macOS smoke test (first screen after 2.7 s, live update
+  received, 15.0 MB dmg) on GitHub's runners. Windows compiled the app but made no setup installer: `makensis` is not on
+  the Windows image. The jobs now install NSIS 3.11 first.
 
 ## Compared with Node + Electron
 
