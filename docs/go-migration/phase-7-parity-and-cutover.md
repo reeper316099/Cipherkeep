@@ -100,5 +100,8 @@ counted just before the Node code was removed (lines that are not blank, tests e
 
 - The end-to-end tests run in Playwright's WebKit and Chromium, not in the exact web views of each system; the
   built-app smoke test covers those, with fewer steps.
+- **Keyboard: links and Tab.** In WebKit, as in Safari, Tab skips links unless full keyboard navigation is turned on;
+  Option+Tab reaches them. The macOS app uses WebKit, so the "Skip to main content" link is reached with Option+Tab
+  there, where the Electron app (Chromium) reached it with Tab. The accessibility test checks each engine's convention.
 - The fixtures recorded from the Node version are now fixed. Behaviour that changes on purpose from here on updates the
   Go tests directly.

@@ -52,6 +52,7 @@ test.afterEach(async () => {
 
 test('starter pack first run, then every page passes axe in dark and light', async ({
   browser,
+  browserName,
 }) => {
   test.setTimeout(180_000);
   const dataDir = mkdtempSync(path.join(os.tmpdir(), 'ck-a11y-'));
@@ -68,8 +69,9 @@ test('starter pack first run, then every page passes axe in dark and light', asy
     await expect(page.getByRole('option').first()).toContainText(/grep/i);
     await page.keyboard.press('Escape');
 
-    // Skip link reaches the main landmark.
-    await page.keyboard.press('Tab');
+    // Skip link reaches the main landmark. WebKit (as Safari and the macOS app) moves to links with Option/Alt+Tab
+    // unless full keyboard navigation is turned on; Tab alone skips them.
+    await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
 
     for (const theme of ['dark', 'light'] as const) {
